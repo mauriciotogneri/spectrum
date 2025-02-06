@@ -1,7 +1,8 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:testflow/domain/state/auth/sign_in_state.dart';
-import 'package:testflow/presentation/common/primary_button.dart';
+import 'package:testflow/presentation/common/buttons/primary_button.dart';
+import 'package:testflow/presentation/common/inputs/text_input.dart';
 
 class SignInScreen extends StatelessWidget {
   final SignInState state;
@@ -67,12 +68,9 @@ class FormInputs extends StatelessWidget {
       child: Column(
         children: [
           const VBox(10),
-          TextField(
+          TextInput(
+            hint: 'Email',
             controller: state.emailController,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'Email',
-            ),
             onChanged: state.onEmailChanged,
           ),
           const VBox(16),

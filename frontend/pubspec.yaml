@@ -7,6 +7,10 @@ environment:
   sdk: '>=3.6.2 <4.0.0'
 
 dependencies:
+  get_it: ^8.0.3
+  logger: ^2.5.0
+  dafluta: ^5.4.0
+
   flutter:
     sdk: flutter
 

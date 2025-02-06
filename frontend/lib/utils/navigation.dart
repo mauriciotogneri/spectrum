@@ -85,7 +85,7 @@ class Navigation {
   // ============================= DASHBOARD ================================ \\
 
   static void dashboardScreen() => pushAlone(
-        FadeRoute(
+        BasicRoute(
           DashboardScreen.instance(),
           name: 'dashboard  ',
         ),

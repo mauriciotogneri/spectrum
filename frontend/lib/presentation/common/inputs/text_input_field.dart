@@ -45,7 +45,7 @@ class TextInputField extends StatelessWidget {
     return TextFormField(
       autofocus: autofocus,
       inputFormatters: [
-        LengthLimitingTextInputFormatter(maxLength ?? 1000),
+        if (maxLength != null) LengthLimitingTextInputFormatter(maxLength),
       ],
       maxLines: maxLines,
       readOnly: readOnly,

@@ -1,4 +1,7 @@
 import 'package:dafluta/dafluta.dart';
+import 'package:flutter/material.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:testflow/presentation/dialogs/create_project_dialog.dart';
 
 class DashboardState extends BaseState {
   int activeView = 0;
@@ -12,4 +15,16 @@ class DashboardState extends BaseState {
     activeView = index;
     notify();
   }
+
+  void onCreateProject(BuildContext context) => showShadDialog(
+        context: context,
+        builder: (context) => CreateProjectDialog(
+          onCreate: createProject,
+        ),
+      );
+
+  void createProject({
+    required String name,
+    required String description,
+  }) {}
 }

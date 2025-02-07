@@ -85,6 +85,7 @@ class SignInButton extends StatelessWidget {
     return PrimaryButton(
       text: 'Sign in',
       onPressed: state.formFilled ? state.onSignIn : null,
+      expanded: true,
     );
   }
 }

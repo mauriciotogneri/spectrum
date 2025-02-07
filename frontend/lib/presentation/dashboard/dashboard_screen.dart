@@ -57,7 +57,7 @@ class NavigationMenu extends StatelessWidget {
         child: Column(
           children: [
             const VBox(4),
-            const ProjectSelector(),
+            ProjectSelector(state),
             const VBox(4),
             NavigationMenuRow(
               state: state,
@@ -91,12 +91,12 @@ class NavigationMenu extends StatelessWidget {
 }
 
 class ProjectSelector extends StatelessWidget {
-  const ProjectSelector();
+  final DashboardState state;
+
+  const ProjectSelector(this.state);
 
   @override
   Widget build(BuildContext context) {
-    final List<Project> projects = Data.projects;
-
     return SizedBox(
       width: double.infinity,
       child: Padding(
@@ -115,11 +115,11 @@ class ProjectSelector extends StatelessWidget {
               icon: const Icon(Icons.add_circle_outline),
               mainAxisAlignment: MainAxisAlignment.start,
               child: const Text('Create project'),
-              onPressed: () {},
+              onPressed: () => state.onCreateProject(context),
             ),
           ),
           options: [
-            for (final project in projects)
+            for (final project in Data.projects)
               ShadOption(value: project, child: Text(project.name)),
             const VBox(4),
             const HorizontalDivider(

@@ -105,9 +105,11 @@ class ProjectSelector extends StatelessWidget {
           right: 4,
         ),
         child: ShadSelect<Project>(
+          controller: state.projectsController,
           initialValue: Data.currentProject,
           selectedOptionBuilder: (context, value) => Text(value.name),
-          onChanged: (project) => Data.onChangeProject(project!),
+          onChanged: (project) => state.onChangeProject(project!),
+          focusNode: state.projectsFocus,
           footer: Padding(
             padding: const EdgeInsets.only(bottom: 4),
             child: ShadButton.ghost(

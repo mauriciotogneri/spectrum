@@ -14,8 +14,8 @@ class TextInputField extends StatelessWidget {
   final bool filled;
   final bool obscureText;
   final Iterable<String>? autofillHints;
-  final Widget? prefixIcon;
-  final Widget? suffixIcon;
+  final IconData? prefixIcon;
+  final IconData? suffixIcon;
   final int? maxLength;
   final int? maxLines;
   final FocusNode? focusNode;
@@ -85,11 +85,27 @@ class TextInputField extends StatelessWidget {
       autofillHints: autofillHints,
       textCapitalization: capitalization,
       onSubmitted: (_) => FocusScope.of(context).nextFocus(),
-      prefix: prefixIcon,
-      suffix: suffixIcon,
+      prefix: (prefixIcon != null) ? TextInputIcon(prefixIcon!) : null,
+      suffix: (suffixIcon != null) ? TextInputIcon(suffixIcon!) : null,
       inputFormatters: [
         if (maxLength != null) LengthLimitingTextInputFormatter(maxLength),
       ],
+    );
+  }
+}
+
+class TextInputIcon extends StatelessWidget {
+  final IconData icon;
+
+  const TextInputIcon(this.icon);
+
+  @override
+  Widget build(BuildContext context) {
+    final ShadThemeData theme = ShadTheme.of(context);
+
+    return Icon(
+      icon,
+      color: theme.colorScheme.mutedForeground,
     );
   }
 }

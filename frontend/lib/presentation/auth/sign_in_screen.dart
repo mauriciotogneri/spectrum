@@ -5,6 +5,7 @@ import 'package:testflow/domain/state/auth/sign_in_state.dart';
 import 'package:testflow/presentation/common/button/primary_button.dart';
 import 'package:testflow/presentation/common/input/password_input_field.dart';
 import 'package:testflow/presentation/common/input/text_input_field.dart';
+import 'package:testflow/presentation/common/text/title_4.dart';
 
 class SignInScreen extends StatelessWidget {
   final SignInState state;
@@ -31,12 +32,10 @@ class Content extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ShadThemeData theme = ShadTheme.of(context);
-
     return Center(
       child: ShadCard(
         width: 350,
-        title: Text('Sign in', style: theme.textTheme.h4),
+        title: const Title4(text: 'Sign in'),
         footer: SignInButton(state),
         child: FormInputs(state),
       ),
@@ -60,14 +59,14 @@ class FormInputs extends StatelessWidget {
             hint: 'Email',
             controller: state.emailController,
             onChanged: state.onEmailChanged,
-            prefixIcon: const Icon(Icons.email_outlined),
+            prefixIcon: Icons.email_outlined,
           ),
           const VBox(16),
           PasswordInputField(
             hint: 'Password',
             controller: state.passwordController,
             onChanged: state.onPasswordChanged,
-            prefixIcon: const Icon(Icons.lock_outlined),
+            prefixIcon: Icons.lock_outlined,
           ),
           const VBox(16),
         ],

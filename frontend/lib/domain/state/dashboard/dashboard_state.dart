@@ -30,8 +30,8 @@ class DashboardState extends BaseState {
 
     showShadDialog(
       context: context,
-      builder: (context) => CreateProjectDialog(
-        onCreate: createProject,
+      builder: (context) => CreateProjectDialog.instance(
+        onCreateProject: createProject,
       ),
     );
   }
@@ -39,5 +39,7 @@ class DashboardState extends BaseState {
   void createProject({
     required String name,
     required String description,
-  }) {}
+  }) {
+    print('Create project: $name, $description');
+  }
 }

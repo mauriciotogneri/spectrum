@@ -1,5 +1,8 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:testflow/debug/data.dart';
+import 'package:testflow/domain/model/project.dart';
 import 'package:testflow/domain/state/dashboard/dashboard_state.dart';
 import 'package:testflow/utils/palette.dart';
 
@@ -54,6 +57,8 @@ class NavigationMenu extends StatelessWidget {
         child: Column(
           children: [
             const VBox(4),
+            const ProjectSelector(),
+            const VBox(4),
             NavigationMenuRow(
               state: state,
               text: 'Requirements',
@@ -77,6 +82,49 @@ class NavigationMenu extends StatelessWidget {
               text: 'Settings',
               icon: Icons.settings_outlined,
               index: DashboardState.VIEW_SETTINGS,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ProjectSelector extends StatelessWidget {
+  const ProjectSelector();
+
+  @override
+  Widget build(BuildContext context) {
+    final List<Project> projects = Data.projects;
+
+    return SizedBox(
+      width: double.infinity,
+      child: Padding(
+        padding: const EdgeInsets.only(
+          left: 4,
+          right: 4,
+        ),
+        child: ShadSelect<Project>(
+          initialValue: Data.currentProject,
+          selectedOptionBuilder: (context, value) => Text(value.name),
+          onChanged: (project) => Data.onChangeProject(project!),
+          footer: Padding(
+            padding: const EdgeInsets.only(bottom: 4),
+            child: ShadButton.ghost(
+              height: 32,
+              icon: const Icon(Icons.add_circle_outline),
+              mainAxisAlignment: MainAxisAlignment.start,
+              child: const Text('Create project'),
+              onPressed: () {},
+            ),
+          ),
+          options: [
+            for (final project in projects)
+              ShadOption(value: project, child: Text(project.name)),
+            const VBox(4),
+            const HorizontalDivider(
+              height: 0.2,
+              color: Palette.divider,
             ),
           ],
         ),

@@ -5,6 +5,8 @@ class Palette {
 
   static const Color rowSelected = Color(0xffF1F4F9);
 
+  static const Color divider = Color(0xff888888);
+
   static const Color background1 = Color(0xffffffff);
   static const Color background2 = Color(0xffF9FAFC);
 

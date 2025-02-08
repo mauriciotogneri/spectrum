@@ -12,7 +12,7 @@ class DropdownInput<T> extends StatelessWidget {
   final Widget? footer;
   final double? width;
   final bool allowDeselection;
-  final Function(T project)? onChange;
+  final Function(T?)? onChange;
 
   const DropdownInput({
     required this.values,
@@ -35,9 +35,9 @@ class DropdownInput<T> extends StatelessWidget {
         initialValue: initialValue,
         selectedOptionBuilder: (context, value) => Text(value.toString()),
         allowDeselection: allowDeselection,
-        onChanged: (project) {
+        onChanged: (element) {
           focusNode?.unfocus();
-          onChange?.call(project!);
+          onChange?.call(element);
         },
         focusNode: focusNode,
         footer: footer,

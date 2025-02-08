@@ -121,7 +121,7 @@ class ProjectSelector extends StatelessWidget {
               onPressed: () => state.onCreateProject(context),
             ),
           ),
-          onChange: state.onChangeProject,
+          onChange: (project) => state.onChangeProject(project!),
         ),
       ),
     );

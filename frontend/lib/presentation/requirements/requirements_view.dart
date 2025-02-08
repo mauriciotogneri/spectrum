@@ -66,16 +66,16 @@ class TableFilters extends StatelessWidget {
         DropdownInput<String>(
           width: 200,
           values: Data.currentProject.components,
-          controller: state.componentController,
           focusNode: state.componentFocusNode,
+          onChange: state.onComponentFilterChanged,
           allowDeselection: true,
           hint: 'Component',
         ),
         DropdownInput<String>(
           width: 200,
           values: Data.currentProject.platforms,
-          controller: state.platformController,
           focusNode: state.platformFocusNode,
+          onChange: state.onPlatformFilterChanged,
           allowDeselection: true,
           hint: 'Platform',
         ),
@@ -100,7 +100,7 @@ class Table extends StatelessWidget {
           'Importance',
           'Tags',
         ],
-        rows: Data.requirements(),
+        rows: state.requirements,
         onRowSelected: state.onRequirementSelected,
       ),
     );

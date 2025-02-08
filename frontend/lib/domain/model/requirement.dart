@@ -21,6 +21,24 @@ class Requirement implements CustomTableCell {
     required this.tags,
   });
 
+  bool matches({
+    required String query,
+    required String component,
+    required String platform,
+  }) {
+    if (query.isEmpty && component.isEmpty && platform.isEmpty) {
+      return true;
+    } else if (query.isNotEmpty && name.trim().toLowerCase().contains(query)) {
+      return true;
+    } else if (component.isNotEmpty && (this.component == component)) {
+      return true;
+    } else if (platform.isNotEmpty && platforms.contains(platform)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   @override
   Widget cell(int column) {
     switch (column) {

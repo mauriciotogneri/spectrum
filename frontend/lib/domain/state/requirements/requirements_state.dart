@@ -8,9 +8,8 @@ class RequirementsState extends BaseState {
   final FocusNode componentFilterFocusNode = FocusNode();
   final FocusNode platformFilterFocusNode = FocusNode();
   final List<Requirement> _allRequirements = Data.requirements();
-
-  String? componentFilter;
-  String? platformFilter;
+  final List<String> componentFilter = [];
+  final List<String> platformFilter = [];
 
   List<Requirement> get requirements {
     final String query = queryFilterController.text.trim().toLowerCase();
@@ -18,8 +17,8 @@ class RequirementsState extends BaseState {
     return _allRequirements
         .where((requirement) => requirement.matches(
               query: query,
-              component: componentFilter ?? '',
-              platform: platformFilter ?? '',
+              components: componentFilter,
+              platforms: platformFilter,
             ))
         .toList();
   }
@@ -28,13 +27,15 @@ class RequirementsState extends BaseState {
     notify();
   }
 
-  void onComponentFilterChanged(String? value) {
-    componentFilter = value;
+  void onComponentFilterChanged(List<String> value) {
+    componentFilter.clear();
+    componentFilter.addAll(value);
     notify();
   }
 
-  void onPlatformFilterChanged(String? value) {
-    platformFilter = value;
+  void onPlatformFilterChanged(List<String> value) {
+    platformFilter.clear();
+    platformFilter.addAll(value);
     notify();
   }
 

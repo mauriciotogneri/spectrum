@@ -23,16 +23,17 @@ class Requirement implements CustomTableCell {
 
   bool matches({
     required String query,
-    required String component,
-    required String platform,
+    required List<String> components,
+    required List<String> platforms,
   }) {
-    if (query.isEmpty && component.isEmpty && platform.isEmpty) {
+    if (query.isEmpty && components.isEmpty && platforms.isEmpty) {
       return true;
     } else if (query.isNotEmpty && name.trim().toLowerCase().contains(query)) {
       return true;
-    } else if (component.isNotEmpty && (this.component == component)) {
+    } else if (components.isNotEmpty && components.contains(component)) {
       return true;
-    } else if (platform.isNotEmpty && platforms.contains(platform)) {
+    } else if (platforms.isNotEmpty &&
+        platforms.any((platform) => this.platforms.contains(platform))) {
       return true;
     } else {
       return false;

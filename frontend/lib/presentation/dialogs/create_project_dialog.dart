@@ -69,8 +69,8 @@ class CreateProjectDialog extends StatelessWidget {
 
 class CreateProjectDialogState extends BaseState {
   final CreateProjectCallback onCreateProject;
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController descriptionController = TextEditingController();
+  final TextInputController nameController = TextInputController();
+  final TextInputController descriptionController = TextInputController();
 
   CreateProjectDialogState({required this.onCreateProject});
 

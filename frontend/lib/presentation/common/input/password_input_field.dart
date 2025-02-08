@@ -13,9 +13,7 @@ class PasswordInputField extends TextInputField {
     super.filled,
     super.autofillHints,
     super.prefixIcon,
-    super.suffixIcon,
     super.maxLength,
-    super.focusNode,
     super.onChanged,
   }) : super(
           obscureText: true,

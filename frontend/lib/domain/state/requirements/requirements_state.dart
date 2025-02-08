@@ -1,13 +1,13 @@
 import 'package:dafluta/dafluta.dart';
-import 'package:flutter/material.dart';
 import 'package:testflow/debug/data.dart';
 import 'package:testflow/domain/model/requirement.dart';
 import 'package:testflow/domain/types/importance.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
 import 'package:testflow/presentation/common/dropdown/dropdown_input.dart';
+import 'package:testflow/presentation/common/input/text_input_field.dart';
 
 class RequirementsState extends BaseState {
-  final TextEditingController queryFilterController = TextEditingController();
+  final TextInputController queryFilterController = TextInputController();
   final DropdownInputController<RequirementType> typeFilterController =
       DropdownInputController();
   final DropdownInputController<String> componentFilterController =

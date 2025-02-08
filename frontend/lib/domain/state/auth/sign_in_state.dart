@@ -1,11 +1,12 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
+import 'package:testflow/presentation/common/input/text_input_field.dart';
 import 'package:testflow/utils/navigation.dart';
 
 class SignInState extends BaseState {
   final Key formKey = UniqueKey();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final TextInputController emailController = TextInputController();
+  final TextInputController passwordController = TextInputController();
 
   String get email => emailController.text.trim();
 

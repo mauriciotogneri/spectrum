@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:testflow/utils/palette.dart';
 
-class TextInputField extends StatelessWidget {
+class TextInputField extends StatefulWidget {
   final String hint;
-  final TextEditingController controller;
+  final TextInputController controller;
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
   final TextCapitalization capitalization;
@@ -14,12 +15,10 @@ class TextInputField extends StatelessWidget {
   final bool filled;
   final bool obscureText;
   final Iterable<String>? autofillHints;
-  final IconData? prefixIcon;
-  final IconData? suffixIcon;
+  final Widget? prefixIcon;
   final int? maxLength;
   final int? maxLines;
   final double? width;
-  final FocusNode? focusNode;
   final Function(String)? onChanged;
 
   const TextInputField({
@@ -35,38 +34,69 @@ class TextInputField extends StatelessWidget {
     this.obscureText = false,
     this.autofillHints,
     this.prefixIcon,
-    this.suffixIcon,
     this.maxLength,
     this.maxLines,
     this.width,
-    this.focusNode,
     this.onChanged,
   });
 
   @override
+  State<TextInputField> createState() => _TextInputFieldState();
+}
+
+class _TextInputFieldState extends State<TextInputField> {
+  bool showClear = false;
+
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: width,
+      width: widget.width,
       child: ShadInput(
-        placeholder: Text(hint),
-        autofocus: autofocus,
-        maxLines: maxLines,
-        readOnly: readOnly,
-        enableInteractiveSelection: !readOnly,
-        enabled: enabled,
-        keyboardType: keyboardType,
-        focusNode: focusNode,
-        textInputAction: textInputAction,
-        controller: controller,
-        onChanged: onChanged,
-        obscureText: obscureText,
-        autofillHints: autofillHints,
-        textCapitalization: capitalization,
+        placeholder: Text(widget.hint),
+        autofocus: widget.autofocus,
+        maxLines: widget.maxLines,
+        readOnly: widget.readOnly,
+        enableInteractiveSelection: !widget.readOnly,
+        enabled: widget.enabled,
+        keyboardType: widget.keyboardType,
+        focusNode: widget.controller.focusNode,
+        textInputAction: widget.textInputAction,
+        controller: widget.controller.controller,
+        onChanged: (text) {
+          widget.onChanged?.call(text);
+          setState(() {
+            showClear = text.isNotEmpty;
+          });
+        },
+        obscureText: widget.obscureText,
+        autofillHints: widget.autofillHints,
+        textCapitalization: widget.capitalization,
         onSubmitted: (_) => FocusScope.of(context).nextFocus(),
-        prefix: (prefixIcon != null) ? TextInputIcon(prefixIcon!) : null,
-        suffix: (suffixIcon != null) ? TextInputIcon(suffixIcon!) : null,
+        prefix: widget.prefixIcon,
+        suffix: showClear
+            ? ShadButton.ghost(
+                width: 20,
+                height: 20,
+                padding: EdgeInsets.zero,
+                decoration: const ShadDecoration(
+                  secondaryBorder: ShadBorder.none,
+                  secondaryFocusedBorder: ShadBorder.none,
+                ),
+                icon: const Icon(
+                  Icons.close,
+                  color: Palette.iconEnabled,
+                ),
+                onPressed: () {
+                  widget.controller.clear();
+                  widget.onChanged?.call('');
+                  setState(() {
+                    showClear = false;
+                  });
+                })
+            : null,
         inputFormatters: [
-          if (maxLength != null) LengthLimitingTextInputFormatter(maxLength),
+          if (widget.maxLength != null)
+            LengthLimitingTextInputFormatter(widget.maxLength),
         ],
       ),
     );
@@ -86,5 +116,20 @@ class TextInputIcon extends StatelessWidget {
       icon,
       color: theme.colorScheme.mutedForeground,
     );
+  }
+}
+
+class TextInputController {
+  final TextEditingController controller = TextEditingController();
+  final FocusNode focusNode = FocusNode();
+
+  String get text => controller.text.trim();
+
+  set text(String content) {
+    controller.text = content;
+  }
+
+  void clear() {
+    controller.text = '';
   }
 }

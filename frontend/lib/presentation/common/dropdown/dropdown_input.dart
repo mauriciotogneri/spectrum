@@ -110,6 +110,10 @@ class DropdownInputController<T> {
 
   List<T> get selected => _selected;
 
+  bool get isEmpty => _selected.isEmpty;
+
+  bool get isNotEmpty => _selected.isNotEmpty;
+
   void close() => _controller.hide();
 
   void onChanged(List<T> value) {

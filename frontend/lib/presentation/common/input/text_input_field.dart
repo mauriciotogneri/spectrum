@@ -127,6 +127,10 @@ class TextInputController {
 
   String get text => controller.text.trim();
 
+  bool get isEmpty => text.isEmpty;
+
+  bool get isNotEmpty => text.isNotEmpty;
+
   set text(String content) {
     controller.text = content;
   }

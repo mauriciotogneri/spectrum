@@ -3,17 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:testflow/debug/data.dart';
 import 'package:testflow/domain/model/project.dart';
+import 'package:testflow/presentation/common/dropdown/dropdown_input.dart';
 import 'package:testflow/presentation/dialogs/create_project_dialog.dart';
 
 class DashboardState extends BaseState {
   int activeView = 0;
-  final ShadPopoverController projectsController = ShadPopoverController();
-  final FocusNode projectsFocus = FocusNode();
+  final DropdownInputController<Project> projectsController =
+      DropdownInputController();
 
   static const int VIEW_REQUIREMENTS = 0;
   static const int VIEW_SUITES = 1;
   static const int VIEW_SESSIONS = 2;
   static const int VIEW_SETTINGS = 3;
+
+  @override
+  void onLoad() {
+    projectsController.onChanged([Data.currentProject]);
+    notify();
+  }
 
   void onActiveViewChange(int index) {
     activeView = index;
@@ -25,7 +32,7 @@ class DashboardState extends BaseState {
   }
 
   void onCreateProject(BuildContext context) {
-    projectsController.hide();
+    projectsController.close();
 
     showShadDialog(
       context: context,

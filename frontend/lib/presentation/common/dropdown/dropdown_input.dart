@@ -5,11 +5,8 @@ import 'package:testflow/utils/palette.dart';
 
 class DropdownInput<T> extends StatelessWidget {
   final List<T> values;
-  final T? initialValue;
-  final List<T>? initialValues;
-  final String? hint;
-  final ShadPopoverController? controller;
-  final FocusNode? focusNode;
+  final String hint;
+  final DropdownInputController<T>? controller;
   final Widget? footer;
   final double? width;
   final bool allowDeselection;
@@ -19,11 +16,8 @@ class DropdownInput<T> extends StatelessWidget {
 
   const DropdownInput({
     required this.values,
-    this.initialValue,
-    this.initialValues,
-    this.hint,
+    this.hint = '',
     this.controller,
-    this.focusNode,
     this.footer,
     this.width,
     this.onChangeSingle,
@@ -48,23 +42,23 @@ class DropdownInput<T> extends StatelessWidget {
       ];
 
   ShadSelect<T> get selectSingle => ShadSelect<T>(
-        controller: controller,
-        initialValue: initialValue,
+        controller: controller?._controller,
+        initialValue: controller?.initialValue,
         selectedOptionBuilder: (context, value) => Text(value.toString()),
         allowDeselection: allowDeselection,
         onChanged: (element) {
-          focusNode?.unfocus();
+          controller?._focusNode.unfocus();
           onChangeSingle?.call(element);
         },
-        focusNode: focusNode,
+        focusNode: controller?._focusNode,
         footer: footer,
-        placeholder: (hint != null) ? Text(hint!) : null,
+        placeholder: Text(hint),
         options: options,
       );
 
   ShadSelect<T> get selectMultiple => ShadSelect<T>.multiple(
-        controller: controller,
-        initialValues: initialValues ?? [],
+        controller: controller?._controller,
+        initialValues: controller?.initialValues ?? [],
         selectedOptionsBuilder: (context, values) => Text(
           values.join(', '),
           style: const TextStyle(
@@ -73,12 +67,12 @@ class DropdownInput<T> extends StatelessWidget {
         ),
         allowDeselection: allowDeselection,
         onChanged: (element) {
-          focusNode?.unfocus();
+          controller?._focusNode.unfocus();
           onChangeMultiple?.call(element);
         },
-        focusNode: focusNode,
+        focusNode: controller?._focusNode,
         footer: footer ?? ((onClear != null) ? clearFooter : null),
-        placeholder: (hint != null) ? Text(hint!) : null,
+        placeholder: Text(hint),
         options: options,
       );
 
@@ -102,5 +96,24 @@ class DropdownInput<T> extends StatelessWidget {
       width: width,
       child: (onChangeMultiple != null) ? selectMultiple : selectSingle,
     );
+  }
+}
+
+class DropdownInputController<T> {
+  final ShadPopoverController _controller = ShadPopoverController();
+  final FocusNode _focusNode = FocusNode();
+  final List<T> _selected = [];
+
+  T? get initialValue => _selected.isNotEmpty ? _selected[0] : null;
+
+  List<T> get initialValues => _selected;
+
+  List<T> get selected => _selected;
+
+  void close() => _controller.hide();
+
+  void onChanged(List<T> value) {
+    _selected.clear();
+    _selected.addAll(value);
   }
 }

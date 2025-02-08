@@ -108,9 +108,7 @@ class ProjectSelector extends StatelessWidget {
         ),
         child: DropdownInput<Project>(
           values: Data.projects(),
-          initialValue: Data.currentProject,
           controller: state.projectsController,
-          focusNode: state.projectsFocus,
           footer: Padding(
             padding: const EdgeInsets.only(bottom: 4),
             child: ShadButton.ghost(

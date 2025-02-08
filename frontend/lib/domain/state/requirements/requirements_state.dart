@@ -4,25 +4,27 @@ import 'package:testflow/debug/data.dart';
 import 'package:testflow/domain/model/requirement.dart';
 import 'package:testflow/domain/types/importance.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
+import 'package:testflow/presentation/common/dropdown/dropdown_input.dart';
 
 class RequirementsState extends BaseState {
   final TextEditingController queryFilterController = TextEditingController();
-  final FocusNode typeFilterFocusNode = FocusNode();
-  final FocusNode componentFilterFocusNode = FocusNode();
-  final FocusNode platformFilterFocusNode = FocusNode();
+  final DropdownInputController<RequirementType> typeFilterController =
+      DropdownInputController();
+  final DropdownInputController<String> componentFilterController =
+      DropdownInputController();
+  final DropdownInputController<String> platformFilterController =
+      DropdownInputController();
+  final DropdownInputController<Importance> importanceFilterController =
+      DropdownInputController();
   final List<Requirement> _allRequirements = Data.requirements();
-  final List<RequirementType> typeFilter = [];
-  final List<String> componentFilter = [];
-  final List<String> platformFilter = [];
-  final List<Importance> importanceFilter = [];
 
   List<Requirement> get requirements => _allRequirements
       .where((requirement) => requirement.matches(
             queryFilter: queryFilterController.text,
-            typeFilter: typeFilter,
-            componentFilter: componentFilter,
-            platformFilter: platformFilter,
-            importanceFilter: importanceFilter,
+            typeFilter: typeFilterController.selected,
+            componentFilter: componentFilterController.selected,
+            platformFilter: platformFilterController.selected,
+            importanceFilter: importanceFilterController.selected,
           ))
       .toList();
 
@@ -30,27 +32,23 @@ class RequirementsState extends BaseState {
     notify();
   }
 
-  void onTypeFilterChanged(List<RequirementType> value) {
-    typeFilter.clear();
-    typeFilter.addAll(value);
+  void onTypeFilterChanged(List<RequirementType> values) {
+    typeFilterController.onChanged(values);
     notify();
   }
 
-  void onComponentFilterChanged(List<String> value) {
-    componentFilter.clear();
-    componentFilter.addAll(value);
+  void onComponentFilterChanged(List<String> values) {
+    componentFilterController.onChanged(values);
     notify();
   }
 
-  void onPlatformFilterChanged(List<String> value) {
-    platformFilter.clear();
-    platformFilter.addAll(value);
+  void onPlatformFilterChanged(List<String> values) {
+    platformFilterController.onChanged(values);
     notify();
   }
 
-  void onImportanceFilterChanged(List<Importance> value) {
-    importanceFilter.clear();
-    importanceFilter.addAll(value);
+  void onImportanceFilterChanged(List<Importance> values) {
+    importanceFilterController.onChanged(values);
     notify();
   }
 

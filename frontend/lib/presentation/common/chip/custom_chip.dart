@@ -2,39 +2,78 @@ import 'package:flutter/material.dart';
 
 class CustomChip extends StatelessWidget {
   final String text;
-  final double size;
-  final Color foregroundColor;
-  final Color backgroundColor;
+  final double? size;
+  final Color? foregroundColor;
+  final Color? backgroundColor;
 
   const CustomChip({
     required this.text,
-    required this.size,
-    required this.foregroundColor,
-    required this.backgroundColor,
+    this.size,
+    this.foregroundColor,
+    this.backgroundColor,
   });
 
   @override
   Widget build(BuildContext context) {
+    final double chipSize = size ?? 14;
+    final Color chipForegroundColor =
+        foregroundColor ?? const Color(0xff515055);
+    final Color chipBackgroundColor =
+        backgroundColor ?? const Color(0xffEFEEF1);
+
     return Container(
       decoration: BoxDecoration(
-        color: backgroundColor,
+        color: chipBackgroundColor,
         borderRadius: const BorderRadius.all(Radius.circular(20)),
       ),
       child: Padding(
         padding: EdgeInsets.only(
-          top: size / 4,
-          bottom: size / 4,
-          left: size,
-          right: size,
+          top: chipSize / 4,
+          bottom: chipSize / 4,
+          left: chipSize,
+          right: chipSize,
         ),
         child: Text(
           text,
           style: TextStyle(
             fontSize: size,
-            color: foregroundColor,
+            color: chipForegroundColor,
           ),
         ),
       ),
+    );
+  }
+}
+
+class ChipRow<T> extends StatelessWidget {
+  final List<T> chips;
+  final double? size;
+  final Color? foregroundColor;
+  final Color? backgroundColor;
+
+  const ChipRow({
+    required this.chips,
+    this.size,
+    this.foregroundColor,
+    this.backgroundColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        for (final T chip in chips)
+          Padding(
+            padding: const EdgeInsets.only(right: 8),
+            child: CustomChip(
+              text: chip.toString(),
+              size: size,
+              foregroundColor: foregroundColor,
+              backgroundColor: backgroundColor,
+            ),
+          )
+      ],
     );
   }
 }

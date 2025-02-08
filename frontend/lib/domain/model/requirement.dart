@@ -27,18 +27,17 @@ class Requirement implements CustomTableCell {
       case 0:
         return Text(name);
       case 1:
-        return Text(component);
+        return CustomChip(text: component);
       case 2:
-        return Text(platforms.join(', '));
+        return ChipRow(chips: platforms);
       case 3:
         return CustomChip(
           text: importance.localized,
-          size: 12,
           foregroundColor: importance.foregroundColor,
           backgroundColor: importance.backgroundColor,
         );
       case 4:
-        return Text(tags.join(', '));
+        return ChipRow(chips: tags);
       default:
         return const Empty();
     }

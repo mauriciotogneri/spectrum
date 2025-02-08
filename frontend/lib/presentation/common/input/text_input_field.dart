@@ -14,6 +14,7 @@ class TextInputField extends StatefulWidget {
   final bool readOnly;
   final bool filled;
   final bool obscureText;
+  final bool canClear;
   final Iterable<String>? autofillHints;
   final Widget? prefixIcon;
   final int? maxLength;
@@ -32,6 +33,7 @@ class TextInputField extends StatefulWidget {
     this.readOnly = false,
     this.filled = false,
     this.obscureText = false,
+    this.canClear = false,
     this.autofillHints,
     this.prefixIcon,
     this.maxLength,
@@ -73,7 +75,7 @@ class _TextInputFieldState extends State<TextInputField> {
         textCapitalization: widget.capitalization,
         onSubmitted: (_) => FocusScope.of(context).nextFocus(),
         prefix: widget.prefixIcon,
-        suffix: showClear
+        suffix: (showClear && widget.canClear)
             ? ShadButton.ghost(
                 width: 20,
                 height: 20,

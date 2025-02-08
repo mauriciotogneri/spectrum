@@ -63,6 +63,7 @@ class TableFilters extends StatelessWidget {
         TextInputField(
           width: 300,
           hint: 'Filter…',
+          canClear: true,
           controller: state.queryFilterController,
           onChanged: state.onQueryFilterChanged,
         ),
@@ -72,7 +73,7 @@ class TableFilters extends StatelessWidget {
           controller: state.typeFilterController,
           onChangeMultiple: state.onTypeFilterChanged,
           allowDeselection: true,
-          hint: 'Importance',
+          hint: 'Type',
         ),
         DropdownInput<String>(
           width: 300,

@@ -1,7 +1,8 @@
 import 'dart:math';
 import 'package:testflow/domain/model/project.dart';
 import 'package:testflow/domain/model/requirement.dart';
-import 'package:testflow/domain/types/importance.dart';
+import 'package:testflow/domain/types/requirement_importance.dart';
+import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
 
 class Data {
@@ -41,8 +42,10 @@ class Data {
   static final List<Requirement> _requirements = [
     for (int i = 0; i < 20; i++)
       Requirement(
-        id: '${i + 1}',
+        id: 'REQ.${i + 1}',
         type: _random(RequirementType.values),
+        status: _random(RequirementStatus.values),
+        importance: _random(RequirementImportance.values),
         name: 'Requirement ${i + 1}',
         description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -51,7 +54,6 @@ class Data {
           for (int i = 0; i < Random().nextInt(_platforms.length) + 1; i++)
             _random(_platforms)
         }.toList(),
-        importance: _random(Importance.values),
         tags: [
           for (int i = 0; i < Random().nextInt(3) + 1; i++) 'Tag ${i + 1}'
         ],

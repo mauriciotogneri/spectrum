@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:testflow/debug/data.dart';
 import 'package:testflow/domain/model/requirement.dart';
-import 'package:testflow/domain/types/importance.dart';
+import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
 import 'package:testflow/presentation/common/dropdown/dropdown_input.dart';
 import 'package:testflow/presentation/common/input/text_input_field.dart';
@@ -17,8 +17,8 @@ class RequirementsState extends BaseState {
       DropdownInputController();
   final DropdownInputController<String> platformFilterController =
       DropdownInputController();
-  final DropdownInputController<Importance> importanceFilterController =
-      DropdownInputController();
+  final DropdownInputController<RequirementImportance>
+      importanceFilterController = DropdownInputController();
   final List<Requirement> _allRequirements = Data.requirements();
 
   List<Requirement> get requirements => _allRequirements
@@ -50,7 +50,7 @@ class RequirementsState extends BaseState {
     notify();
   }
 
-  void onImportanceFilterChanged(List<Importance> values) {
+  void onImportanceFilterChanged(List<RequirementImportance> values) {
     importanceFilterController.onChanged(values);
     notify();
   }

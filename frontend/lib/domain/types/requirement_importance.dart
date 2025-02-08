@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum Importance {
+enum RequirementImportance {
   low,
   medium,
   high,
@@ -8,39 +8,39 @@ enum Importance {
 
   String get localized {
     switch (this) {
-      case Importance.low:
+      case RequirementImportance.low:
         return 'Low';
-      case Importance.medium:
+      case RequirementImportance.medium:
         return 'Medium';
-      case Importance.high:
+      case RequirementImportance.high:
         return 'High';
-      case Importance.critical:
+      case RequirementImportance.critical:
         return 'Critical';
     }
   }
 
   Color get foregroundColor {
     switch (this) {
-      case Importance.low:
+      case RequirementImportance.low:
         return const Color(0xff4E4D7D);
-      case Importance.medium:
+      case RequirementImportance.medium:
         return const Color(0xff38683A);
-      case Importance.high:
+      case RequirementImportance.high:
         return const Color(0xffA87A38);
-      case Importance.critical:
+      case RequirementImportance.critical:
         return const Color(0xff9C4238);
     }
   }
 
   Color get backgroundColor {
     switch (this) {
-      case Importance.low:
+      case RequirementImportance.low:
         return const Color(0xffEFF0F9);
-      case Importance.medium:
+      case RequirementImportance.medium:
         return const Color(0xffEDF8EC);
-      case Importance.high:
+      case RequirementImportance.high:
         return const Color(0xffFFF1DF);
-      case Importance.critical:
+      case RequirementImportance.critical:
         return const Color(0xffFDE9E6);
     }
   }

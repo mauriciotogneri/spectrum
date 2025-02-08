@@ -2,7 +2,7 @@ import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:testflow/debug/data.dart';
 import 'package:testflow/domain/state/requirements/requirements_state.dart';
-import 'package:testflow/domain/types/importance.dart';
+import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
 import 'package:testflow/presentation/common/button/primary_button.dart';
 import 'package:testflow/presentation/common/dropdown/dropdown_input.dart';
@@ -92,9 +92,9 @@ class TableFilters extends StatelessWidget {
           allowDeselection: true,
           hint: 'Platform',
         ),
-        DropdownInput<Importance>(
+        DropdownInput<RequirementImportance>(
           width: 250,
-          values: Importance.values,
+          values: RequirementImportance.values,
           controller: state.importanceFilterController,
           onChangeMultiple: state.onImportanceFilterChanged,
           allowDeselection: true,
@@ -121,10 +121,11 @@ class Table extends StatelessWidget {
     return Expanded(
       child: CustomTable(
         columns: const [
+          CustomTableColumn(name: 'ID', ratio: 0.10),
           CustomTableColumn(name: 'Name', ratio: 0.25),
           CustomTableColumn(name: 'Type', ratio: 0.15),
+          CustomTableColumn(name: 'Status', ratio: 0.10),
           CustomTableColumn(name: 'Component', ratio: 0.15),
-          CustomTableColumn(name: 'Platforms', ratio: 0.20),
           CustomTableColumn(name: 'Importance', ratio: 0.15),
           CustomTableColumn(name: 'Test cases', ratio: 0.10),
         ],

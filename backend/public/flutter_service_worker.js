@@ -3,8 +3,8 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"flutter_bootstrap.js": "3e20a4b2042a6a1c52b20dad3652178e",
-"main.dart.js": "22d0325dff1c073ae0a76d8eea6ec463",
+const RESOURCES = {"flutter_bootstrap.js": "caffd5d588b384088ae7da7afeb8ef2c",
+"main.dart.js": "3129d19219d7081947ac702f44171847",
 "assets/NOTICES": "65c8e3dc1659fe25e0e0f4d4e4ab9d0f",
 "assets/FontManifest.json": "66fbb5fd7bf8d52ca3aff0671ecc3f0e",
 "assets/packages/lucide_icons_flutter/assets/lucide.ttf": "951666de3af1f280c221695d4c6702b1",
@@ -26,7 +26,7 @@ const RESOURCES = {"flutter_bootstrap.js": "3e20a4b2042a6a1c52b20dad3652178e",
 "assets/packages/shadcn_ui/fonts/Geist-Medium.otf": "f7ceaf00b58d396cf93ff1ea43740027",
 "assets/packages/shadcn_ui/fonts/Geist-UltraLight.otf": "b64b37fbec0a925067cbf530e4962fec",
 "assets/packages/shadcn_ui/fonts/Geist-UltraBlack.otf": "f3591a030925294b2bb427e6a6c9b0d8",
-"assets/fonts/MaterialIcons-Regular.otf": "13908af61d5a9196abdfd25849ac28a7",
+"assets/fonts/MaterialIcons-Regular.otf": "6866720562fead3aad88c81998c43e45",
 "assets/shaders/ink_sparkle.frag": "ecc85a2e95f5e9f53123dcaf8cb9b6ce",
 "assets/AssetManifest.bin": "57fdf5afb45b39998379845c371cade3",
 "assets/AssetManifest.json": "6b9759605f942d1cb8205b84585edfea",

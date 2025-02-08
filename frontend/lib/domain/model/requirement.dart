@@ -2,6 +2,7 @@ import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:testflow/domain/model/custom_table_cell.dart';
 import 'package:testflow/domain/types/importance.dart';
+import 'package:testflow/extensions/string_extension.dart';
 import 'package:testflow/presentation/common/chip/custom_chip.dart';
 
 class Requirement implements CustomTableCell {
@@ -30,8 +31,11 @@ class Requirement implements CustomTableCell {
       return true;
     } else {
       final bool matchesQuery = query.isEmpty ||
-          name.trim().toLowerCase().contains(query) ||
-          description.trim().toLowerCase().contains(query);
+          name.matches(query) ||
+          description.matches(query) ||
+          component.matches(query) ||
+          platforms.any((platform) => platform.matches(query)) ||
+          tags.any((tag) => tag.matches(query));
       final bool matchesComponent =
           components.isEmpty || components.contains(component);
       final bool matchesPlatform = platforms.isEmpty ||

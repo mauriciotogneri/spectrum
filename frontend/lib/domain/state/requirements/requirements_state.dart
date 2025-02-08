@@ -11,17 +11,13 @@ class RequirementsState extends BaseState {
   final List<String> componentFilter = [];
   final List<String> platformFilter = [];
 
-  List<Requirement> get requirements {
-    final String query = queryFilterController.text.trim().toLowerCase();
-
-    return _allRequirements
-        .where((requirement) => requirement.matches(
-              query: query,
-              components: componentFilter,
-              platforms: platformFilter,
-            ))
-        .toList();
-  }
+  List<Requirement> get requirements => _allRequirements
+      .where((requirement) => requirement.matches(
+            query: queryFilterController.text,
+            components: componentFilter,
+            platforms: platformFilter,
+          ))
+      .toList();
 
   void onQueryFilterChanged(String value) {
     notify();

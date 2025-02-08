@@ -62,6 +62,7 @@ class TableFilters extends StatelessWidget {
           width: 250,
           hint: 'Filter',
           controller: state.queryFilterController,
+          onChanged: state.onQueryFilterChanged,
         ),
         DropdownInput<String>(
           width: 200,

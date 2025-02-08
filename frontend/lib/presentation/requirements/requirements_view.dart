@@ -2,6 +2,7 @@ import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:testflow/debug/data.dart';
 import 'package:testflow/domain/state/requirements/requirements_state.dart';
+import 'package:testflow/domain/types/importance.dart';
 import 'package:testflow/presentation/common/dropdown/dropdown_input.dart';
 import 'package:testflow/presentation/common/input/text_input_field.dart';
 import 'package:testflow/presentation/common/table/custom_table.dart';
@@ -81,6 +82,15 @@ class TableFilters extends StatelessWidget {
           onChangeMultiple: state.onPlatformFilterChanged,
           allowDeselection: true,
           hint: 'Platform',
+        ),
+        DropdownInput<Importance>(
+          width: 200,
+          values: Importance.values,
+          focusNode: state.platformFilterFocusNode,
+          initialValues: state.importanceFilter,
+          onChangeMultiple: state.onImportanceFilterChanged,
+          allowDeselection: true,
+          hint: 'Importance',
         ),
       ],
     );

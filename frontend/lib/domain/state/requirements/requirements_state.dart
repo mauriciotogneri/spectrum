@@ -2,6 +2,7 @@ import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:testflow/debug/data.dart';
 import 'package:testflow/domain/model/requirement.dart';
+import 'package:testflow/domain/types/importance.dart';
 
 class RequirementsState extends BaseState {
   final TextEditingController queryFilterController = TextEditingController();
@@ -10,12 +11,14 @@ class RequirementsState extends BaseState {
   final List<Requirement> _allRequirements = Data.requirements();
   final List<String> componentFilter = [];
   final List<String> platformFilter = [];
+  final List<Importance> importanceFilter = [];
 
   List<Requirement> get requirements => _allRequirements
       .where((requirement) => requirement.matches(
-            query: queryFilterController.text,
-            components: componentFilter,
-            platforms: platformFilter,
+            queryFilter: queryFilterController.text,
+            componentFilter: componentFilter,
+            platformFilter: platformFilter,
+            importanceFilter: importanceFilter,
           ))
       .toList();
 
@@ -32,6 +35,12 @@ class RequirementsState extends BaseState {
   void onPlatformFilterChanged(List<String> value) {
     platformFilter.clear();
     platformFilter.addAll(value);
+    notify();
+  }
+
+  void onImportanceFilterChanged(List<Importance> value) {
+    importanceFilter.clear();
+    importanceFilter.addAll(value);
     notify();
   }
 

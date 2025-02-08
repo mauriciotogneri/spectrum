@@ -23,27 +23,34 @@ class Requirement implements CustomTableCell {
   });
 
   bool matches({
-    required String query,
-    required List<String> components,
-    required List<String> platforms,
+    required String queryFilter,
+    required List<String> componentFilter,
+    required List<String> platformFilter,
+    required List<Importance> importanceFilter,
   }) {
-    if (query.isEmpty && components.isEmpty && platforms.isEmpty) {
+    if (queryFilter.isEmpty &&
+        componentFilter.isEmpty &&
+        platformFilter.isEmpty &&
+        importanceFilter.isEmpty) {
       return true;
     } else {
-      final bool matchesQuery = query.isEmpty ||
-          name.matches(query) ||
-          description.matches(query) ||
-          component.matches(query) ||
-          platforms.any((platform) => platform.matches(query)) ||
-          tags.any((tag) => tag.matches(query));
+      final bool matchesQuery = queryFilter.isEmpty ||
+          name.matches(queryFilter) ||
+          description.matches(queryFilter) ||
+          component.matches(queryFilter) ||
+          platformFilter.any((platform) => platform.matches(queryFilter)) ||
+          tags.any((tag) => tag.matches(queryFilter));
       final bool matchesComponent =
-          components.isEmpty || components.contains(component);
-      final bool matchesPlatform = platforms.isEmpty ||
-          platforms.every(
-            (platform) => this.platforms.contains(platform),
-          );
+          componentFilter.isEmpty || componentFilter.contains(component);
+      final bool matchesPlatform =
+          platformFilter.isEmpty || platformFilter.any(platforms.contains);
+      final bool matchesImportance =
+          importanceFilter.isEmpty || importanceFilter.contains(importance);
 
-      return matchesQuery && matchesComponent && matchesPlatform;
+      return matchesQuery &&
+          matchesComponent &&
+          matchesPlatform &&
+          matchesImportance;
     }
   }
 

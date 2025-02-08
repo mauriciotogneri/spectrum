@@ -58,7 +58,12 @@ class Requirement implements CustomTableCell {
   Widget cell(int column) {
     switch (column) {
       case 0:
-        return Text(name);
+        return Text(
+          name,
+          style: const TextStyle(
+            overflow: TextOverflow.ellipsis,
+          ),
+        );
       case 1:
         return CustomChip(text: component);
       case 2:

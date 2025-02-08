@@ -4,6 +4,7 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:testflow/debug/data.dart';
 import 'package:testflow/domain/model/requirement.dart';
 import 'package:testflow/domain/types/requirement_importance.dart';
+import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
 import 'package:testflow/presentation/common/dropdown/dropdown_input.dart';
 import 'package:testflow/presentation/common/input/text_input_field.dart';
@@ -12,6 +13,8 @@ import 'package:testflow/presentation/dialogs/create_requirement_dialog.dart';
 class RequirementsState extends BaseState {
   final TextInputController queryFilterController = TextInputController();
   final DropdownInputController<RequirementType> typeFilterController =
+      DropdownInputController();
+  final DropdownInputController<RequirementStatus> statusFilterController =
       DropdownInputController();
   final DropdownInputController<String> componentFilterController =
       DropdownInputController();
@@ -25,6 +28,7 @@ class RequirementsState extends BaseState {
       .where((requirement) => requirement.matches(
             queryFilter: queryFilterController.text,
             typeFilter: typeFilterController.selected,
+            statusFilter: statusFilterController.selected,
             componentFilter: componentFilterController.selected,
             platformFilter: platformFilterController.selected,
             importanceFilter: importanceFilterController.selected,
@@ -37,6 +41,11 @@ class RequirementsState extends BaseState {
 
   void onTypeFilterChanged(List<RequirementType> values) {
     typeFilterController.onChanged(values);
+    notify();
+  }
+
+  void onStatusFilterChanged(List<RequirementStatus> values) {
+    statusFilterController.onChanged(values);
     notify();
   }
 

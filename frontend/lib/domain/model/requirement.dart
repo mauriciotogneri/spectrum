@@ -35,12 +35,14 @@ class Requirement implements CustomTableCell {
   bool matches({
     required String queryFilter,
     required List<RequirementType> typeFilter,
+    required List<RequirementStatus> statusFilter,
     required List<String> componentFilter,
     required List<String> platformFilter,
     required List<RequirementImportance> importanceFilter,
   }) {
     if (queryFilter.isEmpty &&
         typeFilter.isEmpty &&
+        statusFilter.isEmpty &&
         componentFilter.isEmpty &&
         platformFilter.isEmpty &&
         importanceFilter.isEmpty) {
@@ -51,6 +53,8 @@ class Requirement implements CustomTableCell {
           description.matches(queryFilter) ||
           tags.any((tag) => tag.matches(queryFilter));
       final bool matchesType = typeFilter.isEmpty || typeFilter.contains(type);
+      final bool matchesStatus =
+          statusFilter.isEmpty || statusFilter.contains(status);
       final bool matchesComponent =
           componentFilter.isEmpty || componentFilter.contains(component);
       final bool matchesPlatform =
@@ -58,8 +62,9 @@ class Requirement implements CustomTableCell {
       final bool matchesImportance =
           importanceFilter.isEmpty || importanceFilter.contains(importance);
 
-      return matchesType &&
-          matchesQuery &&
+      return matchesQuery &&
+          matchesType &&
+          matchesStatus &&
           matchesComponent &&
           matchesPlatform &&
           matchesImportance;

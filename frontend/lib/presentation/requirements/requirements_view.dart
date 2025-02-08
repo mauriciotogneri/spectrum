@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:testflow/debug/data.dart';
 import 'package:testflow/domain/state/requirements/requirements_state.dart';
 import 'package:testflow/domain/types/requirement_importance.dart';
+import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
 import 'package:testflow/presentation/common/button/primary_button.dart';
 import 'package:testflow/presentation/common/dropdown/dropdown_input.dart';
@@ -69,15 +70,23 @@ class TableFilters extends StatelessWidget {
           onChanged: state.onQueryFilterChanged,
         ),
         DropdownInput<RequirementType>(
-          width: 250,
+          width: 200,
           values: RequirementType.values,
           controller: state.typeFilterController,
           onChangeMultiple: state.onTypeFilterChanged,
           allowDeselection: true,
           hint: 'Type',
         ),
+        DropdownInput<RequirementStatus>(
+          width: 200,
+          values: RequirementStatus.values,
+          controller: state.statusFilterController,
+          onChangeMultiple: state.onStatusFilterChanged,
+          allowDeselection: true,
+          hint: 'Status',
+        ),
         DropdownInput<String>(
-          width: 300,
+          width: 200,
           values: Data.currentProject.components,
           controller: state.componentFilterController,
           onChangeMultiple: state.onComponentFilterChanged,
@@ -85,7 +94,7 @@ class TableFilters extends StatelessWidget {
           hint: 'Component',
         ),
         DropdownInput<String>(
-          width: 300,
+          width: 200,
           values: Data.currentProject.platforms,
           controller: state.platformFilterController,
           onChangeMultiple: state.onPlatformFilterChanged,
@@ -93,7 +102,7 @@ class TableFilters extends StatelessWidget {
           hint: 'Platform',
         ),
         DropdownInput<RequirementImportance>(
-          width: 250,
+          width: 200,
           values: RequirementImportance.values,
           controller: state.importanceFilterController,
           onChangeMultiple: state.onImportanceFilterChanged,

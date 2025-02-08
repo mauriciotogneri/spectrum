@@ -27,7 +27,7 @@ class TestFlow extends StatelessWidget {
           primary: Palette.primary,
         ),
       ),
-      home: !kDebugMode ? DashboardScreen.instance() : SignInScreen.instance(),
+      home: kDebugMode ? DashboardScreen.instance() : SignInScreen.instance(),
     );
   }
 }

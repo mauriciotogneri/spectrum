@@ -28,15 +28,18 @@ class Requirement implements CustomTableCell {
   }) {
     if (query.isEmpty && components.isEmpty && platforms.isEmpty) {
       return true;
-    } else if (query.isNotEmpty && name.trim().toLowerCase().contains(query)) {
-      return true;
-    } else if (components.isNotEmpty && components.contains(component)) {
-      return true;
-    } else if (platforms.isNotEmpty &&
-        platforms.any((platform) => this.platforms.contains(platform))) {
-      return true;
     } else {
-      return false;
+      final bool matchesQuery = query.isEmpty ||
+          name.trim().toLowerCase().contains(query) ||
+          description.trim().toLowerCase().contains(query);
+      final bool matchesComponent =
+          components.isEmpty || components.contains(component);
+      final bool matchesPlatform = platforms.isEmpty ||
+          platforms.every(
+            (platform) => this.platforms.contains(platform),
+          );
+
+      return matchesQuery && matchesComponent && matchesPlatform;
     }
   }
 

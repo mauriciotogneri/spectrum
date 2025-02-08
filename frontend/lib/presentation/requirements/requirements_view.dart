@@ -60,13 +60,13 @@ class TableFilters extends StatelessWidget {
     return Row(
       children: [
         TextInputField(
-          width: 250,
+          width: 328,
           hint: 'Filter',
           controller: state.queryFilterController,
           onChanged: state.onQueryFilterChanged,
         ),
         DropdownInput<String>(
-          width: 200,
+          width: 328,
           values: Data.currentProject.components,
           focusNode: state.componentFilterFocusNode,
           initialValues: state.componentFilter,
@@ -75,7 +75,7 @@ class TableFilters extends StatelessWidget {
           hint: 'Component',
         ),
         DropdownInput<String>(
-          width: 200,
+          width: 328,
           values: Data.currentProject.platforms,
           focusNode: state.platformFilterFocusNode,
           initialValues: state.platformFilter,
@@ -84,7 +84,7 @@ class TableFilters extends StatelessWidget {
           hint: 'Platform',
         ),
         DropdownInput<Importance>(
-          width: 200,
+          width: 328,
           values: Importance.values,
           focusNode: state.platformFilterFocusNode,
           initialValues: state.importanceFilter,

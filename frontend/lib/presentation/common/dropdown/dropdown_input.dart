@@ -30,58 +30,58 @@ class DropdownInput<T> extends StatelessWidget {
     this.allowDeselection = false,
   });
 
+  List<Widget> get options => [
+        for (final T element in values)
+          ShadOption(
+            value: element,
+            child: Text(element.toString()),
+          ),
+        if (footer != null) ...[
+          const VBox(4),
+          const HorizontalDivider(
+            height: 0.2,
+            color: Palette.divider,
+          ),
+        ],
+      ];
+
+  ShadSelect<T> get selectSingle => ShadSelect<T>(
+        controller: controller,
+        initialValue: initialValue,
+        selectedOptionBuilder: (context, value) => Text(value.toString()),
+        allowDeselection: allowDeselection,
+        onChanged: (element) {
+          focusNode?.unfocus();
+          onChangeSingle?.call(element);
+        },
+        focusNode: focusNode,
+        footer: footer,
+        placeholder: (hint != null) ? Text(hint!) : null,
+        options: options,
+      );
+
+  ShadSelect<T> get selectMultiple => ShadSelect<T>.multiple(
+        controller: controller,
+        initialValues: initialValues ?? [],
+        selectedOptionsBuilder: (context, values) => Text(
+          values.join(', '),
+          style: const TextStyle(
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+        allowDeselection: allowDeselection,
+        onChanged: (element) {
+          focusNode?.unfocus();
+          onChangeMultiple?.call(element);
+        },
+        focusNode: focusNode,
+        footer: footer,
+        placeholder: (hint != null) ? Text(hint!) : null,
+        options: options,
+      );
+
   @override
   Widget build(BuildContext context) {
-    final List<Widget> options = [
-      for (final T element in values)
-        ShadOption(
-          value: element,
-          child: Text(element.toString()),
-        ),
-      if (footer != null) ...[
-        const VBox(4),
-        const HorizontalDivider(
-          height: 0.2,
-          color: Palette.divider,
-        ),
-      ],
-    ];
-
-    final ShadSelect<T> selectSingle = ShadSelect<T>(
-      controller: controller,
-      initialValue: initialValue,
-      selectedOptionBuilder: (context, value) => Text(value.toString()),
-      allowDeselection: allowDeselection,
-      onChanged: (element) {
-        focusNode?.unfocus();
-        onChangeSingle?.call(element);
-      },
-      focusNode: focusNode,
-      footer: footer,
-      placeholder: (hint != null) ? Text(hint!) : null,
-      options: options,
-    );
-
-    final ShadSelect<T> selectMultiple = ShadSelect<T>.multiple(
-      controller: controller,
-      initialValues: initialValues ?? [],
-      selectedOptionsBuilder: (context, values) => Text(
-        values.join(', '),
-        style: const TextStyle(
-          overflow: TextOverflow.ellipsis,
-        ),
-      ),
-      allowDeselection: allowDeselection,
-      onChanged: (element) {
-        focusNode?.unfocus();
-        onChangeMultiple?.call(element);
-      },
-      focusNode: focusNode,
-      footer: footer,
-      placeholder: (hint != null) ? Text(hint!) : null,
-      options: options,
-    );
-
     return SizedBox(
       width: width,
       child: (onChangeMultiple != null) ? selectMultiple : selectSingle,

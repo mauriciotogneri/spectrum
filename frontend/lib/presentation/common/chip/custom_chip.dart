@@ -38,6 +38,7 @@ class CustomChip extends StatelessWidget {
           style: TextStyle(
             fontSize: chipSize,
             color: chipForegroundColor,
+            overflow: TextOverflow.ellipsis,
           ),
         ),
       ),

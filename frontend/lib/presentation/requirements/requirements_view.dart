@@ -61,7 +61,7 @@ class TableFilters extends StatelessWidget {
       children: [
         TextInputField(
           width: 300,
-          hint: 'Filter',
+          hint: 'Filter…',
           controller: state.queryFilterController,
           onChanged: state.onQueryFilterChanged,
         ),

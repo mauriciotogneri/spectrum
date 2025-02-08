@@ -5,6 +5,7 @@ import 'package:testflow/presentation/common/button/primary_button.dart';
 import 'package:testflow/presentation/common/button/secondary_button.dart';
 import 'package:testflow/presentation/common/input/text_input_field.dart';
 import 'package:testflow/utils/navigation.dart';
+import 'package:testflow/utils/palette.dart';
 
 class CreateProjectDialog extends StatelessWidget {
   final CreateProjectDialogState state;
@@ -27,6 +28,11 @@ class CreateProjectDialog extends StatelessWidget {
           padding: EdgeInsets.only(left: 4),
           child: Text('New project'),
         ),
+        padding: const EdgeInsets.all(16),
+        closeIconPosition: const ShadPosition(
+          top: 16,
+          right: 16,
+        ),
         actions: [
           const SecondaryButton(
             text: 'Cancel',
@@ -45,13 +51,37 @@ class CreateProjectDialog extends StatelessWidget {
           width: 350,
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const VBox(16),
+              const Padding(
+                padding: EdgeInsets.only(left: 6),
+                child: Text(
+                  'Name',
+                  style: TextStyle(
+                    color: Palette.textEnabled,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const VBox(4),
               TextInputField(
                 hint: 'Name',
                 controller: state.nameController,
                 onChanged: (_) => state.notify(),
               ),
+              const VBox(16),
+              const Padding(
+                padding: EdgeInsets.only(left: 6),
+                child: Text(
+                  'Description',
+                  style: TextStyle(
+                    color: Palette.textEnabled,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const VBox(4),
               TextInputField(
                 hint: 'Description',
                 controller: state.descriptionController,

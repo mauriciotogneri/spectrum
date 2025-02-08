@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:testflow/debug/data.dart';
 import 'package:testflow/domain/state/requirements/requirements_state.dart';
 import 'package:testflow/domain/types/importance.dart';
+import 'package:testflow/domain/types/requirement_type.dart';
 import 'package:testflow/presentation/common/dropdown/dropdown_input.dart';
 import 'package:testflow/presentation/common/input/text_input_field.dart';
 import 'package:testflow/presentation/common/table/custom_table.dart';
@@ -64,6 +65,15 @@ class TableFilters extends StatelessWidget {
           hint: 'Filter…',
           controller: state.queryFilterController,
           onChanged: state.onQueryFilterChanged,
+        ),
+        DropdownInput<RequirementType>(
+          width: 250,
+          values: RequirementType.values,
+          focusNode: state.typeFilterFocusNode,
+          initialValues: state.typeFilter,
+          onChangeMultiple: state.onTypeFilterChanged,
+          allowDeselection: true,
+          hint: 'Importance',
         ),
         DropdownInput<String>(
           width: 300,

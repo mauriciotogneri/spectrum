@@ -27,6 +27,9 @@ class DropdownInputMultiple<T> extends StatelessWidget {
     this.isForm = false,
   });
 
+  ShadDecoration get _decoration =>
+      const ShadDecoration(color: Palette.background1);
+
   List<Widget> get _options => [
         for (final T element in values)
           ShadOption(
@@ -56,6 +59,7 @@ class DropdownInputMultiple<T> extends StatelessWidget {
         onChanged: _onChanged,
         focusNode: controller?._focusNode,
         footer: footer,
+        decoration: _decoration,
         placeholder: Text(hint),
         options: _options,
       );
@@ -77,6 +81,7 @@ class DropdownInputMultiple<T> extends StatelessWidget {
         validator: (value) => (value == null) ? errorMessage : null,
         error: InputError.new,
         footer: footer,
+        decoration: _decoration,
         placeholder: Text(hint),
         options: _options,
       );

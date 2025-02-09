@@ -77,6 +77,7 @@ class _TextInputFieldState extends State<TextInputField> {
           textCapitalization: widget.capitalization,
           onSubmitted: (_) => FocusScope.of(context).nextFocus(),
           prefix: widget.prefixIcon,
+          decoration: _decoration,
           suffix: _suffix,
           inputFormatters: _inputFormatters,
         ),
@@ -101,12 +102,16 @@ class _TextInputFieldState extends State<TextInputField> {
           textCapitalization: widget.capitalization,
           onSubmitted: (_) => FocusScope.of(context).nextFocus(),
           prefix: widget.prefixIcon,
+          decoration: _decoration,
           suffix: _suffix,
           inputFormatters: _inputFormatters,
         ),
       );
     }
   }
+
+  ShadDecoration get _decoration =>
+      const ShadDecoration(color: Palette.background1);
 
   List<TextInputFormatter>? get _inputFormatters {
     if (widget.maxLength != null) {

@@ -6,17 +6,19 @@ import 'package:testflow/utils/palette.dart';
 class BaseView extends StatelessWidget {
   final Widget child;
   final EdgeInsets padding;
+  final Color backgroundColor;
 
   const BaseView({
     required this.child,
     required this.padding,
+    this.backgroundColor = Palette.background2,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      color: Palette.background1,
+      color: backgroundColor,
       padding: padding,
       child: child,
     );

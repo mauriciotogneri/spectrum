@@ -52,7 +52,7 @@ class NavigationMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       elevation: 5,
-      color: Palette.background2,
+      color: Palette.background3,
       child: SizedBox(
         width: 250,
         child: Column(

@@ -5,7 +5,6 @@ import 'package:testflow/debug/data.dart';
 import 'package:testflow/domain/model/project.dart';
 import 'package:testflow/domain/state/dashboard/dashboard_state.dart';
 import 'package:testflow/presentation/common/dropdown/dropdown_input_single.dart';
-import 'package:testflow/presentation/requirements/requirements_view.dart';
 import 'package:testflow/utils/palette.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -191,15 +190,9 @@ class ActiveView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (state.activeView == 0) {
-      return RequirementsView.instance();
-    } else if (state.activeView == 1) {
-      return const SuitesView();
-    } else if (state.activeView == 2) {
-      return const SessionsView();
-    } else {
-      return const SettingsView();
-    }
+    return Stack(
+      children: state.viewsStack,
+    );
   }
 }
 

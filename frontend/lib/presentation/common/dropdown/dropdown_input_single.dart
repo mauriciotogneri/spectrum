@@ -1,7 +1,7 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
-import 'package:testflow/presentation/dialogs/base_dialog.dart';
+import 'package:testflow/presentation/common/text/input_error.dart';
 import 'package:testflow/utils/palette.dart';
 
 class DropdownInputSingle<T> extends StatelessWidget {
@@ -64,7 +64,7 @@ class DropdownInputSingle<T> extends StatelessWidget {
         onChanged: _onChanged,
         focusNode: controller?._focusNode,
         validator: (value) => (value == null) ? errorMessage : null,
-        error: DialogError.new,
+        error: InputError.new,
         footer: footer,
         placeholder: Text(hint),
         options: _options,

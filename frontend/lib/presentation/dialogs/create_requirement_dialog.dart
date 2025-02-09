@@ -10,6 +10,7 @@ import 'package:testflow/presentation/common/button/secondary_button.dart';
 import 'package:testflow/presentation/common/dropdown/dropdown_input_multiple.dart';
 import 'package:testflow/presentation/common/dropdown/dropdown_input_single.dart';
 import 'package:testflow/presentation/common/input/text_input_field.dart';
+import 'package:testflow/presentation/common/text/input_label.dart';
 import 'package:testflow/presentation/dialogs/base_dialog.dart';
 import 'package:testflow/utils/navigation.dart';
 
@@ -66,7 +67,7 @@ class FormFields extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const DialogLabel('Name'),
+          const InputLabel('Name'),
           TextInputField(
             hint: 'Name',
             isForm: true,
@@ -74,7 +75,7 @@ class FormFields extends StatelessWidget {
             controller: state.nameController,
             errorMessage: 'Name is required',
           ),
-          const DialogLabel('Description'),
+          const InputLabel('Description'),
           TextInputField(
             hint: 'Description',
             isForm: true,
@@ -88,7 +89,7 @@ class FormFields extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const DialogLabel('ID'),
+                    const InputLabel('ID'),
                     TextInputField(
                       hint: 'ID',
                       isForm: true,
@@ -103,7 +104,7 @@ class FormFields extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const DialogLabel('Type'),
+                    const InputLabel('Type'),
                     DropdownInputSingle<RequirementType>(
                       width: 240,
                       values: RequirementType.values,
@@ -125,7 +126,7 @@ class FormFields extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const DialogLabel('Status'),
+                    const InputLabel('Status'),
                     DropdownInputSingle<RequirementStatus>(
                       width: 240,
                       values: RequirementStatus.values,
@@ -143,7 +144,7 @@ class FormFields extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const DialogLabel('Importance'),
+                    const InputLabel('Importance'),
                     DropdownInputSingle<RequirementImportance>(
                       width: 240,
                       values: RequirementImportance.values,
@@ -165,7 +166,7 @@ class FormFields extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const DialogLabel('Component'),
+                    const InputLabel('Component'),
                     DropdownInputSingle<String>(
                       width: 240,
                       values: Data.currentProject.components,
@@ -183,7 +184,7 @@ class FormFields extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const DialogLabel('Platforms'),
+                    const InputLabel('Platforms'),
                     DropdownInputMultiple<String>(
                       width: 240,
                       values: Data.currentProject.platforms,

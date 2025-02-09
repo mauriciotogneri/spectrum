@@ -4,6 +4,7 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:testflow/presentation/common/button/primary_button.dart';
 import 'package:testflow/presentation/common/button/secondary_button.dart';
 import 'package:testflow/presentation/common/input/text_input_field.dart';
+import 'package:testflow/presentation/common/text/input_label.dart';
 import 'package:testflow/presentation/dialogs/base_dialog.dart';
 import 'package:testflow/utils/navigation.dart';
 
@@ -60,14 +61,14 @@ class FormFields extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const DialogLabel('Name'),
+          const InputLabel('Name'),
           TextInputField(
             hint: 'Name',
             isForm: true,
             controller: state.nameController,
             errorMessage: 'Name is required',
           ),
-          const DialogLabel('Description'),
+          const InputLabel('Description'),
           TextInputField(
             hint: 'Description',
             isForm: true,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
-import 'package:testflow/presentation/dialogs/base_dialog.dart';
+import 'package:testflow/presentation/common/text/input_error.dart';
 import 'package:testflow/utils/palette.dart';
 
 class TextInputField extends StatefulWidget {
@@ -61,7 +61,7 @@ class _TextInputFieldState extends State<TextInputField> {
         width: widget.width,
         child: ShadInputFormField(
           placeholder: Text(widget.hint),
-          error: DialogError.new,
+          error: InputError.new,
           autofocus: widget.autofocus,
           maxLines: widget.maxLines,
           readOnly: widget.readOnly,

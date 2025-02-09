@@ -24,16 +24,11 @@ class RequirementsListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return StateProvider<RequirementsListState>(
       state: state,
-      builder: (context, state) => BaseView(
-        padding: const EdgeInsets.only(
-          top: 16,
-          left: 16,
-          right: 16,
-        ),
-        child: Column(
+      builder: (context, state) => BaseView.normal(
+        header: const Header(),
+        content: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Header(),
             const VBox(16),
             TableFilters(state),
             const VBox(16),

@@ -60,9 +60,7 @@ class FormFields extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const VBox(16),
           const DialogLabel('Name'),
-          const VBox(4),
           TextInputField(
             hint: 'Name',
             controller: state.nameController,
@@ -70,9 +68,7 @@ class FormFields extends StatelessWidget {
             isForm: true,
             validator: (value) => value.isEmpty ? 'Name is required' : null,
           ),
-          const VBox(16),
           const DialogLabel('Description'),
-          const VBox(4),
           TextInputField(
             hint: 'Description',
             controller: state.descriptionController,

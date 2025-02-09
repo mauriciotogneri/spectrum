@@ -44,7 +44,11 @@ class DialogLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 6),
+      padding: const EdgeInsets.only(
+        top: 16,
+        bottom: 4,
+        left: 6,
+      ),
       child: Text(
         text,
         style: const TextStyle(

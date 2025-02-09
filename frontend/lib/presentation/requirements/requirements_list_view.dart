@@ -123,7 +123,7 @@ class Table extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Flexible(
       child: CustomTable(
         columns: const [
           CustomTableColumn(name: 'ID', ratio: 0.10),

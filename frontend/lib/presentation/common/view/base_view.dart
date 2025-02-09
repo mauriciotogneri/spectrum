@@ -38,7 +38,7 @@ class BaseView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             header,
-            Expanded(child: content),
+            Flexible(child: content),
           ],
         ),
       );

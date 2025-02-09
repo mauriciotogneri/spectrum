@@ -6,6 +6,7 @@ import 'package:testflow/presentation/common/button/secondary_button.dart';
 import 'package:testflow/presentation/common/input/text_input_field.dart';
 import 'package:testflow/presentation/dialogs/base_dialog.dart';
 import 'package:testflow/utils/navigation.dart';
+import 'package:testflow/utils/validator.dart';
 
 class CreateProjectDialog extends StatelessWidget {
   final CreateProjectDialogState state;
@@ -63,18 +64,19 @@ class FormFields extends StatelessWidget {
           const DialogLabel('Name'),
           TextInputField(
             hint: 'Name',
-            controller: state.nameController,
-            onChanged: (_) => state.notify(),
             isForm: true,
-            validator: (value) => value.isEmpty ? 'Name is required' : null,
+            controller: state.nameController,
+            validator: (value) => Validator.isNotEmpty(
+              value: value,
+              error: 'Name is required',
+            ),
           ),
           const DialogLabel('Description'),
           TextInputField(
             hint: 'Description',
-            controller: state.descriptionController,
-            onChanged: (_) => state.notify(),
-            maxLines: 5,
             isForm: true,
+            maxLines: 5,
+            controller: state.descriptionController,
           ),
           const VBox(16),
         ],
@@ -91,15 +93,11 @@ class CreateProjectDialogState extends BaseState {
 
   CreateProjectDialogState({required this.onCreateProject});
 
-  String get name => nameController.text.trim();
-
-  String get description => descriptionController.text.trim();
-
   bool get formValid => formKey.currentState!.validate();
 
   void onCreate() => onCreateProject(
-        name: name,
-        description: description,
+        name: nameController.text,
+        description: descriptionController.text,
       );
 }
 

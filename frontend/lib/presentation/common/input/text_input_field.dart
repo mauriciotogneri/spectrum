@@ -22,8 +22,8 @@ class TextInputField extends StatefulWidget {
   final int? maxLength;
   final int? maxLines;
   final double? width;
-  final Function(String)? onChanged;
-  final String? Function(String)? validator;
+  final Function(String)? onChange;
+  final String? errorMessage;
 
   const TextInputField({
     required this.hint,
@@ -43,8 +43,8 @@ class TextInputField extends StatefulWidget {
     this.maxLength,
     this.maxLines,
     this.width,
-    this.onChanged,
-    this.validator,
+    this.onChange,
+    this.errorMessage,
   });
 
   @override
@@ -71,7 +71,7 @@ class _TextInputFieldState extends State<TextInputField> {
           textInputAction: widget.textInputAction,
           controller: widget.controller.controller,
           onChanged: _onChanged,
-          validator: widget.validator,
+          validator: (value) => value.isEmpty ? widget.errorMessage : null,
           obscureText: widget.obscureText,
           autofillHints: widget.autofillHints,
           textCapitalization: widget.capitalization,
@@ -131,7 +131,7 @@ class _TextInputFieldState extends State<TextInputField> {
           ),
           onPressed: () {
             widget.controller.clear();
-            widget.onChanged?.call('');
+            widget.onChange?.call('');
             setState(() {
               showClear = false;
             });
@@ -139,7 +139,7 @@ class _TextInputFieldState extends State<TextInputField> {
       : null;
 
   void _onChanged(String text) {
-    widget.onChanged?.call(text);
+    widget.onChange?.call(text);
     setState(() {
       showClear = text.isNotEmpty;
     });

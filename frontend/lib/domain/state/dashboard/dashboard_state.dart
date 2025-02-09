@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:testflow/debug/data.dart';
 import 'package:testflow/domain/model/project.dart';
-import 'package:testflow/presentation/common/dropdown/dropdown_input.dart';
+import 'package:testflow/presentation/common/dropdown/dropdown_input_single.dart';
 import 'package:testflow/presentation/dialogs/create_project_dialog.dart';
 
 class DashboardState extends BaseState {
   int activeView = 0;
-  final DropdownInputController<Project> projectsController =
-      DropdownInputController();
+  final DropdownInputSingleController<Project> projectsController =
+      DropdownInputSingleController();
 
   static const int VIEW_REQUIREMENTS = 0;
   static const int VIEW_SUITES = 1;
@@ -18,7 +18,7 @@ class DashboardState extends BaseState {
 
   @override
   void onLoad() {
-    projectsController.onChanged([Data.currentProject]);
+    projectsController.onChange(Data.currentProject);
     notify();
   }
 

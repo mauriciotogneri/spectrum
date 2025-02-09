@@ -6,7 +6,6 @@ import 'package:testflow/presentation/common/button/secondary_button.dart';
 import 'package:testflow/presentation/common/input/text_input_field.dart';
 import 'package:testflow/presentation/dialogs/base_dialog.dart';
 import 'package:testflow/utils/navigation.dart';
-import 'package:testflow/utils/validator.dart';
 
 class CreateProjectDialog extends StatelessWidget {
   final CreateProjectDialogState state;
@@ -66,10 +65,7 @@ class FormFields extends StatelessWidget {
             hint: 'Name',
             isForm: true,
             controller: state.nameController,
-            validator: (value) => Validator.isNotEmpty(
-              value: value,
-              error: 'Name is required',
-            ),
+            errorMessage: 'Name is required',
           ),
           const DialogLabel('Description'),
           TextInputField(

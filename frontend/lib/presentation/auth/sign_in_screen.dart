@@ -58,14 +58,14 @@ class FormInputs extends StatelessWidget {
           TextInputField(
             hint: 'Email',
             controller: state.emailController,
-            onChanged: (_) => state.notify(),
+            onChange: (_) => state.notify(),
             prefixIcon: const TextInputIcon(Icons.email_outlined),
           ),
           const VBox(16),
           PasswordInputField(
             hint: 'Password',
             controller: state.passwordController,
-            onChanged: (_) => state.notify(),
+            onChange: (_) => state.notify(),
             prefixIcon: const TextInputIcon(Icons.lock_outlined),
           ),
           const VBox(16),

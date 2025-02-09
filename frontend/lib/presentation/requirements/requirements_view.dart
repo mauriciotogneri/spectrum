@@ -6,7 +6,7 @@ import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
 import 'package:testflow/presentation/common/button/primary_button.dart';
-import 'package:testflow/presentation/common/dropdown/dropdown_input.dart';
+import 'package:testflow/presentation/common/dropdown/dropdown_input_multiple.dart';
 import 'package:testflow/presentation/common/input/text_input_field.dart';
 import 'package:testflow/presentation/common/table/custom_table.dart';
 import 'package:testflow/presentation/common/text/title_4.dart';
@@ -67,45 +67,45 @@ class TableFilters extends StatelessWidget {
           hint: 'Filter…',
           canClear: true,
           controller: state.queryFilterController,
-          onChanged: state.onQueryFilterChanged,
+          onChange: (_) => state.notify(),
         ),
-        DropdownInput<RequirementType>(
+        DropdownInputMultiple<RequirementType>(
           width: 200,
           values: RequirementType.values,
           controller: state.typeFilterController,
-          onChangeMultiple: state.onTypeFilterChanged,
+          onChange: (_) => state.notify(),
           allowDeselection: true,
           hint: 'Type',
         ),
-        DropdownInput<RequirementStatus>(
+        DropdownInputMultiple<RequirementStatus>(
           width: 200,
           values: RequirementStatus.values,
           controller: state.statusFilterController,
-          onChangeMultiple: state.onStatusFilterChanged,
+          onChange: (_) => state.notify(),
           allowDeselection: true,
           hint: 'Status',
         ),
-        DropdownInput<String>(
+        DropdownInputMultiple<String>(
           width: 200,
           values: Data.currentProject.components,
           controller: state.componentFilterController,
-          onChangeMultiple: state.onComponentFilterChanged,
+          onChange: (_) => state.notify(),
           allowDeselection: true,
           hint: 'Component',
         ),
-        DropdownInput<String>(
+        DropdownInputMultiple<String>(
           width: 200,
           values: Data.currentProject.platforms,
           controller: state.platformFilterController,
-          onChangeMultiple: state.onPlatformFilterChanged,
+          onChange: (_) => state.notify(),
           allowDeselection: true,
           hint: 'Platform',
         ),
-        DropdownInput<RequirementImportance>(
+        DropdownInputMultiple<RequirementImportance>(
           width: 200,
           values: RequirementImportance.values,
           controller: state.importanceFilterController,
-          onChangeMultiple: state.onImportanceFilterChanged,
+          onChange: (_) => state.notify(),
           allowDeselection: true,
           hint: 'Importance',
         ),

@@ -4,7 +4,7 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:testflow/debug/data.dart';
 import 'package:testflow/domain/model/project.dart';
 import 'package:testflow/domain/state/dashboard/dashboard_state.dart';
-import 'package:testflow/presentation/common/dropdown/dropdown_input.dart';
+import 'package:testflow/presentation/common/dropdown/dropdown_input_single.dart';
 import 'package:testflow/presentation/requirements/requirements_view.dart';
 import 'package:testflow/utils/palette.dart';
 
@@ -106,7 +106,7 @@ class ProjectSelector extends StatelessWidget {
           left: 4,
           right: 4,
         ),
-        child: DropdownInput<Project>(
+        child: DropdownInputSingle<Project>(
           values: Data.projects(),
           controller: state.projectsController,
           footer: Padding(
@@ -119,7 +119,7 @@ class ProjectSelector extends StatelessWidget {
               onPressed: () => state.onCreateProject(context),
             ),
           ),
-          onChangeSingle: (project) => state.onChangeProject(project!),
+          onChange: state.onChangeProject,
         ),
       ),
     );

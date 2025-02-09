@@ -23,18 +23,16 @@ class RequirementDetailView extends StatelessWidget {
     return StateProvider<RequirementDetailsState>(
       state: state,
       builder: (context, state) => BaseView(
-        child: Padding(
-          padding: const EdgeInsets.only(
-            top: 16,
-            left: 16,
-            right: 16,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Header(state),
-            ],
-          ),
+        padding: const EdgeInsets.only(
+          top: 16,
+          left: 16,
+          right: 16,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Header(state),
+          ],
         ),
       ),
     );

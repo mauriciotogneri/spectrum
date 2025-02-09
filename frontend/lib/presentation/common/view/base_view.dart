@@ -3,9 +3,11 @@ import 'package:testflow/utils/palette.dart';
 
 class BaseView extends StatelessWidget {
   final Widget child;
+  final EdgeInsets padding;
 
   const BaseView({
     required this.child,
+    required this.padding,
   });
 
   @override
@@ -13,6 +15,7 @@ class BaseView extends StatelessWidget {
     return Container(
       width: double.infinity,
       color: Palette.background1,
+      padding: padding,
       child: child,
     );
   }

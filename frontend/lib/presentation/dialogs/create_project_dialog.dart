@@ -13,7 +13,7 @@ class CreateProjectDialog extends StatelessWidget {
   const CreateProjectDialog._(this.state);
 
   factory CreateProjectDialog.instance({
-    required CreateProjectCallback onCreateProject,
+    required OnCreateProject onCreateProject,
   }) =>
       CreateProjectDialog._(CreateProjectDialogState(
         onCreateProject: onCreateProject,
@@ -33,10 +33,7 @@ class CreateProjectDialog extends StatelessWidget {
           ),
           PrimaryButton(
             text: 'Create',
-            //enabled: state.formFilled,
             onPressed: () {
-              //Navigation.pop();
-              //state.onCreate();
               if (state.formValid) {
                 Navigation.pop();
                 state.onCreate();
@@ -92,7 +89,7 @@ class FormFields extends StatelessWidget {
 
 class CreateProjectDialogState extends BaseState {
   final GlobalKey<ShadFormState> formKey = GlobalKey();
-  final CreateProjectCallback onCreateProject;
+  final OnCreateProject onCreateProject;
   final TextInputController nameController = TextInputController();
   final TextInputController descriptionController = TextInputController();
 
@@ -110,7 +107,7 @@ class CreateProjectDialogState extends BaseState {
       );
 }
 
-typedef CreateProjectCallback = void Function({
+typedef OnCreateProject = void Function({
   required String name,
   required String description,
 });

@@ -6,7 +6,6 @@ import 'package:testflow/presentation/common/button/secondary_button.dart';
 import 'package:testflow/presentation/common/input/text_input_field.dart';
 import 'package:testflow/presentation/dialogs/base_dialog.dart';
 import 'package:testflow/utils/navigation.dart';
-import 'package:testflow/utils/palette.dart';
 
 class CreateRequirementDialog extends StatelessWidget {
   final CreateRequirementDialogState state;
@@ -14,7 +13,7 @@ class CreateRequirementDialog extends StatelessWidget {
   const CreateRequirementDialog._(this.state);
 
   factory CreateRequirementDialog.instance({
-    required CreateRequirementCallback onCreateRequirement,
+    required OnCreateRequirement onCreateRequirement,
   }) =>
       CreateRequirementDialog._(CreateRequirementDialogState(
         onCreateRequirement: onCreateRequirement,
@@ -34,10 +33,11 @@ class CreateRequirementDialog extends StatelessWidget {
           ),
           PrimaryButton(
             text: 'Create',
-            enabled: state.formFilled,
             onPressed: () {
-              Navigation.pop();
-              state.onCreate();
+              if (state.formValid) {
+                Navigation.pop();
+                state.onCreate();
+              }
             },
           ),
         ],
@@ -61,39 +61,24 @@ class FormFields extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const VBox(16),
-          const Padding(
-            padding: EdgeInsets.only(left: 6),
-            child: Text(
-              'Name',
-              style: TextStyle(
-                color: Palette.textEnabled,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
+          const DialogLabel('Name'),
           const VBox(4),
           TextInputField(
             hint: 'Name',
             controller: state.nameController,
             onChanged: (_) => state.notify(),
+            isForm: true,
+            validator: (value) => value.isEmpty ? 'Name is required' : null,
           ),
           const VBox(16),
-          const Padding(
-            padding: EdgeInsets.only(left: 6),
-            child: Text(
-              'Description',
-              style: TextStyle(
-                color: Palette.textEnabled,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
+          const DialogLabel('Description'),
           const VBox(4),
           TextInputField(
             hint: 'Description',
             controller: state.descriptionController,
             onChanged: (_) => state.notify(),
             maxLines: 5,
+            isForm: true,
           ),
           const VBox(16),
         ],
@@ -104,7 +89,7 @@ class FormFields extends StatelessWidget {
 
 class CreateRequirementDialogState extends BaseState {
   final GlobalKey<ShadFormState> formKey = GlobalKey();
-  final CreateRequirementCallback onCreateRequirement;
+  final OnCreateRequirement onCreateRequirement;
   final TextInputController nameController = TextInputController();
   final TextInputController descriptionController = TextInputController();
 
@@ -114,7 +99,7 @@ class CreateRequirementDialogState extends BaseState {
 
   String get description => descriptionController.text.trim();
 
-  bool get formFilled => name.isNotEmpty && description.isNotEmpty;
+  bool get formValid => formKey.currentState!.validate();
 
   void onCreate() => onCreateRequirement(
         name: name,
@@ -122,7 +107,7 @@ class CreateRequirementDialogState extends BaseState {
       );
 }
 
-typedef CreateRequirementCallback = void Function({
+typedef OnCreateRequirement = void Function({
   required String name,
   required String description,
 });

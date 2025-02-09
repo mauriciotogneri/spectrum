@@ -56,7 +56,11 @@ class CustomTable<T extends CustomTableCell> extends StatelessWidget {
           ),
           columnSpanExtent: (index) =>
               FractionalSpanExtent(columns[index].ratio),
-          onRowTap: (index) => onRowSelected(rows[index]),
+          onRowTap: (index) {
+            if (index > 0) {
+              onRowSelected(rows[index - 1]);
+            }
+          },
           rowSpanBackgroundDecoration: (row) => row == 0
               ? const SpanDecoration(
                   border: SpanBorder(

@@ -3,9 +3,9 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"flutter_bootstrap.js": "0a6b5feea8a0debf811e350622d9724b",
-"main.dart.js": "d5528dfaa343d303822f25186ff7a4bf",
-"assets/NOTICES": "65c8e3dc1659fe25e0e0f4d4e4ab9d0f",
+const RESOURCES = {"flutter_bootstrap.js": "3b8e679330764c8d4d83faaa849bf9c6",
+"main.dart.js": "a28a8dd2d0d85c2488f52f92bd174862",
+"assets/NOTICES": "aab004e8e7d4b6d92415bd4549f4c891",
 "assets/FontManifest.json": "66fbb5fd7bf8d52ca3aff0671ecc3f0e",
 "assets/packages/lucide_icons_flutter/assets/lucide.ttf": "951666de3af1f280c221695d4c6702b1",
 "assets/packages/shadcn_ui/fonts/GeistMono-UltraBlack.otf": "cfad4eb45ce5dff853a6c84c8a7d441b",

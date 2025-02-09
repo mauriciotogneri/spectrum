@@ -29,7 +29,7 @@ class DashboardState extends BaseState {
   @override
   void onLoad() {
     projectsController.onChange(Data.currentProject);
-    onActiveViewChange(VIEW_REQUIREMENTS);
+    onRootViewChange(VIEW_REQUIREMENTS);
     notify();
 
     _subscriptionStackViewEvent = Events.listen<StackViewEvent>(_onViewStacked);
@@ -43,7 +43,7 @@ class DashboardState extends BaseState {
     _subscriptionUnstackViewEvent?.cancel();
   }
 
-  void onActiveViewChange(int index) {
+  void onRootViewChange(int index) {
     activeView = index;
     viewsStack.clear();
 
@@ -82,12 +82,12 @@ class DashboardState extends BaseState {
     BaseDialog.show(
       context: context,
       dialog: CreateProjectDialog.instance(
-        onCreateProject: createProject,
+        onCreateProject: _createProject,
       ),
     );
   }
 
-  void createProject({
+  void _createProject({
     required String name,
     required String description,
   }) {

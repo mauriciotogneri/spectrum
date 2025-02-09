@@ -172,7 +172,7 @@ class NavigationMenuRow extends StatelessWidget {
           left: 8,
           right: 8,
         ),
-        onTap: () => state.onActiveViewChange(index),
+        onTap: () => state.onRootViewChange(index),
         selected: isSelected,
         selectedTileColor: Palette.menuSelected,
         selectedColor: Palette.iconEnabled,

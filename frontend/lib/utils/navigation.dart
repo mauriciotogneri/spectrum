@@ -1,5 +1,7 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/widgets.dart';
+import 'package:testflow/domain/events/stack_view_event.dart';
+import 'package:testflow/domain/events/unstack_view_event.dart';
 import 'package:testflow/presentation/auth/sign_in_screen.dart';
 import 'package:testflow/presentation/dashboard/dashboard_screen.dart';
 import 'package:testflow/utils/locator.dart';
@@ -62,6 +64,10 @@ class Navigation {
 
   static void popUntil(RoutePredicate predicate) =>
       _get.routes.popUntil(predicate);
+
+  static void stack(Widget view) => StackViewEvent(view).dispatch();
+
+  static void unstack() => const UnstackViewEvent().dispatch();
 
   static void dialog(String name, Widget widget) => push(
         PageRouteBuilder(

@@ -20,5 +20,5 @@ class Events {
 class Event {
   const Event();
 
-  void post() => Events.dispatch(this);
+  void dispatch() => Events.dispatch(this);
 }

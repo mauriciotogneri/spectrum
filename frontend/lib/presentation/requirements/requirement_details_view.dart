@@ -1,9 +1,11 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:testflow/domain/model/requirement.dart';
 import 'package:testflow/domain/state/requirements/requirement_details_state.dart';
 import 'package:testflow/presentation/common/text/title_4.dart';
 import 'package:testflow/presentation/common/view/base_view.dart';
+import 'package:testflow/utils/navigation.dart';
 
 class RequirementDetailView extends StatelessWidget {
   final RequirementDetailsState state;
@@ -46,6 +48,15 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Title4(text: 'Requirement: ${state.requirement.name}');
+    return Row(
+      children: [
+        const ShadButton.outline(
+          icon: Icon(Icons.keyboard_arrow_left_rounded),
+          onPressed: Navigation.unstack,
+        ),
+        const HBox(8),
+        Title4(text: 'Requirement: ${state.requirement.name}'),
+      ],
+    );
   }
 }

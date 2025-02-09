@@ -1,7 +1,6 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:testflow/debug/data.dart';
-import 'package:testflow/domain/events/stack_view_event.dart';
 import 'package:testflow/domain/model/requirement.dart';
 import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
@@ -11,6 +10,7 @@ import 'package:testflow/presentation/common/input/text_input_field.dart';
 import 'package:testflow/presentation/dialogs/base_dialog.dart';
 import 'package:testflow/presentation/dialogs/create_requirement_dialog.dart';
 import 'package:testflow/presentation/requirements/requirement_details_view.dart';
+import 'package:testflow/utils/navigation.dart';
 
 class RequirementsListState extends BaseState {
   final TextInputController queryFilterController = TextInputController();
@@ -38,9 +38,9 @@ class RequirementsListState extends BaseState {
       .toList();
 
   void onRequirementSelected(Requirement requirement) =>
-      StackViewEvent(RequirementDetailView.instance(
+      Navigation.stack(RequirementDetailView.instance(
         requirement: requirement,
-      )).post();
+      ));
 
   void onCreateRequirement(BuildContext context) => BaseDialog.show(
         context: context,

@@ -69,7 +69,6 @@ class FormFields extends StatelessWidget {
         children: [
           const InputLabel('Name'),
           TextInputField(
-            hint: 'Name',
             isForm: true,
             autofocus: true,
             controller: state.nameController,
@@ -77,7 +76,6 @@ class FormFields extends StatelessWidget {
           ),
           const InputLabel('Description'),
           TextInputField(
-            hint: 'Description',
             isForm: true,
             maxLines: 5,
             controller: state.descriptionController,
@@ -91,7 +89,6 @@ class FormFields extends StatelessWidget {
                   children: [
                     const InputLabel('ID'),
                     TextInputField(
-                      hint: 'ID',
                       isForm: true,
                       controller: state.idController,
                       errorMessage: 'ID is required',

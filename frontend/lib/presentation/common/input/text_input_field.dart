@@ -5,7 +5,6 @@ import 'package:testflow/presentation/common/text/input_error.dart';
 import 'package:testflow/utils/palette.dart';
 
 class TextInputField extends StatefulWidget {
-  final String hint;
   final TextInputController controller;
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
@@ -17,6 +16,7 @@ class TextInputField extends StatefulWidget {
   final bool obscureText;
   final bool canClear;
   final bool isForm;
+  final String? hint;
   final Iterable<String>? autofillHints;
   final Widget? prefixIcon;
   final int? maxLength;
@@ -26,7 +26,6 @@ class TextInputField extends StatefulWidget {
   final String? errorMessage;
 
   const TextInputField({
-    required this.hint,
     required this.controller,
     this.keyboardType = TextInputType.none,
     this.textInputAction = TextInputAction.done,
@@ -38,6 +37,7 @@ class TextInputField extends StatefulWidget {
     this.obscureText = false,
     this.canClear = false,
     this.isForm = false,
+    this.hint,
     this.autofillHints,
     this.prefixIcon,
     this.maxLength,
@@ -60,7 +60,7 @@ class _TextInputFieldState extends State<TextInputField> {
       return SizedBox(
         width: widget.width,
         child: ShadInputFormField(
-          placeholder: Text(widget.hint),
+          placeholder: _placeholder,
           error: InputError.new,
           autofocus: widget.autofocus,
           maxLines: widget.maxLines,
@@ -86,7 +86,7 @@ class _TextInputFieldState extends State<TextInputField> {
       return SizedBox(
         width: widget.width,
         child: ShadInput(
-          placeholder: Text(widget.hint),
+          placeholder: _placeholder,
           autofocus: widget.autofocus,
           maxLines: widget.maxLines,
           readOnly: widget.readOnly,
@@ -109,6 +109,8 @@ class _TextInputFieldState extends State<TextInputField> {
       );
     }
   }
+
+  Widget? get _placeholder => (widget.hint != null) ? Text(widget.hint!) : null;
 
   ShadDecoration get _decoration =>
       const ShadDecoration(color: Palette.background1);

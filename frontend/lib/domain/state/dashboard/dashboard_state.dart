@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:testflow/debug/data.dart';
@@ -74,6 +73,7 @@ class DashboardState extends BaseState {
 
   void onChangeProject(Project project) {
     Data.onChangeProject(project);
+    onRootViewChange(activeView);
   }
 
   void onCreateProject(BuildContext context) {

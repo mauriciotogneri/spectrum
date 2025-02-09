@@ -63,14 +63,12 @@ class FormFields extends StatelessWidget {
         children: [
           const InputLabel('Name'),
           TextInputField(
-            hint: 'Name',
             isForm: true,
             controller: state.nameController,
             errorMessage: 'Name is required',
           ),
           const InputLabel('Description'),
           TextInputField(
-            hint: 'Description',
             isForm: true,
             maxLines: 5,
             controller: state.descriptionController,

@@ -59,7 +59,6 @@ class BaseView extends StatelessWidget {
             HeaderWithBack(header),
             Padding(
               padding: const EdgeInsets.only(
-                top: 6,
                 left: 6,
                 right: 6,
               ),

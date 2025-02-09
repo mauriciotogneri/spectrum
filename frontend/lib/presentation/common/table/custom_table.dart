@@ -51,7 +51,7 @@ class CustomTable<T extends CustomTableCell> extends StatelessWidget {
             child: Text(
               columns[index].name,
               style: const TextStyle(
-                color: Palette.textEnabled,
+                color: Palette.textDisabled,
               ),
             ),
           ),

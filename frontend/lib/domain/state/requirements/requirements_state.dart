@@ -47,8 +47,25 @@ class RequirementsState extends BaseState {
       );
 
   void createRequirement({
-    required String id,
     required String name,
     required String description,
-  }) {}
+    required String id,
+    required RequirementType type,
+    required RequirementStatus status,
+    required RequirementImportance importance,
+    required String component,
+    required List<String> platforms,
+  }) {
+    Data.onCreateRequirement(
+      name: name,
+      description: description,
+      id: id,
+      type: type,
+      status: status,
+      importance: importance,
+      component: component,
+      platforms: platforms,
+    );
+    notify();
+  }
 }

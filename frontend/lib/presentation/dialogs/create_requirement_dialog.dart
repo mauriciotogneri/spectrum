@@ -227,14 +227,24 @@ class CreateRequirementDialogState extends BaseState {
   bool get formValid => formKey.currentState!.validate();
 
   void onCreate() => onCreateRequirement(
-        id: idController.text,
         name: nameController.text,
         description: descriptionController.text,
+        id: idController.text,
+        type: typeController.selected!,
+        status: statusController.selected!,
+        importance: importanceController.selected!,
+        component: componentController.selected!,
+        platforms: platformsController.selected,
       );
 }
 
 typedef OnCreateRequirement = void Function({
-  required String id,
   required String name,
   required String description,
+  required String id,
+  required RequirementType type,
+  required RequirementStatus status,
+  required RequirementImportance importance,
+  required String component,
+  required List<String> platforms,
 });

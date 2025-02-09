@@ -17,6 +17,31 @@ class Data {
     onChangeProject(project);
   }
 
+  static void onCreateRequirement({
+    required String name,
+    required String description,
+    required String id,
+    required RequirementType type,
+    required RequirementStatus status,
+    required RequirementImportance importance,
+    required String component,
+    required List<String> platforms,
+  }) {
+    final Requirement requirement = Requirement(
+      id: id,
+      type: type,
+      status: status,
+      importance: importance,
+      name: name,
+      description: description,
+      component: component,
+      platforms: platforms,
+      tags: [],
+      numberOfTestCases: 0,
+    );
+    _requirements.add(requirement);
+  }
+
   static List<Project> projects() {
     _projects.sort((a, b) => a.name.compareTo(b.name));
 

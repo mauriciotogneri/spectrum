@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:testflow/presentation/dialogs/base_dialog.dart';
 import 'package:testflow/utils/palette.dart';
 
 class TextInputField extends StatefulWidget {
@@ -15,12 +16,14 @@ class TextInputField extends StatefulWidget {
   final bool filled;
   final bool obscureText;
   final bool canClear;
+  final bool isForm;
   final Iterable<String>? autofillHints;
   final Widget? prefixIcon;
   final int? maxLength;
   final int? maxLines;
   final double? width;
   final Function(String)? onChanged;
+  final String? Function(String)? validator;
 
   const TextInputField({
     required this.hint,
@@ -34,12 +37,14 @@ class TextInputField extends StatefulWidget {
     this.filled = false,
     this.obscureText = false,
     this.canClear = false,
+    this.isForm = false,
     this.autofillHints,
     this.prefixIcon,
     this.maxLength,
     this.maxLines,
     this.width,
     this.onChanged,
+    this.validator,
   });
 
   @override
@@ -51,57 +56,93 @@ class _TextInputFieldState extends State<TextInputField> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: widget.width,
-      child: ShadInput(
-        placeholder: Text(widget.hint),
-        autofocus: widget.autofocus,
-        maxLines: widget.maxLines,
-        readOnly: widget.readOnly,
-        enableInteractiveSelection: !widget.readOnly,
-        enabled: widget.enabled,
-        keyboardType: widget.keyboardType,
-        focusNode: widget.controller.focusNode,
-        textInputAction: widget.textInputAction,
-        controller: widget.controller.controller,
-        onChanged: (text) {
-          widget.onChanged?.call(text);
-          setState(() {
-            showClear = text.isNotEmpty;
-          });
-        },
-        obscureText: widget.obscureText,
-        autofillHints: widget.autofillHints,
-        textCapitalization: widget.capitalization,
-        onSubmitted: (_) => FocusScope.of(context).nextFocus(),
-        prefix: widget.prefixIcon,
-        suffix: (showClear && widget.canClear)
-            ? ShadButton.ghost(
-                width: 20,
-                height: 20,
-                padding: EdgeInsets.zero,
-                decoration: const ShadDecoration(
-                  secondaryBorder: ShadBorder.none,
-                  secondaryFocusedBorder: ShadBorder.none,
-                ),
-                icon: const Icon(
-                  Icons.close,
-                  color: Palette.iconEnabled,
-                ),
-                onPressed: () {
-                  widget.controller.clear();
-                  widget.onChanged?.call('');
-                  setState(() {
-                    showClear = false;
-                  });
-                })
-            : null,
-        inputFormatters: [
-          if (widget.maxLength != null)
-            LengthLimitingTextInputFormatter(widget.maxLength),
-        ],
-      ),
-    );
+    if (widget.isForm) {
+      return SizedBox(
+        width: widget.width,
+        child: ShadInputFormField(
+          placeholder: Text(widget.hint),
+          error: DialogError.new,
+          autofocus: widget.autofocus,
+          maxLines: widget.maxLines,
+          readOnly: widget.readOnly,
+          enableInteractiveSelection: !widget.readOnly,
+          enabled: widget.enabled,
+          keyboardType: widget.keyboardType,
+          textInputAction: widget.textInputAction,
+          controller: widget.controller.controller,
+          onChanged: _onChanged,
+          validator: widget.validator,
+          obscureText: widget.obscureText,
+          autofillHints: widget.autofillHints,
+          textCapitalization: widget.capitalization,
+          onSubmitted: (_) => FocusScope.of(context).nextFocus(),
+          prefix: widget.prefixIcon,
+          suffix: _suffix,
+          inputFormatters: _inputFormatters,
+        ),
+      );
+    } else {
+      return SizedBox(
+        width: widget.width,
+        child: ShadInput(
+          placeholder: Text(widget.hint),
+          autofocus: widget.autofocus,
+          maxLines: widget.maxLines,
+          readOnly: widget.readOnly,
+          enableInteractiveSelection: !widget.readOnly,
+          enabled: widget.enabled,
+          keyboardType: widget.keyboardType,
+          focusNode: widget.controller.focusNode,
+          textInputAction: widget.textInputAction,
+          controller: widget.controller.controller,
+          onChanged: _onChanged,
+          obscureText: widget.obscureText,
+          autofillHints: widget.autofillHints,
+          textCapitalization: widget.capitalization,
+          onSubmitted: (_) => FocusScope.of(context).nextFocus(),
+          prefix: widget.prefixIcon,
+          suffix: _suffix,
+          inputFormatters: _inputFormatters,
+        ),
+      );
+    }
+  }
+
+  List<TextInputFormatter>? get _inputFormatters {
+    if (widget.maxLength != null) {
+      return [LengthLimitingTextInputFormatter(widget.maxLength)];
+    } else {
+      return null;
+    }
+  }
+
+  Widget? get _suffix => (showClear && widget.canClear)
+      ? ShadButton.ghost(
+          width: 20,
+          height: 20,
+          padding: EdgeInsets.zero,
+          decoration: const ShadDecoration(
+            secondaryBorder: ShadBorder.none,
+            secondaryFocusedBorder: ShadBorder.none,
+          ),
+          icon: const Icon(
+            Icons.close,
+            color: Palette.iconEnabled,
+          ),
+          onPressed: () {
+            widget.controller.clear();
+            widget.onChanged?.call('');
+            setState(() {
+              showClear = false;
+            });
+          })
+      : null;
+
+  void _onChanged(String text) {
+    widget.onChanged?.call(text);
+    setState(() {
+      showClear = text.isNotEmpty;
+    });
   }
 }
 

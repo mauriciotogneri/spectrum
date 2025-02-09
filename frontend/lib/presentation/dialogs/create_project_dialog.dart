@@ -1,11 +1,11 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:testflow/presentation/common/button/primary_button.dart';
 import 'package:testflow/presentation/common/button/secondary_button.dart';
 import 'package:testflow/presentation/common/input/text_input_field.dart';
 import 'package:testflow/presentation/dialogs/base_dialog.dart';
 import 'package:testflow/utils/navigation.dart';
-import 'package:testflow/utils/palette.dart';
 
 class CreateProjectDialog extends StatelessWidget {
   final CreateProjectDialogState state;
@@ -33,61 +33,65 @@ class CreateProjectDialog extends StatelessWidget {
           ),
           PrimaryButton(
             text: 'Create',
-            enabled: state.formFilled,
+            //enabled: state.formFilled,
             onPressed: () {
-              Navigation.pop();
-              state.onCreate();
+              //Navigation.pop();
+              //state.onCreate();
+              if (state.formValid) {
+                Navigation.pop();
+                state.onCreate();
+              }
             },
           ),
         ],
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const VBox(16),
-            const Padding(
-              padding: EdgeInsets.only(left: 6),
-              child: Text(
-                'Name',
-                style: TextStyle(
-                  color: Palette.textEnabled,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            const VBox(4),
-            TextInputField(
-              hint: 'Name',
-              controller: state.nameController,
-              onChanged: (_) => state.notify(),
-            ),
-            const VBox(16),
-            const Padding(
-              padding: EdgeInsets.only(left: 6),
-              child: Text(
-                'Description',
-                style: TextStyle(
-                  color: Palette.textEnabled,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            const VBox(4),
-            TextInputField(
-              hint: 'Description',
-              controller: state.descriptionController,
-              onChanged: (_) => state.notify(),
-              maxLines: 5,
-            ),
-            const VBox(16),
-          ],
-        ),
+        content: FormFields(state),
+      ),
+    );
+  }
+}
+
+class FormFields extends StatelessWidget {
+  final CreateProjectDialogState state;
+
+  const FormFields(this.state);
+
+  @override
+  Widget build(BuildContext context) {
+    return ShadForm(
+      key: state.formKey,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const VBox(16),
+          const DialogLabel('Name'),
+          const VBox(4),
+          TextInputField(
+            hint: 'Name',
+            controller: state.nameController,
+            onChanged: (_) => state.notify(),
+            isForm: true,
+            validator: (value) => value.isEmpty ? 'Name is required' : null,
+          ),
+          const VBox(16),
+          const DialogLabel('Description'),
+          const VBox(4),
+          TextInputField(
+            hint: 'Description',
+            controller: state.descriptionController,
+            onChanged: (_) => state.notify(),
+            maxLines: 5,
+            isForm: true,
+          ),
+          const VBox(16),
+        ],
       ),
     );
   }
 }
 
 class CreateProjectDialogState extends BaseState {
+  final GlobalKey<ShadFormState> formKey = GlobalKey();
   final CreateProjectCallback onCreateProject;
   final TextInputController nameController = TextInputController();
   final TextInputController descriptionController = TextInputController();
@@ -98,7 +102,7 @@ class CreateProjectDialogState extends BaseState {
 
   String get description => descriptionController.text.trim();
 
-  bool get formFilled => name.isNotEmpty && description.isNotEmpty;
+  bool get formValid => formKey.currentState!.validate();
 
   void onCreate() => onCreateProject(
         name: name,

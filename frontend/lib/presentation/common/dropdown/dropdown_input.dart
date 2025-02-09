@@ -10,6 +10,7 @@ class DropdownInput<T> extends StatelessWidget {
   final Widget? footer;
   final double? width;
   final bool allowDeselection;
+  final bool isForm;
   final VoidCallback? onClear;
   final Function(T?)? onChangeSingle;
   final Function(List<T>)? onChangeMultiple;
@@ -24,9 +25,10 @@ class DropdownInput<T> extends StatelessWidget {
     this.onChangeMultiple,
     this.onClear,
     this.allowDeselection = false,
+    this.isForm = false,
   });
 
-  List<Widget> get options => [
+  List<Widget> get _options => [
         for (final T element in values)
           ShadOption(
             value: element,
@@ -41,7 +43,7 @@ class DropdownInput<T> extends StatelessWidget {
         ],
       ];
 
-  ShadSelect<T> get selectSingle => ShadSelect<T>(
+  ShadSelect<T> get _selectSingle => ShadSelect<T>(
         controller: controller?._controller,
         initialValue: controller?.initialValue,
         selectedOptionBuilder: (context, value) => Text(value.toString()),
@@ -53,10 +55,10 @@ class DropdownInput<T> extends StatelessWidget {
         focusNode: controller?._focusNode,
         footer: footer,
         placeholder: Text(hint),
-        options: options,
+        options: _options,
       );
 
-  ShadSelect<T> get selectMultiple => ShadSelect<T>.multiple(
+  ShadSelect<T> get _selectMultiple => ShadSelect<T>.multiple(
         controller: controller?._controller,
         initialValues: controller?.initialValues ?? [],
         selectedOptionsBuilder: (context, values) => Text(
@@ -71,12 +73,48 @@ class DropdownInput<T> extends StatelessWidget {
           onChangeMultiple?.call(element);
         },
         focusNode: controller?._focusNode,
-        footer: footer ?? ((onClear != null) ? clearFooter : null),
+        footer: footer ?? ((onClear != null) ? _clearFooter : null),
         placeholder: Text(hint),
-        options: options,
+        options: _options,
       );
 
-  Widget get clearFooter => Padding(
+  ShadSelectFormField<T> get _selectSingleForm => ShadSelectFormField<T>(
+        controller: controller?._controller,
+        initialValue: controller?.initialValue,
+        selectedOptionBuilder: (context, value) => Text(value.toString()),
+        allowDeselection: allowDeselection,
+        onChanged: (element) {
+          controller?._focusNode.unfocus();
+          onChangeSingle?.call(element);
+        },
+        focusNode: controller?._focusNode,
+        footer: footer,
+        placeholder: Text(hint),
+        options: _options,
+      );
+
+  ShadSelectMultipleFormField<T> get _selectMultipleForm =>
+      ShadSelectMultipleFormField(
+        controller: controller?._controller,
+        initialValue: controller?.initialValues ?? [],
+        selectedOptionsBuilder: (context, values) => Text(
+          values.join(', '),
+          style: const TextStyle(
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+        allowDeselection: allowDeselection,
+        onChanged: (element) {
+          controller?._focusNode.unfocus();
+          onChangeMultiple?.call(element ?? []);
+        },
+        focusNode: controller?._focusNode,
+        footer: footer ?? ((onClear != null) ? _clearFooter : null),
+        placeholder: Text(hint),
+        options: _options,
+      );
+
+  Widget get _clearFooter => Padding(
         padding: const EdgeInsets.only(bottom: 4),
         child: ShadButton.ghost(
           height: 32,
@@ -90,11 +128,19 @@ class DropdownInput<T> extends StatelessWidget {
         ),
       );
 
+  Widget get _dropdown {
+    if (isForm) {
+      return (onChangeMultiple != null) ? _selectMultipleForm : _selectSingleForm;
+    } else {
+      return (onChangeMultiple != null) ? _selectMultiple : _selectSingle;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
-      child: (onChangeMultiple != null) ? selectMultiple : selectSingle,
+      child: _dropdown,
     );
   }
 }

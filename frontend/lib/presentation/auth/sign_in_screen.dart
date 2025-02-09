@@ -50,7 +50,7 @@ class FormInputs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
+    return ShadForm(
       key: state.formKey,
       child: Column(
         children: [

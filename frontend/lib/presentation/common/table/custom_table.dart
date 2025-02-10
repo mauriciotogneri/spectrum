@@ -8,16 +8,19 @@ class CustomTable<T extends CustomTableCell> extends StatelessWidget {
   final List<CustomTableColumn> columns;
   final List<T> rows;
   final Function(T) onRowSelected;
+  final double? width;
 
   const CustomTable({
     required this.columns,
     required this.rows,
     required this.onRowSelected,
+    this.width,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: width,
       decoration: const BoxDecoration(
         color: Palette.background1,
         borderRadius: BorderRadius.only(

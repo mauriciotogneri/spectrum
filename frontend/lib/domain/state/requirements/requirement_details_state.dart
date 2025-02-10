@@ -1,7 +1,9 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:testflow/debug/data.dart';
 import 'package:testflow/domain/model/requirement.dart';
+import 'package:testflow/domain/model/test_case.dart';
 import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
@@ -11,6 +13,7 @@ import 'package:testflow/presentation/common/input/text_input_field.dart';
 
 class RequirementDetailsState extends BaseState {
   final Requirement requirement;
+  final List<TestCase> testCases = [];
   final GlobalKey<ShadFormState> formKey = GlobalKey();
   final TextInputController idController = TextInputController();
   final DropdownInputSingleController<RequirementType> typeController =
@@ -37,5 +40,9 @@ class RequirementDetailsState extends BaseState {
     importanceController.select(requirement.importance);
     componentController.select(requirement.component);
     platformsController.select(requirement.platforms);
+
+    testCases.addAll(Data.testCases(requirement));
   }
+
+  void onTestCaseSelected(TestCase testCase) {}
 }

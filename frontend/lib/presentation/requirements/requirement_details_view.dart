@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:testflow/debug/data.dart';
 import 'package:testflow/domain/model/requirement.dart';
+import 'package:testflow/domain/model/test_case.dart';
 import 'package:testflow/domain/state/requirements/requirement_details_state.dart';
 import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
@@ -10,6 +11,7 @@ import 'package:testflow/domain/types/requirement_type.dart';
 import 'package:testflow/presentation/common/dropdown/dropdown_input_multiple.dart';
 import 'package:testflow/presentation/common/dropdown/dropdown_input_single.dart';
 import 'package:testflow/presentation/common/input/text_input_field.dart';
+import 'package:testflow/presentation/common/table/custom_table.dart';
 import 'package:testflow/presentation/common/text/input_label.dart';
 import 'package:testflow/presentation/common/text/title_4.dart';
 import 'package:testflow/presentation/common/view/base_view.dart';
@@ -35,6 +37,7 @@ class RequirementDetailView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             FormFields(state),
+            Table(state),
           ],
         ),
       ),
@@ -175,6 +178,28 @@ class InputEntry extends StatelessWidget {
           InputLabel(label),
           input,
         ],
+      ),
+    );
+  }
+}
+
+class Table extends StatelessWidget {
+  final RequirementDetailsState state;
+
+  const Table(this.state);
+
+  @override
+  Widget build(BuildContext context) {
+    return Flexible(
+      child: CustomTable<TestCase>(
+        width: 995,
+        columns: const [
+          CustomTableColumn(name: 'Name', ratio: 0.6),
+          CustomTableColumn(name: 'Is automated', ratio: 0.2),
+          CustomTableColumn(name: 'Last run', ratio: 0.2),
+        ],
+        rows: state.testCases,
+        onRowSelected: state.onTestCaseSelected,
       ),
     );
   }

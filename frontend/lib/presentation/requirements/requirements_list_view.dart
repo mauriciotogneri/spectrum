@@ -1,6 +1,7 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:testflow/debug/data.dart';
+import 'package:testflow/domain/model/requirement.dart';
 import 'package:testflow/domain/state/requirements/requirements_list_state.dart';
 import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
@@ -124,7 +125,7 @@ class Table extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Flexible(
-      child: CustomTable(
+      child: CustomTable<Requirement>(
         columns: const [
           CustomTableColumn(name: 'ID', ratio: 0.10),
           CustomTableColumn(name: 'Name', ratio: 0.25),

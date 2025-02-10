@@ -8,6 +8,7 @@ import 'package:testflow/presentation/common/input/text_input_field.dart';
 import 'package:testflow/presentation/common/text/input_label.dart';
 import 'package:testflow/presentation/common/text/title_4.dart';
 import 'package:testflow/presentation/common/view/base_view.dart';
+import 'package:testflow/utils/palette.dart';
 
 class TestCaseDetailsView extends StatelessWidget {
   final TestCaseDetailsState state;
@@ -48,23 +49,44 @@ class FormFields extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          InputEntry(
-            width: 900,
-            label: 'Name',
-            input: TextInputField(
-              isForm: true,
-              controller: state.nameController,
-              errorMessage: 'Name is required',
-            ),
-          ),
-          InputEntry(
-            width: 900,
-            label: 'Is automated',
-            input: ShadSwitch(
-              value: state.testCase.isAutomated,
-              enabled: false,
-              label: const Text('Is automated'),
-            ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              InputEntry(
+                width: 840,
+                label: 'Name',
+                input: TextInputField(
+                  isForm: true,
+                  controller: state.nameController,
+                  errorMessage: 'Name is required',
+                ),
+              ),
+              const HBox(16),
+              InputEntry(
+                input: Padding(
+                  padding: const EdgeInsets.only(
+                    bottom: 8,
+                  ),
+                  child: ShadSwitch(
+                    value: state.testCase.isAutomated,
+                    padding: const EdgeInsets.only(
+                      top: 0,
+                      bottom: 0,
+                      left: 8,
+                      right: 0,
+                    ),
+                    label: const Text(
+                      'Automated',
+                      style: TextStyle(
+                        color: Palette.textEnabled,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    enabled: false,
+                  ),
+                ),
+              ),
+            ],
           ),
           InputEntry(
             width: 1000,
@@ -101,14 +123,14 @@ class FormFields extends StatelessWidget {
 }
 
 class InputEntry extends StatelessWidget {
-  final double width;
-  final String label;
+  final double? width;
+  final String? label;
   final Widget input;
 
   const InputEntry({
-    required this.width,
-    required this.label,
     required this.input,
+    this.label,
+    this.width,
   });
 
   @override
@@ -119,7 +141,7 @@ class InputEntry extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          InputLabel(label),
+          if (label != null) InputLabel(label!),
           input,
         ],
       ),

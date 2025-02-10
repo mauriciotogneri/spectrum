@@ -38,7 +38,7 @@ class RequirementsListState extends BaseState {
       .toList();
 
   void onRequirementSelected(Requirement requirement) =>
-      Navigation.stack(RequirementDetailView.instance(
+      Navigation.stack(RequirementDetailsView.instance(
         requirement: requirement,
       ));
 

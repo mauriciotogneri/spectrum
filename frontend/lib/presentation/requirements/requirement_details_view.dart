@@ -16,15 +16,15 @@ import 'package:testflow/presentation/common/text/input_label.dart';
 import 'package:testflow/presentation/common/text/title_4.dart';
 import 'package:testflow/presentation/common/view/base_view.dart';
 
-class RequirementDetailView extends StatelessWidget {
+class RequirementDetailsView extends StatelessWidget {
   final RequirementDetailsState state;
 
-  const RequirementDetailView._(this.state);
+  const RequirementDetailsView._(this.state);
 
-  factory RequirementDetailView.instance({
+  factory RequirementDetailsView.instance({
     required Requirement requirement,
   }) =>
-      RequirementDetailView._(
+      RequirementDetailsView._(
           RequirementDetailsState(requirement: requirement));
 
   @override

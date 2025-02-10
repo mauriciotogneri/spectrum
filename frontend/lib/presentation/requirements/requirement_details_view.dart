@@ -57,7 +57,8 @@ class FormFields extends StatelessWidget {
         children: [
           Row(
             children: [
-              Expanded(
+              SizedBox(
+                width: 1000,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
@@ -71,7 +72,27 @@ class FormFields extends StatelessWidget {
                   ],
                 ),
               ),
-              Expanded(
+            ],
+          ),
+          SizedBox(
+            width: 1000,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const InputLabel('Description'),
+                TextInputField(
+                  isForm: true,
+                  maxLines: 5,
+                  controller: state.descriptionController,
+                ),
+              ],
+            ),
+          ),
+          Row(
+            children: [
+              SizedBox(
+                width: 500,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
@@ -85,14 +106,15 @@ class FormFields extends StatelessWidget {
                   ],
                 ),
               ),
-              Expanded(
+              SizedBox(
+                width: 500,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const InputLabel('Type'),
                     DropdownInputSingle<RequirementType>(
-                      width: 240,
+                      width: 500,
                       values: RequirementType.values,
                       controller: state.typeController,
                       isForm: true,
@@ -103,22 +125,17 @@ class FormFields extends StatelessWidget {
               ),
             ],
           ),
-          const InputLabel('Description'),
-          TextInputField(
-            isForm: true,
-            maxLines: 5,
-            controller: state.descriptionController,
-          ),
           Row(
             children: [
-              Expanded(
+              SizedBox(
+                width: 500,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const InputLabel('Status'),
                     DropdownInputSingle<RequirementStatus>(
-                      width: 240,
+                      width: 500,
                       values: RequirementStatus.values,
                       controller: state.statusController,
                       isForm: true,
@@ -127,14 +144,15 @@ class FormFields extends StatelessWidget {
                   ],
                 ),
               ),
-              Expanded(
+              SizedBox(
+                width: 500,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const InputLabel('Importance'),
                     DropdownInputSingle<RequirementImportance>(
-                      width: 240,
+                      width: 500,
                       values: RequirementImportance.values,
                       controller: state.importanceController,
                       isForm: true,
@@ -147,14 +165,15 @@ class FormFields extends StatelessWidget {
           ),
           Row(
             children: [
-              Expanded(
+              SizedBox(
+                width: 500,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const InputLabel('Component'),
                     DropdownInputSingle<String>(
-                      width: 240,
+                      width: 500,
                       values: Data.currentProject.components,
                       controller: state.componentController,
                       isForm: true,
@@ -163,14 +182,15 @@ class FormFields extends StatelessWidget {
                   ],
                 ),
               ),
-              Expanded(
+              SizedBox(
+                width: 500,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const InputLabel('Platforms'),
                     DropdownInputMultiple<String>(
-                      width: 240,
+                      width: 500,
                       values: Data.currentProject.platforms,
                       controller: state.platformsController,
                       allowDeselection: true,

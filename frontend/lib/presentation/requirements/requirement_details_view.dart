@@ -58,28 +58,19 @@ class FormFields extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          InputEntry(
-            width: 1000,
-            label: 'Name',
-            input: TextInputField(
-              isForm: true,
-              controller: state.nameController,
-              errorMessage: 'Name is required',
-            ),
-          ),
-          InputEntry(
-            width: 1000,
-            label: 'Description',
-            input: TextInputField(
-              isForm: true,
-              maxLines: 5,
-              controller: state.descriptionController,
-            ),
-          ),
           Row(
             children: [
               InputEntry(
-                width: 333,
+                flex: 2,
+                label: 'Name',
+                input: TextInputField(
+                  isForm: true,
+                  controller: state.nameController,
+                  errorMessage: 'Name is required',
+                ),
+              ),
+              InputEntry(
+                flex: 1,
                 label: 'ID',
                 input: TextInputField(
                   isForm: true,
@@ -88,25 +79,13 @@ class FormFields extends StatelessWidget {
                 ),
               ),
               InputEntry(
-                width: 333,
+                flex: 1,
                 label: 'Type',
                 input: DropdownInputSingle<RequirementType>(
-                  width: 333,
                   values: RequirementType.values,
                   controller: state.typeController,
                   isForm: true,
                   errorMessage: 'Type is required',
-                ),
-              ),
-              InputEntry(
-                width: 333,
-                label: 'Status',
-                input: DropdownInputSingle<RequirementStatus>(
-                  width: 333,
-                  values: RequirementStatus.values,
-                  controller: state.statusController,
-                  isForm: true,
-                  errorMessage: 'Status is required',
                 ),
               ),
             ],
@@ -114,37 +93,77 @@ class FormFields extends StatelessWidget {
           Row(
             children: [
               InputEntry(
-                width: 333,
-                label: 'Importance',
-                input: DropdownInputSingle<RequirementImportance>(
-                  width: 333,
-                  values: RequirementImportance.values,
-                  controller: state.importanceController,
+                flex: 2,
+                label: 'Description',
+                input: TextInputField(
                   isForm: true,
-                  errorMessage: 'Importance is required',
+                  maxLines: 5,
+                  controller: state.descriptionController,
                 ),
               ),
-              InputEntry(
-                width: 333,
-                label: 'Component',
-                input: DropdownInputSingle<String>(
-                  width: 333,
-                  values: Data.currentProject.components,
-                  controller: state.componentController,
-                  isForm: true,
-                  errorMessage: 'Component is required',
-                ),
-              ),
-              InputEntry(
-                width: 333,
-                label: 'Platforms',
-                input: DropdownInputMultiple<String>(
-                  width: 333,
-                  values: Data.currentProject.platforms,
-                  controller: state.platformsController,
-                  allowDeselection: true,
-                  isForm: true,
-                  errorMessage: 'Platforms is required',
+              Flexible(
+                flex: 2,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      flex: 1,
+                      child: Row(
+                        children: [
+                          InputEntry(
+                            flex: 1,
+                            label: 'Status',
+                            input: DropdownInputSingle<RequirementStatus>(
+                              values: RequirementStatus.values,
+                              controller: state.statusController,
+                              isForm: true,
+                              errorMessage: 'Status is required',
+                            ),
+                          ),
+                          InputEntry(
+                            flex: 1,
+                            label: 'Importance',
+                            input: DropdownInputSingle<RequirementImportance>(
+                              values: RequirementImportance.values,
+                              controller: state.importanceController,
+                              isForm: true,
+                              errorMessage: 'Importance is required',
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Flexible(
+                      flex: 1,
+                      child: Row(
+                        children: [
+                          InputEntry(
+                            flex: 1,
+                            label: 'Component',
+                            input: DropdownInputSingle<String>(
+                              values: Data.currentProject.components,
+                              controller: state.componentController,
+                              isForm: true,
+                              errorMessage: 'Component is required',
+                            ),
+                          ),
+                          InputEntry(
+                            flex: 1,
+                            label: 'Platforms',
+                            input: DropdownInputMultiple<String>(
+                              values: Data.currentProject.platforms,
+                              controller: state.platformsController,
+                              allowDeselection: true,
+                              isForm: true,
+                              errorMessage: 'Platforms is required',
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
@@ -157,20 +176,20 @@ class FormFields extends StatelessWidget {
 }
 
 class InputEntry extends StatelessWidget {
-  final double width;
+  final int flex;
   final String label;
   final Widget input;
 
   const InputEntry({
-    required this.width,
+    required this.flex,
     required this.label,
     required this.input,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: width,
+    return Flexible(
+      flex: flex,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,

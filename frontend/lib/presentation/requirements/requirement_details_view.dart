@@ -15,6 +15,7 @@ import 'package:testflow/presentation/common/table/custom_table.dart';
 import 'package:testflow/presentation/common/text/input_label.dart';
 import 'package:testflow/presentation/common/text/title_4.dart';
 import 'package:testflow/presentation/common/view/base_view.dart';
+import 'package:testflow/utils/palette.dart';
 
 class RequirementDetailsView extends StatelessWidget {
   final RequirementDetailsState state;
@@ -37,7 +38,7 @@ class RequirementDetailsView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             FormFields(state),
-            Table(state),
+            TestCasesBlock(state),
           ],
         ),
       ),
@@ -202,6 +203,49 @@ class InputEntry extends StatelessWidget {
   }
 }
 
+class TestCasesBlock extends StatelessWidget {
+  final RequirementDetailsState state;
+
+  const TestCasesBlock(this.state);
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const HorizontalDivider(
+            color: Palette.borderTable,
+            height: 0.5,
+          ),
+          const VBox(16),
+          const Text(
+            'Test cases',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const VBox(16),
+          Expanded(
+            child: Row(
+              children: [
+                Flexible(
+                  child: Table(state),
+                ),
+                Flexible(
+                  child: Table(state),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class Table extends StatelessWidget {
   final RequirementDetailsState state;
 
@@ -213,11 +257,11 @@ class Table extends StatelessWidget {
       child: CustomTable<TestCase>(
         width: 995,
         columns: const [
-          CustomTableColumn(name: 'Name', ratio: 0.6),
-          CustomTableColumn(name: 'Is automated', ratio: 0.2),
+          CustomTableColumn(name: 'Name', ratio: 0.5),
+          CustomTableColumn(name: 'Is automated', ratio: 0.25),
           CustomTableColumn(
             name: 'Last run',
-            ratio: 0.2,
+            ratio: 0.25,
             alignment: Alignment.centerRight,
           ),
         ],

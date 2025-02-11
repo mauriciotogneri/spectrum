@@ -1,5 +1,6 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
+import 'package:testflow/debug/data.dart';
 import 'package:testflow/domain/model/custom_table_cell.dart';
 import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
@@ -17,7 +18,6 @@ class Requirement implements CustomTableCell {
   final String component;
   final List<String> platforms;
   final List<String> tags;
-  final int numberOfTestCases;
 
   const Requirement({
     required this.id,
@@ -29,8 +29,9 @@ class Requirement implements CustomTableCell {
     required this.component,
     required this.platforms,
     required this.tags,
-    required this.numberOfTestCases,
   });
+
+  int get numberOfTestCases => Data.testCases(this).length;
 
   bool matches({
     required String queryFilter,
@@ -89,19 +90,19 @@ class Requirement implements CustomTableCell {
           ),
         );
       case 2:
+        return CustomChip(text: component);
+      case 3:
         return CustomChip(
           text: type.localized,
           foregroundColor: type.foregroundColor,
           backgroundColor: type.backgroundColor,
         );
-      case 3:
+      case 4:
         return CustomChip(
           text: status.localized,
           foregroundColor: status.foregroundColor,
           backgroundColor: status.backgroundColor,
         );
-      case 4:
-        return CustomChip(text: component);
       case 5:
         return CustomChip(
           text: importance.localized,

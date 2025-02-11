@@ -38,7 +38,6 @@ class Data {
       component: component,
       platforms: platforms,
       tags: [],
-      numberOfTestCases: 0,
     );
     _requirements.add(requirement);
   }
@@ -82,13 +81,12 @@ class Data {
         tags: [
           for (int i = 0; i < Random().nextInt(3) + 1; i++) 'Tag ${i + 1}'
         ],
-        numberOfTestCases: Random().nextInt(20),
       ),
   ];
 
   static final List<TestCase> _testCases = [
     for (final Requirement requirement in _requirements)
-      for (int i = 0; i < 20; i++)
+      for (int i = 0; i < Random().nextInt(50) + 1; i++)
         TestCase(
           requirement: requirement,
           name: 'Test case ${i + 1}',

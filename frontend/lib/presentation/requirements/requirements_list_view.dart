@@ -129,9 +129,9 @@ class Table extends StatelessWidget {
         columns: const [
           CustomTableColumn(name: 'ID', ratio: 0.10),
           CustomTableColumn(name: 'Name', ratio: 0.25),
+          CustomTableColumn(name: 'Component', ratio: 0.15),
           CustomTableColumn(name: 'Type', ratio: 0.15),
           CustomTableColumn(name: 'Status', ratio: 0.10),
-          CustomTableColumn(name: 'Component', ratio: 0.15),
           CustomTableColumn(name: 'Importance', ratio: 0.15),
           CustomTableColumn(name: 'Test cases', ratio: 0.10),
         ],

@@ -1,3 +1,3 @@
 # Frontend
 
-* Change "isAutomated" by Manual/Automated
+* Change "isAutomated" to "executionType" (Manual/Automated)

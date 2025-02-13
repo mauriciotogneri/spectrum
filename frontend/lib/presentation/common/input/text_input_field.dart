@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
-import 'package:testflow/presentation/common/text/input_error.dart';
 import 'package:testflow/utils/palette.dart';
 
 class TextInputField extends StatefulWidget {
@@ -15,7 +14,6 @@ class TextInputField extends StatefulWidget {
   final bool filled;
   final bool obscureText;
   final bool canClear;
-  final bool isForm;
   final String? hint;
   final Iterable<String>? autofillHints;
   final Widget? prefixIcon;
@@ -36,7 +34,6 @@ class TextInputField extends StatefulWidget {
     this.filled = false,
     this.obscureText = false,
     this.canClear = false,
-    this.isForm = false,
     this.hint,
     this.autofillHints,
     this.prefixIcon,
@@ -56,74 +53,39 @@ class _TextInputFieldState extends State<TextInputField> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.isForm) {
-      return SizedBox(
-        width: widget.width,
-        child: ShadInputFormField(
-          placeholder: _placeholder,
-          error: InputError.new,
-          autofocus: widget.autofocus,
-          maxLines: widget.maxLines,
-          readOnly: widget.readOnly,
-          enableInteractiveSelection: !widget.readOnly,
-          enabled: widget.enabled,
-          keyboardType: widget.keyboardType,
-          textInputAction: widget.textInputAction,
-          controller: widget.controller.controller,
-          onChanged: _onChanged,
-          validator: (value) => value.isEmpty ? widget.errorMessage : null,
-          obscureText: widget.obscureText,
-          autofillHints: widget.autofillHints,
-          textCapitalization: widget.capitalization,
-          onSubmitted: (_) => FocusScope.of(context).nextFocus(),
-          prefix: widget.prefixIcon,
-          decoration: _decoration,
-          suffix: _suffix,
-          inputFormatters: _inputFormatters,
+    return SizedBox(
+      width: widget.width,
+      child: TextFormField(
+        autofocus: widget.autofocus,
+        maxLines: widget.maxLines,
+        readOnly: widget.readOnly,
+        enableInteractiveSelection: !widget.readOnly,
+        enabled: widget.enabled,
+        keyboardType: widget.keyboardType,
+        focusNode: widget.controller.focusNode,
+        textInputAction: widget.textInputAction,
+        controller: widget.controller.controller,
+        onChanged: _onChanged,
+        obscureText: widget.obscureText,
+        autofillHints: widget.autofillHints,
+        textCapitalization: widget.capitalization,
+        onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
+        decoration: InputDecoration(
+          border: const OutlineInputBorder(),
+          suffixIcon: _suffixICon,
+          prefixIcon: widget.prefixIcon,
+          filled: widget.filled,
+          hintText: widget.hint,
         ),
-      );
-    } else {
-      return SizedBox(
-        width: widget.width,
-        child: ShadInput(
-          placeholder: _placeholder,
-          autofocus: widget.autofocus,
-          maxLines: widget.maxLines,
-          readOnly: widget.readOnly,
-          enableInteractiveSelection: !widget.readOnly,
-          enabled: widget.enabled,
-          keyboardType: widget.keyboardType,
-          focusNode: widget.controller.focusNode,
-          textInputAction: widget.textInputAction,
-          controller: widget.controller.controller,
-          onChanged: _onChanged,
-          obscureText: widget.obscureText,
-          autofillHints: widget.autofillHints,
-          textCapitalization: widget.capitalization,
-          onSubmitted: (_) => FocusScope.of(context).nextFocus(),
-          prefix: widget.prefixIcon,
-          decoration: _decoration,
-          suffix: _suffix,
-          inputFormatters: _inputFormatters,
-        ),
-      );
-    }
+        inputFormatters: [
+          if (widget.maxLength != null)
+            LengthLimitingTextInputFormatter(widget.maxLength),
+        ],
+      ),
+    );
   }
 
-  Widget? get _placeholder => (widget.hint != null) ? Text(widget.hint!) : null;
-
-  ShadDecoration get _decoration =>
-      const ShadDecoration(color: Palette.background1);
-
-  List<TextInputFormatter>? get _inputFormatters {
-    if (widget.maxLength != null) {
-      return [LengthLimitingTextInputFormatter(widget.maxLength)];
-    } else {
-      return null;
-    }
-  }
-
-  Widget? get _suffix =>
+  Widget? get _suffixICon =>
       (showClear && widget.canClear)
           ? ShadButton.ghost(
             width: 20,
@@ -159,9 +121,7 @@ class TextInputIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ShadThemeData theme = ShadTheme.of(context);
-
-    return Icon(icon, color: theme.colorScheme.mutedForeground);
+    return Icon(icon, size: 16, color: Palette.iconEnabled);
   }
 }
 

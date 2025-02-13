@@ -1,8 +1,8 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:testflow/domain/state/auth/sign_in_state.dart';
 import 'package:testflow/presentation/common/button/primary_button.dart';
+import 'package:testflow/presentation/common/card/custom_card.dart';
 import 'package:testflow/presentation/common/input/password_input_field.dart';
 import 'package:testflow/presentation/common/input/text_input_field.dart';
 import 'package:testflow/presentation/common/text/title_4.dart';
@@ -31,11 +31,17 @@ class Content extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: ShadCard(
+      child: CustomCard(
         width: 350,
-        title: const Title4(text: 'Sign in'),
-        footer: SignInButton(state),
-        child: FormInputs(state),
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Title4(text: 'Sign in'),
+            FormInputs(state),
+            SignInButton(state),
+          ],
+        ),
       ),
     );
   }
@@ -48,9 +54,10 @@ class FormInputs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ShadForm(
+    return Form(
       key: state.formKey,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           const VBox(10),
           TextInputField(

@@ -62,7 +62,6 @@ class FormFields extends StatelessWidget {
                 flex: 2,
                 label: 'Name',
                 input: TextInputField(
-                  isForm: true,
                   controller: state.nameController,
                   errorMessage: 'Name is required',
                 ),
@@ -71,7 +70,6 @@ class FormFields extends StatelessWidget {
                 flex: 1,
                 label: 'ID',
                 input: TextInputField(
-                  isForm: true,
                   controller: state.idController,
                   errorMessage: 'ID is required',
                 ),
@@ -94,7 +92,6 @@ class FormFields extends StatelessWidget {
                 flex: 2,
                 label: 'Description',
                 input: TextInputField(
-                  isForm: true,
                   maxLines: 5,
                   controller: state.descriptionController,
                 ),
@@ -282,7 +279,6 @@ class TestCaseDetails extends StatelessWidget {
                 flex: 4,
                 label: 'Name',
                 input: TextInputField(
-                  isForm: true,
                   controller:
                       TextInputController()..controller.text = testCase.name,
                   errorMessage: 'Name is required',
@@ -319,7 +315,6 @@ class TestCaseDetails extends StatelessWidget {
             flex: 1,
             label: 'Preconditions',
             input: TextInputField(
-              isForm: true,
               maxLines: 4,
               controller:
                   TextInputController()
@@ -330,7 +325,6 @@ class TestCaseDetails extends StatelessWidget {
             flex: 1,
             label: 'Steps',
             input: TextInputField(
-              isForm: true,
               maxLines: 4,
               controller:
                   TextInputController()..controller.text = testCase.steps,
@@ -340,7 +334,6 @@ class TestCaseDetails extends StatelessWidget {
             flex: 1,
             label: 'Expected result',
             input: TextInputField(
-              isForm: true,
               maxLines: 4,
               controller:
                   TextInputController()..controller.text = testCase.expected,

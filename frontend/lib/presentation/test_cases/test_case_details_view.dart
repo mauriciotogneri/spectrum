@@ -55,7 +55,6 @@ class FormFields extends StatelessWidget {
                 width: 840,
                 label: 'Name',
                 input: TextInputField(
-                  isForm: true,
                   controller: state.nameController,
                   errorMessage: 'Name is required',
                 ),
@@ -89,7 +88,6 @@ class FormFields extends StatelessWidget {
             width: 1000,
             label: 'Preconditions',
             input: TextInputField(
-              isForm: true,
               maxLines: 5,
               controller: state.preconditionsController,
             ),
@@ -98,7 +96,6 @@ class FormFields extends StatelessWidget {
             width: 1000,
             label: 'Steps',
             input: TextInputField(
-              isForm: true,
               maxLines: 5,
               controller: state.stepsController,
             ),
@@ -107,7 +104,6 @@ class FormFields extends StatelessWidget {
             width: 1000,
             label: 'Expected result',
             input: TextInputField(
-              isForm: true,
               maxLines: 5,
               controller: state.expectedController,
             ),

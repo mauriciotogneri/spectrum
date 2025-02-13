@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:testflow/utils/palette.dart';
 
 class TextInputField extends StatefulWidget {
@@ -31,7 +30,7 @@ class TextInputField extends StatefulWidget {
     this.enabled = true,
     this.autofocus = false,
     this.readOnly = false,
-    this.filled = false,
+    this.filled = true,
     this.obscureText = false,
     this.canClear = false,
     this.hint,
@@ -75,6 +74,7 @@ class _TextInputFieldState extends State<TextInputField> {
           suffixIcon: _suffixICon,
           prefixIcon: widget.prefixIcon,
           filled: widget.filled,
+          fillColor: Palette.background1,
           hintText: widget.hint,
         ),
         inputFormatters: [
@@ -87,14 +87,10 @@ class _TextInputFieldState extends State<TextInputField> {
 
   Widget? get _suffixICon =>
       (showClear && widget.canClear)
-          ? ShadButton.ghost(
-            width: 20,
-            height: 20,
+          ? IconButton(
+            iconSize: 16,
+            visualDensity: VisualDensity.compact,
             padding: EdgeInsets.zero,
-            decoration: const ShadDecoration(
-              secondaryBorder: ShadBorder.none,
-              secondaryFocusedBorder: ShadBorder.none,
-            ),
             icon: const Icon(Icons.close, color: Palette.iconEnabled),
             onPressed: () {
               widget.controller.clear();

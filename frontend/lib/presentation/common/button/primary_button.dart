@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String text;
@@ -20,10 +19,8 @@ class PrimaryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: expanded ? double.infinity : null,
-      child: ShadButton(
-        onPressed: onPressed,
-        enabled: enabled,
-        icon: (icon != null) ? Icon(icon) : null,
+      child: FilledButton(
+        onPressed: enabled ? onPressed : null,
         child: Text(text),
       ),
     );

@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:testflow/presentation/auth/sign_in_screen.dart';
 import 'package:testflow/presentation/dashboard/dashboard_screen.dart';
 import 'package:testflow/utils/navigation.dart';
@@ -11,31 +10,13 @@ class TestFlow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ShadApp.material(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'TestFlow',
       navigatorKey: Navigation.getRoutes.key,
       navigatorObservers: [Navigation.getRoutes.routeObserver],
-      materialThemeBuilder:
-          (context, theme) => theme.copyWith(
-            colorScheme: ColorScheme.fromSeed(seedColor: Palette.primary),
-          ),
-      theme: ShadThemeData(
-        brightness: Brightness.light,
-        colorScheme: const ShadSlateColorScheme.light(primary: Palette.primary),
-        decoration: ShadDecoration(
-          focusedBorder: ShadBorder.all(
-            width: 1,
-            color: Colors.blue,
-            radius: const BorderRadius.all(Radius.circular(4)),
-          ),
-          secondaryFocusedBorder: ShadBorder.all(
-            width: 2,
-            color: Colors.transparent,
-          ),
-        ),
-      ),
-      home: !kDebugMode ? DashboardScreen.instance() : SignInScreen.instance(),
+      theme: ThemeData(colorSchemeSeed: Palette.primary, useMaterial3: true),
+      home: kDebugMode ? DashboardScreen.instance() : SignInScreen.instance(),
     );
   }
 }

@@ -1,10 +1,9 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:testflow/debug/data.dart';
 import 'package:testflow/domain/model/project.dart';
 import 'package:testflow/domain/state/dashboard/dashboard_state.dart';
-import 'package:testflow/presentation/common/dropdown/dropdown_input_single.dart';
+import 'package:testflow/presentation/common/dropdown/custom_dropdown.dart';
 import 'package:testflow/utils/palette.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -95,16 +94,22 @@ class ProjectSelector extends StatelessWidget {
       width: double.infinity,
       child: Padding(
         padding: const EdgeInsets.only(left: 4, right: 4),
-        child: DropdownInputSingle<Project>(
-          values: Data.projects(),
+        child: CustomDropdown<Project>(
+          values:
+              Data.projects()
+                  .map((e) => DropdownItem(value: e, text: e.name))
+                  .toList(),
           controller: state.projectsController,
           footer: Padding(
             padding: const EdgeInsets.only(bottom: 4),
-            child: ShadButton.ghost(
-              height: 32,
-              icon: const Icon(Icons.add_circle_outline),
-              mainAxisAlignment: MainAxisAlignment.start,
-              child: const Text('Create project'),
+            child: TextButton(
+              child: const Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.add_circle_outline),
+                  Text('Create project'),
+                ],
+              ),
               onPressed: () => state.onCreateProject(context),
             ),
           ),

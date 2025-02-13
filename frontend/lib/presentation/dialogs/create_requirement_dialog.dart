@@ -1,14 +1,12 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:testflow/debug/data.dart';
 import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
 import 'package:testflow/presentation/common/button/primary_button.dart';
 import 'package:testflow/presentation/common/button/secondary_button.dart';
-import 'package:testflow/presentation/common/dropdown/dropdown_input_multiple.dart';
-import 'package:testflow/presentation/common/dropdown/dropdown_input_single.dart';
+import 'package:testflow/presentation/common/dropdown/custom_dropdown.dart';
 import 'package:testflow/presentation/common/input/text_input_field.dart';
 import 'package:testflow/presentation/common/text/input_label.dart';
 import 'package:testflow/presentation/dialogs/base_dialog.dart';
@@ -58,7 +56,7 @@ class FormFields extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ShadForm(
+    return Form(
       key: state.formKey,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -71,10 +69,7 @@ class FormFields extends StatelessWidget {
             errorMessage: 'Name is required',
           ),
           const InputLabel('Description'),
-          TextInputField(
-            maxLines: 5,
-            controller: state.descriptionController,
-          ),
+          TextInputField(maxLines: 5, controller: state.descriptionController),
           Row(
             children: [
               Expanded(
@@ -96,12 +91,14 @@ class FormFields extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const InputLabel('Type'),
-                    DropdownInputSingle<RequirementType>(
+                    CustomDropdown<RequirementType>(
                       width: 240,
-                      values: RequirementType.values,
+                      values:
+                          RequirementType.values
+                              .map(DropdownItem.create)
+                              .toList(),
                       controller: state.typeController,
                       allowDeselection: true,
-                      isForm: true,
                       errorMessage: 'Type is required',
                     ),
                   ],
@@ -117,12 +114,14 @@ class FormFields extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const InputLabel('Status'),
-                    DropdownInputSingle<RequirementStatus>(
+                    CustomDropdown<RequirementStatus>(
                       width: 240,
-                      values: RequirementStatus.values,
+                      values:
+                          RequirementStatus.values
+                              .map(DropdownItem.create)
+                              .toList(),
                       controller: state.statusController,
                       allowDeselection: true,
-                      isForm: true,
                       errorMessage: 'Status is required',
                     ),
                   ],
@@ -134,12 +133,14 @@ class FormFields extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const InputLabel('Importance'),
-                    DropdownInputSingle<RequirementImportance>(
+                    CustomDropdown<RequirementImportance>(
                       width: 240,
-                      values: RequirementImportance.values,
+                      values:
+                          RequirementImportance.values
+                              .map(DropdownItem.create)
+                              .toList(),
                       controller: state.importanceController,
                       allowDeselection: true,
-                      isForm: true,
                       errorMessage: 'Importance is required',
                     ),
                   ],
@@ -155,12 +156,14 @@ class FormFields extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const InputLabel('Component'),
-                    DropdownInputSingle<String>(
+                    CustomDropdown<String>(
                       width: 240,
-                      values: Data.currentProject.components,
+                      values:
+                          Data.currentProject.components
+                              .map(DropdownItem.create)
+                              .toList(),
                       controller: state.componentController,
                       allowDeselection: true,
-                      isForm: true,
                       errorMessage: 'Component is required',
                     ),
                   ],
@@ -172,12 +175,14 @@ class FormFields extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const InputLabel('Platforms'),
-                    DropdownInputMultiple<String>(
+                    CustomDropdown<String>(
                       width: 240,
-                      values: Data.currentProject.platforms,
+                      values:
+                          Data.currentProject.platforms
+                              .map(DropdownItem.create)
+                              .toList(),
                       controller: state.platformsController,
                       allowDeselection: true,
-                      isForm: true,
                       errorMessage: 'Platforms is required',
                     ),
                   ],
@@ -193,21 +198,21 @@ class FormFields extends StatelessWidget {
 }
 
 class CreateRequirementDialogState extends BaseState {
-  final GlobalKey<ShadFormState> formKey = GlobalKey();
+  final GlobalKey<FormState> formKey = GlobalKey();
   final OnCreateRequirement onCreateRequirement;
   final TextInputController idController = TextInputController();
-  final DropdownInputSingleController<RequirementType> typeController =
-      DropdownInputSingleController();
+  final CustomDropdownController<RequirementType> typeController =
+      CustomDropdownController();
   final TextInputController nameController = TextInputController();
   final TextInputController descriptionController = TextInputController();
-  final DropdownInputSingleController<RequirementStatus> statusController =
-      DropdownInputSingleController();
-  final DropdownInputSingleController<RequirementImportance>
-  importanceController = DropdownInputSingleController();
-  final DropdownInputSingleController<String> componentController =
-      DropdownInputSingleController();
-  final DropdownInputMultipleController<String> platformsController =
-      DropdownInputMultipleController();
+  final CustomDropdownController<RequirementStatus> statusController =
+      CustomDropdownController();
+  final CustomDropdownController<RequirementImportance> importanceController =
+      CustomDropdownController();
+  final CustomDropdownController<String> componentController =
+      CustomDropdownController();
+  final CustomDropdownController<String> platformsController =
+      CustomDropdownController();
 
   CreateRequirementDialogState({required this.onCreateRequirement});
 
@@ -221,7 +226,7 @@ class CreateRequirementDialogState extends BaseState {
     status: statusController.selected!,
     importance: importanceController.selected!,
     component: componentController.selected!,
-    platforms: platformsController.selected,
+    platforms: [platformsController.selected!],
   );
 }
 

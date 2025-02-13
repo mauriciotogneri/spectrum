@@ -1,6 +1,5 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:testflow/presentation/common/button/primary_button.dart';
 import 'package:testflow/presentation/common/button/secondary_button.dart';
 import 'package:testflow/presentation/common/input/text_input_field.dart';
@@ -52,7 +51,7 @@ class FormFields extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ShadForm(
+    return Form(
       key: state.formKey,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -76,7 +75,7 @@ class FormFields extends StatelessWidget {
 }
 
 class CreateProjectDialogState extends BaseState {
-  final GlobalKey<ShadFormState> formKey = GlobalKey();
+  final GlobalKey<FormState> formKey = GlobalKey();
   final OnCreateProject onCreateProject;
   final TextInputController nameController = TextInputController();
   final TextInputController descriptionController = TextInputController();

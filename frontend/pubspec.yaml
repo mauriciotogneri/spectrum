@@ -11,9 +11,11 @@ dependencies:
   logger: ^2.5.0
   dafluta: ^5.4.0
   event_bus: ^2.0.1
-  shadcn_ui: ^0.19.3
 
   flutter:
+    sdk: flutter
+
+  flutter_localizations:
     sdk: flutter
 
 dev_dependencies:

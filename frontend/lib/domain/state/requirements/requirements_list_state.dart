@@ -5,7 +5,7 @@ import 'package:testflow/domain/model/requirement.dart';
 import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
-import 'package:testflow/presentation/common/dropdown/dropdown_input_multiple.dart';
+import 'package:testflow/presentation/common/dropdown/custom_dropdown.dart';
 import 'package:testflow/presentation/common/input/text_input_field.dart';
 import 'package:testflow/presentation/dialogs/base_dialog.dart';
 import 'package:testflow/presentation/dialogs/create_requirement_dialog.dart';
@@ -14,16 +14,16 @@ import 'package:testflow/utils/navigation.dart';
 
 class RequirementsListState extends BaseState {
   final TextInputController queryFilterController = TextInputController();
-  final DropdownInputMultipleController<RequirementType> typeFilterController =
-      DropdownInputMultipleController();
-  final DropdownInputMultipleController<RequirementStatus>
-  statusFilterController = DropdownInputMultipleController();
-  final DropdownInputMultipleController<String> componentFilterController =
-      DropdownInputMultipleController();
-  final DropdownInputMultipleController<String> platformFilterController =
-      DropdownInputMultipleController();
-  final DropdownInputMultipleController<RequirementImportance>
-  importanceFilterController = DropdownInputMultipleController();
+  final CustomDropdownController<RequirementType> typeFilterController =
+      CustomDropdownController();
+  final CustomDropdownController<RequirementStatus> statusFilterController =
+      CustomDropdownController();
+  final CustomDropdownController<String> componentFilterController =
+      CustomDropdownController();
+  final CustomDropdownController<String> platformFilterController =
+      CustomDropdownController();
+  final CustomDropdownController<RequirementImportance>
+  importanceFilterController = CustomDropdownController();
   final List<Requirement> _allRequirements = Data.requirements();
 
   List<Requirement> get requirements =>
@@ -31,11 +31,11 @@ class RequirementsListState extends BaseState {
           .where(
             (requirement) => requirement.matches(
               queryFilter: queryFilterController.text,
-              typeFilter: typeFilterController.selected,
-              statusFilter: statusFilterController.selected,
-              componentFilter: componentFilterController.selected,
-              platformFilter: platformFilterController.selected,
-              importanceFilter: importanceFilterController.selected,
+              typeFilter: [], //typeFilterController.selected
+              statusFilter: [], //statusFilterController.selected
+              componentFilter: [], //componentFilterController.selected
+              platformFilter: [], //platformFilterController.selected
+              importanceFilter: [], //importanceFilterController.selected
             ),
           )
           .toList();

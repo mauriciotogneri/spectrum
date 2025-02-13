@@ -1,6 +1,5 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:testflow/domain/model/requirement.dart';
 import 'package:testflow/domain/model/test_case.dart';
 import 'package:testflow/domain/state/test_cases/test_case_details_state.dart';
@@ -8,7 +7,6 @@ import 'package:testflow/presentation/common/input/text_input_field.dart';
 import 'package:testflow/presentation/common/text/input_label.dart';
 import 'package:testflow/presentation/common/text/title_4.dart';
 import 'package:testflow/presentation/common/view/base_view.dart';
-import 'package:testflow/utils/palette.dart';
 
 class TestCaseDetailsView extends StatelessWidget {
   final TestCaseDetailsState state;
@@ -42,7 +40,7 @@ class FormFields extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ShadForm(
+    return Form(
       key: state.formKey,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -63,7 +61,7 @@ class FormFields extends StatelessWidget {
               InputEntry(
                 input: Padding(
                   padding: const EdgeInsets.only(bottom: 8),
-                  child: ShadSwitch(
+                  child: Switch(
                     value: state.testCase.isAutomated,
                     padding: const EdgeInsets.only(
                       top: 0,
@@ -71,14 +69,7 @@ class FormFields extends StatelessWidget {
                       left: 8,
                       right: 0,
                     ),
-                    label: const Text(
-                      'Automated',
-                      style: TextStyle(
-                        color: Palette.textEnabled,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    enabled: false,
+                    onChanged: (_) {},
                   ),
                 ),
               ),

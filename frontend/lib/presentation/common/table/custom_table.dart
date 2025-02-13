@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:testflow/domain/model/custom_table_cell.dart';
 import 'package:testflow/utils/palette.dart';
 
@@ -33,12 +32,13 @@ class CustomTable<T extends CustomTableCell> extends StatelessWidget {
           right: BorderSide(color: Palette.borderTable, width: 0.5),
         ),
       ),
-      child: ClipRRect(
-        borderRadius: const BorderRadius.only(
+      child: const ClipRRect(
+        borderRadius: BorderRadius.only(
           topLeft: Radius.circular(6),
           topRight: Radius.circular(6),
         ),
-        child: ShadTable(
+        child: Placeholder(),
+        /*ShadTable(
           columnCount: columns.length,
           rowCount: rows.length,
           header:
@@ -73,7 +73,7 @@ class CustomTable<T extends CustomTableCell> extends StatelessWidget {
                 alignment: columns[index.column].alignment,
                 child: rows[index.row].cell(index.column),
               ),
-        ),
+        ),*/
       ),
     );
   }

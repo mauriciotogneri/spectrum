@@ -1,6 +1,5 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:testflow/debug/data.dart';
 import 'package:testflow/domain/model/requirement.dart';
 import 'package:testflow/domain/model/test_case.dart';
@@ -8,8 +7,7 @@ import 'package:testflow/domain/state/requirements/requirement_details_state.dar
 import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
-import 'package:testflow/presentation/common/dropdown/dropdown_input_multiple.dart';
-import 'package:testflow/presentation/common/dropdown/dropdown_input_single.dart';
+import 'package:testflow/presentation/common/dropdown/custom_dropdown.dart';
 import 'package:testflow/presentation/common/input/text_input_field.dart';
 import 'package:testflow/presentation/common/table/custom_table.dart';
 import 'package:testflow/presentation/common/text/input_label.dart';
@@ -50,7 +48,7 @@ class FormFields extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ShadForm(
+    return Form(
       key: state.formKey,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -77,10 +75,10 @@ class FormFields extends StatelessWidget {
               InputEntry(
                 flex: 1,
                 label: 'Type',
-                input: DropdownInputSingle<RequirementType>(
-                  values: RequirementType.values,
+                input: CustomDropdown<RequirementType>(
+                  values:
+                      RequirementType.values.map(DropdownItem.create).toList(),
                   controller: state.typeController,
-                  isForm: true,
                   errorMessage: 'Type is required',
                 ),
               ),
@@ -110,20 +108,24 @@ class FormFields extends StatelessWidget {
                           InputEntry(
                             flex: 1,
                             label: 'Status',
-                            input: DropdownInputSingle<RequirementStatus>(
-                              values: RequirementStatus.values,
+                            input: CustomDropdown<RequirementStatus>(
+                              values:
+                                  RequirementStatus.values
+                                      .map(DropdownItem.create)
+                                      .toList(),
                               controller: state.statusController,
-                              isForm: true,
                               errorMessage: 'Status is required',
                             ),
                           ),
                           InputEntry(
                             flex: 1,
                             label: 'Importance',
-                            input: DropdownInputSingle<RequirementImportance>(
-                              values: RequirementImportance.values,
+                            input: CustomDropdown<RequirementImportance>(
+                              values:
+                                  RequirementImportance.values
+                                      .map(DropdownItem.create)
+                                      .toList(),
                               controller: state.importanceController,
-                              isForm: true,
                               errorMessage: 'Importance is required',
                             ),
                           ),
@@ -137,21 +139,25 @@ class FormFields extends StatelessWidget {
                           InputEntry(
                             flex: 1,
                             label: 'Component',
-                            input: DropdownInputSingle<String>(
-                              values: Data.currentProject.components,
+                            input: CustomDropdown<String>(
+                              values:
+                                  Data.currentProject.components
+                                      .map(DropdownItem.create)
+                                      .toList(),
                               controller: state.componentController,
-                              isForm: true,
                               errorMessage: 'Component is required',
                             ),
                           ),
                           InputEntry(
                             flex: 1,
                             label: 'Platforms',
-                            input: DropdownInputMultiple<String>(
-                              values: Data.currentProject.platforms,
+                            input: CustomDropdown<String>(
+                              values:
+                                  Data.currentProject.platforms
+                                      .map(DropdownItem.create)
+                                      .toList(),
                               controller: state.platformsController,
                               allowDeselection: true,
-                              isForm: true,
                               errorMessage: 'Platforms is required',
                             ),
                           ),
@@ -290,7 +296,7 @@ class TestCaseDetails extends StatelessWidget {
                 label: 'Automated',
                 input: Padding(
                   padding: const EdgeInsets.only(bottom: 8),
-                  child: ShadSwitch(
+                  child: Switch(
                     value: testCase.isAutomated,
                     padding: const EdgeInsets.only(
                       top: 0,
@@ -298,14 +304,7 @@ class TestCaseDetails extends StatelessWidget {
                       left: 8,
                       right: 0,
                     ),
-                    label: const Text(
-                      'Automated',
-                      style: TextStyle(
-                        color: Palette.textEnabled,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    enabled: false,
+                    onChanged: (_) {},
                   ),
                 ),
               ),

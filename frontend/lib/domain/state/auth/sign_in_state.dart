@@ -1,11 +1,10 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:testflow/presentation/common/input/text_input_field.dart';
 import 'package:testflow/utils/navigation.dart';
 
 class SignInState extends BaseState {
-  final GlobalKey<ShadFormState> formKey = GlobalKey();
+  final GlobalKey<FormState> formKey = GlobalKey();
   final TextInputController emailController = TextInputController();
   final TextInputController passwordController = TextInputController();
 

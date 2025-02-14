@@ -100,7 +100,7 @@ class TextInputs extends StatelessWidget {
             canClear: true,
             controller: state.queryFilterController,
             onChange: (_) => state.notify(),
-            prefixIcon: const TextInputIcon(Icons.question_mark),
+            prefixIcon: Icons.question_answer,
           ),
         ],
       ),

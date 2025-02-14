@@ -15,7 +15,7 @@ class CustomTextInput extends StatefulWidget {
   final bool canClear;
   final String? hint;
   final Iterable<String>? autofillHints;
-  final Widget? prefixIcon;
+  final IconData? prefixIcon;
   final int? maxLength;
   final int? maxLines;
   final double? width;
@@ -69,13 +69,29 @@ class _CustomTextInputState extends State<CustomTextInput> {
         autofillHints: widget.autofillHints,
         textCapitalization: widget.capitalization,
         onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
+        style: const TextStyle(fontSize: 14),
         decoration: InputDecoration(
-          border: const OutlineInputBorder(),
+          contentPadding: const EdgeInsets.only(left: 12),
+          isDense: true,
+          border: _enabledBorder,
+          enabledBorder: _enabledBorder,
+          disabledBorder: _enabledBorder,
+          focusedBorder: _focusedBorder,
+          errorBorder: _errorBorder,
+          focusedErrorBorder: _errorBorder,
+          prefixIcon:
+              (widget.prefixIcon != null)
+                  ? TextInputIcon(
+                    icon: widget.prefixIcon!,
+                    enabled: widget.enabled,
+                  )
+                  : null,
           suffixIcon: _suffixICon,
-          prefixIcon: widget.prefixIcon,
           filled: widget.filled,
-          fillColor: Palette.background1,
+          fillColor: Palette.backgroundInput,
+          hoverColor: Palette.backgroundInput,
           hintText: widget.hint,
+          hintStyle: const TextStyle(fontSize: 14, color: Palette.textHint),
         ),
         inputFormatters: [
           if (widget.maxLength != null)
@@ -84,6 +100,18 @@ class _CustomTextInputState extends State<CustomTextInput> {
       ),
     );
   }
+
+  InputBorder get _enabledBorder => const OutlineInputBorder(
+    borderSide: BorderSide(color: Palette.borderInputEnabled, width: 0.3),
+  );
+
+  InputBorder get _focusedBorder => const OutlineInputBorder(
+    borderSide: BorderSide(color: Palette.borderInputFocused, width: 0.3),
+  );
+
+  InputBorder get _errorBorder => const OutlineInputBorder(
+    borderSide: BorderSide(color: Palette.borderInputError, width: 0.3),
+  );
 
   Widget? get _suffixICon =>
       (widget.canClear && showClear) ? ClearIcon(_onClear) : null;
@@ -123,12 +151,17 @@ class ClearIcon extends StatelessWidget {
 
 class TextInputIcon extends StatelessWidget {
   final IconData icon;
+  final bool enabled;
 
-  const TextInputIcon(this.icon);
+  const TextInputIcon({required this.icon, required this.enabled});
 
   @override
   Widget build(BuildContext context) {
-    return Icon(icon, size: 16, color: Palette.iconEnabled);
+    return Icon(
+      icon,
+      size: 16,
+      color: enabled ? Palette.iconEnabled : Palette.iconDisabled,
+    );
   }
 }
 

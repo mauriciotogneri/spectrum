@@ -17,6 +17,7 @@ class CustomTextInput extends StatefulWidget {
   final Iterable<String>? autofillHints;
   final IconData? prefixIcon;
   final int? maxLength;
+  final int? minLines;
   final int? maxLines;
   final double? width;
   final String? errorMessage;
@@ -38,7 +39,8 @@ class CustomTextInput extends StatefulWidget {
     this.autofillHints,
     this.prefixIcon,
     this.maxLength = 1000,
-    this.maxLines = 1,
+    this.minLines,
+    this.maxLines,
     this.width,
     this.errorMessage,
     this.onChange,
@@ -58,6 +60,7 @@ class _CustomTextInputState extends State<CustomTextInput> {
       width: widget.width,
       child: TextFormField(
         autofocus: widget.autofocus,
+        minLines: widget.minLines,
         maxLines: widget.maxLines,
         readOnly: widget.readOnly,
         enableInteractiveSelection: !widget.readOnly,

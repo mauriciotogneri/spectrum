@@ -139,9 +139,10 @@ class TextInputs extends StatelessWidget {
           const VBox(16),
           CustomTextInput(
             width: 616,
-            maxLines: 5,
+            minLines: 5,
             hint: 'Description',
             controller: state.descriptionController,
+            keyboardType: TextInputType.multiline,
           ),
         ],
       ),

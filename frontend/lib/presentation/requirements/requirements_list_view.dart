@@ -11,7 +11,7 @@ import 'package:testflow/presentation/common/input/custom_dropdown.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/common/page/pane.dart';
 import 'package:testflow/presentation/common/table/custom_table.dart';
-import 'package:testflow/presentation/common/text/title_4.dart';
+import 'package:testflow/presentation/common/text/title_medium.dart';
 
 class RequirementsListView extends StatelessWidget {
   final RequirementsListState state;
@@ -47,7 +47,7 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Title4(text: 'Requirements');
+    return const TitleMedium(text: 'Requirements');
   }
 }
 

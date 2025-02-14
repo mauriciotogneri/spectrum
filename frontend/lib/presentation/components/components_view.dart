@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:testflow/domain/state/components/components_state.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/common/page/pane.dart';
+import 'package:testflow/presentation/common/text/title_large.dart';
+import 'package:testflow/presentation/common/text/title_medium.dart';
+import 'package:testflow/presentation/common/text/title_small.dart';
 
 class ComponentsView extends StatelessWidget {
   final ComponentsState state;
@@ -35,6 +38,7 @@ class Content extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
+        const VBox(16),
         const Texts(),
         const VBox(16),
         TextInputs(state),
@@ -53,13 +57,14 @@ class Texts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text('Text 1'),
+        TitleLarge(text: 'Title large'),
         VBox(8),
-        Text('Text 2'),
+        TitleMedium(text: 'Title medium'),
         VBox(8),
-        Text('Text 3'),
+        TitleSmall(text: 'Title small'),
       ],
     );
   }

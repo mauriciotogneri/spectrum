@@ -12,7 +12,7 @@ import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/common/page/pane.dart';
 import 'package:testflow/presentation/common/table/custom_table.dart';
 import 'package:testflow/presentation/common/text/input_label.dart';
-import 'package:testflow/presentation/common/text/title_4.dart';
+import 'package:testflow/presentation/common/text/title_medium.dart';
 import 'package:testflow/utils/palette.dart';
 
 class RequirementDetailsView extends StatelessWidget {
@@ -31,7 +31,7 @@ class RequirementDetailsView extends StatelessWidget {
       state: state,
       builder:
           (context, state) => Pane.withBack(
-            header: const Title4(text: 'Requirement details'),
+            header: const TitleMedium(text: 'Requirement details'),
             content: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [FormFields(state), TestCasesBlock(state)],

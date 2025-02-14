@@ -5,7 +5,7 @@ import 'package:testflow/presentation/common/button/primary_button.dart';
 import 'package:testflow/presentation/common/card/custom_card.dart';
 import 'package:testflow/presentation/common/input/custom_password_input.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
-import 'package:testflow/presentation/common/text/title_4.dart';
+import 'package:testflow/presentation/common/text/title_medium.dart';
 
 class SignInScreen extends StatelessWidget {
   final SignInState state;
@@ -37,7 +37,7 @@ class Content extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Title4(text: 'Sign in'),
+            const TitleMedium(text: 'Sign in'),
             FormInputs(state),
             SignInButton(state),
           ],

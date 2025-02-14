@@ -12,10 +12,17 @@ class ComponentsState extends BaseState {
   final GlobalKey<FormState> textFormKey = GlobalKey<FormState>();
   final TextInputController emailController = TextInputController();
   final TextInputController passwordController = TextInputController();
+  bool loading = false;
 
   void onSubmitForm() {
     if (textFormKey.currentState!.validate()) {
-      print('Form submitted');
+      loading = true;
+      notify();
     }
+  }
+
+  void onCancelSubmit() {
+    loading = false;
+    notify();
   }
 }

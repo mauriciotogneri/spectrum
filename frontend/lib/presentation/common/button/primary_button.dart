@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testflow/utils/palette.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String text;
@@ -7,6 +8,7 @@ class PrimaryButton extends StatelessWidget {
   final Color? color;
   final double? width;
   final bool enabled;
+  final bool loading;
 
   const PrimaryButton({
     required this.text,
@@ -15,6 +17,7 @@ class PrimaryButton extends StatelessWidget {
     this.color,
     this.width,
     this.enabled = true,
+    this.loading = false,
   });
 
   @override
@@ -32,9 +35,27 @@ class PrimaryButton extends StatelessWidget {
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
           ),
         ),
-        icon: (icon != null) ? Icon(icon!) : null,
+        icon: _icon,
         label: Text(text),
       ),
     );
+  }
+
+  Widget? get _icon {
+    if (loading) {
+      return const Padding(
+        padding: EdgeInsets.only(right: 4),
+        child: SizedBox(
+          width: 16,
+          height: 16,
+          child: CircularProgressIndicator(
+            strokeWidth: 2,
+            valueColor: AlwaysStoppedAnimation(Palette.iconLoader),
+          ),
+        ),
+      );
+    } else {
+      return icon != null ? Icon(icon) : null;
+    }
   }
 }

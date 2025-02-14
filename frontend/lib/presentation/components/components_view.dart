@@ -186,13 +186,17 @@ class TextInputForm extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Expanded(
-                  child: SecondaryButton(text: 'Cancel', onPressed: () {}),
+                  child: SecondaryButton(
+                    text: 'Cancel',
+                    onPressed: state.onCancelSubmit,
+                  ),
                 ),
                 const HBox(16),
                 Expanded(
                   child: PrimaryButton(
                     text: 'Submit',
                     onPressed: state.onSubmitForm,
+                    loading: state.loading,
                   ),
                 ),
               ],

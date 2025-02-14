@@ -19,7 +19,9 @@ class CustomTextInput extends StatefulWidget {
   final int? maxLength;
   final int? maxLines;
   final double? width;
+  final String? errorMessage;
   final Function(String)? onChange;
+  final bool Function(String value)? validator;
 
   const CustomTextInput({
     required this.controller,
@@ -38,7 +40,9 @@ class CustomTextInput extends StatefulWidget {
     this.maxLength = 1000,
     this.maxLines = 1,
     this.width,
+    this.errorMessage,
     this.onChange,
+    this.validator,
   });
 
   @override
@@ -68,6 +72,13 @@ class _CustomTextInputState extends State<CustomTextInput> {
         textCapitalization: widget.capitalization,
         onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
         style: const TextStyle(fontSize: 14),
+        validator: (value) {
+          if ((widget.validator != null) && !widget.validator!(value ?? '')) {
+            return widget.errorMessage;
+          } else {
+            return null;
+          }
+        },
         decoration: InputDecoration(
           contentPadding: EdgeInsets.only(
             top: 14,

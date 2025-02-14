@@ -14,6 +14,7 @@ import 'package:testflow/presentation/common/text/title_large.dart';
 import 'package:testflow/presentation/common/text/title_medium.dart';
 import 'package:testflow/presentation/common/text/title_small.dart';
 import 'package:testflow/utils/palette.dart';
+import 'package:testflow/utils/validator.dart';
 
 class ComponentsView extends StatelessWidget {
   final ComponentsState state;
@@ -166,6 +167,8 @@ class TextInputForm extends StatelessWidget {
               hint: 'Email',
               controller: state.emailController,
               prefixIcon: Icons.email_outlined,
+              validator: Validator.isNotEmpty,
+              errorMessage: 'Email is required',
             ),
             const VBox(16),
             CustomPasswordInput(
@@ -173,6 +176,8 @@ class TextInputForm extends StatelessWidget {
               hint: 'Password',
               controller: state.passwordController,
               prefixIcon: Icons.lock_outline_rounded,
+              validator: Validator.isNotEmpty,
+              errorMessage: 'Password is required',
             ),
             const VBox(16),
             Row(
@@ -183,7 +188,10 @@ class TextInputForm extends StatelessWidget {
                 ),
                 const HBox(16),
                 Expanded(
-                  child: PrimaryButton(text: 'Submit', onPressed: () {}),
+                  child: PrimaryButton(
+                    text: 'Submit',
+                    onPressed: state.onSubmitForm,
+                  ),
                 ),
               ],
             ),

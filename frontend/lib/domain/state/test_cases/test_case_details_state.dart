@@ -2,7 +2,7 @@ import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:testflow/domain/model/requirement.dart';
 import 'package:testflow/domain/model/test_case.dart';
-import 'package:testflow/presentation/common/input/text_input_field.dart';
+import 'package:testflow/presentation/common/input/custom_text_input.dart';
 
 class TestCaseDetailsState extends BaseState {
   final Requirement requirement;

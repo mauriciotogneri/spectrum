@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:testflow/domain/model/requirement.dart';
 import 'package:testflow/domain/model/test_case.dart';
 import 'package:testflow/domain/state/test_cases/test_case_details_state.dart';
-import 'package:testflow/presentation/common/input/text_input_field.dart';
+import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/common/page/pane.dart';
 import 'package:testflow/presentation/common/text/input_label.dart';
 import 'package:testflow/presentation/common/text/title_4.dart';
@@ -52,7 +52,7 @@ class FormFields extends StatelessWidget {
               InputEntry(
                 width: 840,
                 label: 'Name',
-                input: TextInputField(
+                input: CustomTextInput(
                   controller: state.nameController,
                   errorMessage: 'Name is required',
                 ),
@@ -78,7 +78,7 @@ class FormFields extends StatelessWidget {
           InputEntry(
             width: 1000,
             label: 'Preconditions',
-            input: TextInputField(
+            input: CustomTextInput(
               maxLines: 5,
               controller: state.preconditionsController,
             ),
@@ -86,7 +86,7 @@ class FormFields extends StatelessWidget {
           InputEntry(
             width: 1000,
             label: 'Steps',
-            input: TextInputField(
+            input: CustomTextInput(
               maxLines: 5,
               controller: state.stepsController,
             ),
@@ -94,7 +94,7 @@ class FormFields extends StatelessWidget {
           InputEntry(
             width: 1000,
             label: 'Expected result',
-            input: TextInputField(
+            input: CustomTextInput(
               maxLines: 5,
               controller: state.expectedController,
             ),

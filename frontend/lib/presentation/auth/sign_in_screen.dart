@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:testflow/domain/state/auth/sign_in_state.dart';
 import 'package:testflow/presentation/common/button/primary_button.dart';
 import 'package:testflow/presentation/common/card/custom_card.dart';
-import 'package:testflow/presentation/common/input/password_input_field.dart';
-import 'package:testflow/presentation/common/input/text_input_field.dart';
+import 'package:testflow/presentation/common/input/custom_password_input.dart';
+import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/common/text/title_4.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -60,14 +60,14 @@ class FormInputs extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           const VBox(10),
-          TextInputField(
+          CustomTextInput(
             hint: 'Email',
             controller: state.emailController,
             onChange: (_) => state.notify(),
             prefixIcon: const TextInputIcon(Icons.email_outlined),
           ),
           const VBox(16),
-          PasswordInputField(
+          CustomPasswordInput(
             hint: 'Password',
             controller: state.passwordController,
             onChange: (_) => state.notify(),

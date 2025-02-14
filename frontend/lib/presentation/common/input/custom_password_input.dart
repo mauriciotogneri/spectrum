@@ -1,7 +1,7 @@
-import 'package:testflow/presentation/common/input/text_input_field.dart';
+import 'package:testflow/presentation/common/input/custom_text_input.dart';
 
-class PasswordInputField extends TextInputField {
-  const PasswordInputField({
+class CustomPasswordInput extends CustomTextInput {
+  const CustomPasswordInput({
     required super.hint,
     required super.controller,
     super.keyboardType,

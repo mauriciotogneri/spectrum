@@ -7,8 +7,8 @@ import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
 import 'package:testflow/presentation/common/button/primary_button.dart';
-import 'package:testflow/presentation/common/dropdown/custom_dropdown.dart';
-import 'package:testflow/presentation/common/input/text_input_field.dart';
+import 'package:testflow/presentation/common/input/custom_dropdown.dart';
+import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/common/page/pane.dart';
 import 'package:testflow/presentation/common/table/custom_table.dart';
 import 'package:testflow/presentation/common/text/title_4.dart';
@@ -60,7 +60,7 @@ class TableFilters extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        TextInputField(
+        CustomTextInput(
           width: 300,
           hint: 'Filter…',
           canClear: true,

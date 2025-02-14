@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:testflow/utils/palette.dart';
 
-class TextInputField extends StatefulWidget {
+class CustomTextInput extends StatefulWidget {
   final TextInputController controller;
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
@@ -22,7 +22,7 @@ class TextInputField extends StatefulWidget {
   final Function(String)? onChange;
   final String? errorMessage;
 
-  const TextInputField({
+  const CustomTextInput({
     required this.controller,
     this.keyboardType = TextInputType.none,
     this.textInputAction = TextInputAction.done,
@@ -44,10 +44,10 @@ class TextInputField extends StatefulWidget {
   });
 
   @override
-  State<TextInputField> createState() => _TextInputFieldState();
+  State<CustomTextInput> createState() => _CustomTextInputState();
 }
 
-class _TextInputFieldState extends State<TextInputField> {
+class _CustomTextInputState extends State<CustomTextInput> {
   bool showClear = false;
 
   @override

@@ -7,8 +7,8 @@ import 'package:testflow/domain/state/requirements/requirement_details_state.dar
 import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
-import 'package:testflow/presentation/common/dropdown/custom_dropdown.dart';
-import 'package:testflow/presentation/common/input/text_input_field.dart';
+import 'package:testflow/presentation/common/input/custom_dropdown.dart';
+import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/common/page/pane.dart';
 import 'package:testflow/presentation/common/table/custom_table.dart';
 import 'package:testflow/presentation/common/text/input_label.dart';
@@ -59,7 +59,7 @@ class FormFields extends StatelessWidget {
               InputEntry(
                 flex: 2,
                 label: 'Name',
-                input: TextInputField(
+                input: CustomTextInput(
                   controller: state.nameController,
                   errorMessage: 'Name is required',
                 ),
@@ -67,7 +67,7 @@ class FormFields extends StatelessWidget {
               InputEntry(
                 flex: 1,
                 label: 'ID',
-                input: TextInputField(
+                input: CustomTextInput(
                   controller: state.idController,
                   errorMessage: 'ID is required',
                 ),
@@ -89,7 +89,7 @@ class FormFields extends StatelessWidget {
               InputEntry(
                 flex: 2,
                 label: 'Description',
-                input: TextInputField(
+                input: CustomTextInput(
                   maxLines: 5,
                   controller: state.descriptionController,
                 ),
@@ -284,7 +284,7 @@ class TestCaseDetails extends StatelessWidget {
               InputEntry(
                 flex: 4,
                 label: 'Name',
-                input: TextInputField(
+                input: CustomTextInput(
                   controller:
                       TextInputController()..controller.text = testCase.name,
                   errorMessage: 'Name is required',
@@ -313,7 +313,7 @@ class TestCaseDetails extends StatelessWidget {
           InputEntry(
             flex: 1,
             label: 'Preconditions',
-            input: TextInputField(
+            input: CustomTextInput(
               maxLines: 4,
               controller:
                   TextInputController()
@@ -323,7 +323,7 @@ class TestCaseDetails extends StatelessWidget {
           InputEntry(
             flex: 1,
             label: 'Steps',
-            input: TextInputField(
+            input: CustomTextInput(
               maxLines: 4,
               controller:
                   TextInputController()..controller.text = testCase.steps,
@@ -332,7 +332,7 @@ class TestCaseDetails extends StatelessWidget {
           InputEntry(
             flex: 1,
             label: 'Expected result',
-            input: TextInputField(
+            input: CustomTextInput(
               maxLines: 4,
               controller:
                   TextInputController()..controller.text = testCase.expected,

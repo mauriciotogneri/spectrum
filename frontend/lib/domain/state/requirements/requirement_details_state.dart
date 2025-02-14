@@ -6,8 +6,8 @@ import 'package:testflow/domain/model/test_case.dart';
 import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
-import 'package:testflow/presentation/common/dropdown/custom_dropdown.dart';
-import 'package:testflow/presentation/common/input/text_input_field.dart';
+import 'package:testflow/presentation/common/input/custom_dropdown.dart';
+import 'package:testflow/presentation/common/input/custom_text_input.dart';
 
 class RequirementDetailsState extends BaseState {
   final Requirement requirement;

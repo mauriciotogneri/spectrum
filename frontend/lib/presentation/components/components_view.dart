@@ -1,7 +1,7 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:testflow/domain/state/components/components_state.dart';
-import 'package:testflow/presentation/common/input/text_input_field.dart';
+import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/common/page/pane.dart';
 
 class ComponentsView extends StatelessWidget {
@@ -37,9 +37,9 @@ class Content extends StatelessWidget {
       children: [
         const Texts(),
         const VBox(16),
-        TextFields(state),
+        TextInputs(state),
         const VBox(16),
-        TextFormFields(state),
+        TextInputForm(state),
         const VBox(16),
         DropdownFields(state),
       ],
@@ -65,16 +65,16 @@ class Texts extends StatelessWidget {
   }
 }
 
-class TextFields extends StatelessWidget {
+class TextInputs extends StatelessWidget {
   final ComponentsState state;
 
-  const TextFields(this.state);
+  const TextInputs(this.state);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        TextInputField(
+        CustomTextInput(
           width: 300,
           hint: 'Query',
           controller: state.queryFilterController,
@@ -86,10 +86,10 @@ class TextFields extends StatelessWidget {
   }
 }
 
-class TextFormFields extends StatelessWidget {
+class TextInputForm extends StatelessWidget {
   final ComponentsState state;
 
-  const TextFormFields(this.state);
+  const TextInputForm(this.state);
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +97,7 @@ class TextFormFields extends StatelessWidget {
       key: state.form1Key,
       child: Row(
         children: [
-          TextInputField(
+          CustomTextInput(
             width: 300,
             hint: 'Query',
             controller: state.queryFilterController,

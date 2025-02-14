@@ -6,8 +6,8 @@ import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
 import 'package:testflow/presentation/common/button/primary_button.dart';
 import 'package:testflow/presentation/common/button/secondary_button.dart';
-import 'package:testflow/presentation/common/dropdown/custom_dropdown.dart';
-import 'package:testflow/presentation/common/input/text_input_field.dart';
+import 'package:testflow/presentation/common/input/custom_dropdown.dart';
+import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/common/text/input_label.dart';
 import 'package:testflow/presentation/dialogs/base_dialog.dart';
 import 'package:testflow/utils/navigation.dart';
@@ -63,13 +63,13 @@ class FormFields extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const InputLabel('Name'),
-          TextInputField(
+          CustomTextInput(
             autofocus: true,
             controller: state.nameController,
             errorMessage: 'Name is required',
           ),
           const InputLabel('Description'),
-          TextInputField(maxLines: 5, controller: state.descriptionController),
+          CustomTextInput(maxLines: 5, controller: state.descriptionController),
           Row(
             children: [
               Expanded(
@@ -78,7 +78,7 @@ class FormFields extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const InputLabel('ID'),
-                    TextInputField(
+                    CustomTextInput(
                       controller: state.idController,
                       errorMessage: 'ID is required',
                     ),

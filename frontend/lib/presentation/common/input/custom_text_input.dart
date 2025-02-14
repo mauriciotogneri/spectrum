@@ -71,7 +71,10 @@ class _CustomTextInputState extends State<CustomTextInput> {
         onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
         style: const TextStyle(fontSize: 14),
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.only(left: 12),
+          contentPadding: EdgeInsets.only(
+            left: 12,
+            right: widget.canClear ? 0 : 12,
+          ),
           isDense: true,
           border: _enabledBorder,
           enabledBorder: _enabledBorder,

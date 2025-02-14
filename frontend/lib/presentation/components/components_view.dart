@@ -1,6 +1,8 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:testflow/domain/state/components/components_state.dart';
+import 'package:testflow/presentation/common/button/primary_button.dart';
+import 'package:testflow/presentation/common/button/secondary_button.dart';
 import 'package:testflow/presentation/common/card/custom_card.dart';
 import 'package:testflow/presentation/common/input/custom_password_input.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
@@ -151,6 +153,7 @@ class TextInputForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
+      width: 332,
       child: Form(
         key: state.textFormKey,
         child: Column(
@@ -167,6 +170,19 @@ class TextInputForm extends StatelessWidget {
               hint: 'Password',
               controller: state.passwordController,
               prefixIcon: Icons.lock_outline_rounded,
+            ),
+            const VBox(16),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Expanded(
+                  child: SecondaryButton(text: 'Cancel', onPressed: () {}),
+                ),
+                const HBox(16),
+                Expanded(
+                  child: PrimaryButton(text: 'Submit', onPressed: () {}),
+                ),
+              ],
             ),
           ],
         ),

@@ -90,7 +90,6 @@ class SignInButton extends StatelessWidget {
       text: 'Sign in',
       onPressed: state.onSignIn,
       enabled: state.formFilled,
-      expanded: true,
     );
   }
 }

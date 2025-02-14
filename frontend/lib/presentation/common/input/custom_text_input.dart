@@ -5,8 +5,8 @@ import 'package:testflow/utils/palette.dart';
 class CustomTextInput extends StatefulWidget {
   final TextInputController controller;
   final TextInputType keyboardType;
-  final TextInputAction textInputAction;
   final TextCapitalization capitalization;
+  final TextInputAction? textInputAction;
   final bool enabled;
   final bool autofocus;
   final bool readOnly;
@@ -27,8 +27,8 @@ class CustomTextInput extends StatefulWidget {
   const CustomTextInput({
     required this.controller,
     this.keyboardType = TextInputType.none,
-    this.textInputAction = TextInputAction.next,
     this.capitalization = TextCapitalization.none,
+    this.textInputAction,
     this.enabled = true,
     this.autofocus = false,
     this.readOnly = false,

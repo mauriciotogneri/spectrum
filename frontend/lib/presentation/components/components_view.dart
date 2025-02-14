@@ -1,8 +1,12 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:testflow/domain/state/components/components_state.dart';
+import 'package:testflow/presentation/common/card/custom_card.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/common/page/pane.dart';
+import 'package:testflow/presentation/common/text/body_large.dart';
+import 'package:testflow/presentation/common/text/body_medium.dart';
+import 'package:testflow/presentation/common/text/body_small.dart';
 import 'package:testflow/presentation/common/text/title_large.dart';
 import 'package:testflow/presentation/common/text/title_medium.dart';
 import 'package:testflow/presentation/common/text/title_small.dart';
@@ -56,16 +60,26 @@ class Texts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        TitleLarge(text: 'Title large'),
-        VBox(8),
-        TitleMedium(text: 'Title medium'),
-        VBox(8),
-        TitleSmall(text: 'Title small'),
-      ],
+    return const CustomCard(
+      expand: true,
+      padding: EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TitleLarge(text: 'Title large'),
+          VBox(8),
+          TitleMedium(text: 'Title medium'),
+          VBox(8),
+          TitleSmall(text: 'Title small'),
+          VBox(8),
+          BodyLarge(text: 'Body large'),
+          VBox(8),
+          BodyMedium(text: 'Body medium'),
+          VBox(8),
+          BodySmall(text: 'Body small'),
+        ],
+      ),
     );
   }
 }

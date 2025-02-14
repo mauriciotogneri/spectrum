@@ -6,18 +6,20 @@ class CustomCard extends StatelessWidget {
   final double? width;
   final EdgeInsetsGeometry? padding;
   final Color? backgroundColor;
+  final bool expand;
 
   const CustomCard({
     required this.child,
     this.width,
     this.padding,
     this.backgroundColor,
+    this.expand = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: width,
+      width: expand ? double.infinity : width,
       child: Card(
         color: backgroundColor ?? Palette.background1,
         elevation: 0,

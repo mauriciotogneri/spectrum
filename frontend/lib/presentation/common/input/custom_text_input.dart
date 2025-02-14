@@ -25,7 +25,7 @@ class CustomTextInput extends StatefulWidget {
   const CustomTextInput({
     required this.controller,
     this.keyboardType = TextInputType.none,
-    this.textInputAction = TextInputAction.done,
+    this.textInputAction = TextInputAction.next,
     this.capitalization = TextCapitalization.none,
     this.enabled = true,
     this.autofocus = false,
@@ -36,8 +36,8 @@ class CustomTextInput extends StatefulWidget {
     this.hint,
     this.autofillHints,
     this.prefixIcon,
-    this.maxLength,
-    this.maxLines,
+    this.maxLength = 1000,
+    this.maxLines = 1,
     this.width,
     this.onChange,
     this.errorMessage,
@@ -61,9 +61,9 @@ class _CustomTextInputState extends State<CustomTextInput> {
         enableInteractiveSelection: !widget.readOnly,
         enabled: widget.enabled,
         keyboardType: widget.keyboardType,
-        focusNode: widget.controller.focusNode,
+        focusNode: widget.controller._focusNode,
         textInputAction: widget.textInputAction,
-        controller: widget.controller.controller,
+        controller: widget.controller._controller,
         onChanged: _onChanged,
         obscureText: widget.obscureText,
         autofillHints: widget.autofillHints,
@@ -86,27 +86,38 @@ class _CustomTextInputState extends State<CustomTextInput> {
   }
 
   Widget? get _suffixICon =>
-      (showClear && widget.canClear)
-          ? IconButton(
-            iconSize: 16,
-            visualDensity: VisualDensity.compact,
-            padding: EdgeInsets.zero,
-            icon: const Icon(Icons.close, color: Palette.iconEnabled),
-            onPressed: () {
-              widget.controller.clear();
-              widget.onChange?.call('');
-              setState(() {
-                showClear = false;
-              });
-            },
-          )
-          : null;
+      (widget.canClear && showClear) ? ClearIcon(_onClear) : null;
+
+  void _onClear() {
+    widget.controller.clear();
+    widget.onChange?.call('');
+    setState(() {
+      showClear = false;
+    });
+  }
 
   void _onChanged(String text) {
     widget.onChange?.call(text);
     setState(() {
       showClear = text.isNotEmpty;
     });
+  }
+}
+
+class ClearIcon extends StatelessWidget {
+  final VoidCallback onPressed;
+
+  const ClearIcon(this.onPressed);
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      iconSize: 16,
+      visualDensity: VisualDensity.compact,
+      padding: EdgeInsets.zero,
+      icon: const Icon(Icons.close, color: Palette.iconEnabled),
+      onPressed: onPressed,
+    );
   }
 }
 
@@ -122,20 +133,20 @@ class TextInputIcon extends StatelessWidget {
 }
 
 class TextInputController {
-  final TextEditingController controller = TextEditingController();
-  final FocusNode focusNode = FocusNode();
+  final TextEditingController _controller = TextEditingController();
+  final FocusNode _focusNode = FocusNode();
 
-  String get text => controller.text.trim();
+  String get text => _controller.text.trim();
 
   bool get isEmpty => text.isEmpty;
 
   bool get isNotEmpty => text.isNotEmpty;
 
   set text(String content) {
-    controller.text = content;
+    _controller.text = content;
   }
 
   void clear() {
-    controller.text = '';
+    _controller.text = '';
   }
 }

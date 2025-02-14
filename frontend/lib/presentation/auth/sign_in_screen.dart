@@ -33,7 +33,6 @@ class Content extends StatelessWidget {
     return Center(
       child: CustomCard(
         width: 350,
-        padding: const EdgeInsets.all(16),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

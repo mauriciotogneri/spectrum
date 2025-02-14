@@ -24,11 +24,11 @@ class CustomCard extends StatelessWidget {
         color: backgroundColor ?? Palette.background1,
         elevation: 0,
         shape: RoundedRectangleBorder(
-          side: const BorderSide(color: Palette.borderTable, width: 0.5),
+          side: const BorderSide(color: Palette.borderCard, width: 0.5),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Padding(
-          padding: (padding != null) ? padding! : const EdgeInsets.all(0),
+          padding: padding ?? const EdgeInsets.all(16),
           child: child,
         ),
       ),

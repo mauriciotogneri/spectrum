@@ -285,8 +285,7 @@ class TestCaseDetails extends StatelessWidget {
                 flex: 4,
                 label: 'Name',
                 input: CustomTextInput(
-                  controller:
-                      TextInputController()..controller.text = testCase.name,
+                  controller: TextInputController()..text = testCase.name,
                   errorMessage: 'Name is required',
                 ),
               ),
@@ -315,9 +314,7 @@ class TestCaseDetails extends StatelessWidget {
             label: 'Preconditions',
             input: CustomTextInput(
               maxLines: 4,
-              controller:
-                  TextInputController()
-                    ..controller.text = testCase.preconditions,
+              controller: TextInputController()..text = testCase.preconditions,
             ),
           ),
           InputEntry(
@@ -325,8 +322,7 @@ class TestCaseDetails extends StatelessWidget {
             label: 'Steps',
             input: CustomTextInput(
               maxLines: 4,
-              controller:
-                  TextInputController()..controller.text = testCase.steps,
+              controller: TextInputController()..text = testCase.steps,
             ),
           ),
           InputEntry(
@@ -334,8 +330,7 @@ class TestCaseDetails extends StatelessWidget {
             label: 'Expected result',
             input: CustomTextInput(
               maxLines: 4,
-              controller:
-                  TextInputController()..controller.text = testCase.expected,
+              controller: TextInputController()..text = testCase.expected,
             ),
           ),
         ],

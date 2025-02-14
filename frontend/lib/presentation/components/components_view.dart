@@ -62,7 +62,6 @@ class Texts extends StatelessWidget {
   Widget build(BuildContext context) {
     return const CustomCard(
       expand: true,
-      padding: EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
@@ -91,16 +90,20 @@ class TextInputs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        CustomTextInput(
-          width: 300,
-          hint: 'Query',
-          controller: state.queryFilterController,
-          onChange: (_) => state.notify(),
-          prefixIcon: const TextInputIcon(Icons.email_outlined),
-        ),
-      ],
+    return CustomCard(
+      expand: true,
+      child: Row(
+        children: [
+          CustomTextInput(
+            width: 300,
+            hint: 'Query',
+            canClear: true,
+            controller: state.queryFilterController,
+            onChange: (_) => state.notify(),
+            prefixIcon: const TextInputIcon(Icons.question_mark),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -114,15 +117,15 @@ class TextInputForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Form(
       key: state.form1Key,
-      child: Row(
+      child: const Row(
         children: [
-          CustomTextInput(
+          /*CustomTextInput(
             width: 300,
             hint: 'Query',
             controller: state.queryFilterController,
             onChange: (_) => state.notify(),
             prefixIcon: const TextInputIcon(Icons.email_outlined),
-          ),
+          ),*/
         ],
       ),
     );

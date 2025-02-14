@@ -17,7 +17,7 @@ class ComponentsView extends StatelessWidget {
       state: state,
       builder:
           (context, state) => BaseView.normal(
-            header: const Text('HEADER'),
+            header: const Text('COMPONENTS'),
             content: Content(state),
           ),
     );
@@ -32,8 +32,35 @@ class Content extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
-      children: [TextFields(state), DropdownFields(state)],
+      children: [
+        const Texts(),
+        const VBox(16),
+        TextFields(state),
+        const VBox(16),
+        TextFormFields(state),
+        const VBox(16),
+        DropdownFields(state),
+      ],
+    );
+  }
+}
+
+class Texts extends StatelessWidget {
+  const Texts();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text('Text 1'),
+        VBox(8),
+        Text('Text 2'),
+        VBox(8),
+        Text('Text 3'),
+      ],
     );
   }
 }
@@ -42,6 +69,27 @@ class TextFields extends StatelessWidget {
   final ComponentsState state;
 
   const TextFields(this.state);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        TextInputField(
+          width: 300,
+          hint: 'Query',
+          controller: state.queryFilterController,
+          onChange: (_) => state.notify(),
+          prefixIcon: const TextInputIcon(Icons.email_outlined),
+        ),
+      ],
+    );
+  }
+}
+
+class TextFormFields extends StatelessWidget {
+  final ComponentsState state;
+
+  const TextFormFields(this.state);
 
   @override
   Widget build(BuildContext context) {

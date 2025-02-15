@@ -49,6 +49,14 @@ class Country {
 
   const Country({required this.code, required this.name});
 
-  DropdownItem<Country> get item =>
-      DropdownItem(value: this, text: name, icon: Icons.flag_outlined);
+  DropdownItem<Country> get item => DropdownItem(value: this, text: toString());
+
+  String get flag => code.toUpperCase().replaceAllMapped(
+    RegExp(r'[A-Z]'),
+    (match) =>
+        String.fromCharCode((match.group(0)?.codeUnitAt(0) ?? 0) + 127397),
+  );
+
+  @override
+  String toString() => '$flag  $name';
 }

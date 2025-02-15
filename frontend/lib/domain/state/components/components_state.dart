@@ -41,11 +41,6 @@ class ComponentsState extends BaseState {
     loading = false;
     notify();
   }
-
-  void onCountrySelected(Country country) {
-    countryController.clear();
-    notify();
-  }
 }
 
 class Country {

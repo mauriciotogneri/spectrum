@@ -3,21 +3,21 @@ import 'package:testflow/presentation/common/icon/input_icon.dart';
 import 'package:testflow/utils/palette.dart';
 
 class CustomDropdownSingle<T> extends StatelessWidget {
+  final CustomDropdownSingleController<T> controller;
   final List<DropdownItem<T>> values;
   final String hint;
   final IconData? icon;
   final Widget? footer; // TODO(momo): implement
   final double? width;
-  final bool allowDeselection; // TODO(momo): implement
+  final bool allowDeselection;
   final bool enabled;
-  final CustomDropdownSingleController<T>? controller;
   final Function(T)? onSelected;
   final String? errorMessage; // TODO(momo): implement
 
   const CustomDropdownSingle({
+    required this.controller,
     required this.values,
     required this.hint,
-    this.controller,
     this.icon,
     this.footer,
     this.width,
@@ -29,7 +29,15 @@ class CustomDropdownSingle<T> extends StatelessWidget {
 
   void _onSelected(T? element) {
     if (element != null) {
-      controller?.select(element);
+      controller._onSelected(
+        value: element,
+        allowDeselection: allowDeselection,
+      );
+
+      if (controller.selected == null) {
+        controller._controller.text = '';
+      }
+
       onSelected?.call(element);
     }
   }
@@ -53,7 +61,8 @@ class CustomDropdownSingle<T> extends StatelessWidget {
             requestFocusOnTap: false,
             enabled: enabled,
             hintText: hint,
-            initialSelection: controller?.selected,
+            controller: controller._controller,
+            initialSelection: controller.selected,
             onSelected: (element) {
               FocusScope.of(context).unfocus();
               _onSelected(element);
@@ -77,6 +86,10 @@ class CustomDropdownSingle<T> extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
+                  trailingIcon:
+                      item.value == controller.selected
+                          ? const InputIcon(icon: Icons.check)
+                          : null,
                   style: ButtonStyle(
                     backgroundColor: WidgetStateProperty.all(
                       Palette.backgroundDropdownMenu,
@@ -157,6 +170,7 @@ class DropdownItem<T> {
 }
 
 class CustomDropdownSingleController<T> {
+  final TextEditingController _controller = TextEditingController();
   T? _selected;
 
   T? get selected => _selected;
@@ -167,6 +181,14 @@ class CustomDropdownSingleController<T> {
 
   void clear() {
     _selected = null;
+  }
+
+  void _onSelected({required T value, required bool allowDeselection}) {
+    if (allowDeselection && (_selected == value)) {
+      _selected = null;
+    } else {
+      _selected = value;
+    }
   }
 
   void select(T value) {

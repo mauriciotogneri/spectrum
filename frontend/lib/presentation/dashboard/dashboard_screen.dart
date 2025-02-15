@@ -1,9 +1,6 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
-import 'package:testflow/debug/data.dart';
-import 'package:testflow/domain/model/project.dart';
 import 'package:testflow/domain/state/dashboard/dashboard_state.dart';
-import 'package:testflow/presentation/common/input/custom_dropdown.dart';
 import 'package:testflow/utils/palette.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -91,11 +88,11 @@ class ProjectSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return const SizedBox(
       width: double.infinity,
       child: Padding(
-        padding: const EdgeInsets.only(left: 4, right: 4),
-        child: CustomDropdown<Project>(
+        padding: EdgeInsets.only(left: 4, right: 4),
+        child: Empty() /*CustomDropdownSingle<Project>(
           values:
               Data.projects()
                   .map((e) => DropdownItem(value: e, text: e.name))
@@ -115,7 +112,7 @@ class ProjectSelector extends StatelessWidget {
             ),
           ),
           onChange: state.onChangeProject,
-        ),
+        ),*/,
       ),
     );
   }

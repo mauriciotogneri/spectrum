@@ -6,7 +6,7 @@ import 'package:testflow/domain/events/events.dart';
 import 'package:testflow/domain/events/stack_view_event.dart';
 import 'package:testflow/domain/events/unstack_view_event.dart';
 import 'package:testflow/domain/model/project.dart';
-import 'package:testflow/presentation/common/input/custom_dropdown.dart';
+import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
 import 'package:testflow/presentation/components/components_view.dart';
 import 'package:testflow/presentation/dashboard/dashboard_screen.dart';
 import 'package:testflow/presentation/dialogs/base_dialog.dart';
@@ -16,8 +16,8 @@ class DashboardState extends BaseState {
   int activeView = 0;
   StreamSubscription? _subscriptionStackViewEvent;
   StreamSubscription? _subscriptionUnstackViewEvent;
-  final CustomDropdownController<Project> projectsController =
-      CustomDropdownController();
+  final CustomDropdownSingleController<Project> projectsController =
+      CustomDropdownSingleController();
   final List<Widget> viewsStack = [];
 
   static const int VIEW_REQUIREMENTS = 0;

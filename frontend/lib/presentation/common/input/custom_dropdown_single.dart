@@ -1,96 +1,93 @@
 import 'package:flutter/material.dart';
 import 'package:testflow/utils/palette.dart';
 
-class CustomDropdown<T> extends StatelessWidget {
+class CustomDropdownSingle<T> extends StatelessWidget {
   final List<DropdownItem<T>> values;
   final String hint;
-  final CustomDropdownController<T>? controller;
   final Widget? footer;
   final double? width;
   final bool allowDeselection;
   final bool enabled;
+  final CustomDropdownSingleController<T>? controller;
   final Function(T)? onChange;
   final String? errorMessage;
 
-  const CustomDropdown({
+  const CustomDropdownSingle({
     required this.values,
-    this.hint = '',
+    required this.hint,
     this.controller,
     this.footer,
     this.width,
     this.onChange,
     this.errorMessage,
     this.allowDeselection = false,
-    this.enabled = false,
+    this.enabled = true,
   });
 
   void _onChanged(T? element) {
     controller?._focusNode.unfocus();
 
     if (element != null) {
-      //controller?.select(element);
+      controller?.select(element);
       onChange?.call(element);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return DropdownMenu<T>(
-      enableSearch: false,
-      enabled: enabled,
-      hintText: hint,
-      label: Text(hint),
-      initialSelection: controller?.selected,
-      onSelected: _onChanged,
-      dropdownMenuEntries: [
-        for (final DropdownItem<T> item in values)
-          DropdownMenuEntry(
-            value: item.value,
-            label: item.text,
-            labelWidget: Text(
-              item.text,
-              style: const TextStyle(
-                color: Palette.textEnabled,
-                overflow: TextOverflow.ellipsis,
+    return SizedBox(
+      width: width,
+      child: DropdownMenu<T>(
+        enableSearch: false,
+        enabled: enabled,
+        hintText: hint,
+        label: Text(hint),
+        initialSelection: controller?.selected,
+        onSelected: _onChanged,
+        dropdownMenuEntries: [
+          for (final DropdownItem<T> item in values)
+            DropdownMenuEntry(
+              value: item.value,
+              label: item.text,
+              labelWidget: Text(
+                item.text,
+                style: const TextStyle(
+                  color: Palette.textEnabled,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
             ),
-          ),
-      ],
-      selectedTrailingIcon: const Icon(Icons.keyboard_arrow_up_rounded),
-      trailingIcon: const Icon(Icons.keyboard_arrow_down_rounded),
-      inputDecorationTheme: const InputDecorationTheme(
-        contentPadding: EdgeInsets.all(18),
+        ],
+        selectedTrailingIcon: const Icon(Icons.keyboard_arrow_up_rounded),
+        trailingIcon: const Icon(Icons.keyboard_arrow_down_rounded),
+        inputDecorationTheme: const InputDecorationTheme(
+          contentPadding: EdgeInsets.all(18),
+        ),
+        menuStyle: MenuStyle(
+          elevation: WidgetStateProperty.all(0),
+          padding: WidgetStateProperty.all(const EdgeInsets.all(0)),
+        ),
+        expandedInsets: const EdgeInsets.all(0),
       ),
-      menuStyle: MenuStyle(
-        elevation: WidgetStateProperty.all(0),
-        padding: WidgetStateProperty.all(const EdgeInsets.all(0)),
-      ),
-      expandedInsets: const EdgeInsets.all(0),
     );
   }
 }
 
 class DropdownItem<T> {
   final T value;
-  final Widget? icon;
   final String text;
   final bool enabled;
-  final bool multiselect;
-  bool selected;
+  final Widget? icon;
 
   DropdownItem({
     required this.value,
     required this.text,
     this.enabled = true,
     this.icon,
-    this.multiselect = false,
-    this.selected = false,
   });
 
   factory DropdownItem.create(T value) =>
       DropdownItem(value: value, text: value.toString());
-
-  bool get hasIcon => icon != null;
 
   @override
   bool operator ==(Object other) =>
@@ -102,7 +99,7 @@ class DropdownItem<T> {
   int get hashCode => value.hashCode;
 }
 
-class CustomDropdownController<T> {
+class CustomDropdownSingleController<T> {
   final FocusNode _focusNode = FocusNode();
   T? _selected;
 

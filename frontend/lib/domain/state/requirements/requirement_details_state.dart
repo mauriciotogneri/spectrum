@@ -6,7 +6,7 @@ import 'package:testflow/domain/model/test_case.dart';
 import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
-import 'package:testflow/presentation/common/input/custom_dropdown.dart';
+import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 
 class RequirementDetailsState extends BaseState {
@@ -14,18 +14,18 @@ class RequirementDetailsState extends BaseState {
   final List<TestCase> testCases = [];
   final GlobalKey<FormState> formKey = GlobalKey();
   final TextInputController idController = TextInputController();
-  final CustomDropdownController<RequirementType> typeController =
-      CustomDropdownController();
+  final CustomDropdownSingleController<RequirementType> typeController =
+      CustomDropdownSingleController();
   final TextInputController nameController = TextInputController();
   final TextInputController descriptionController = TextInputController();
-  final CustomDropdownController<RequirementStatus> statusController =
-      CustomDropdownController();
-  final CustomDropdownController<RequirementImportance> importanceController =
-      CustomDropdownController();
-  final CustomDropdownController<String> componentController =
-      CustomDropdownController();
-  final CustomDropdownController<String> platformsController =
-      CustomDropdownController();
+  final CustomDropdownSingleController<RequirementStatus> statusController =
+      CustomDropdownSingleController();
+  final CustomDropdownSingleController<RequirementImportance>
+  importanceController = CustomDropdownSingleController();
+  final CustomDropdownSingleController<String> componentController =
+      CustomDropdownSingleController();
+  final CustomDropdownSingleController<String> platformsController =
+      CustomDropdownSingleController();
   TestCase? selectedTestCase;
 
   bool get formValid => formKey.currentState!.validate();

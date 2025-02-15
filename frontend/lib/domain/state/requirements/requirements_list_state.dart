@@ -5,7 +5,7 @@ import 'package:testflow/domain/model/requirement.dart';
 import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
-import 'package:testflow/presentation/common/input/custom_dropdown.dart';
+import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/dialogs/base_dialog.dart';
 import 'package:testflow/presentation/dialogs/create_requirement_dialog.dart';
@@ -14,16 +14,16 @@ import 'package:testflow/utils/navigation.dart';
 
 class RequirementsListState extends BaseState {
   final TextInputController queryFilterController = TextInputController();
-  final CustomDropdownController<RequirementType> typeFilterController =
-      CustomDropdownController();
-  final CustomDropdownController<RequirementStatus> statusFilterController =
-      CustomDropdownController();
-  final CustomDropdownController<String> componentFilterController =
-      CustomDropdownController();
-  final CustomDropdownController<String> platformFilterController =
-      CustomDropdownController();
-  final CustomDropdownController<RequirementImportance>
-  importanceFilterController = CustomDropdownController();
+  final CustomDropdownSingleController<RequirementType> typeFilterController =
+      CustomDropdownSingleController();
+  final CustomDropdownSingleController<RequirementStatus>
+  statusFilterController = CustomDropdownSingleController();
+  final CustomDropdownSingleController<String> componentFilterController =
+      CustomDropdownSingleController();
+  final CustomDropdownSingleController<String> platformFilterController =
+      CustomDropdownSingleController();
+  final CustomDropdownSingleController<RequirementImportance>
+  importanceFilterController = CustomDropdownSingleController();
   final List<Requirement> _allRequirements = Data.requirements();
 
   List<Requirement> get requirements =>

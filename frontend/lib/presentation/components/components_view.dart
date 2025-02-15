@@ -4,9 +4,11 @@ import 'package:testflow/domain/state/components/components_state.dart';
 import 'package:testflow/presentation/common/button/primary_button.dart';
 import 'package:testflow/presentation/common/button/secondary_button.dart';
 import 'package:testflow/presentation/common/card/custom_card.dart';
+import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
 import 'package:testflow/presentation/common/input/custom_password_input.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
-import 'package:testflow/presentation/common/page/pane.dart';
+import 'package:testflow/presentation/common/layout/pane.dart';
+import 'package:testflow/presentation/common/layout/scrollable_column.dart';
 import 'package:testflow/presentation/common/text/body_large.dart';
 import 'package:testflow/presentation/common/text/body_medium.dart';
 import 'package:testflow/presentation/common/text/body_small.dart';
@@ -43,9 +45,7 @@ class Content extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
+    return ScrollableColumn(
       children: [
         const VBox(16),
         const Texts(),
@@ -227,9 +227,9 @@ class ButtonFields extends StatelessWidget {
           ),
           const VBox(16),
           PrimaryButton(
-            text: 'Submit',
+            text: 'Stop',
             width: 200,
-            icon: Icons.send,
+            icon: Icons.stop,
             color: Palette.borderButtonError,
             onPressed: () {},
           ),
@@ -246,6 +246,19 @@ class DropdownFields extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('Dropdown fields');
+    return CustomCard(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          CustomDropdownSingle(
+            width: 300,
+            values: state.countryItems,
+            hint: 'Country',
+            controller: state.countryController,
+          ),
+        ],
+      ),
+    );
   }
 }

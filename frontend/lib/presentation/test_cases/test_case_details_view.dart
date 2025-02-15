@@ -4,7 +4,7 @@ import 'package:testflow/domain/model/requirement.dart';
 import 'package:testflow/domain/model/test_case.dart';
 import 'package:testflow/domain/state/test_cases/test_case_details_state.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
-import 'package:testflow/presentation/common/page/pane.dart';
+import 'package:testflow/presentation/common/layout/pane.dart';
 import 'package:testflow/presentation/common/text/input_label.dart';
 import 'package:testflow/presentation/common/text/title_medium.dart';
 

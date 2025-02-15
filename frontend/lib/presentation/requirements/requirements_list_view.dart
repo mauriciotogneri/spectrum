@@ -7,9 +7,9 @@ import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
 import 'package:testflow/presentation/common/button/primary_button.dart';
-import 'package:testflow/presentation/common/input/custom_dropdown.dart';
+import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
-import 'package:testflow/presentation/common/page/pane.dart';
+import 'package:testflow/presentation/common/layout/pane.dart';
 import 'package:testflow/presentation/common/table/custom_table.dart';
 import 'package:testflow/presentation/common/text/title_medium.dart';
 
@@ -67,7 +67,7 @@ class TableFilters extends StatelessWidget {
           controller: state.queryFilterController,
           onChange: (_) => state.notify(),
         ),
-        CustomDropdown<RequirementType>(
+        CustomDropdownSingle<RequirementType>(
           width: 200,
           values: RequirementType.values.map(DropdownItem.create).toList(),
           controller: state.typeFilterController,
@@ -75,7 +75,7 @@ class TableFilters extends StatelessWidget {
           allowDeselection: true,
           hint: 'Type',
         ),
-        CustomDropdown<RequirementStatus>(
+        CustomDropdownSingle<RequirementStatus>(
           width: 200,
           values: RequirementStatus.values.map(DropdownItem.create).toList(),
           controller: state.statusFilterController,
@@ -83,7 +83,7 @@ class TableFilters extends StatelessWidget {
           allowDeselection: true,
           hint: 'Status',
         ),
-        CustomDropdown<String>(
+        CustomDropdownSingle<String>(
           width: 200,
           values:
               Data.currentProject.components.map(DropdownItem.create).toList(),
@@ -92,7 +92,7 @@ class TableFilters extends StatelessWidget {
           allowDeselection: true,
           hint: 'Component',
         ),
-        CustomDropdown<String>(
+        CustomDropdownSingle<String>(
           width: 200,
           values:
               Data.currentProject.platforms.map(DropdownItem.create).toList(),
@@ -101,7 +101,7 @@ class TableFilters extends StatelessWidget {
           allowDeselection: true,
           hint: 'Platform',
         ),
-        CustomDropdown<RequirementImportance>(
+        CustomDropdownSingle<RequirementImportance>(
           width: 200,
           values:
               RequirementImportance.values.map(DropdownItem.create).toList(),

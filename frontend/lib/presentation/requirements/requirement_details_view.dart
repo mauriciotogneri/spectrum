@@ -1,15 +1,10 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
-import 'package:testflow/debug/data.dart';
 import 'package:testflow/domain/model/requirement.dart';
 import 'package:testflow/domain/model/test_case.dart';
 import 'package:testflow/domain/state/requirements/requirement_details_state.dart';
-import 'package:testflow/domain/types/requirement_importance.dart';
-import 'package:testflow/domain/types/requirement_status.dart';
-import 'package:testflow/domain/types/requirement_type.dart';
-import 'package:testflow/presentation/common/input/custom_dropdown.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
-import 'package:testflow/presentation/common/page/pane.dart';
+import 'package:testflow/presentation/common/layout/pane.dart';
 import 'package:testflow/presentation/common/table/custom_table.dart';
 import 'package:testflow/presentation/common/text/input_label.dart';
 import 'package:testflow/presentation/common/text/title_medium.dart';
@@ -72,16 +67,16 @@ class FormFields extends StatelessWidget {
                   //errorMessage: 'ID is required',
                 ),
               ),
-              InputEntry(
+              /*InputEntry(
                 flex: 1,
                 label: 'Type',
-                input: CustomDropdown<RequirementType>(
+                input: CustomDropdownSingle<RequirementType>(
                   values:
                       RequirementType.values.map(DropdownItem.create).toList(),
                   controller: state.typeController,
                   errorMessage: 'Type is required',
                 ),
-              ),
+              ),*/
             ],
           ),
           Row(
@@ -94,7 +89,7 @@ class FormFields extends StatelessWidget {
                   controller: state.descriptionController,
                 ),
               ),
-              Flexible(
+              const Flexible(
                 flex: 2,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -105,10 +100,10 @@ class FormFields extends StatelessWidget {
                       flex: 1,
                       child: Row(
                         children: [
-                          InputEntry(
+                          /*InputEntry(
                             flex: 1,
                             label: 'Status',
-                            input: CustomDropdown<RequirementStatus>(
+                            input: CustomDropdownSingle<RequirementStatus>(
                               values:
                                   RequirementStatus.values
                                       .map(DropdownItem.create)
@@ -120,7 +115,7 @@ class FormFields extends StatelessWidget {
                           InputEntry(
                             flex: 1,
                             label: 'Importance',
-                            input: CustomDropdown<RequirementImportance>(
+                            input: CustomDropdownSingle<RequirementImportance>(
                               values:
                                   RequirementImportance.values
                                       .map(DropdownItem.create)
@@ -128,7 +123,7 @@ class FormFields extends StatelessWidget {
                               controller: state.importanceController,
                               errorMessage: 'Importance is required',
                             ),
-                          ),
+                          ),*/
                         ],
                       ),
                     ),
@@ -136,10 +131,10 @@ class FormFields extends StatelessWidget {
                       flex: 1,
                       child: Row(
                         children: [
-                          InputEntry(
+                          /*InputEntry(
                             flex: 1,
                             label: 'Component',
-                            input: CustomDropdown<String>(
+                            input: CustomDropdownSingle<String>(
                               values:
                                   Data.currentProject.components
                                       .map(DropdownItem.create)
@@ -151,7 +146,7 @@ class FormFields extends StatelessWidget {
                           InputEntry(
                             flex: 1,
                             label: 'Platforms',
-                            input: CustomDropdown<String>(
+                            input: CustomDropdownSingle<String>(
                               values:
                                   Data.currentProject.platforms
                                       .map(DropdownItem.create)
@@ -160,7 +155,7 @@ class FormFields extends StatelessWidget {
                               allowDeselection: true,
                               errorMessage: 'Platforms is required',
                             ),
-                          ),
+                          ),*/
                         ],
                       ),
                     ),

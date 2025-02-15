@@ -188,6 +188,7 @@ class TextInputForm extends StatelessWidget {
               values: state.genderItems,
               hint: 'Gender',
               controller: state.genderController,
+              errorMessage: 'Gender is required',
             ),
             const VBox(16),
             Row(

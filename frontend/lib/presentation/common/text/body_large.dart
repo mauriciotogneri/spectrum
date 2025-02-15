@@ -7,12 +7,14 @@ class BodyLarge extends StatelessWidget {
   final TextAlign? align;
   final TextOverflow? overflow;
   final EdgeInsetsGeometry? padding;
+  final Color? color;
 
   const BodyLarge({
     required this.text,
     this.align,
     this.overflow,
     this.padding,
+    this.color,
   });
 
   @override
@@ -20,7 +22,7 @@ class BodyLarge extends StatelessWidget {
     return CustomText(
       text: text,
       size: 16,
-      color: Palette.textBody,
+      color: color ?? Palette.textBody,
       weight: FontWeight.normal,
       align: align,
       overflow: overflow,

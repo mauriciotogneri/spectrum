@@ -9,8 +9,8 @@ class Palette {
   static const Color borderCard = Color(0xffdddddd);
   static const Color borderInputEnabled = Color(0xffaaaaaa);
   static const Color borderInputFocused = Color(0xff1b86dd);
-  static const Color borderInputError = Color(0xffff0000);
-  static const Color borderButtonError = Color(0xffff0000);
+  static const Color borderInputError = Color(0xffC64343);
+  static const Color borderButtonError = Color(0xffC64343);
 
   static const Color background1 = Color(0xffffffff);
   static const Color backgroundInputEnabled = Color(0xffffffff);
@@ -28,5 +28,6 @@ class Palette {
   static const Color textTitle = Color(0xff222222);
   static const Color textBody = Color(0xff444444);
   static const Color textHint = Color(0xffaaaaaa);
+  static const Color textError = Color(0xffC64343);
   static const Color textEnabled = Color(0xff222222); // REVIEW
 }

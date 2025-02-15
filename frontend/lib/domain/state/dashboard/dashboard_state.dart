@@ -79,7 +79,7 @@ class DashboardState extends BaseState {
   }
 
   void onCreateProject(BuildContext context) {
-    projectsController.close();
+    //projectsController.close();
 
     BaseDialog.show(
       context: context,

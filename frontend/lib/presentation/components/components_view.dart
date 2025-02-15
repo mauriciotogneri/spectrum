@@ -256,7 +256,9 @@ class DropdownFields extends StatelessWidget {
             values: state.countryItems,
             hint: 'Country',
             controller: state.countryController,
+            onSelected: state.onCountrySelected,
           ),
+          const VBox(1000),
         ],
       ),
     );

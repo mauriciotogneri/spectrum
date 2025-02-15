@@ -9,7 +9,7 @@ class CustomDropdownSingle<T> extends StatelessWidget {
   final bool allowDeselection;
   final bool enabled;
   final CustomDropdownSingleController<T>? controller;
-  final Function(T)? onChange;
+  final Function(T)? onSelected;
   final String? errorMessage;
 
   const CustomDropdownSingle({
@@ -18,18 +18,18 @@ class CustomDropdownSingle<T> extends StatelessWidget {
     this.controller,
     this.footer,
     this.width,
-    this.onChange,
+    this.onSelected,
     this.errorMessage,
     this.allowDeselection = false,
     this.enabled = true,
   });
 
-  void _onChanged(T? element) {
+  void _onSelected(T? element) {
     controller?._focusNode.unfocus();
 
     if (element != null) {
       controller?.select(element);
-      onChange?.call(element);
+      onSelected?.call(element);
     }
   }
 
@@ -38,17 +38,21 @@ class CustomDropdownSingle<T> extends StatelessWidget {
     return SizedBox(
       width: width,
       child: DropdownMenu<T>(
+        width: width,
         enableSearch: false,
+        enableFilter: false,
         enabled: enabled,
         hintText: hint,
-        label: Text(hint),
         initialSelection: controller?.selected,
-        onSelected: _onChanged,
+        onSelected: _onSelected,
+        focusNode: controller?._focusNode,
         dropdownMenuEntries: [
           for (final DropdownItem<T> item in values)
             DropdownMenuEntry(
               value: item.value,
               label: item.text,
+              enabled: item.enabled,
+              leadingIcon: item.iconWidget,
               labelWidget: Text(
                 item.text,
                 style: const TextStyle(
@@ -56,12 +60,23 @@ class CustomDropdownSingle<T> extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
+              style: ButtonStyle(
+                backgroundColor: WidgetStateProperty.all(
+                  const Color(0xfff8f8f8),
+                ),
+              ),
             ),
         ],
         selectedTrailingIcon: const Icon(Icons.keyboard_arrow_up_rounded),
         trailingIcon: const Icon(Icons.keyboard_arrow_down_rounded),
-        inputDecorationTheme: const InputDecorationTheme(
-          contentPadding: EdgeInsets.all(18),
+        inputDecorationTheme: InputDecorationTheme(
+          contentPadding: const EdgeInsets.all(16),
+          border: _enabledBorder,
+          enabledBorder: _enabledBorder,
+          disabledBorder: _enabledBorder,
+          focusedBorder: _focusedBorder,
+          errorBorder: _errorBorder,
+          focusedErrorBorder: _errorBorder,
         ),
         menuStyle: MenuStyle(
           elevation: WidgetStateProperty.all(0),
@@ -71,13 +86,25 @@ class CustomDropdownSingle<T> extends StatelessWidget {
       ),
     );
   }
+
+  InputBorder get _enabledBorder => const OutlineInputBorder(
+    borderSide: BorderSide(color: Palette.borderInputEnabled, width: 0.5),
+  );
+
+  InputBorder get _focusedBorder => const OutlineInputBorder(
+    borderSide: BorderSide(color: Palette.borderInputFocused, width: 0.5),
+  );
+
+  InputBorder get _errorBorder => const OutlineInputBorder(
+    borderSide: BorderSide(color: Palette.borderInputError, width: 0.5),
+  );
 }
 
 class DropdownItem<T> {
   final T value;
   final String text;
   final bool enabled;
-  final Widget? icon;
+  final IconData? icon;
 
   DropdownItem({
     required this.value,
@@ -88,6 +115,9 @@ class DropdownItem<T> {
 
   factory DropdownItem.create(T value) =>
       DropdownItem(value: value, text: value.toString());
+
+  Widget? get iconWidget =>
+      icon != null ? Icon(icon, size: 20, color: Palette.iconEnabled) : null;
 
   @override
   bool operator ==(Object other) =>
@@ -109,7 +139,9 @@ class CustomDropdownSingleController<T> {
 
   bool get isNotEmpty => _selected != null;
 
-  void close() {}
+  void clear() {
+    _selected = null;
+  }
 
   void select(T value) {
     _selected = value;

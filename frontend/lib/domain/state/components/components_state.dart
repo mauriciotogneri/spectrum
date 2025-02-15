@@ -41,6 +41,11 @@ class ComponentsState extends BaseState {
     loading = false;
     notify();
   }
+
+  void onCountrySelected(Country country) {
+    countryController.clear();
+    notify();
+  }
 }
 
 class Country {
@@ -49,5 +54,6 @@ class Country {
 
   const Country({required this.code, required this.name});
 
-  DropdownItem<Country> get item => DropdownItem(value: this, text: name);
+  DropdownItem<Country> get item =>
+      DropdownItem(value: this, text: name, icon: Icons.flag_outlined);
 }

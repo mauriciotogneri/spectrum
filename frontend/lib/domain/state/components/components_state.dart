@@ -1,5 +1,6 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
+import 'package:testflow/presentation/common/form/form_key.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 
@@ -10,7 +11,7 @@ class ComponentsState extends BaseState {
   final TextInputController commentsController = TextInputController();
   final TextInputController descriptionController = TextInputController();
 
-  final GlobalKey<FormState> textFormKey = GlobalKey<FormState>();
+  final FormKey textFormKey = const FormKey();
   final TextInputController emailController = TextInputController();
   final TextInputController passwordController = TextInputController();
   final CustomDropdownSingleController<Gender> genderController =
@@ -35,7 +36,7 @@ class ComponentsState extends BaseState {
   ];
 
   void onSubmitForm() {
-    if (textFormKey.currentState!.validate()) {
+    if (textFormKey.validate()) {
       loading = true;
       notify();
     }

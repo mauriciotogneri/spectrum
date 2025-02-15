@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:testflow/presentation/common/icon/input_icon.dart';
 import 'package:testflow/utils/palette.dart';
 
 class CustomTextInput extends StatefulWidget {
@@ -96,13 +97,10 @@ class _CustomTextInputState extends State<CustomTextInput> {
           focusedBorder: _focusedBorder,
           errorBorder: _errorBorder,
           focusedErrorBorder: _errorBorder,
-          prefixIcon:
-              (widget.prefixIcon != null)
-                  ? TextInputIcon(
-                    icon: widget.prefixIcon!,
-                    enabled: widget.enabled,
-                  )
-                  : null,
+          prefixIcon: InputIcon.create(
+            widget.prefixIcon,
+            enabled: widget.enabled,
+          ),
           suffixIcon: _suffixICon,
           filled: widget.filled,
           fillColor:
@@ -163,24 +161,8 @@ class ClearIcon extends StatelessWidget {
       iconSize: 16,
       visualDensity: VisualDensity.compact,
       padding: EdgeInsets.zero,
-      icon: const Icon(Icons.close, color: Palette.iconEnabled),
+      icon: const InputIcon(icon: Icons.close),
       onPressed: onPressed,
-    );
-  }
-}
-
-class TextInputIcon extends StatelessWidget {
-  final IconData icon;
-  final bool enabled;
-
-  const TextInputIcon({required this.icon, required this.enabled});
-
-  @override
-  Widget build(BuildContext context) {
-    return Icon(
-      icon,
-      size: 16,
-      color: enabled ? Palette.iconEnabled : Palette.iconDisabled,
     );
   }
 }

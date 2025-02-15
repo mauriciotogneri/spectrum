@@ -253,6 +253,7 @@ class DropdownFields extends StatelessWidget {
         children: [
           CustomDropdownSingle(
             width: 300,
+            icon: Icons.flag_outlined,
             values: state.countryItems,
             hint: 'Country',
             controller: state.countryController,

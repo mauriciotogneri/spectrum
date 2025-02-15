@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:testflow/presentation/common/icon/input_icon.dart';
 import 'package:testflow/utils/palette.dart';
 
 class CustomDropdownSingle<T> extends StatelessWidget {
   final List<DropdownItem<T>> values;
   final String hint;
+  final IconData? icon;
   final Widget? footer;
   final double? width;
   final bool allowDeselection;
@@ -16,6 +18,7 @@ class CustomDropdownSingle<T> extends StatelessWidget {
     required this.values,
     required this.hint,
     this.controller,
+    this.icon,
     this.footer,
     this.width,
     this.onSelected,
@@ -37,6 +40,7 @@ class CustomDropdownSingle<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
+      height: 40,
       child: DropdownMenu<T>(
         width: width,
         enableSearch: false,
@@ -46,16 +50,18 @@ class CustomDropdownSingle<T> extends StatelessWidget {
         initialSelection: controller?.selected,
         onSelected: _onSelected,
         focusNode: controller?._focusNode,
+        textStyle: const TextStyle(color: Palette.textEnabled, fontSize: 14),
         dropdownMenuEntries: [
           for (final DropdownItem<T> item in values)
             DropdownMenuEntry(
               value: item.value,
               label: item.text,
               enabled: item.enabled,
-              leadingIcon: item.iconWidget,
+              leadingIcon: InputIcon.create(item.icon),
               labelWidget: Text(
                 item.text,
                 style: const TextStyle(
+                  fontSize: 14,
                   color: Palette.textEnabled,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -67,10 +73,13 @@ class CustomDropdownSingle<T> extends StatelessWidget {
               ),
             ),
         ],
-        selectedTrailingIcon: const Icon(Icons.keyboard_arrow_up_rounded),
-        trailingIcon: const Icon(Icons.keyboard_arrow_down_rounded),
+        leadingIcon: InputIcon.create(icon),
+        trailingIcon: const InputIcon(icon: Icons.keyboard_arrow_down_rounded),
+        selectedTrailingIcon: const InputIcon(
+          icon: Icons.keyboard_arrow_up_rounded,
+        ),
         inputDecorationTheme: InputDecorationTheme(
-          contentPadding: const EdgeInsets.all(16),
+          contentPadding: const EdgeInsets.only(left: 12, right: 12),
           border: _enabledBorder,
           enabledBorder: _enabledBorder,
           disabledBorder: _enabledBorder,
@@ -115,9 +124,6 @@ class DropdownItem<T> {
 
   factory DropdownItem.create(T value) =>
       DropdownItem(value: value, text: value.toString());
-
-  Widget? get iconWidget =>
-      icon != null ? Icon(icon, size: 20, color: Palette.iconEnabled) : null;
 
   @override
   bool operator ==(Object other) =>

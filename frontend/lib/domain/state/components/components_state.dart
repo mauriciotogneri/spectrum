@@ -42,6 +42,9 @@ class ComponentsState extends BaseState {
   }
 
   void onCancelSubmit() {
+    emailController.clear();
+    passwordController.clear();
+    genderController.clear();
     loading = false;
     notify();
   }

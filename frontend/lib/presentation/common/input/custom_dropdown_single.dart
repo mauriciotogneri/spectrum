@@ -32,11 +32,6 @@ class CustomDropdownSingle<T> extends StatelessWidget {
         value: element,
         allowDeselection: allowDeselection,
       );
-
-      if (controller.selected == null) {
-        controller._controller.text = '';
-      }
-
       onSelected?.call(element);
     }
   }
@@ -210,18 +205,22 @@ class CustomDropdownSingleController<T> {
   bool get isNotEmpty => _selected != null;
 
   void clear() {
-    _selected = null;
+    select(null);
   }
 
   void _onSelected({required T value, required bool allowDeselection}) {
     if (allowDeselection && (_selected == value)) {
-      _selected = null;
+      clear();
     } else {
-      _selected = value;
+      select(value);
     }
   }
 
-  void select(T value) {
+  void select(T? value) {
     _selected = value;
+
+    if (selected == null) {
+      _controller.text = '';
+    }
   }
 }

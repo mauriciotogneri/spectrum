@@ -13,6 +13,10 @@ class ComponentsState extends BaseState {
   final GlobalKey<FormState> textFormKey = GlobalKey<FormState>();
   final TextInputController emailController = TextInputController();
   final TextInputController passwordController = TextInputController();
+  final CustomDropdownSingleController<Country> genderController =
+      CustomDropdownSingleController();
+  final List<DropdownItem<Gender>> genderItems =
+      Gender.values.map((e) => e.item).toList();
   bool loading = false;
 
   final CustomDropdownSingleController<Country> countryController =
@@ -59,4 +63,33 @@ class Country {
 
   @override
   String toString() => '$flag  $name';
+}
+
+enum Gender {
+  male,
+  female;
+
+  String get localized {
+    switch (this) {
+      case Gender.male:
+        return 'Male';
+      case Gender.female:
+        return 'Female';
+    }
+  }
+
+  IconData get icon {
+    switch (this) {
+      case Gender.male:
+        return Icons.male;
+      case Gender.female:
+        return Icons.female;
+    }
+  }
+
+  DropdownItem<Gender> get item =>
+      DropdownItem(value: this, text: toString(), icon: icon);
+
+  @override
+  String toString() => localized;
 }

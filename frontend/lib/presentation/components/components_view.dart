@@ -182,6 +182,15 @@ class TextInputForm extends StatelessWidget {
               errorMessage: 'Password is required',
             ),
             const VBox(16),
+            CustomDropdownSingle(
+              width: 300,
+              icon: Icons.person_outline,
+              values: state.genderItems,
+              hint: 'Gender',
+              allowDeselection: true,
+              controller: state.genderController,
+            ),
+            const VBox(16),
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [

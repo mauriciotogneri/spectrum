@@ -94,6 +94,12 @@ class CustomDropdownSingle<T> extends StatelessWidget {
                                         ? const InputIcon(icon: Icons.check)
                                         : null,
                                 style: ButtonStyle(
+                                  foregroundColor:
+                                      item.enabled
+                                          ? WidgetStateProperty.all(
+                                            Palette.textInput,
+                                          )
+                                          : null,
                                   backgroundColor: WidgetStateProperty.all(
                                     item.enabled
                                         ? Palette.backgroundEmpty

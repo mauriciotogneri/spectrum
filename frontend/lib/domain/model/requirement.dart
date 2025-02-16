@@ -101,11 +101,7 @@ class Requirement implements CustomTableCell {
           backgroundColor: status.backgroundColor,
         );
       case 5:
-        return CustomChip(
-          text: importance.localized,
-          foregroundColor: importance.foregroundColor,
-          backgroundColor: importance.backgroundColor,
-        );
+        return importance.chip;
       case 6:
         return Text(numberOfTestCases.toString());
       default:

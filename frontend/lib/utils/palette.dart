@@ -7,6 +7,9 @@ class Palette {
   static const Color borderTable = Color(0xffdddddd); // REVIEW
   static const Color backgroundTableHeader = Color(0xfff1f4f9); // REVIEW
 
+  static const Color semanticError = Color(0xffeB5757);
+  static const Color semanticSuccess = Color(0xff00d18b);
+
   static const Color menuSelectedDark = Color(0xff4276ad);
   static const Color menuSelectedLight = Color(0xfff3f3fe);
   static const Color menuHover = Color(0xfff3f3f3);

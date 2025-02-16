@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testflow/utils/style.dart';
 
 class CustomText extends StatelessWidget {
   final String text;
@@ -27,7 +28,7 @@ class CustomText extends StatelessWidget {
         text,
         textAlign: align,
         overflow: overflow,
-        style: TextStyle(color: color, fontSize: size, fontWeight: weight),
+        style: Style.textStyle(color: color, size: size, weight: weight),
       ),
     );
   }

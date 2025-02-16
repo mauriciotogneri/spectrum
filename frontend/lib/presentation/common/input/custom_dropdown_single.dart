@@ -135,8 +135,9 @@ class CustomDropdownSingle<T> extends StatelessWidget {
                             errorBorder: CustomInput.errorBorder,
                             focusedErrorBorder: CustomInput.errorBorder,
                             hintStyle: const TextStyle(
-                              fontSize: 14,
                               color: Palette.textHint,
+                              fontSize: 14,
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
                           menuStyle: MenuStyle(

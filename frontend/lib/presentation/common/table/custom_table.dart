@@ -45,7 +45,6 @@ class CustomTable<T extends CustomTableCell> extends StatelessWidget {
               (context, index) => ShadTableCell.header(
                 child: BodyMedium(
                   text: columns[index].name,
-                  style: const TextStyle(color: Palette.textDisabled),
                 ),
               ),
           columnSpanExtent:

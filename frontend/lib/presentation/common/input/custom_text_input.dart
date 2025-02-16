@@ -76,7 +76,11 @@ class _CustomTextInputState extends State<CustomTextInput> {
         autofillHints: widget.autofillHints,
         textCapitalization: widget.capitalization,
         onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
-        style: const TextStyle(fontSize: 14, color: Palette.textInput),
+        style: const TextStyle(
+          color: Palette.textInput,
+          fontSize: 14,
+          overflow: TextOverflow.ellipsis,
+        ),
         validator: (value) {
           if ((widget.validator != null) && !widget.validator!(value ?? '')) {
             return widget.errorMessage;
@@ -110,7 +114,11 @@ class _CustomTextInputState extends State<CustomTextInput> {
                   : Palette.backgroundInputDisabled,
           hoverColor: Palette.backgroundInputEnabled,
           hintText: widget.hint,
-          hintStyle: const TextStyle(fontSize: 14, color: Palette.textHint),
+          hintStyle: const TextStyle(
+            color: Palette.textHint,
+            fontSize: 14,
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
         inputFormatters: [
           if (widget.maxLength != null)

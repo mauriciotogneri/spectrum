@@ -24,11 +24,11 @@ enum RequirementImportance {
   Color get foregroundColor {
     switch (this) {
       case RequirementImportance.low:
-        return const Color(0xff4E4D7D);
+        return Palette.chipBlueForeground;
       case RequirementImportance.medium:
-        return const Color(0xff38683A);
+        return Palette.chipGreenForeground;
       case RequirementImportance.high:
-        return const Color(0xFFBB7F16);
+        return Palette.chipYellowForeground;
       case RequirementImportance.critical:
         return Palette.chipRedForeground;
     }
@@ -37,11 +37,11 @@ enum RequirementImportance {
   Color get backgroundColor {
     switch (this) {
       case RequirementImportance.low:
-        return const Color(0xffEFF0F9);
+        return Palette.chipBlueBackground;
       case RequirementImportance.medium:
-        return const Color(0xffEDF8EC);
+        return Palette.chipGreenBackground;
       case RequirementImportance.high:
-        return const Color(0xffFFF1DF);
+        return Palette.chipYellowBackground;
       case RequirementImportance.critical:
         return Palette.chipRedBackground;
     }

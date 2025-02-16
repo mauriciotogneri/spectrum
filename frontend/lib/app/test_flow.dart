@@ -20,7 +20,7 @@ class TestFlow extends StatelessWidget {
         useMaterial3: true,
         scaffoldBackgroundColor: Palette.backgroundPane,
       ),
-      home: !kDebugMode ? DashboardScreen.instance() : SignInScreen.instance(),
+      home: kDebugMode ? DashboardScreen.instance() : SignInScreen.instance(),
     );
   }
 }

@@ -60,24 +60,27 @@ class ColumnCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Widget widget = Container(
-      color: Palette.backgroundTableHeader,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
-        child: CustomText(
-          text: column.name,
-          color: Palette.textTitle,
-          size: 14,
-          weight: FontWeight.w500,
+    return TableCell(
+      content: Container(
+        color: Palette.backgroundTableHeader,
+        child: Padding(
+          padding: const EdgeInsets.only(
+            left: 16,
+            right: 16,
+            top: 8,
+            bottom: 8,
+          ),
+          child: CustomText(
+            text: column.name,
+            color: Palette.textTitle,
+            size: 14,
+            weight: FontWeight.w500,
+          ),
         ),
       ),
+      width: column.width,
+      alignment: column.alignment,
     );
-
-    if (column.width != null) {
-      return SizedBox(width: column.width, child: widget);
-    } else {
-      return Expanded(child: widget);
-    }
   }
 }
 
@@ -134,6 +137,7 @@ class RowContent<T extends TableElement> extends StatelessWidget {
         onTap: () => onSelected(row),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
             for (final TableColumn column in columns)
               RowCell(column: column, content: row.cell(column)),
@@ -152,15 +156,30 @@ class RowCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Widget widget = Padding(
-      padding: const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
-      child: content,
+    return TableCell(
+      content: Padding(
+        padding: const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+        child: content,
+      ),
+      width: column.width,
+      alignment: column.alignment,
     );
+  }
+}
 
-    if (column.width != null) {
-      return SizedBox(width: column.width, child: widget);
+class TableCell extends StatelessWidget {
+  final Widget content;
+  final double? width;
+  final Alignment? alignment;
+
+  const TableCell({required this.content, this.width, this.alignment});
+
+  @override
+  Widget build(BuildContext context) {
+    if (width != null) {
+      return SizedBox(width: width, child: content);
     } else {
-      return Expanded(child: widget);
+      return Expanded(child: content);
     }
   }
 }
@@ -177,13 +196,6 @@ class TableColumn<T> {
     this.width,
     this.alignment,
   });
-}
-
-class TableCell {
-  final TableColumn column;
-  final Widget content;
-
-  const TableCell({required this.column, required this.content});
 }
 
 abstract class TableElement {

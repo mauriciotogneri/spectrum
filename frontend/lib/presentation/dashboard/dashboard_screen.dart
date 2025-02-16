@@ -4,6 +4,7 @@ import 'package:testflow/domain/model/project.dart';
 import 'package:testflow/domain/state/dashboard/dashboard_state.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
 import 'package:testflow/presentation/common/input/custom_input.dart';
+import 'package:testflow/presentation/common/text/custom_text.dart';
 import 'package:testflow/utils/palette.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -92,7 +93,7 @@ class ProjectSelector extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: Padding(
-        padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 8  ),
+        padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 8),
         child: CustomDropdownSingle<Project>(
           values: state.projects,
           hint: 'Project',
@@ -137,14 +138,15 @@ class NavigationMenuRow extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(top: 8, left: 16, right: 16),
       child: ListTile(
-        title: Text(
-          text,
-          style: Theme.of(context).textTheme.labelLarge!.copyWith(
-            color: Palette.textTitle,
-            fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-          ),
+        title: CustomText(
+          text: text,
+          size: 14,
+          color: isSelected ? Palette.menuSelectedDark : Palette.textBody,
+          weight: FontWeight.bold,
         ),
-        leading: Icon(icon, size: 20),
+        leading: Icon(icon, size: 18),
+        selectedColor: Palette.menuSelectedDark,
+        iconColor: Palette.iconEnabled,
         minLeadingWidth: 0,
         dense: true,
         shape: RoundedRectangleBorder(borderRadius: CustomInput.borderRadius),
@@ -152,15 +154,14 @@ class NavigationMenuRow extends StatelessWidget {
         contentPadding: const EdgeInsets.only(
           top: 0,
           bottom: 0,
-          left: 8,
+          left: 12,
           right: 8,
         ),
         onTap: () => state.onRootViewChange(index),
         selected: isSelected,
-        selectedTileColor: Palette.menuSelected,
-        selectedColor: Palette.iconEnabled,
-        hoverColor: Palette.menuSelected,
-        iconColor: Palette.iconDisabled,
+        tileColor: Palette.transparent,
+        selectedTileColor: Palette.menuSelectedLight,
+        hoverColor: isSelected ? Palette.transparent : Palette.menuHover,
       ),
     );
   }

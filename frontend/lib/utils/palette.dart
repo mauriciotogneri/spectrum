@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 
 class Palette {
+  static const Color transparent = Colors.transparent;
   static const Color primary = Colors.blue;
 
-  static const Color menuSelected = Color(0xffd0d0d0); // REVIEW
-
   static const Color borderTable = Color(0xffdddddd); // REVIEW
+  static const Color backgroundTableHeader = Color(0xFFF1F4F9); // REVIEW
+
+  static const Color menuSelectedDark = Color(0xff4276ad);
+  static const Color menuSelectedLight = Color(0xfff3f3fe);
+  static const Color menuHover = Color(0xfff3f3f3);
+
   static const Color borderCard = Color(0xffdddddd);
   static const Color borderInputEnabled = Color(0xffe6ebf1);
   static const Color borderInputFocused = Color(0xff1b86dd);
@@ -19,8 +24,6 @@ class Palette {
   static const Color backgroundInputHover = Color(0xfffafafa);
   static const Color backgroundDropdownMenu = Color(0xfff8f8f8);
   static const Color backgroundPane = Color(0xfff3f3f3);
-
-  static const Color backgroundTableHeader = Color(0xFFF1F4F9); // REVIEW
 
   static const Color iconEnabled = Color(0xff9c9c9c);
   static const Color iconDisabled = Color(0xffbbbbbb);

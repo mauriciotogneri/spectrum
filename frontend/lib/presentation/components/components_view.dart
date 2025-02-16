@@ -186,7 +186,7 @@ class Row2Column1 extends StatelessWidget {
     return CustomCard(
       width: 332,
       child: Form(
-        key: state.textFormKey,
+        key: state.signInFormKey,
         child: Column(
           children: [
             CustomTextInput(
@@ -292,6 +292,13 @@ class Row2Column3 extends StatelessWidget {
             hint: 'Country',
             allowDeselection: true,
             controller: state.countryController,
+          ),
+          const VBox(16),
+          CustomDropdownSingle(
+            width: 200,
+            values: state.dayItems,
+            hint: 'Day',
+            controller: state.dayController,
           ),
         ],
       ),

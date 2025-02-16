@@ -5,13 +5,15 @@ import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 
 class ComponentsState extends BaseState {
+  // Row 1 / Column 2
   final TextInputController queryController = TextInputController();
   final TextInputController nameController = TextInputController();
   final TextInputController occupationController = TextInputController();
   final TextInputController commentsController = TextInputController();
   final TextInputController descriptionController = TextInputController();
 
-  final FormKey textFormKey = const FormKey();
+  // Row 2 / Column 1
+  final FormKey signInFormKey = const FormKey();
   final TextInputController emailController = TextInputController();
   final TextInputController passwordController = TextInputController();
   final CustomDropdownSingleController<Gender> genderController =
@@ -20,6 +22,7 @@ class ComponentsState extends BaseState {
       Gender.values.map((e) => e.item).toList();
   bool loading = false;
 
+  // Row 2 / Column 3
   final CustomDropdownSingleController<Country> countryController =
       CustomDropdownSingleController();
   final List<DropdownItem<Country>> countryItems = [
@@ -34,9 +37,20 @@ class ComponentsState extends BaseState {
     const Country(code: 'PL', name: 'Poland').item,
     const Country(code: 'NL', name: 'Netherlands').item,
   ];
+  final CustomDropdownSingleController<String> dayController =
+      CustomDropdownSingleController();
+  final List<DropdownItem<String>> dayItems = [
+    DropdownItem.create('Monday'),
+    DropdownItem.create('Tuesday'),
+    DropdownItem.create('Wednesday'),
+    DropdownItem.create('Thursday'),
+    DropdownItem.create('Friday'),
+    DropdownItem.create('Saturday'),
+    DropdownItem.create('Sunday'),
+  ];
 
   void onSubmitForm() {
-    if (textFormKey.validate()) {
+    if (signInFormKey.validate()) {
       loading = true;
       notify();
     }

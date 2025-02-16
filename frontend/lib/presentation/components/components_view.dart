@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:testflow/domain/state/components/components_state.dart';
 import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
+import 'package:testflow/domain/types/requirement_type.dart';
 import 'package:testflow/presentation/common/button/primary_button.dart';
 import 'package:testflow/presentation/common/button/secondary_button.dart';
 import 'package:testflow/presentation/common/card/custom_card.dart';
@@ -342,6 +343,16 @@ class Row2Column4 extends StatelessWidget {
               RequirementStatus.active.chip,
               const VBox(16),
               RequirementStatus.inactive.chip,
+            ],
+          ),
+          const HBox(16),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              RequirementType.functional.chip,
+              const VBox(16),
+              RequirementType.non_functional.chip,
             ],
           ),
         ],

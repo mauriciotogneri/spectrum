@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:testflow/presentation/common/chip/custom_chip.dart';
+import 'package:testflow/utils/palette.dart';
 
 enum RequirementType {
   functional,
@@ -16,20 +18,26 @@ enum RequirementType {
   Color get foregroundColor {
     switch (this) {
       case RequirementType.functional:
-        return const Color(0xff4E4D7D);
+        return Palette.chipGreenForeground;
       case RequirementType.non_functional:
-        return const Color(0xff38683A);
+        return Palette.chipBlueForeground;
     }
   }
 
   Color get backgroundColor {
     switch (this) {
       case RequirementType.functional:
-        return const Color(0xffEFF0F9);
+        return Palette.chipGreenBackground;
       case RequirementType.non_functional:
-        return const Color(0xffEDF8EC);
+        return Palette.chipBlueBackground;
     }
   }
+
+  CustomChip get chip => CustomChip(
+    text: localized,
+    backgroundColor: backgroundColor,
+    foregroundColor: foregroundColor,
+  );
 
   @override
   String toString() => localized;

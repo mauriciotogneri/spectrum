@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testflow/presentation/common/text/custom_text.dart';
 import 'package:testflow/utils/palette.dart';
 
 class CustomChip extends StatelessWidget {
@@ -34,13 +35,11 @@ class CustomChip extends StatelessWidget {
           left: chipSize,
           right: chipSize,
         ),
-        child: Text(
-          text,
-          style: TextStyle(
-            color: chipForegroundColor,
-            fontSize: chipSize,
-            overflow: TextOverflow.ellipsis,
-          ),
+        child: CustomText(
+          text: text,
+          color: chipForegroundColor,
+          size: chipSize,
+          overflow: TextOverflow.ellipsis,
         ),
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:testflow/presentation/common/input/custom_input.dart';
+import 'package:testflow/utils/palette.dart';
 
 class SecondaryButton extends StatelessWidget {
   final String text;
@@ -27,11 +28,15 @@ class SecondaryButton extends StatelessWidget {
         onPressed: enabled ? onPressed : null,
         style: ButtonStyle(
           foregroundColor:
-              (color != null) ? WidgetStateProperty.all(color) : null,
+              (color != null)
+                  ? WidgetStateProperty.all(color)
+                  : WidgetStateProperty.all(Palette.textSecondary),
           side:
               (color != null)
                   ? WidgetStateProperty.all(BorderSide(color: color!))
-                  : null,
+                  : WidgetStateProperty.all(
+                    const BorderSide(color: Palette.borderButtonSecondary),
+                  ),
           shape: WidgetStateProperty.all(
             RoundedRectangleBorder(borderRadius: CustomInput.borderRadius),
           ),

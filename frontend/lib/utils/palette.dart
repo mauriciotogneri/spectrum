@@ -7,14 +7,16 @@ class Palette {
 
   static const Color borderTable = Color(0xffdddddd); // REVIEW
   static const Color borderCard = Color(0xffdddddd);
-  static const Color borderInputEnabled = Color(0xffE6EBF1);
+  static const Color borderInputEnabled = Color(0xffe6ebf1);
   static const Color borderInputFocused = Color(0xff1b86dd);
   static const Color borderInputError = Color(0xffC64343);
+  static const Color borderButtonSecondary = Color(0xffbbbbbb);
   static const Color borderButtonError = Color(0xffC64343);
 
   static const Color background1 = Color(0xffffffff);
   static const Color backgroundInputEnabled = Color(0xffffffff);
   static const Color backgroundInputDisabled = Color(0xfff3f3f3);
+  static const Color backgroundInputHover = Color(0xfffafafa);
   static const Color backgroundDropdownMenu = Color(0xfff8f8f8);
   static const Color backgroundPane = Color(0xfff3f3f3);
 
@@ -26,6 +28,7 @@ class Palette {
 
   static const Color textTitle = Color(0xff222222);
   static const Color textBody = Color(0xff444444);
+  static const Color textSecondary = Color(0xff777777);
   static const Color textHint = Color(0xff9c9c9c);
   static const Color textError = Color(0xffC64343);
 

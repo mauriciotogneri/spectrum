@@ -48,9 +48,7 @@ class Content extends StatelessWidget {
     return ScrollableColumn(
       children: [
         const VBox(16),
-        const Texts(),
-        const VBox(16),
-        TextInputs(state),
+        Row1(state),
         const VBox(16),
         TextInputForm(state),
         const VBox(16),
@@ -62,13 +60,29 @@ class Content extends StatelessWidget {
   }
 }
 
-class Texts extends StatelessWidget {
-  const Texts();
+class Row1 extends StatelessWidget {
+  final ComponentsState state;
+
+  const Row1(this.state);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const Row1Column1(),
+        const HBox(16),
+        Expanded(child: Row1Column2(state)),
+      ],
+    );
+  }
+}
+
+class Row1Column1 extends StatelessWidget {
+  const Row1Column1();
 
   @override
   Widget build(BuildContext context) {
     return const CustomCard(
-      expand: true,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
@@ -90,15 +104,14 @@ class Texts extends StatelessWidget {
   }
 }
 
-class TextInputs extends StatelessWidget {
+class Row1Column2 extends StatelessWidget {
   final ComponentsState state;
 
-  const TextInputs(this.state);
+  const Row1Column2(this.state);
 
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      expand: true,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,

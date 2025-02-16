@@ -23,6 +23,7 @@ class CustomCard extends StatelessWidget {
       child: Card(
         color: backgroundColor ?? Palette.background1,
         elevation: 0,
+        margin: EdgeInsets.zero,
         shape: RoundedRectangleBorder(
           side: const BorderSide(color: Palette.borderCard, width: 0.5),
           borderRadius: BorderRadius.circular(8),

@@ -142,7 +142,7 @@ class NavigationMenuRow extends StatelessWidget {
           text: text,
           size: 14,
           color: isSelected ? Palette.menuSelectedDark : Palette.textBody,
-          weight: FontWeight.bold,
+          weight: FontWeight.w600,
         ),
         leading: Icon(icon, size: 18),
         selectedColor: Palette.menuSelectedDark,

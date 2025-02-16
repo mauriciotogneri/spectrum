@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:testflow/domain/model/custom_table_cell.dart';
+import 'package:testflow/presentation/common/text/custom_text.dart';
 import 'package:testflow/utils/palette.dart';
 
 class CustomTable<T extends CustomTableCell> extends StatelessWidget {
@@ -78,7 +79,38 @@ class ColumnsHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(children: []);
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [for (final column in columns) ColumnCell(column)],
+    );
+  }
+}
+
+class ColumnCell extends StatelessWidget {
+  final TableColumn column;
+
+  const ColumnCell(this.column);
+
+  @override
+  Widget build(BuildContext context) {
+    final Widget widget = Container(
+      color: Palette.backgroundTableHeader,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        child: CustomText(
+          text: column.name,
+          color: Palette.textTitle,
+          size: 14,
+          weight: FontWeight.w500,
+        ),
+      ),
+    );
+
+    if (column.width != null) {
+      return SizedBox(width: column.width, child: widget);
+    } else {
+      return Expanded(child: widget);
+    }
   }
 }
 

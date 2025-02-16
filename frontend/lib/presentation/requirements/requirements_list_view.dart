@@ -130,12 +130,12 @@ class Table extends StatelessWidget {
     return CustomTable<Requirement>(
       columns: const [
         TableColumn(name: 'ID', width: 100),
-        TableColumn(name: 'Name', width: 100),
-        TableColumn(name: 'Component', width: 100),
-        TableColumn(name: 'Type', width: 100),
-        TableColumn(name: 'Status', width: 100),
-        TableColumn(name: 'Importance', width: 100),
-        TableColumn(name: 'Test cases', width: 100),
+        TableColumn(name: 'Name'),
+        TableColumn(name: 'Component', width: 150),
+        TableColumn(name: 'Type', width: 150),
+        TableColumn(name: 'Status', width: 150),
+        TableColumn(name: 'Importance', width: 150),
+        TableColumn(name: 'Test cases', width: 150),
       ],
       rows: state.requirements,
       onSelected: state.onRequirementSelected,

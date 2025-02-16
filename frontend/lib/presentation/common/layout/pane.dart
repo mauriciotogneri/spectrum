@@ -11,7 +11,7 @@ class Pane extends StatelessWidget {
   const Pane({
     required this.child,
     required this.padding,
-    this.backgroundColor = Palette.background2,
+    this.backgroundColor = Palette.backgroundPane,
   });
 
   @override

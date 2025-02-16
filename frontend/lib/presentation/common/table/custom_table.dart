@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:testflow/presentation/common/text/custom_text.dart';
 import 'package:testflow/utils/palette.dart';
 
@@ -31,6 +30,7 @@ class CustomTable<T extends TableElement> extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             ColumnsHeader(columns),
+            const Divider(height: 1, color: Palette.borderInputEnabled),
             RowsList(columns: columns, rows: rows, onSelected: onSelected),
           ],
         ),
@@ -98,7 +98,8 @@ class RowsList<T extends TableElement> extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        for (final T row in rows) RowContent(columns: columns, row: row),
+        for (final T row in rows)
+          RowContent(columns: columns, row: row, onSelected: onSelected),
       ],
     );
   }
@@ -107,17 +108,28 @@ class RowsList<T extends TableElement> extends StatelessWidget {
 class RowContent<T extends TableElement> extends StatelessWidget {
   final List<TableColumn> columns;
   final T row;
+  final Function(T) onSelected;
 
-  const RowContent({required this.columns, required this.row});
+  const RowContent({
+    required this.columns,
+    required this.row,
+    required this.onSelected,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        for (final TableColumn column in columns)
-          RowCell(column: column, content: row.cell(column)),
-      ],
+    return Material(
+      color: Palette.backgroundEmpty,
+      child: InkWell(
+        onTap: () => onSelected(row),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            for (final TableColumn column in columns)
+              RowCell(column: column, content: row.cell(column)),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -21,7 +21,7 @@ class CustomTable<T extends CustomTableCell> extends StatelessWidget {
     return Container(
       width: width,
       decoration: const BoxDecoration(
-        color: Palette.background1,
+        color: Palette.backgroundEmpty,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(6),
           topRight: Radius.circular(6),

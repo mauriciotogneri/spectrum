@@ -54,11 +54,13 @@ class CustomDropdownSingle<T> extends StatelessWidget {
               width: width,
               height: 40,
               child: Material(
-                color: Palette.background1,
+                color: Palette.backgroundEmpty,
                 borderRadius: CustomInput.borderRadius,
                 child: InkWell(
                   onTap: () {},
-                  overlayColor: WidgetStateProperty.all(Palette.background1),
+                  overlayColor: WidgetStateProperty.all(
+                    Palette.backgroundEmpty,
+                  ),
                   borderRadius: CustomInput.borderRadius,
                   child: DropdownMenu<T>(
                     width: width,

@@ -21,7 +21,7 @@ class CustomCard extends StatelessWidget {
     return SizedBox(
       width: expand ? double.infinity : width,
       child: Card(
-        color: backgroundColor ?? Palette.background1,
+        color: backgroundColor ?? Palette.backgroundEmpty,
         elevation: 0,
         margin: EdgeInsets.zero,
         shape: RoundedRectangleBorder(

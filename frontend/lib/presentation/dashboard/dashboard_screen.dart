@@ -44,15 +44,13 @@ class NavigationMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      elevation: 5,
-      color: Palette.background1,
+      elevation: 0,
+      color: Palette.backgroundEmpty,
       child: SizedBox(
         width: 250,
         child: Column(
           children: [
-            const VBox(4),
             ProjectSelector(state),
-            const VBox(4),
             NavigationMenuRow(
               state: state,
               text: 'Requirements',
@@ -94,9 +92,8 @@ class ProjectSelector extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: Padding(
-        padding: const EdgeInsets.only(left: 8, right: 8, top: 8),
+        padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 8  ),
         child: CustomDropdownSingle<Project>(
-          width: 240,
           values: state.projects,
           hint: 'Project',
           controller: state.projectsController,
@@ -138,7 +135,7 @@ class NavigationMenuRow extends StatelessWidget {
     final bool isSelected = state.activeView == index;
 
     return Container(
-      margin: const EdgeInsets.only(top: 4, left: 8, right: 8),
+      margin: const EdgeInsets.only(top: 8, left: 16, right: 16),
       child: ListTile(
         title: Text(
           text,

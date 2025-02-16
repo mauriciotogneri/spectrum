@@ -13,7 +13,7 @@ class Palette {
   static const Color borderButtonSecondary = Color(0xffbbbbbb);
   static const Color borderButtonError = Color(0xffC64343);
 
-  static const Color background1 = Color(0xffffffff);
+  static const Color backgroundEmpty = Color(0xffffffff);
   static const Color backgroundInputEnabled = Color(0xffffffff);
   static const Color backgroundInputDisabled = Color(0xfff3f3f3);
   static const Color backgroundInputHover = Color(0xfffafafa);

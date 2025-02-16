@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testflow/presentation/common/chip/custom_chip.dart';
 
 enum RequirementImportance {
   low,
@@ -44,6 +45,12 @@ enum RequirementImportance {
         return const Color(0xffFDE9E6);
     }
   }
+
+  CustomChip get chip => CustomChip(
+    text: localized,
+    backgroundColor: backgroundColor,
+    foregroundColor: foregroundColor,
+  );
 
   @override
   String toString() => localized;

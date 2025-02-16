@@ -15,7 +15,7 @@ class CustomChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double chipSize = size ?? 14;
+    final double chipSize = size ?? 12;
     final Color chipForegroundColor =
         foregroundColor ?? const Color(0xff515055);
     final Color chipBackgroundColor =

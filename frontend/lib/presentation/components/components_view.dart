@@ -1,6 +1,7 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:testflow/domain/state/components/components_state.dart';
+import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/presentation/common/button/primary_button.dart';
 import 'package:testflow/presentation/common/button/secondary_button.dart';
 import 'package:testflow/presentation/common/card/custom_card.dart';
@@ -171,6 +172,8 @@ class Row2 extends StatelessWidget {
         const Row2Column2(),
         const HBox(16),
         Row2Column3(state),
+        const HBox(16),
+        const Row2Column4(),
       ],
     );
   }
@@ -300,6 +303,29 @@ class Row2Column3 extends StatelessWidget {
             hint: 'Day',
             controller: state.dayController,
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class Row2Column4 extends StatelessWidget {
+  const Row2Column4();
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomCard(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          RequirementImportance.critical.chip,
+          const VBox(16),
+          RequirementImportance.high.chip,
+          const VBox(16),
+          RequirementImportance.medium.chip,
+          const VBox(16),
+          RequirementImportance.low.chip,
         ],
       ),
     );

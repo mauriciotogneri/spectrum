@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:testflow/presentation/common/layout/scrollable_column.dart';
 import 'package:testflow/presentation/common/text/custom_text.dart';
 import 'package:testflow/utils/palette.dart';
 
@@ -96,19 +95,16 @@ class RowsList<T extends TableElement> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 500,
-      child: ScrollableColumn(
-        children: [
-          for (int i = 0; i < rows.length; i++)
-            RowContent(
-              columns: columns,
-              row: rows[i],
-              index: i,
-              onSelected: onSelected,
-            ),
-        ],
-      ),
+    return Column(
+      children: [
+        for (int i = 0; i < rows.length; i++)
+          RowContent(
+            columns: columns,
+            row: rows[i],
+            index: i,
+            onSelected: onSelected,
+          ),
+      ],
     );
   }
 }

@@ -30,6 +30,7 @@ class RequirementsListView extends StatelessWidget {
             header: const Header(),
             content: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 const VBox(16),
                 //TableFilters(state),
@@ -127,10 +128,12 @@ class Table extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomTable<Requirement>(
+    return const Placeholder();
+
+    /*return CustomTable<Requirement>(
       columns: Requirement.columns,
       rows: state.requirements,
       onSelected: state.onRequirementSelected,
-    );
+    );*/
   }
 }

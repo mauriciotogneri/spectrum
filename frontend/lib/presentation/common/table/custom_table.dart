@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:testflow/domain/model/custom_table_cell.dart';
 import 'package:testflow/presentation/common/text/custom_text.dart';
 import 'package:testflow/utils/palette.dart';
 
-class CustomTable<T extends CustomTableCell> extends StatelessWidget {
+class CustomTable<T extends TableElement> extends StatelessWidget {
   final List<TableColumn> columns;
   final List<T> rows;
   final Function(T) onSelected;
@@ -30,43 +29,11 @@ class CustomTable<T extends CustomTableCell> extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
-          children: [ColumnsHeader(columns)],
+          children: [
+            ColumnsHeader(columns),
+            RowsList(columns: columns, rows: rows, onSelected: onSelected),
+          ],
         ),
-        /*ShadTable(
-            columnCount: columns.length,
-            rowCount: rows.length,
-            header:
-                (context, index) => ShadTableCell.header(
-                  child: BodyMedium(
-                    text: columns[index].name,
-                  ),
-                ),
-            columnSpanExtent:
-                (index) => FractionalSpanExtent(columns[index].ratio),
-            onRowTap: (index) {
-              if (index > 0) {
-                onRowSelected(rows[index - 1]);
-              }
-            },
-            rowSpanBackgroundDecoration:
-                (row) =>
-                    row == 0
-                        ? const SpanDecoration(
-                          border: SpanBorder(
-                            trailing: BorderSide(
-                              width: 0.5,
-                              color: Palette.borderTable,
-                            ),
-                          ),
-                          color: Palette.backgroundTableHeader,
-                        )
-                        : null,
-            builder:
-                (context, index) => ShadTableCell(
-                  alignment: columns[index.column].alignment,
-                  child: rows[index.row].cell(index.column),
-                ),
-          ),*/
       ),
     );
   }
@@ -81,7 +48,7 @@ class ColumnsHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [for (final column in columns) ColumnCell(column)],
+      children: [for (final TableColumn column in columns) ColumnCell(column)],
     );
   }
 }
@@ -114,10 +81,89 @@ class ColumnCell extends StatelessWidget {
   }
 }
 
-class TableColumn {
+class RowsList<T extends TableElement> extends StatelessWidget {
+  final List<TableColumn> columns;
+  final List<T> rows;
+  final Function(T) onSelected;
+
+  const RowsList({
+    required this.columns,
+    required this.rows,
+    required this.onSelected,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        for (final T row in rows) RowContent(columns: columns, row: row),
+      ],
+    );
+  }
+}
+
+class RowContent<T extends TableElement> extends StatelessWidget {
+  final List<TableColumn> columns;
+  final T row;
+
+  const RowContent({required this.columns, required this.row});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        for (final TableColumn column in columns)
+          RowCell(column: column, content: row.cell(column)),
+      ],
+    );
+  }
+}
+
+class RowCell extends StatelessWidget {
+  final TableColumn column;
+  final Widget content;
+
+  const RowCell({required this.column, required this.content});
+
+  @override
+  Widget build(BuildContext context) {
+    final Widget widget = Padding(
+      padding: const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+      child: content,
+    );
+
+    if (column.width != null) {
+      return SizedBox(width: column.width, child: widget);
+    } else {
+      return Expanded(child: widget);
+    }
+  }
+}
+
+class TableColumn<T> {
+  final T id;
   final String name;
   final double? width;
   final Alignment? alignment;
 
-  const TableColumn({required this.name, this.width, this.alignment});
+  const TableColumn({
+    required this.id,
+    required this.name,
+    this.width,
+    this.alignment,
+  });
+}
+
+class TableCell {
+  final TableColumn column;
+  final Widget content;
+
+  const TableCell({required this.column, required this.content});
+}
+
+abstract class TableElement {
+  Widget cell(TableColumn column);
 }

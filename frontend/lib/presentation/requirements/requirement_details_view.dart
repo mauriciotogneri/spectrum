@@ -246,13 +246,13 @@ class Table extends StatelessWidget {
       child: CustomTable<TestCase>(
         width: 995,
         columns: const [
-          TableColumn(name: 'Name'),
+          /*TableColumn(name: 'Name'),
           TableColumn(name: 'Is automated', width: 100),
           TableColumn(
             name: 'Last run',
             width: 100,
             alignment: Alignment.centerRight,
-          ),
+          ),*/
         ],
         rows: state.testCases,
         onSelected: state.onTestCaseSelected,

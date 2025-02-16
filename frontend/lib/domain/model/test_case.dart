@@ -1,12 +1,9 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
-import 'package:testflow/domain/model/custom_table_cell.dart';
 import 'package:testflow/domain/model/requirement.dart';
-import 'package:testflow/presentation/common/chip/custom_chip.dart';
-import 'package:testflow/presentation/common/text/body_medium.dart';
-import 'package:testflow/utils/formatter.dart';
+import 'package:testflow/presentation/common/table/custom_table.dart';
 
-class TestCase implements CustomTableCell {
+class TestCase implements TableElement {
   final Requirement requirement;
   final String name;
   final bool isAutomated;
@@ -26,8 +23,8 @@ class TestCase implements CustomTableCell {
   });
 
   @override
-  Widget cell(int column) {
-    switch (column) {
+  Widget cell(TableColumn column) {
+    /*switch (column) {
       case 0:
         return BodyMedium(text: name);
       case 1:
@@ -36,6 +33,7 @@ class TestCase implements CustomTableCell {
         return BodyMedium(text: Formatter.fullDateTime(lastRun));
       default:
         return const Empty();
-    }
+    }*/
+    return const Empty();
   }
 }

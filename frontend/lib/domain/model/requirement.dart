@@ -1,15 +1,14 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:testflow/debug/data.dart';
-import 'package:testflow/domain/model/custom_table_cell.dart';
 import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
 import 'package:testflow/extensions/string_extension.dart';
-import 'package:testflow/presentation/common/chip/custom_chip.dart';
+import 'package:testflow/presentation/common/table/custom_table.dart';
 import 'package:testflow/presentation/common/text/body_medium.dart';
 
-class Requirement implements CustomTableCell {
+class Requirement implements TableElement {
   final String id;
   final RequirementType type;
   final RequirementStatus status;
@@ -75,35 +74,59 @@ class Requirement implements CustomTableCell {
   }
 
   @override
-  Widget cell(int column) {
-    switch (column) {
-      case 0:
+  String toString() => name;
+
+  static List<TableColumn> get columns => const [
+    TableColumn(id: RequirementColumns.id, name: 'ID', width: 100),
+    TableColumn(id: RequirementColumns.name, name: 'Name'),
+    TableColumn(
+      id: RequirementColumns.component,
+      name: 'Component',
+      width: 150,
+    ),
+    TableColumn(id: RequirementColumns.type, name: 'Type', width: 150),
+    TableColumn(id: RequirementColumns.status, name: 'Status', width: 150),
+    TableColumn(
+      id: RequirementColumns.importance,
+      name: 'Importance',
+      width: 150,
+    ),
+    TableColumn(
+      id: RequirementColumns.numberOfTestCases,
+      name: 'Test Cases',
+      width: 150,
+    ),
+  ];
+
+  @override
+  Widget cell(TableColumn column) {
+    switch (column.id) {
+      case RequirementColumns.id:
         return BodyMedium(text: id);
-      case 1:
+      case RequirementColumns.name:
         return BodyMedium(text: name);
-      case 2:
-        return CustomChip(text: component);
-      case 3:
-        return CustomChip(
-          text: type.localized,
-          foregroundColor: type.foregroundColor,
-          backgroundColor: type.backgroundColor,
-        );
-      case 4:
-        return CustomChip(
-          text: status.localized,
-          foregroundColor: status.foregroundColor,
-          backgroundColor: status.backgroundColor,
-        );
-      case 5:
+      case RequirementColumns.component:
+        return BodyMedium(text: component);
+      case RequirementColumns.type:
+        return type.chip;
+      case RequirementColumns.status:
+        return status.chip;
+      case RequirementColumns.importance:
         return importance.chip;
-      case 6:
+      case RequirementColumns.numberOfTestCases:
         return BodyMedium(text: numberOfTestCases.toString());
       default:
         return const Empty();
     }
   }
+}
 
-  @override
-  String toString() => name;
+enum RequirementColumns {
+  id,
+  name,
+  component,
+  type,
+  status,
+  importance,
+  numberOfTestCases,
 }

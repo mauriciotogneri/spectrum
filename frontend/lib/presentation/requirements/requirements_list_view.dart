@@ -128,15 +128,7 @@ class Table extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomTable<Requirement>(
-      columns: const [
-        TableColumn(name: 'ID', width: 100),
-        TableColumn(name: 'Name'),
-        TableColumn(name: 'Component', width: 150),
-        TableColumn(name: 'Type', width: 150),
-        TableColumn(name: 'Status', width: 150),
-        TableColumn(name: 'Importance', width: 150),
-        TableColumn(name: 'Test cases', width: 150),
-      ],
+      columns: Requirement.columns,
       rows: state.requirements,
       onSelected: state.onRequirementSelected,
     );

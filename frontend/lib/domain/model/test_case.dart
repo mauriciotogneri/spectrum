@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:testflow/domain/model/custom_table_cell.dart';
 import 'package:testflow/domain/model/requirement.dart';
 import 'package:testflow/presentation/common/chip/custom_chip.dart';
+import 'package:testflow/presentation/common/text/body_medium.dart';
 import 'package:testflow/utils/formatter.dart';
 
 class TestCase implements CustomTableCell {
@@ -28,14 +29,11 @@ class TestCase implements CustomTableCell {
   Widget cell(int column) {
     switch (column) {
       case 0:
-        return Text(
-          name,
-          style: const TextStyle(overflow: TextOverflow.ellipsis),
-        );
+        return BodyMedium(text: name);
       case 1:
         return CustomChip(text: isAutomated ? 'Yes' : 'No');
       case 2:
-        return Text(Formatter.fullDateTime(lastRun));
+        return BodyMedium(text: Formatter.fullDateTime(lastRun));
       default:
         return const Empty();
     }

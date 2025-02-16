@@ -43,8 +43,8 @@ class CustomTable<T extends CustomTableCell> extends StatelessWidget {
           rowCount: rows.length,
           header:
               (context, index) => ShadTableCell.header(
-                child: Text(
-                  columns[index].name,
+                child: BodyMedium(
+                  text: columns[index].name,
                   style: const TextStyle(color: Palette.textDisabled),
                 ),
               ),

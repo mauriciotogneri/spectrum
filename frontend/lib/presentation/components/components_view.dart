@@ -34,7 +34,7 @@ class ComponentsView extends StatelessWidget {
       state: state,
       builder:
           (context, state) => Pane.normal(
-            header: const Text('COMPONENTS'),
+            header: const TitleLarge(text: 'COMPONENTS'),
             content: Content(state),
           ),
     );

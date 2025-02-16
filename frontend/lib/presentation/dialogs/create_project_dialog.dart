@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:testflow/presentation/common/button/primary_button.dart';
 import 'package:testflow/presentation/common/button/secondary_button.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
-import 'package:testflow/presentation/common/text/input_label.dart';
+import 'package:testflow/presentation/common/text/title_small.dart';
 import 'package:testflow/presentation/dialogs/base_dialog.dart';
 import 'package:testflow/utils/navigation.dart';
 
@@ -57,12 +57,12 @@ class FormFields extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const InputLabel('Name'),
+          const TitleSmall(text: 'Name'),
           CustomTextInput(
             controller: state.nameController,
             //errorMessage: 'Name is required',
           ),
-          const InputLabel('Description'),
+          const TitleSmall(text: 'Description'),
           CustomTextInput(maxLines: 5, controller: state.descriptionController),
           const VBox(16),
         ],

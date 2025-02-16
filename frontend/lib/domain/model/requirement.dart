@@ -7,6 +7,7 @@ import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
 import 'package:testflow/extensions/string_extension.dart';
 import 'package:testflow/presentation/common/chip/custom_chip.dart';
+import 'package:testflow/presentation/common/text/body_medium.dart';
 
 class Requirement implements CustomTableCell {
   final String id;
@@ -77,15 +78,9 @@ class Requirement implements CustomTableCell {
   Widget cell(int column) {
     switch (column) {
       case 0:
-        return Text(
-          id,
-          style: const TextStyle(overflow: TextOverflow.ellipsis),
-        );
+        return BodyMedium(text: id);
       case 1:
-        return Text(
-          name,
-          style: const TextStyle(overflow: TextOverflow.ellipsis),
-        );
+        return BodyMedium(text: name);
       case 2:
         return CustomChip(text: component);
       case 3:
@@ -103,7 +98,7 @@ class Requirement implements CustomTableCell {
       case 5:
         return importance.chip;
       case 6:
-        return Text(numberOfTestCases.toString());
+        return BodyMedium(text: numberOfTestCases.toString());
       default:
         return const Empty();
     }

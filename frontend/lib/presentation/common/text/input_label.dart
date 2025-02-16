@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testflow/presentation/common/text/custom_text.dart';
 import 'package:testflow/utils/palette.dart';
 
 class InputLabel extends StatelessWidget {
@@ -10,12 +11,11 @@ class InputLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 16, bottom: 4, left: 6),
-      child: Text(
-        text,
-        style: const TextStyle(
-          color: Palette.textTitle,
-          fontWeight: FontWeight.bold,
-        ),
+      child: CustomText(
+        text: text,
+        size: 14,
+        color: Palette.textTitle,
+        weight: FontWeight.bold,
       ),
     );
   }

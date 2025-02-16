@@ -5,8 +5,8 @@ import 'package:testflow/domain/model/test_case.dart';
 import 'package:testflow/domain/state/test_cases/test_case_details_state.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/common/layout/pane.dart';
-import 'package:testflow/presentation/common/text/input_label.dart';
 import 'package:testflow/presentation/common/text/title_medium.dart';
+import 'package:testflow/presentation/common/text/title_small.dart';
 
 class TestCaseDetailsView extends StatelessWidget {
   final TestCaseDetailsState state;
@@ -120,7 +120,7 @@ class InputEntry extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
-        children: [if (label != null) InputLabel(label!), input],
+        children: [if (label != null) TitleSmall(text: label!), input],
       ),
     );
   }

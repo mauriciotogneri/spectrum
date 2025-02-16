@@ -6,8 +6,9 @@ import 'package:testflow/domain/state/requirements/requirement_details_state.dar
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/common/layout/pane.dart';
 import 'package:testflow/presentation/common/table/custom_table.dart';
-import 'package:testflow/presentation/common/text/input_label.dart';
+import 'package:testflow/presentation/common/text/title_large.dart';
 import 'package:testflow/presentation/common/text/title_medium.dart';
+import 'package:testflow/presentation/common/text/title_small.dart';
 import 'package:testflow/utils/palette.dart';
 
 class RequirementDetailsView extends StatelessWidget {
@@ -189,7 +190,7 @@ class InputEntry extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
-        children: [InputLabel(label), input],
+        children: [TitleSmall(text: label), input],
       ),
     );
   }
@@ -209,10 +210,7 @@ class TestCasesBlock extends StatelessWidget {
         children: [
           const HorizontalDivider(color: Palette.borderTable, height: 0.5),
           const VBox(16),
-          const Text(
-            'Test cases',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
+          const TitleLarge(text: 'Test cases'),
           const VBox(16),
           Expanded(
             child: Row(

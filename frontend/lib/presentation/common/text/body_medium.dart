@@ -24,8 +24,8 @@ class BodyMedium extends StatelessWidget {
       size: 14,
       color: color ?? Palette.textBody,
       weight: FontWeight.normal,
-      align: align,
-      overflow: overflow,
+      align: align ?? TextAlign.start,
+      overflow: overflow ?? TextOverflow.ellipsis,
       padding: padding,
     );
   }

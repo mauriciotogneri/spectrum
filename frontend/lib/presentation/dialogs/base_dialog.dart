@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testflow/presentation/common/text/body_medium.dart';
 
 class BaseDialog extends StatelessWidget {
   final String title;
@@ -21,7 +22,7 @@ class BaseDialog extends StatelessWidget {
     return AlertDialog(
       title: Padding(
         padding: const EdgeInsets.only(left: 4),
-        child: Text(title),
+        child: BodyMedium(text: title),
       ),
       actions: actions,
       insetPadding: const EdgeInsets.all(16),

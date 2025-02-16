@@ -4,7 +4,6 @@ class Palette {
   static const Color transparent = Colors.transparent;
   static const Color primary = Colors.blue;
 
-  static const Color borderTable = Color(0xffdddddd); // REVIEW
   static const Color backgroundTableHeader = Color(0xfff1f4f9); // REVIEW
 
   static const Color semanticError = Color(0xffeB5757);

@@ -208,7 +208,10 @@ class TestCasesBlock extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          const HorizontalDivider(color: Palette.borderTable, height: 0.5),
+          const HorizontalDivider(
+            color: Palette.borderInputEnabled,
+            height: 0.5,
+          ),
           const VBox(16),
           const TitleLarge(text: 'Test cases'),
           const VBox(16),
@@ -242,16 +245,16 @@ class Table extends StatelessWidget {
       child: CustomTable<TestCase>(
         width: 995,
         columns: const [
-          CustomTableColumn(name: 'Name', ratio: 0.5),
-          CustomTableColumn(name: 'Is automated', ratio: 0.25),
-          CustomTableColumn(
+          TableColumn(name: 'Name'),
+          TableColumn(name: 'Is automated', width: 100),
+          TableColumn(
             name: 'Last run',
-            ratio: 0.25,
+            width: 100,
             alignment: Alignment.centerRight,
           ),
         ],
         rows: state.testCases,
-        onRowSelected: state.onTestCaseSelected,
+        onSelected: state.onTestCaseSelected,
       ),
     );
   }

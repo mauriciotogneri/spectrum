@@ -76,6 +76,12 @@ class NavigationMenu extends StatelessWidget {
               icon: Icons.settings_outlined,
               index: DashboardState.VIEW_SETTINGS,
             ),
+            NavigationMenuRow(
+              state: state,
+              text: 'Components',
+              icon: Icons.format_paint_outlined,
+              index: DashboardState.VIEW_COMPONENTS,
+            ),
           ],
         ),
       ),

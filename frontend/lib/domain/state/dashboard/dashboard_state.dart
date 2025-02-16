@@ -11,6 +11,7 @@ import 'package:testflow/presentation/components/components_view.dart';
 import 'package:testflow/presentation/dashboard/dashboard_screen.dart';
 import 'package:testflow/presentation/dialogs/base_dialog.dart';
 import 'package:testflow/presentation/dialogs/create_project_dialog.dart';
+import 'package:testflow/presentation/requirements/requirements_list_view.dart';
 
 class DashboardState extends BaseState {
   int activeView = 0;
@@ -24,6 +25,7 @@ class DashboardState extends BaseState {
   static const int VIEW_SUITES = 1;
   static const int VIEW_SESSIONS = 2;
   static const int VIEW_SETTINGS = 3;
+  static const int VIEW_COMPONENTS = 4;
 
   @override
   void onLoad() {
@@ -51,14 +53,15 @@ class DashboardState extends BaseState {
     viewsStack.clear();
 
     if (index == VIEW_REQUIREMENTS) {
-      _addView(ComponentsView.instance());
-      //_addView(RequirementsListView.instance());
+      _addView(RequirementsListView.instance());
     } else if (index == VIEW_SUITES) {
       _addView(const SuitesView());
     } else if (index == VIEW_SESSIONS) {
       _addView(const SessionsView());
     } else if (index == VIEW_SETTINGS) {
       _addView(const SettingsView());
+    } else if (index == VIEW_COMPONENTS) {
+      _addView(ComponentsView.instance());
     }
   }
 

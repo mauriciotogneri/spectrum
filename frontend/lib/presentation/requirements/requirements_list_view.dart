@@ -32,8 +32,7 @@ class RequirementsListView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const VBox(16),
-                TableFilters(state),
-                const VBox(16),
+                //TableFilters(state),
                 Table(state),
               ],
             ),
@@ -128,20 +127,18 @@ class Table extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: CustomTable<Requirement>(
-        columns: const [
-          CustomTableColumn(name: 'ID', ratio: 0.10),
-          CustomTableColumn(name: 'Name', ratio: 0.25),
-          CustomTableColumn(name: 'Component', ratio: 0.15),
-          CustomTableColumn(name: 'Type', ratio: 0.15),
-          CustomTableColumn(name: 'Status', ratio: 0.10),
-          CustomTableColumn(name: 'Importance', ratio: 0.15),
-          CustomTableColumn(name: 'Test cases', ratio: 0.10),
-        ],
-        rows: state.requirements,
-        onRowSelected: state.onRequirementSelected,
-      ),
+    return CustomTable<Requirement>(
+      columns: const [
+        TableColumn(name: 'ID', width: 100),
+        TableColumn(name: 'Name', width: 100),
+        TableColumn(name: 'Component', width: 100),
+        TableColumn(name: 'Type', width: 100),
+        TableColumn(name: 'Status', width: 100),
+        TableColumn(name: 'Importance', width: 100),
+        TableColumn(name: 'Test cases', width: 100),
+      ],
+      rows: state.requirements,
+      onSelected: state.onRequirementSelected,
     );
   }
 }

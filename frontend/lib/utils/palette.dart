@@ -26,8 +26,8 @@ class Palette {
   static const Color iconDisabled = Color(0xffbbbbbb);
   static const Color iconLoader = Color(0xffffffff);
 
-  static const Color textTitle = Color(0xff222222);
-  static const Color textBody = Color(0xff444444);
+  static const Color textTitle = Color(0xff333333);
+  static const Color textBody = Color(0xff6b7280);
   static const Color textSecondary = Color(0xff777777);
   static const Color textHint = Color(0xff9c9c9c);
   static const Color textError = Color(0xffC64343);

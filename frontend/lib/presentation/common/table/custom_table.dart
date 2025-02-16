@@ -96,7 +96,7 @@ class ColumnCell extends StatelessWidget {
     final Widget widget = Container(
       color: Palette.backgroundTableHeader,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        padding: const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
         child: CustomText(
           text: column.name,
           color: Palette.textTitle,

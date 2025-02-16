@@ -61,7 +61,7 @@ class Data {
   static const List<String> _platforms = ['Web', 'Android', 'iOS'];
 
   static final List<Requirement> _requirements = [
-    for (int i = 0; i < 30; i++)
+    for (int i = 0; i < 20; i++)
       Requirement(
         id: 'REQ.${i + 1}',
         type: _random(RequirementType.values),

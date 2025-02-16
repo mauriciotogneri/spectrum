@@ -3,8 +3,8 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"flutter_bootstrap.js": "53c59e02a24df6a862aa8b7a2242d3f6",
-"main.dart.js": "6d6f667783742845e3f4a5820574311f",
+const RESOURCES = {"flutter_bootstrap.js": "f357123953df6c9948982efc9091ea42",
+"main.dart.js": "1fea4578d493b2ad08573cab06637e85",
 "assets/NOTICES": "cd0af45be910b090d5d3da3c30ded25e",
 "assets/FontManifest.json": "7b2a36307916a9721811788013e65289",
 "assets/assets/fonts/Outfit_Bold.ttf": "e788bf14fc28eda0d0c134438d5a99de",
@@ -12,7 +12,7 @@ const RESOURCES = {"flutter_bootstrap.js": "53c59e02a24df6a862aa8b7a2242d3f6",
 "assets/assets/fonts/Outfit_Regular.ttf": "8b7f83ac329f6b122ad42fe702a804ae",
 "assets/assets/fonts/Outfit_Light.ttf": "0a829f6fbb00ca9ddb4c0aa543ee871e",
 "assets/assets/fonts/Outfit_SemiBold.ttf": "25a374e909112c12d5328e8a4f13dda3",
-"assets/fonts/MaterialIcons-Regular.otf": "39180efaf42461f00bd4a358d6dafb8b",
+"assets/fonts/MaterialIcons-Regular.otf": "773d4272e2aad7b1506838f232053f88",
 "assets/shaders/ink_sparkle.frag": "ecc85a2e95f5e9f53123dcaf8cb9b6ce",
 "assets/AssetManifest.bin": "14b5b9230084d3d28b2f5751ef678403",
 "assets/AssetManifest.json": "d8e1e586d6bf0a623da6f6a5a8297c1a",

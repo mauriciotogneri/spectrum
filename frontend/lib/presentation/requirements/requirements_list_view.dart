@@ -128,12 +128,10 @@ class Table extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
-
-    /*return CustomTable<Requirement>(
+    return CustomTable<Requirement>(
       columns: Requirement.columns,
       rows: state.requirements,
       onSelected: state.onRequirementSelected,
-    );*/
+    );
   }
 }

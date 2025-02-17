@@ -31,9 +31,9 @@ class CustomTable<T extends TableElement> extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              ColumnsHeader(columns),
+              HeaderRow(columns),
               const Divider(height: 1, color: Palette.borderInputEnabled),
-              RowsList(columns: columns, rows: rows, onSelected: onSelected),
+              ItemRows(columns: columns, rows: rows, onSelected: onSelected),
             ],
           ),
         ),
@@ -42,10 +42,10 @@ class CustomTable<T extends TableElement> extends StatelessWidget {
   }
 }
 
-class ColumnsHeader extends StatelessWidget {
+class HeaderRow extends StatelessWidget {
   final List<TableColumn> columns;
 
-  const ColumnsHeader(this.columns);
+  const HeaderRow(this.columns);
 
   @override
   Widget build(BuildContext context) {
@@ -54,17 +54,17 @@ class ColumnsHeader extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          for (final TableColumn column in columns) ColumnCell(column),
+          for (final TableColumn column in columns) HeaderCell(column),
         ],
       ),
     );
   }
 }
 
-class ColumnCell extends StatelessWidget {
+class HeaderCell extends StatelessWidget {
   final TableColumn column;
 
-  const ColumnCell(this.column);
+  const HeaderCell(this.column);
 
   @override
   Widget build(BuildContext context) {
@@ -81,12 +81,12 @@ class ColumnCell extends StatelessWidget {
   }
 }
 
-class RowsList<T extends TableElement> extends StatelessWidget {
+class ItemRows<T extends TableElement> extends StatelessWidget {
   final List<TableColumn> columns;
   final List<T> rows;
   final Function(T) onSelected;
 
-  const RowsList({
+  const ItemRows({
     required this.columns,
     required this.rows,
     required this.onSelected,
@@ -95,9 +95,11 @@ class RowsList<T extends TableElement> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
       children: [
         for (int i = 0; i < rows.length; i++)
-          RowContent(
+          ItemRow(
             columns: columns,
             row: rows[i],
             index: i,
@@ -108,13 +110,13 @@ class RowsList<T extends TableElement> extends StatelessWidget {
   }
 }
 
-class RowContent<T extends TableElement> extends StatelessWidget {
+class ItemRow<T extends TableElement> extends StatelessWidget {
   final List<TableColumn> columns;
   final T row;
   final int index;
   final Function(T) onSelected;
 
-  const RowContent({
+  const ItemRow({
     required this.columns,
     required this.row,
     required this.index,

@@ -52,8 +52,10 @@ class Requirement implements TableElement {
     } else {
       final bool matchesQuery =
           queryFilter.isEmpty ||
+          id.matches(queryFilter) ||
           name.matches(queryFilter) ||
           description.matches(queryFilter) ||
+          component.matches(queryFilter) ||
           tags.any((tag) => tag.matches(queryFilter));
       final bool matchesType = typeFilter.isEmpty || typeFilter.contains(type);
       final bool matchesStatus =

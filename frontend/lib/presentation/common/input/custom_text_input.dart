@@ -68,6 +68,7 @@ class _CustomTextInputState extends State<CustomTextInput> {
       builder:
           (hasError) => SizedBox(
             width: widget.width,
+            height: 40,
             child: TextField(
               autofocus: widget.autofocus,
               minLines: widget.minLines,

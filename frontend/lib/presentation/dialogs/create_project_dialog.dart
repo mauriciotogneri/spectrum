@@ -1,7 +1,7 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
-import 'package:testflow/presentation/common/button/primary_button.dart';
-import 'package:testflow/presentation/common/button/secondary_button.dart';
+import 'package:testflow/presentation/common/button/primary_text_button.dart';
+import 'package:testflow/presentation/common/button/secondary_text_button.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/common/text/title_small.dart';
 import 'package:testflow/presentation/dialogs/base_dialog.dart';
@@ -27,8 +27,11 @@ class CreateProjectDialog extends StatelessWidget {
             title: 'New project',
             width: 350,
             actions: [
-              const SecondaryButton(text: 'Cancel', onPressed: Navigation.pop),
-              PrimaryButton(
+              const SecondaryTextButton(
+                text: 'Cancel',
+                onPressed: Navigation.pop,
+              ),
+              PrimaryTextButton(
                 text: 'Create',
                 onPressed: () {
                   if (state.formValid) {

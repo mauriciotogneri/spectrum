@@ -4,8 +4,8 @@ import 'package:testflow/domain/state/components/components_state.dart';
 import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
-import 'package:testflow/presentation/common/button/primary_button.dart';
-import 'package:testflow/presentation/common/button/secondary_button.dart';
+import 'package:testflow/presentation/common/button/primary_text_button.dart';
+import 'package:testflow/presentation/common/button/secondary_text_button.dart';
 import 'package:testflow/presentation/common/card/custom_card.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
 import 'package:testflow/presentation/common/input/custom_password_input.dart';
@@ -231,14 +231,14 @@ class Row2Column1 extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Expanded(
-                  child: SecondaryButton(
+                  child: SecondaryTextButton(
                     text: 'Cancel',
                     onPressed: state.onCancelSubmit,
                   ),
                 ),
                 const HBox(16),
                 Expanded(
-                  child: PrimaryButton(
+                  child: PrimaryTextButton(
                     text: 'Submit',
                     onPressed: state.onSubmitForm,
                     loading: state.loading,
@@ -263,7 +263,7 @@ class Row2Column2 extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          SecondaryButton(
+          SecondaryTextButton(
             text: 'Cancel',
             width: 200,
             color: Palette.borderButtonError,
@@ -271,7 +271,7 @@ class Row2Column2 extends StatelessWidget {
             onPressed: () {},
           ),
           const VBox(16),
-          PrimaryButton(
+          PrimaryTextButton(
             text: 'Stop',
             width: 200,
             icon: Icons.stop,

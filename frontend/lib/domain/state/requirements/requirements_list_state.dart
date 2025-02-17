@@ -49,6 +49,16 @@ class RequirementsListState extends BaseState {
     RequirementDetailsView.instance(requirement: requirement),
   );*/
 
+  void onResetFilters() {
+    queryFilterController.clear();
+    typeFilterController.clear();
+    statusFilterController.clear();
+    componentFilterController.clear();
+    platformFilterController.clear();
+    importanceFilterController.clear();
+    notify();
+  }
+
   void onCreateRequirement(BuildContext context) => BaseDialog.show(
     context: context,
     dialog: CreateRequirementDialog.instance(

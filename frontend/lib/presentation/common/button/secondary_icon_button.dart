@@ -4,16 +4,16 @@ import 'package:testflow/utils/palette.dart';
 
 class SecondaryIconButton extends StatelessWidget {
   final IconData icon;
-  final double size;
   final VoidCallback? onPressed;
   final Color? color;
+  final double size;
   final bool enabled;
 
   const SecondaryIconButton({
     required this.icon,
-    required this.size,
     this.onPressed,
     this.color,
+    this.size = 38,
     this.enabled = true,
   });
 

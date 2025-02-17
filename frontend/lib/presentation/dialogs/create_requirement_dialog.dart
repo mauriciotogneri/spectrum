@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
-import 'package:testflow/presentation/common/button/primary_button.dart';
-import 'package:testflow/presentation/common/button/secondary_button.dart';
+import 'package:testflow/presentation/common/button/primary_text_button.dart';
+import 'package:testflow/presentation/common/button/secondary_text_button.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/dialogs/base_dialog.dart';
@@ -30,8 +30,11 @@ class CreateRequirementDialog extends StatelessWidget {
             title: 'New requirement',
             width: 350,
             actions: [
-              const SecondaryButton(text: 'Cancel', onPressed: Navigation.pop),
-              PrimaryButton(
+              const SecondaryTextButton(
+                text: 'Cancel',
+                onPressed: Navigation.pop,
+              ),
+              PrimaryTextButton(
                 text: 'Create',
                 onPressed: () {
                   if (state.formValid) {

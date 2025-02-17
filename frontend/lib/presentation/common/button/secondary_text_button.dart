@@ -2,61 +2,48 @@ import 'package:flutter/material.dart';
 import 'package:testflow/presentation/common/input/custom_input.dart';
 import 'package:testflow/utils/palette.dart';
 
-class PrimaryButton extends StatelessWidget {
+class SecondaryTextButton extends StatelessWidget {
   final String text;
   final VoidCallback? onPressed;
   final IconData? icon;
   final Color? color;
   final double? width;
   final bool enabled;
-  final bool loading;
 
-  const PrimaryButton({
+  const SecondaryTextButton({
     required this.text,
     this.onPressed,
     this.icon,
     this.color,
     this.width,
     this.enabled = true,
-    this.loading = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 40,
+      height: 38,
       width: width,
-      child: FilledButton.icon(
+      child: OutlinedButton.icon(
         onPressed: enabled ? onPressed : null,
         style: ButtonStyle(
-          elevation: WidgetStateProperty.all(0),
-          backgroundColor:
-              (color != null) ? WidgetStateProperty.all(color) : null,
+          foregroundColor:
+              (color != null)
+                  ? WidgetStateProperty.all(color)
+                  : WidgetStateProperty.all(Palette.textSecondary),
+          side:
+              (color != null)
+                  ? WidgetStateProperty.all(BorderSide(color: color!))
+                  : WidgetStateProperty.all(
+                    const BorderSide(color: Palette.borderButtonSecondary),
+                  ),
           shape: WidgetStateProperty.all(
             RoundedRectangleBorder(borderRadius: CustomInput.borderRadius),
           ),
         ),
-        icon: _icon,
+        icon: (icon != null) ? Icon(icon!, color: color) : null,
         label: Text(text),
       ),
     );
-  }
-
-  Widget? get _icon {
-    if (loading) {
-      return const Padding(
-        padding: EdgeInsets.only(right: 4),
-        child: SizedBox(
-          width: 16,
-          height: 16,
-          child: CircularProgressIndicator(
-            strokeWidth: 2,
-            valueColor: AlwaysStoppedAnimation(Palette.iconLoader),
-          ),
-        ),
-      );
-    } else {
-      return icon != null ? Icon(icon) : null;
-    }
   }
 }

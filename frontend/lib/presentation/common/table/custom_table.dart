@@ -1,7 +1,8 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
-import 'package:testflow/presentation/common/button/primary_button.dart';
+import 'package:testflow/presentation/common/button/primary_text_button.dart';
 import 'package:testflow/presentation/common/button/secondary_icon_button.dart';
+import 'package:testflow/presentation/common/button/secondary_text_button.dart';
 import 'package:testflow/presentation/common/input/custom_input.dart';
 import 'package:testflow/presentation/common/text/custom_text.dart';
 import 'package:testflow/utils/palette.dart';
@@ -12,6 +13,8 @@ class CustomTable<T extends TableElement> extends StatelessWidget {
   final Function(T) onSelected;
   final List<Widget> filters;
   final double? width;
+  final VoidCallback? onResetFilters;
+  final VoidCallback? onCreateItem;
 
   const CustomTable({
     required this.columns,
@@ -19,6 +22,8 @@ class CustomTable<T extends TableElement> extends StatelessWidget {
     required this.onSelected,
     this.filters = const [],
     this.width,
+    this.onResetFilters,
+    this.onCreateItem,
   });
 
   @override
@@ -37,7 +42,11 @@ class CustomTable<T extends TableElement> extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              FilterRow(filters),
+              FilterRow(
+                filters: filters,
+                onResetFilters: onResetFilters,
+                onCreateItem: onCreateItem,
+              ),
               HeaderRow(columns),
               const Divider(height: 1, color: Palette.borderInputEnabled),
               ItemRows(columns: columns, rows: rows, onSelected: onSelected),
@@ -53,8 +62,14 @@ class CustomTable<T extends TableElement> extends StatelessWidget {
 
 class FilterRow extends StatelessWidget {
   final List<Widget> filters;
+  final VoidCallback? onResetFilters;
+  final VoidCallback? onCreateItem;
 
-  const FilterRow(this.filters);
+  const FilterRow({
+    required this.filters,
+    required this.onResetFilters,
+    required this.onCreateItem,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -63,24 +78,43 @@ class FilterRow extends StatelessWidget {
       padding: const EdgeInsets.only(top: 8, bottom: 4, left: 8, right: 8),
       color: Palette.backgroundTableHeader,
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           ...filters,
+          const HBox(8),
+          ResetFiltersButton(onResetFilters),
+          const HBox(8),
           const Spacer(),
-          const HBox(16),
+          const HBox(8),
           TableSelectColumns(() {}),
           const HBox(8),
           TableExportButton(() {}),
           const HBox(8),
-          TableCreateAction(text: 'Create', onPressed: () {}),
+          TableCreateAction(text: 'Create', onPressed: onCreateItem),
         ],
       ),
     );
   }
 }
 
+class ResetFiltersButton extends StatelessWidget {
+  final VoidCallback? onPressed;
+
+  const ResetFiltersButton(this.onPressed);
+
+  @override
+  Widget build(BuildContext context) {
+    return SecondaryTextButton(
+      icon: Icons.clear,
+      onPressed: onPressed,
+      color: Palette.textSecondary,
+      text: 'Reset',
+    );
+  }
+}
+
 class TableSelectColumns extends StatelessWidget {
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   const TableSelectColumns(this.onPressed);
 
@@ -89,13 +123,12 @@ class TableSelectColumns extends StatelessWidget {
     return SecondaryIconButton(
       icon: Icons.checklist_rounded,
       onPressed: onPressed,
-      size: 40,
     );
   }
 }
 
 class TableExportButton extends StatelessWidget {
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   const TableExportButton(this.onPressed);
 
@@ -104,20 +137,19 @@ class TableExportButton extends StatelessWidget {
     return SecondaryIconButton(
       icon: Icons.ios_share_outlined,
       onPressed: onPressed,
-      size: 40,
     );
   }
 }
 
 class TableCreateAction extends StatelessWidget {
   final String text;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   const TableCreateAction({required this.text, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
-    return PrimaryButton(icon: Icons.add, text: text, onPressed: onPressed);
+    return PrimaryTextButton(icon: Icons.add, text: text, onPressed: onPressed);
   }
 }
 

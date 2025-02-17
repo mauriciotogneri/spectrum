@@ -1,7 +1,7 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:testflow/domain/state/auth/sign_in_state.dart';
-import 'package:testflow/presentation/common/button/primary_button.dart';
+import 'package:testflow/presentation/common/button/primary_text_button.dart';
 import 'package:testflow/presentation/common/card/custom_card.dart';
 import 'package:testflow/presentation/common/input/custom_password_input.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
@@ -92,7 +92,7 @@ class SignInButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      child: PrimaryButton(text: 'Sign in', onPressed: state.onSignIn),
+      child: PrimaryTextButton(text: 'Sign in', onPressed: state.onSignIn),
     );
   }
 }

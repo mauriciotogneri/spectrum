@@ -81,6 +81,15 @@ class Table extends StatelessWidget {
             hint: 'Component',
           ),
           const HBox(8),
+          CustomDropdownMultiple<String>(
+            width: 180,
+            values:
+                Data.currentProject.platforms.map(DropdownItem.create).toList(),
+            controller: state.platformFilterController,
+            onSelected: (_) => state.notify(),
+            hint: 'Platform',
+          ),
+          const HBox(8),
           CustomDropdownMultiple<RequirementType>(
             width: 180,
             values: RequirementType.values.map(DropdownItem.create).toList(),
@@ -104,15 +113,6 @@ class Table extends StatelessWidget {
             controller: state.importanceFilterController,
             onSelected: (_) => state.notify(),
             hint: 'Importance',
-          ),
-          const HBox(8),
-          CustomDropdownMultiple<String>(
-            width: 180,
-            values:
-                Data.currentProject.platforms.map(DropdownItem.create).toList(),
-            controller: state.platformFilterController,
-            onSelected: (_) => state.notify(),
-            hint: 'Platform',
           ),
         ],
       ),

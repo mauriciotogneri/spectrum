@@ -89,6 +89,12 @@ class Requirement implements TableElement {
       alignment: Alignment.center,
     ),
     TableColumn(
+      id: RequirementColumns.platforms,
+      name: 'Platforms',
+      width: 200,
+      alignment: Alignment.center,
+    ),
+    TableColumn(
       id: RequirementColumns.type,
       name: 'Type',
       width: 170,
@@ -123,6 +129,14 @@ class Requirement implements TableElement {
         return BodyMedium(text: name);
       case RequirementColumns.component:
         return CustomChip(text: component);
+      case RequirementColumns.platforms:
+        if (platforms.isEmpty) {
+          return const Empty();
+        } else if (platforms.length == 1) {
+          return CustomChip(text: platforms.first);
+        } else {
+          return CustomChip(text: '${platforms.length} platforms');
+        }
       case RequirementColumns.type:
         return type.chip;
       case RequirementColumns.status:
@@ -141,6 +155,7 @@ enum RequirementColumns {
   id,
   name,
   component,
+  platforms,
   type,
   status,
   importance,

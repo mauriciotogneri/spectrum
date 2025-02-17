@@ -5,7 +5,7 @@ import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
 import 'package:testflow/presentation/common/input/custom_input.dart';
 import 'package:testflow/utils/palette.dart';
 
-class CustomDropdownMultiple<T> extends StatelessWidget {
+class CustomDropdownMultiple<T> extends StatefulWidget {
   final CustomDropdownMultipleController<T> controller;
   final List<DropdownItem<T>> values;
   final String? name;
@@ -28,22 +28,29 @@ class CustomDropdownMultiple<T> extends StatelessWidget {
     this.enabled = true,
   });
 
+  @override
+  State<CustomDropdownMultiple<T>> createState() =>
+      _CustomDropdownMultipleState<T>();
+}
+
+class _CustomDropdownMultipleState<T> extends State<CustomDropdownMultiple<T>> {
   void _onSelected(T? element) {
     if (element != null) {
-      controller._onSelected(element);
-      onSelected?.call(controller.selected);
+      widget.controller._onSelected(element);
+      widget.onSelected?.call(widget.controller.selected);
+      setState(() {});
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return FormInput(
-      name: name,
-      errorMessage: errorMessage,
-      controller: controller,
+      name: widget.name,
+      errorMessage: widget.errorMessage,
+      controller: widget.controller,
       builder:
           (hasError) => SizedBox(
-            width: width,
+            width: widget.width,
             height: 40,
             child: Material(
               color: Palette.backgroundEmpty,
@@ -59,9 +66,9 @@ class CustomDropdownMultiple<T> extends StatelessWidget {
                         enableSearch: false,
                         enableFilter: false,
                         requestFocusOnTap: false,
-                        enabled: enabled,
-                        hintText: hint,
-                        controller: controller._controller,
+                        enabled: widget.enabled,
+                        hintText: widget.hint,
+                        controller: widget.controller._controller,
                         onSelected: _onSelected,
                         textStyle: const TextStyle(
                           color: Palette.textInput,
@@ -69,14 +76,16 @@ class CustomDropdownMultiple<T> extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                         ),
                         dropdownMenuEntries: [
-                          for (final DropdownItem<T> item in values)
+                          for (final DropdownItem<T> item in widget.values)
                             DropdownMenuEntry(
                               value: item.value,
                               label: item.text,
                               enabled: item.enabled,
                               leadingIcon: InputIcon.create(item.icon),
                               trailingIcon:
-                                  controller.selected.contains(item.value)
+                                  widget.controller.selected.contains(
+                                        item.value,
+                                      )
                                       ? const InputIcon(icon: Icons.check)
                                       : null,
                               style: ButtonStyle(
@@ -94,7 +103,7 @@ class CustomDropdownMultiple<T> extends StatelessWidget {
                               ),
                             ),
                         ],
-                        leadingIcon: InputIcon.create(icon),
+                        leadingIcon: InputIcon.create(widget.icon),
                         trailingIcon: const InputIcon(
                           icon: Icons.keyboard_arrow_down_rounded,
                           size: 18,
@@ -105,7 +114,7 @@ class CustomDropdownMultiple<T> extends StatelessWidget {
                         ),
                         inputDecorationTheme: InputDecorationTheme(
                           contentPadding: EdgeInsets.only(
-                            left: (icon == null) ? 12 : 0,
+                            left: (widget.icon == null) ? 12 : 0,
                             right: 12,
                           ),
                           border:

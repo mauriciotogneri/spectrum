@@ -42,6 +42,14 @@ class RequirementsListState extends BaseState {
           )
           .toList();
 
+  bool get hasFilters =>
+      queryFilterController.isNotEmpty ||
+      typeFilterController.isNotEmpty ||
+      statusFilterController.isNotEmpty ||
+      componentFilterController.isNotEmpty ||
+      platformFilterController.isNotEmpty ||
+      importanceFilterController.isNotEmpty;
+
   void onRequirementSelected(Requirement requirement) {
     print('Selected requirement: $requirement');
   }

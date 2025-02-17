@@ -82,8 +82,10 @@ class FilterRow extends StatelessWidget {
         children: [
           ...filters,
           const HBox(8),
-          ResetFiltersButton(onResetFilters),
-          const HBox(8),
+          if (onResetFilters != null) ...[
+            ResetFiltersButton(onResetFilters),
+            const HBox(8),
+          ],
           const Spacer(),
           const HBox(8),
           TableSelectColumns(() {}),

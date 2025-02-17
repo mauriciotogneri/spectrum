@@ -54,56 +54,6 @@ class TableFilters extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CustomTextInput(
-          width: 300,
-          hint: 'Filter…',
-          canClear: true,
-          controller: state.queryFilterController,
-          onChanged: (_) => state.notify(),
-        ),
-        CustomDropdownSingle<RequirementType>(
-          width: 200,
-          values: RequirementType.values.map(DropdownItem.create).toList(),
-          controller: state.typeFilterController,
-          onSelected: (_) => state.notify(),
-          allowDeselection: true,
-          hint: 'Type',
-        ),
-        CustomDropdownSingle<RequirementStatus>(
-          width: 200,
-          values: RequirementStatus.values.map(DropdownItem.create).toList(),
-          controller: state.statusFilterController,
-          onSelected: (_) => state.notify(),
-          allowDeselection: true,
-          hint: 'Status',
-        ),
-        CustomDropdownSingle<String>(
-          width: 200,
-          values:
-              Data.currentProject.components.map(DropdownItem.create).toList(),
-          controller: state.componentFilterController,
-          onSelected: (_) => state.notify(),
-          allowDeselection: true,
-          hint: 'Component',
-        ),
-        CustomDropdownSingle<String>(
-          width: 200,
-          values:
-              Data.currentProject.platforms.map(DropdownItem.create).toList(),
-          controller: state.platformFilterController,
-          onSelected: (_) => state.notify(),
-          allowDeselection: true,
-          hint: 'Platform',
-        ),
-        CustomDropdownSingle<RequirementImportance>(
-          width: 200,
-          values:
-              RequirementImportance.values.map(DropdownItem.create).toList(),
-          controller: state.importanceFilterController,
-          onSelected: (_) => state.notify(),
-          allowDeselection: true,
-          hint: 'Importance',
-        ),
         const Spacer(),
         PrimaryButton(
           icon: Icons.add,
@@ -138,13 +88,54 @@ class Table extends StatelessWidget {
             onChanged: (_) => state.notify(),
           ),
           const HBox(8),
+          CustomDropdownSingle<String>(
+            width: 150,
+            values:
+                Data.currentProject.components
+                    .map(DropdownItem.create)
+                    .toList(),
+            controller: state.componentFilterController,
+            onSelected: (_) => state.notify(),
+            allowDeselection: true,
+            hint: 'Component',
+          ),
+          const HBox(8),
           CustomDropdownSingle<RequirementType>(
-            width: 200,
+            width: 150,
             values: RequirementType.values.map(DropdownItem.create).toList(),
             controller: state.typeFilterController,
             onSelected: (_) => state.notify(),
             allowDeselection: true,
             hint: 'Type',
+          ),
+          const HBox(8),
+          CustomDropdownSingle<RequirementStatus>(
+            width: 150,
+            values: RequirementStatus.values.map(DropdownItem.create).toList(),
+            controller: state.statusFilterController,
+            onSelected: (_) => state.notify(),
+            allowDeselection: true,
+            hint: 'Status',
+          ),
+          const HBox(8),
+          CustomDropdownSingle<RequirementImportance>(
+            width: 150,
+            values:
+                RequirementImportance.values.map(DropdownItem.create).toList(),
+            controller: state.importanceFilterController,
+            onSelected: (_) => state.notify(),
+            allowDeselection: true,
+            hint: 'Importance',
+          ),
+          const HBox(8),
+          CustomDropdownSingle<String>(
+            width: 150,
+            values:
+                Data.currentProject.platforms.map(DropdownItem.create).toList(),
+            controller: state.platformFilterController,
+            onSelected: (_) => state.notify(),
+            allowDeselection: true,
+            hint: 'Platform',
           ),
         ],
       ),

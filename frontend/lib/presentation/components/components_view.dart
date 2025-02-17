@@ -7,6 +7,7 @@ import 'package:testflow/domain/types/requirement_type.dart';
 import 'package:testflow/presentation/common/button/primary_text_button.dart';
 import 'package:testflow/presentation/common/button/secondary_text_button.dart';
 import 'package:testflow/presentation/common/card/custom_card.dart';
+import 'package:testflow/presentation/common/input/custom_dropdown_multiple.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
 import 'package:testflow/presentation/common/input/custom_password_input.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
@@ -311,6 +312,13 @@ class Row2Column3 extends StatelessWidget {
             values: state.dayItems,
             hint: 'Day',
             controller: state.dayController,
+          ),
+          const VBox(16),
+          CustomDropdownMultiple(
+            width: 200,
+            values: state.monthItems,
+            hint: 'Month',
+            controller: state.monthController,
           ),
         ],
       ),

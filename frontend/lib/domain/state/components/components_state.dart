@@ -1,6 +1,7 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:testflow/presentation/common/form/form_key.dart';
+import 'package:testflow/presentation/common/input/custom_dropdown_multiple.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 
@@ -51,6 +52,22 @@ class ComponentsState extends BaseState {
     DropdownItem.create('Friday'),
     DropdownItem.create('Saturday', false),
     DropdownItem.create('Sunday', false),
+  ];
+  final CustomDropdownMultipleController<String> monthController =
+      CustomDropdownMultipleController();
+  final List<DropdownItem<String>> monthItems = [
+    DropdownItem.create('January'),
+    DropdownItem.create('February'),
+    DropdownItem.create('March'),
+    DropdownItem.create('April'),
+    DropdownItem.create('May'),
+    DropdownItem.create('June'),
+    DropdownItem.create('July'),
+    DropdownItem.create('August'),
+    DropdownItem.create('September'),
+    DropdownItem.create('October', false),
+    DropdownItem.create('November', false),
+    DropdownItem.create('December', false),
   ];
 
   void onSubmitForm() {

@@ -1,14 +1,18 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
+import 'package:testflow/debug/data.dart';
 import 'package:testflow/domain/model/requirement.dart';
 import 'package:testflow/domain/model/test_case.dart';
 import 'package:testflow/domain/state/requirements/requirement_details_state.dart';
+import 'package:testflow/domain/types/requirement_importance.dart';
+import 'package:testflow/domain/types/requirement_status.dart';
+import 'package:testflow/domain/types/requirement_type.dart';
+import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/common/layout/pane.dart';
 import 'package:testflow/presentation/common/table/custom_table.dart';
 import 'package:testflow/presentation/common/text/title_large.dart';
 import 'package:testflow/presentation/common/text/title_medium.dart';
-import 'package:testflow/presentation/common/text/title_small.dart';
 import 'package:testflow/utils/palette.dart';
 
 class RequirementDetailsView extends StatelessWidget {
@@ -27,9 +31,9 @@ class RequirementDetailsView extends StatelessWidget {
       state: state,
       builder:
           (context, state) => Pane.scrollable(
-            children: const [
-              TitleMedium(text: 'Requirement details'),
-              //FormFields(state),
+            children: [
+              const TitleMedium(text: 'Requirement details'),
+              FormFields(state),
               //TestCasesBlock(state),
             ],
           ),
@@ -44,79 +48,83 @@ class FormFields extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: state.formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(
-            children: [
-              InputEntry(
-                flex: 2,
-                label: 'Name',
-                input: CustomTextInput(
-                  controller: state.nameController,
-                  //errorMessage: 'Name is required',
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Form(
+        key: state.formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              children: [
+                Flexible(
+                  flex: 2,
+                  child: CustomTextInput(
+                    name: 'Name',
+                    controller: state.nameController,
+                    errorMessage: 'Name is required',
+                  ),
                 ),
-              ),
-              InputEntry(
-                flex: 1,
-                label: 'ID',
-                input: CustomTextInput(
-                  controller: state.idController,
-                  //errorMessage: 'ID is required',
+                const HBox(16),
+                Flexible(
+                  flex: 1,
+                  child: CustomTextInput(
+                    name: 'ID',
+                    controller: state.idController,
+                    //errorMessage: 'ID is required',
+                  ),
                 ),
-              ),
-              /*InputEntry(
-                flex: 1,
-                label: 'Type',
-                input: CustomDropdownSingle<RequirementType>(
-                  values:
-                      RequirementType.values.map(DropdownItem.create).toList(),
-                  controller: state.typeController,
-                  errorMessage: 'Type is required',
+                const HBox(16),
+                Flexible(
+                  flex: 1,
+                  child: CustomDropdownSingle<RequirementType>(
+                    name: 'Type',
+                    values: RequirementType.items,
+                    controller: state.typeController,
+                    errorMessage: 'Type is required',
+                  ),
                 ),
-              ),*/
-            ],
-          ),
-          Row(
-            children: [
-              InputEntry(
-                flex: 2,
-                label: 'Description',
-                input: CustomTextInput(
-                  maxLines: 5,
-                  controller: state.descriptionController,
+              ],
+            ),
+            const VBox(16),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Flexible(
+                  flex: 1,
+                  child: CustomTextInput(
+                    minLines: 5,
+                    maxLines: 5,
+                    name: 'Description',
+                    controller: state.descriptionController,
+                  ),
                 ),
-              ),
-              const Flexible(
-                flex: 2,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Flexible(
-                      flex: 1,
-                      child: Row(
+                const HBox(16),
+                Flexible(
+                  flex: 1,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
                         children: [
-                          /*InputEntry(
+                          Flexible(
                             flex: 1,
-                            label: 'Status',
-                            input: CustomDropdownSingle<RequirementStatus>(
-                              values:
-                                  RequirementStatus.values
-                                      .map(DropdownItem.create)
-                                      .toList(),
+                            child: CustomDropdownSingle<RequirementStatus>(
+                              name: 'Status',
+                              values: RequirementStatus.items,
                               controller: state.statusController,
                               errorMessage: 'Status is required',
                             ),
                           ),
-                          InputEntry(
+                          const HBox(16),
+                          Flexible(
                             flex: 1,
-                            label: 'Importance',
-                            input: CustomDropdownSingle<RequirementImportance>(
+                            child: CustomDropdownSingle<RequirementImportance>(
+                              name: 'Importance',
                               values:
                                   RequirementImportance.values
                                       .map(DropdownItem.create)
@@ -124,73 +132,46 @@ class FormFields extends StatelessWidget {
                               controller: state.importanceController,
                               errorMessage: 'Importance is required',
                             ),
-                          ),*/
+                          ),
                         ],
                       ),
-                    ),
-                    Flexible(
-                      flex: 1,
-                      child: Row(
+                      const VBox(16),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
                         children: [
-                          /*InputEntry(
+                          Flexible(
                             flex: 1,
-                            label: 'Component',
-                            input: CustomDropdownSingle<String>(
-                              values:
-                                  Data.currentProject.components
-                                      .map(DropdownItem.create)
-                                      .toList(),
+                            child: CustomDropdownSingle<String>(
+                              name: 'Component',
+                              values: DropdownItem.fromList(
+                                Data.currentProject.components,
+                              ),
                               controller: state.componentController,
                               errorMessage: 'Component is required',
                             ),
                           ),
-                          InputEntry(
+                          const HBox(16),
+                          Flexible(
                             flex: 1,
-                            label: 'Platforms',
-                            input: CustomDropdownSingle<String>(
-                              values:
-                                  Data.currentProject.platforms
-                                      .map(DropdownItem.create)
-                                      .toList(),
+                            child: CustomDropdownSingle<String>(
+                              name: 'Platforms',
+                              values: DropdownItem.fromList(
+                                Data.currentProject.platforms,
+                              ),
                               controller: state.platformsController,
-                              allowDeselection: true,
                               errorMessage: 'Platforms is required',
                             ),
-                          ),*/
+                          ),
                         ],
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-          const VBox(16),
-        ],
-      ),
-    );
-  }
-}
-
-class InputEntry extends StatelessWidget {
-  final int flex;
-  final String label;
-  final Widget input;
-
-  const InputEntry({
-    required this.flex,
-    required this.label,
-    required this.input,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Flexible(
-      flex: flex,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [TitleSmall(text: label), input],
+              ],
+            ),
+            const VBox(16),
+          ],
+        ),
       ),
     );
   }
@@ -277,58 +258,42 @@ class TestCaseDetails extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              InputEntry(
-                flex: 4,
-                label: 'Name',
-                input: CustomTextInput(
-                  controller: CustomTextInputController()..text = testCase.name,
-                  //errorMessage: 'Name is required',
-                ),
+              CustomTextInput(
+                name: 'Name',
+                controller: CustomTextInputController()..text = testCase.name,
+                errorMessage: 'Name is required',
               ),
               const HBox(16),
-              InputEntry(
-                flex: 1,
-                label: 'Automated',
-                input: Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: Switch(
-                    value: testCase.isAutomated,
-                    padding: const EdgeInsets.only(
-                      top: 0,
-                      bottom: 0,
-                      left: 8,
-                      right: 0,
-                    ),
-                    onChanged: (_) {},
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: Switch(
+                  value: testCase.isAutomated,
+                  padding: const EdgeInsets.only(
+                    top: 0,
+                    bottom: 0,
+                    left: 8,
+                    right: 0,
                   ),
+                  onChanged: (_) {},
                 ),
               ),
             ],
           ),
-          InputEntry(
-            flex: 1,
-            label: 'Preconditions',
-            input: CustomTextInput(
-              maxLines: 4,
-              controller:
-                  CustomTextInputController()..text = testCase.preconditions,
-            ),
+          CustomTextInput(
+            maxLines: 4,
+            name: 'Preconditions',
+            controller:
+                CustomTextInputController()..text = testCase.preconditions,
           ),
-          InputEntry(
-            flex: 1,
-            label: 'Steps',
-            input: CustomTextInput(
-              maxLines: 4,
-              controller: CustomTextInputController()..text = testCase.steps,
-            ),
+          CustomTextInput(
+            maxLines: 4,
+            name: 'Steps',
+            controller: CustomTextInputController()..text = testCase.steps,
           ),
-          InputEntry(
-            flex: 1,
-            label: 'Expected result',
-            input: CustomTextInput(
-              maxLines: 4,
-              controller: CustomTextInputController()..text = testCase.expected,
-            ),
+          CustomTextInput(
+            maxLines: 4,
+            name: 'Expected result',
+            controller: CustomTextInputController()..text = testCase.expected,
           ),
         ],
       ),

@@ -4,7 +4,9 @@ import 'package:testflow/domain/model/requirement.dart';
 import 'package:testflow/domain/types/test_case_execution.dart';
 import 'package:testflow/presentation/common/table/custom_table.dart';
 import 'package:testflow/presentation/common/text/body_medium.dart';
+import 'package:testflow/presentation/common/text/body_small.dart';
 import 'package:testflow/utils/formatter.dart';
+import 'package:testflow/utils/palette.dart';
 
 class TestCase implements TableElement {
   final Requirement requirement;
@@ -33,18 +35,7 @@ class TestCase implements TableElement {
       width: 200,
       alignment: Alignment.center,
     ),
-    TableColumn(
-      id: TestCaseColumn.lastRunDate,
-      name: 'Last run',
-      width: 200,
-      alignment: Alignment.centerRight,
-    ),
-    TableColumn(
-      id: TestCaseColumn.lastRunAgo,
-      name: 'Last run',
-      width: 200,
-      alignment: Alignment.centerRight,
-    ),
+    TableColumn(id: TestCaseColumn.lastRun, name: 'Last run', width: 300),
   ];
 
   @override
@@ -54,14 +45,22 @@ class TestCase implements TableElement {
         return BodyMedium(text: name);
       case TestCaseColumn.executionType:
         return execution.chip;
-      case TestCaseColumn.lastRunDate:
-        return BodyMedium(text: Formatter.fullDateTime(lastRun));
-      case TestCaseColumn.lastRunAgo:
-        return const BodyMedium(text: 'XXX');
+      case TestCaseColumn.lastRun:
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            BodyMedium(text: Formatter.fullDateTime(lastRun)),
+            BodySmall(
+              text: '${Formatter.daysAgo(lastRun)} days ago',
+              color: Palette.textSecondary,
+            ),
+          ],
+        );
       default:
         return const Empty();
     }
   }
 }
 
-enum TestCaseColumn { name, executionType, lastRunDate, lastRunAgo }
+enum TestCaseColumn { name, executionType, lastRun }

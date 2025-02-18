@@ -19,4 +19,10 @@ class Formatter {
 
     return '$date $time';
   }
+
+  static int daysAgo(DateTime dateTime) {
+    final DateTime now = DateTime.now();
+
+    return now.difference(dateTime).inDays;
+  }
 }

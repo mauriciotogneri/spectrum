@@ -6,6 +6,7 @@ import 'package:testflow/domain/model/test_case.dart';
 import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
+import 'package:testflow/presentation/common/input/custom_dropdown_multiple.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 
@@ -25,8 +26,8 @@ class RequirementDetailsState extends BaseState {
   importanceController = CustomDropdownSingleController();
   final CustomDropdownSingleController<String> componentController =
       CustomDropdownSingleController();
-  final CustomDropdownSingleController<String> platformsController =
-      CustomDropdownSingleController();
+  final CustomDropdownMultipleController<String> platformsController =
+      CustomDropdownMultipleController();
   TestCase? selectedTestCase;
 
   bool get formValid => formKey.currentState!.validate();
@@ -39,7 +40,7 @@ class RequirementDetailsState extends BaseState {
     statusController.select(requirement.status);
     importanceController.select(requirement.importance);
     componentController.select(requirement.component);
-    platformsController.select(requirement.platforms[0]);
+    platformsController.select(requirement.platforms);
 
     testCases.addAll(Data.testCases(requirement));
   }

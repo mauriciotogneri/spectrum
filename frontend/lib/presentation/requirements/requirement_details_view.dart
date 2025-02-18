@@ -7,6 +7,7 @@ import 'package:testflow/domain/state/requirements/requirement_details_state.dar
 import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
+import 'package:testflow/presentation/common/input/custom_dropdown_multiple.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/common/layout/pane.dart';
@@ -153,7 +154,7 @@ class FormFields extends StatelessWidget {
                           const HBox(16),
                           Flexible(
                             flex: 1,
-                            child: CustomDropdownSingle<String>(
+                            child: CustomDropdownMultiple<String>(
                               name: 'Platforms',
                               values: DropdownItem.fromList(
                                 Data.currentProject.platforms,

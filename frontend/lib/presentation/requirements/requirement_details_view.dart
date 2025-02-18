@@ -59,8 +59,7 @@ class FormFields extends StatelessWidget {
           children: [
             Row(
               children: [
-                Flexible(
-                  flex: 2,
+                Expanded(
                   child: CustomTextInput(
                     name: 'Name',
                     controller: state.nameController,
@@ -68,22 +67,26 @@ class FormFields extends StatelessWidget {
                   ),
                 ),
                 const HBox(16),
-                Flexible(
-                  flex: 1,
-                  child: CustomTextInput(
-                    name: 'ID',
-                    controller: state.idController,
-                    //errorMessage: 'ID is required',
-                  ),
-                ),
-                const HBox(16),
-                Flexible(
-                  flex: 1,
-                  child: CustomDropdownSingle<RequirementType>(
-                    name: 'Type',
-                    values: RequirementType.items,
-                    controller: state.typeController,
-                    errorMessage: 'Type is required',
+                Expanded(
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: CustomTextInput(
+                          name: 'ID',
+                          controller: state.idController,
+                          //errorMessage: 'ID is required',
+                        ),
+                      ),
+                      const HBox(16),
+                      Expanded(
+                        child: CustomDropdownSingle<RequirementType>(
+                          name: 'Type',
+                          values: RequirementType.items,
+                          controller: state.typeController,
+                          errorMessage: 'Type is required',
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -92,8 +95,7 @@ class FormFields extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Flexible(
-                  flex: 1,
+                Expanded(
                   child: CustomMultilineInput(
                     minLines: 5,
                     maxLines: 5,
@@ -102,8 +104,7 @@ class FormFields extends StatelessWidget {
                   ),
                 ),
                 const HBox(16),
-                Flexible(
-                  flex: 1,
+                Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -112,8 +113,7 @@ class FormFields extends StatelessWidget {
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Flexible(
-                            flex: 1,
+                          Expanded(
                             child: CustomDropdownSingle<RequirementStatus>(
                               name: 'Status',
                               values: RequirementStatus.items,
@@ -122,8 +122,7 @@ class FormFields extends StatelessWidget {
                             ),
                           ),
                           const HBox(16),
-                          Flexible(
-                            flex: 1,
+                          Expanded(
                             child: CustomDropdownSingle<RequirementImportance>(
                               name: 'Importance',
                               values:
@@ -140,8 +139,7 @@ class FormFields extends StatelessWidget {
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Flexible(
-                            flex: 1,
+                          Expanded(
                             child: CustomDropdownSingle<String>(
                               name: 'Component',
                               values: DropdownItem.fromList(
@@ -152,8 +150,7 @@ class FormFields extends StatelessWidget {
                             ),
                           ),
                           const HBox(16),
-                          Flexible(
-                            flex: 1,
+                          Expanded(
                             child: CustomDropdownMultiple<String>(
                               name: 'Platforms',
                               values: DropdownItem.fromList(

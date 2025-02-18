@@ -1,11 +1,12 @@
+import 'package:flutter/material.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 
-class CustomPasswordInput extends CustomTextInput {
-  const CustomPasswordInput({
+class CustomMultilineInput extends CustomTextInput {
+  const CustomMultilineInput({
     required super.controller,
-    super.keyboardType,
+    required super.minLines,
+    required super.maxLines,
     super.capitalization,
-    super.textInputAction,
     super.enabled,
     super.autofocus,
     super.readOnly,
@@ -19,5 +20,5 @@ class CustomPasswordInput extends CustomTextInput {
     super.errorMessage,
     super.onChanged,
     super.validator,
-  }) : super(obscureText: true, canClear: false, minLines: 1, maxLines: 1);
+  }) : super(keyboardType: TextInputType.multiline);
 }

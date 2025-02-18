@@ -9,6 +9,7 @@ import 'package:testflow/presentation/common/button/secondary_text_button.dart';
 import 'package:testflow/presentation/common/form/form_key.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_multiple.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
+import 'package:testflow/presentation/common/input/custom_multiline_input.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/dialogs/base_dialog.dart';
 import 'package:testflow/utils/navigation.dart';
@@ -66,12 +67,11 @@ class FormFields extends StatelessWidget {
             errorMessage: 'Name is required',
           ),
           const VBox(16),
-          CustomTextInput(
+          CustomMultilineInput(
             minLines: 3,
             maxLines: 3,
             name: 'Description',
             controller: state.descriptionController,
-            keyboardType: TextInputType.multiline,
           ),
           const VBox(16),
           Row(

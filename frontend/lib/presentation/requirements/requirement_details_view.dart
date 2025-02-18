@@ -10,6 +10,7 @@ import 'package:testflow/domain/types/requirement_type.dart';
 import 'package:testflow/domain/types/test_case_execution.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_multiple.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
+import 'package:testflow/presentation/common/input/custom_multiline_input.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/common/layout/pane.dart';
 import 'package:testflow/presentation/common/table/custom_table.dart';
@@ -93,7 +94,7 @@ class FormFields extends StatelessWidget {
               children: [
                 Flexible(
                   flex: 1,
-                  child: CustomTextInput(
+                  child: CustomMultilineInput(
                     minLines: 5,
                     maxLines: 5,
                     name: 'Description',

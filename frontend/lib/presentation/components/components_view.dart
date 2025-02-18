@@ -9,6 +9,7 @@ import 'package:testflow/presentation/common/button/secondary_text_button.dart';
 import 'package:testflow/presentation/common/card/custom_card.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_multiple.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
+import 'package:testflow/presentation/common/input/custom_multiline_input.dart';
 import 'package:testflow/presentation/common/input/custom_password_input.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/common/layout/pane.dart';
@@ -144,13 +145,12 @@ class Row1Column2 extends StatelessWidget {
             ],
           ),
           const VBox(16),
-          CustomTextInput(
+          CustomMultilineInput(
             width: 616,
             minLines: 5,
             maxLines: 5,
             hint: 'Description',
             controller: state.descriptionController,
-            keyboardType: TextInputType.multiline,
           ),
         ],
       ),

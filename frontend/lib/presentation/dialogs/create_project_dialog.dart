@@ -2,6 +2,7 @@ import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:testflow/presentation/common/button/primary_text_button.dart';
 import 'package:testflow/presentation/common/button/secondary_text_button.dart';
+import 'package:testflow/presentation/common/input/custom_multiline_input.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/common/text/title_small.dart';
 import 'package:testflow/presentation/dialogs/base_dialog.dart';
@@ -66,7 +67,11 @@ class FormFields extends StatelessWidget {
             //errorMessage: 'Name is required',
           ),
           const TitleSmall(text: 'Description'),
-          CustomTextInput(maxLines: 5, controller: state.descriptionController),
+          CustomMultilineInput(
+            minLines: 5,
+            maxLines: 5,
+            controller: state.descriptionController,
+          ),
           const VBox(16),
         ],
       ),

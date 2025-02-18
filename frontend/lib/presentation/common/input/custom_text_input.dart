@@ -153,7 +153,7 @@ class CustomTextInput extends StatelessWidget {
 
   void _onChanged(String text) {
     onChanged?.call(text);
-    controller.onChanged(text);
+    controller._onChanged(text);
   }
 }
 
@@ -197,7 +197,7 @@ class CustomTextInputController extends CustomInputController<String> {
     notify();
   }
 
-  void onChanged(String text) {
+  void _onChanged(String text) {
     _showClear = text.isNotEmpty;
     notify();
   }

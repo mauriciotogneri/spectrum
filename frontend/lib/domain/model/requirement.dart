@@ -130,13 +130,7 @@ class Requirement implements TableElement {
       case RequirementColumn.component:
         return CustomChip(text: component);
       case RequirementColumn.platforms:
-        if (platforms.isEmpty) {
-          return const Empty();
-        } else if (platforms.length == 1) {
-          return CustomChip(text: platforms.first);
-        } else {
-          return CustomChip(text: '${platforms.length} platforms');
-        }
+        return ChipGroup(items: platforms, plural: 'platforms');
       case RequirementColumn.type:
         return type.chip;
       case RequirementColumn.status:

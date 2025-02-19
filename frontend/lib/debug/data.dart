@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:testflow/domain/model/project.dart';
 import 'package:testflow/domain/model/requirement.dart';
+import 'package:testflow/domain/model/suite.dart';
 import 'package:testflow/domain/model/test_case.dart';
 import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
@@ -122,7 +123,11 @@ class Data {
         ),
   ];
 
+  static final List<Suite> _suites = [];
+
   static List<Requirement> requirements() => _requirements;
+
+  static List<Suite> suites() => _suites;
 
   static List<TestCase> testCases(Requirement requirement) =>
       _testCases

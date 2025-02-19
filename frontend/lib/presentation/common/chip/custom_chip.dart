@@ -1,3 +1,4 @@
+import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:testflow/presentation/common/text/custom_text.dart';
 import 'package:testflow/utils/palette.dart';
@@ -46,36 +47,20 @@ class CustomChip extends StatelessWidget {
   }
 }
 
-class ChipRow<T> extends StatelessWidget {
-  final List<T> chips;
-  final double? size;
-  final Color? foregroundColor;
-  final Color? backgroundColor;
+class ChipGroup<T> extends StatelessWidget {
+  final List<T> items;
+  final String plural;
 
-  const ChipRow({
-    required this.chips,
-    this.size,
-    this.foregroundColor,
-    this.backgroundColor,
-  });
+  const ChipGroup({required this.items, required this.plural});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        for (final T chip in chips)
-          Padding(
-            padding: const EdgeInsets.only(right: 8),
-            child: CustomChip(
-              text: chip.toString(),
-              size: size,
-              foregroundColor: foregroundColor,
-              backgroundColor: backgroundColor,
-            ),
-          ),
-      ],
-    );
+    if (items.isEmpty) {
+      return const Empty();
+    } else if (items.length == 1) {
+      return CustomChip(text: items.first.toString());
+    } else {
+      return CustomChip(text: '${items.length} $plural');
+    }
   }
 }

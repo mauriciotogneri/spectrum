@@ -74,6 +74,7 @@ class HomeState extends BaseState {
     for (int i = 0; i < event.amount; i++) {
       viewsStack.removeLast();
     }
+
     notify();
   }
 

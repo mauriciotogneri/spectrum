@@ -1,5 +1,6 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
+import 'package:testflow/debug/data.dart';
 import 'package:testflow/domain/model/requirement.dart';
 import 'package:testflow/domain/model/test_case.dart';
 import 'package:testflow/domain/state/test_cases/test_case_details_state.dart';
@@ -29,7 +30,14 @@ class TestCaseDetailsView extends StatelessWidget {
       builder:
           (context, state) => Pane.scrollable(
             children: [
-              const NavigationPath('Test case details'),
+              NavigationPath(
+                paths: [
+                  Data.currentProject.name,
+                  'Requirements',
+                  state.requirement.id,
+                  state.testCase.name,
+                ],
+              ),
               FormFields(state),
             ],
           ),
@@ -45,7 +53,7 @@ class FormFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(32),
       child: Form(
         key: state.formKey,
         child: Column(

@@ -28,10 +28,8 @@ class RequirementsListView extends StatelessWidget {
       builder:
           (context, state) => Pane.scrollable(
             children: [
-              const NavigationPath('Requirements'),
-              const VBox(16),
+              NavigationPath(paths: [Data.currentProject.name, 'Requirements']),
               Table(state),
-              const VBox(16),
             ],
           ),
     );
@@ -46,7 +44,7 @@ class Table extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.all(32),
       child: CustomTable<Requirement>(
         columns: Requirement.columns,
         rows: state.requirements,

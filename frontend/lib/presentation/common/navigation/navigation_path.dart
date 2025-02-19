@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:testflow/presentation/common/text/title_medium.dart';
 
 class NavigationPath extends StatelessWidget {
-  final String title;
+  final List<String> paths;
 
-  const NavigationPath(this.title);
+  const NavigationPath({
+    required this.paths,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 8, left: 16, right: 16),
-      child: TitleMedium(text: title),
+      padding: const EdgeInsets.only(top: 16, left: 32, right: 32),
+      child: TitleMedium(text: paths.last),
     );
   }
 }

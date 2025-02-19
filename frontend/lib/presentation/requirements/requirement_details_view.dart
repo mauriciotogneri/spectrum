@@ -33,7 +33,13 @@ class RequirementDetailsView extends StatelessWidget {
       builder:
           (context, state) => Pane.scrollable(
             children: [
-              const NavigationPath('Requirement details'),
+              NavigationPath(
+                paths: [
+                  Data.currentProject.name,
+                  'Requirements',
+                  state.requirement.id,
+                ],
+              ),
               FormFields(state),
               Table(state),
             ],
@@ -50,7 +56,7 @@ class FormFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(32),
       child: Form(
         key: state.formKey,
         child: Column(
@@ -190,7 +196,7 @@ class Table extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(32),
       child: CustomTable<TestCase>(
         columns: TestCase.columns,
         rows: state.testCases,

@@ -65,7 +65,7 @@ class FormFields extends StatelessWidget {
           const TitleSmall(text: 'Name'),
           CustomTextInput(
             controller: state.nameController,
-            //errorMessage: 'Name is required',
+            errorMessage: 'Name is required',
           ),
           const TitleSmall(text: 'Description'),
           CustomMultilineInput(

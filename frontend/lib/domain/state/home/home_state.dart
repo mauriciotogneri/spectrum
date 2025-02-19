@@ -82,14 +82,10 @@ class HomeState extends BaseState {
     onRootViewChange(activeView);
   }
 
-  void onCreateProject(BuildContext context) {
-    //projectsController.close();
-
-    BaseDialog.show(
-      context: context,
-      dialog: CreateProjectDialog.instance(onCreateProject: _createProject),
-    );
-  }
+  void onCreateProject(BuildContext context) => BaseDialog.show(
+    context: context,
+    dialog: CreateProjectDialog.instance(onCreateProject: _createProject),
+  );
 
   void _createProject({required String name, required String description}) {
     Data.onCreateProject(

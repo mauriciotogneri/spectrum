@@ -5,7 +5,7 @@ import 'package:testflow/domain/model/test_case.dart';
 import 'package:testflow/domain/state/test_cases/test_case_details_state.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/common/layout/pane.dart';
-import 'package:testflow/presentation/common/text/title_medium.dart';
+import 'package:testflow/presentation/common/navigation/navigation_path.dart';
 import 'package:testflow/presentation/common/text/title_small.dart';
 
 class TestCaseDetailsView extends StatelessWidget {
@@ -25,9 +25,11 @@ class TestCaseDetailsView extends StatelessWidget {
     return StateProvider<TestCaseDetailsState>(
       state: state,
       builder:
-          (context, state) => Pane.withBack(
-            header: const TitleMedium(text: 'Test case details'),
-            content: FormFields(state),
+          (context, state) => Pane.scrollable(
+            children: [
+              const NavigationPath('Test case details'),
+              FormFields(state),
+            ],
           ),
     );
   }

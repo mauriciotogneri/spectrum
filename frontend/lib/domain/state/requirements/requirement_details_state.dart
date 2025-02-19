@@ -10,6 +10,8 @@ import 'package:testflow/domain/types/test_case_execution.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_multiple.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
+import 'package:testflow/presentation/test_cases/test_case_details_view.dart';
+import 'package:testflow/utils/navigation.dart';
 
 class RequirementDetailsState extends BaseState {
   final Requirement requirement;
@@ -29,7 +31,6 @@ class RequirementDetailsState extends BaseState {
       CustomDropdownSingleController();
   final CustomDropdownMultipleController<String> platformsController =
       CustomDropdownMultipleController();
-  TestCase? selectedTestCase;
 
   final CustomTextInputController queryFilterController =
       CustomTextInputController();
@@ -68,10 +69,9 @@ class RequirementDetailsState extends BaseState {
     notify();
   }
 
-  void onTestCaseSelected(TestCase testCase) {
-    selectedTestCase = testCase;
-    notify();
-  }
+  void onTestCaseSelected(TestCase testCase) => Navigation.stack(
+    TestCaseDetailsView.instance(requirement: requirement, testCase: testCase),
+  );
 
   void onCreateTestCase(BuildContext context) {}
 }

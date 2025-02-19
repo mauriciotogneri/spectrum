@@ -53,16 +53,18 @@ class FormFields extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
                 CustomTextInput(
-                  width: 300,
+                  width: 835,
                   name: 'Name',
                   controller: state.nameController,
                   errorMessage: 'Name is required',
                 ),
                 const HBox(16),
                 CustomDropdownSingle<TestCaseExecution>(
+                  width: 150,
                   name: 'Execution',
                   values: TestCaseExecution.items,
                   controller: state.executionController,

@@ -75,6 +75,8 @@ class FormFields extends StatelessWidget {
           ),
           const VBox(16),
           Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
             children: [
               Expanded(
                 child: Column(
@@ -109,6 +111,8 @@ class FormFields extends StatelessWidget {
           ),
           const VBox(16),
           Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
             children: [
               Expanded(
                 child: Column(
@@ -145,6 +149,8 @@ class FormFields extends StatelessWidget {
           ),
           const VBox(16),
           Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
             children: [
               Expanded(
                 child: Column(

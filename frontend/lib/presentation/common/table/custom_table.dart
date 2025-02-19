@@ -79,6 +79,7 @@ class FilterRow extends StatelessWidget {
       color: Palette.backgroundTableHeader,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
         children: [
           ...filters,
           const HBox(8),
@@ -167,6 +168,7 @@ class HeaderRow extends StatelessWidget {
       color: Palette.backgroundTableHeader,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
         children: [
           for (final TableColumn column in columns) HeaderCell(column),
         ],
@@ -297,6 +299,7 @@ class FooterRow extends StatelessWidget {
       color: Palette.backgroundTableHeader,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
         children: [
           FooterTotal(total),
           const Spacer(),

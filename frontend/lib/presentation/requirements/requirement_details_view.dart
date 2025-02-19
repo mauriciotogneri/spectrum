@@ -58,6 +58,8 @@ class FormFields extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
               children: [
                 Expanded(
                   child: CustomTextInput(
@@ -69,6 +71,8 @@ class FormFields extends StatelessWidget {
                 const HBox(16),
                 Expanded(
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
                     children: [
                       Expanded(
                         child: CustomTextInput(
@@ -94,6 +98,7 @@ class FormFields extends StatelessWidget {
             const VBox(16),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
               children: [
                 Expanded(
                   child: CustomMultilineInput(
@@ -111,6 +116,7 @@ class FormFields extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Expanded(
@@ -137,6 +143,7 @@ class FormFields extends StatelessWidget {
                       ),
                       const VBox(16),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Expanded(

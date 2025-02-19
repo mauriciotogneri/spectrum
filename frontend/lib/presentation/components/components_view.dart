@@ -58,6 +58,7 @@ class Row1 extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
         children: [
           const Row1Column1(),
           const HBox(16),
@@ -108,6 +109,8 @@ class Row1Column2 extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
             children: [
               CustomTextInput(
                 width: 300,
@@ -169,6 +172,7 @@ class Row2 extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
         children: [
           Row2Column1(state),
           const HBox(16),
@@ -229,6 +233,7 @@ class Row2Column1 extends StatelessWidget {
             ),
             const VBox(24),
             Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
                 Expanded(
@@ -334,6 +339,7 @@ class Row2Column4 extends StatelessWidget {
     return CustomCard(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

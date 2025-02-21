@@ -15,7 +15,8 @@ import 'package:testflow/presentation/dialogs/base_dialog.dart';
 import 'package:testflow/presentation/dialogs/create_test_case_dialog.dart';
 
 class RequirementDetailsState extends BaseState {
-  final Requirement requirement;
+  final String requirementId;
+  late final Requirement requirement;
   final List<TestCase> _allTestCases = [];
   final FormKey formKey = const FormKey();
   final CustomTextInputController idController = CustomTextInputController();
@@ -48,7 +49,12 @@ class RequirementDetailsState extends BaseState {
           )
           .toList();
 
-  RequirementDetailsState({required this.requirement}) {
+  RequirementDetailsState({required this.requirementId});
+
+  @override
+  void onLoad() {
+    requirement = Data.requirementById(requirementId);
+
     idController.text = requirement.id;
     typeController.select(requirement.type);
     nameController.text = requirement.name;

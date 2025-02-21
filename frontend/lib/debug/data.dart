@@ -71,6 +71,26 @@ class Data {
     return _projects;
   }
 
+  static Project projectById(String id) {
+    for (final Project project in _projects) {
+      if (project.id == id) {
+        return project;
+      }
+    }
+
+    throw Exception('Project not found');
+  }
+
+  static Requirement requirementById(String id) {
+    for (final Requirement requirement in _requirements) {
+      if (requirement.id == id) {
+        return requirement;
+      }
+    }
+
+    throw Exception('Requirement not found');
+  }
+
   static const List<String> _components = [
     'Authentication',
     'Payments',

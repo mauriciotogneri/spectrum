@@ -18,8 +18,8 @@ class RequirementsListPage extends StatelessWidget {
 
   const RequirementsListPage._(this.state);
 
-  factory RequirementsListPage.instance() =>
-      RequirementsListPage._(RequirementsListState());
+  factory RequirementsListPage.instance({required String projectId}) =>
+      RequirementsListPage._(RequirementsListState(projectId: projectId));
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,11 @@ class Table extends StatelessWidget {
       child: CustomTable<Requirement>(
         columns: Requirement.columns,
         rows: state.requirements,
-        onSelected: state.onRequirementSelected,
+        onSelected:
+            (requirement) => state.onRequirementSelected(
+              context: context,
+              requirementId: requirement.id,
+            ),
         onResetFilters: state.hasFilters ? state.onResetFilters : null,
         onCreateItem: () => state.onCreateRequirement(context),
         filters: [

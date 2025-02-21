@@ -4,6 +4,7 @@ import 'package:testflow/presentation/auth/sign_in_page.dart';
 import 'package:testflow/presentation/components/components_page.dart';
 import 'package:testflow/presentation/dashboard/dashboard_page.dart';
 import 'package:testflow/presentation/navigation/navigation_menu.dart';
+import 'package:testflow/presentation/requirements/requirement_details_page.dart';
 import 'package:testflow/presentation/requirements/requirements_list_page.dart';
 import 'package:testflow/presentation/sessions/sessions_page.dart';
 import 'package:testflow/presentation/settings/settings_page.dart';
@@ -32,7 +33,19 @@ class Navigation {
           ),
           GoRoute(
             path: '/projects/:projectId/requirements',
-            builder: (context, state) => RequirementsListPage.instance(),
+            builder:
+                (context, state) => RequirementsListPage.instance(
+                  projectId: state.pathParameters['projectId']!,
+                ),
+            routes: [
+              GoRoute(
+                path: ':requirementId/details',
+                builder:
+                    (context, state) => RequirementDetailsPage.instance(
+                      requirementId: state.pathParameters['requirementId']!,
+                    ),
+              ),
+            ],
           ),
           GoRoute(
             path: '/projects/:projectId/suites',
@@ -67,6 +80,15 @@ class Navigation {
     required BuildContext context,
     required String projectId,
   }) => go(context: context, path: '/projects/$projectId/requirements');
+
+  static void requirementDetails({
+    required BuildContext context,
+    required String projectId,
+    required String requirementId,
+  }) => go(
+    context: context,
+    path: '/projects/$projectId/requirements/$requirementId/details',
+  );
 
   static void suites({
     required BuildContext context,

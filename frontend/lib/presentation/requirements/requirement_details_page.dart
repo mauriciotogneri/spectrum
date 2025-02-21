@@ -1,7 +1,6 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:testflow/debug/data.dart';
-import 'package:testflow/domain/model/requirement.dart';
 import 'package:testflow/domain/model/test_case.dart';
 import 'package:testflow/domain/state/requirements/requirement_details_state.dart';
 import 'package:testflow/domain/types/requirement_importance.dart';
@@ -21,9 +20,9 @@ class RequirementDetailsPage extends StatelessWidget {
 
   const RequirementDetailsPage._(this.state);
 
-  factory RequirementDetailsPage.instance({required Requirement requirement}) =>
+  factory RequirementDetailsPage.instance({required String requirementId}) =>
       RequirementDetailsPage._(
-        RequirementDetailsState(requirement: requirement),
+        RequirementDetailsState(requirementId: requirementId),
       );
 
   @override
@@ -33,7 +32,7 @@ class RequirementDetailsPage extends StatelessWidget {
       builder:
           (context, state) => Pane.scrollable(
             children: [
-              NavigationPath(paths: ['Requirements', state.requirement.id]),
+              NavigationPath(paths: ['Requirements', state.requirementId]),
               FormFields(state),
               Table(state),
             ],

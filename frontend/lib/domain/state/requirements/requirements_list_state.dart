@@ -9,8 +9,10 @@ import 'package:testflow/presentation/common/input/custom_dropdown_multiple.dart
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/dialogs/base_dialog.dart';
 import 'package:testflow/presentation/dialogs/create_requirement_dialog.dart';
+import 'package:testflow/utils/navigation.dart';
 
 class RequirementsListState extends BaseState {
+  final String projectId;
   final CustomTextInputController queryFilterController =
       CustomTextInputController();
   final CustomDropdownMultipleController<RequirementType> typeFilterController =
@@ -24,6 +26,8 @@ class RequirementsListState extends BaseState {
   final CustomDropdownMultipleController<RequirementImportance>
   importanceFilterController = CustomDropdownMultipleController();
   final List<Requirement> _allRequirements = Data.requirements();
+
+  RequirementsListState({required this.projectId});
 
   List<Requirement> get requirements =>
       _allRequirements
@@ -57,9 +61,14 @@ class RequirementsListState extends BaseState {
     notify();
   }
 
-  void onRequirementSelected(Requirement requirement) {} /*Navigation.stack(
-    RequirementDetailsPage.instance(requirement: requirement),
-  );*/
+  void onRequirementSelected({
+    required BuildContext context,
+    required String requirementId,
+  }) => Navigation.requirementDetails(
+    context: context,
+    projectId: projectId,
+    requirementId: requirementId,
+  );
 
   void onCreateRequirement(BuildContext context) => BaseDialog.show(
     context: context,

@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
-import 'package:testflow/presentation/auth/sign_in_screen.dart';
-import 'package:testflow/presentation/home/home_screen.dart';
+import 'package:testflow/presentation/auth/sign_in_page.dart';
+import 'package:testflow/presentation/home/home_page.dart';
 import 'package:testflow/presentation/splash/splash_page.dart';
 
 class Navigation {
@@ -15,11 +15,8 @@ class Navigation {
     ),
     GoRoute(
       path: PATH_SIGNIN,
-      builder: (context, state) => SignInScreen.instance(),
+      builder: (context, state) => SignInPage.instance(),
     ),
-    GoRoute(
-      path: PATH_HOME,
-      builder: (context, state) => HomeScreen.instance(),
-    ),
+    GoRoute(path: PATH_HOME, builder: (context, state) => HomePage.instance()),
   ];
 }

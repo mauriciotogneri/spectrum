@@ -8,12 +8,12 @@ import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/common/text/title_medium.dart';
 import 'package:testflow/utils/validator.dart';
 
-class SignInScreen extends StatelessWidget {
+class SignInPage extends StatelessWidget {
   final SignInState state;
 
-  const SignInScreen._(this.state);
+  const SignInPage._(this.state);
 
-  factory SignInScreen.instance() => SignInScreen._(SignInState());
+  factory SignInPage.instance() => SignInPage._(SignInState());
 
   @override
   Widget build(BuildContext context) {

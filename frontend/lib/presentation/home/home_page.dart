@@ -8,12 +8,12 @@ import 'package:testflow/presentation/common/input/custom_input.dart';
 import 'package:testflow/presentation/common/text/custom_text.dart';
 import 'package:testflow/utils/palette.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomePage extends StatelessWidget {
   final HomeState state;
 
-  const HomeScreen._(this.state);
+  const HomePage._(this.state);
 
-  factory HomeScreen.instance() => HomeScreen._(HomeState());
+  factory HomePage.instance() => HomePage._(HomeState());
 
   @override
   Widget build(BuildContext context) {

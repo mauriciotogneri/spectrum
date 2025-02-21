@@ -68,7 +68,7 @@ class Navigation {
     ],
   );
 
-  static void location(BuildContext context) =>
+  static String location(BuildContext context) =>
       GoRouter.of(context).routerDelegate.currentConfiguration.uri.toString();
 
   static void signIn(BuildContext context) =>

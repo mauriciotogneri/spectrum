@@ -65,6 +65,7 @@ class RequirementDetailsState extends BaseState {
     platformsController.select(requirement.platforms);
 
     _allTestCases.addAll(Data.testCases(requirement));
+    notify();
   }
 
   bool get hasFilters =>

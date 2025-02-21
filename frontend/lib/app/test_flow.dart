@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:testflow/utils/navigation.dart';
 import 'package:testflow/utils/style.dart';
 
@@ -12,7 +11,7 @@ class TestFlow extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'TestFlow',
       theme: Style.themeData,
-      routerConfig: GoRouter(routes: Navigation.routes),
+      routerConfig: Navigation.router,
     );
   }
 }

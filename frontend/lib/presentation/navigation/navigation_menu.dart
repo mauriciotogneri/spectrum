@@ -1,0 +1,222 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:testflow/debug/data.dart';
+import 'package:testflow/domain/model/project.dart';
+import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
+import 'package:testflow/presentation/common/input/custom_input.dart';
+import 'package:testflow/presentation/common/text/custom_text.dart';
+import 'package:testflow/utils/palette.dart';
+
+class NavigationMenu extends StatelessWidget {
+  final Widget child;
+
+  const NavigationMenu({required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        children: [const LeftMenu(), Expanded(child: child)],
+      ),
+    );
+  }
+}
+
+class LeftMenu extends StatefulWidget {
+  const LeftMenu();
+
+  @override
+  State<LeftMenu> createState() => _LeftMenuState();
+}
+
+class _LeftMenuState extends State<LeftMenu> {
+  NavigationState state = NavigationState.dashboard;
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      elevation: 0,
+      color: Palette.backgroundEmpty,
+      child: SizedBox(
+        width: 250,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            ProjectSelector(_onProjectSelected),
+            NavigationMenuRow(
+              text: 'Dashboard',
+              icon: Icons.bar_chart,
+              isSelected: state == NavigationState.dashboard,
+              view: NavigationState.dashboard,
+              onSelected: _onMenuSelected,
+            ),
+            NavigationMenuRow(
+              text: 'Requirements',
+              icon: Icons.checklist,
+              isSelected: state == NavigationState.requirements,
+              view: NavigationState.requirements,
+              onSelected: _onMenuSelected,
+            ),
+            NavigationMenuRow(
+              text: 'Suites',
+              icon: Icons.quiz_outlined,
+              isSelected: state == NavigationState.suites,
+              view: NavigationState.suites,
+              onSelected: _onMenuSelected,
+            ),
+            NavigationMenuRow(
+              text: 'Sessions',
+              icon: Icons.find_in_page_outlined,
+              isSelected: state == NavigationState.sessions,
+              view: NavigationState.sessions,
+              onSelected: _onMenuSelected,
+            ),
+            NavigationMenuRow(
+              text: 'Settings',
+              icon: Icons.settings_outlined,
+              isSelected: state == NavigationState.settings,
+              view: NavigationState.settings,
+              onSelected: _onMenuSelected,
+            ),
+            if (kDebugMode)
+              NavigationMenuRow(
+                text: 'Components',
+                icon: Icons.format_paint_outlined,
+                isSelected: state == NavigationState.components,
+                view: NavigationState.components,
+                onSelected: _onMenuSelected,
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _onProjectSelected(BuildContext context, Project project) {
+    Data.onChangeProject(project);
+    setState(() => state = NavigationState.dashboard);
+    context.go('/projects/${project.id}/dashboard');
+  }
+
+  void _onMenuSelected(NavigationState view) {
+    setState(() => state = view);
+
+    switch (view) {
+      case NavigationState.dashboard:
+        context.go('/projects/${Data.currentProject.id}/dashboard');
+        break;
+      case NavigationState.requirements:
+        context.go('/projects/${Data.currentProject.id}/requirements');
+        break;
+      case NavigationState.suites:
+        context.go('/projects/${Data.currentProject.id}/suites');
+        break;
+      case NavigationState.sessions:
+        context.go('/projects/${Data.currentProject.id}/sessions');
+        break;
+      case NavigationState.settings:
+        context.go('/projects/${Data.currentProject.id}/settings');
+        break;
+      case NavigationState.components:
+        context.go('/projects/${Data.currentProject.id}/components');
+        break;
+    }
+  }
+}
+
+class ProjectSelector extends StatefulWidget {
+  final Function(BuildContext, Project) onSelected;
+
+  const ProjectSelector(this.onSelected);
+
+  @override
+  State<ProjectSelector> createState() => _ProjectSelectorState();
+}
+
+class _ProjectSelectorState extends State<ProjectSelector> {
+  final CustomDropdownSingleController<Project> controller =
+      CustomDropdownSingleController();
+
+  @override
+  void initState() {
+    super.initState();
+    controller.select(Data.currentProject);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 8),
+        child: CustomDropdownSingle<Project>(
+          values: DropdownItem.fromList(Data.projects()),
+          hint: 'Project',
+          controller: controller,
+          onSelected: (project) => widget.onSelected(context, project),
+        ),
+      ),
+    );
+  }
+}
+
+class NavigationMenuRow extends StatelessWidget {
+  final String text;
+  final IconData icon;
+  final bool isSelected;
+  final NavigationState view;
+  final Function(NavigationState) onSelected;
+
+  const NavigationMenuRow({
+    required this.text,
+    required this.icon,
+    required this.isSelected,
+    required this.view,
+    required this.onSelected,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(top: 8, left: 16, right: 16),
+      child: ListTile(
+        title: CustomText(
+          text: text,
+          size: 14,
+          color: isSelected ? Palette.menuSelectedDark : Palette.textBody,
+          weight: FontWeight.w500,
+        ),
+        leading: Icon(icon, size: 18),
+        selectedColor: Palette.menuSelectedDark,
+        iconColor: Palette.iconEnabled,
+        minLeadingWidth: 0,
+        dense: true,
+        shape: RoundedRectangleBorder(borderRadius: CustomInput.borderRadius),
+        visualDensity: VisualDensity.compact,
+        contentPadding: const EdgeInsets.only(
+          top: 0,
+          bottom: 0,
+          left: 12,
+          right: 8,
+        ),
+        onTap: () => onSelected(view),
+        selected: isSelected,
+        tileColor: Palette.transparent,
+        selectedTileColor: Palette.menuSelectedLight,
+      ),
+    );
+  }
+}
+
+enum NavigationState {
+  dashboard,
+  requirements,
+  suites,
+  sessions,
+  settings,
+  components,
+}

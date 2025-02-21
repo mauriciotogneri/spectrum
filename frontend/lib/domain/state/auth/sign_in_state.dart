@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:testflow/presentation/common/form/form_key.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
-import 'package:testflow/utils/navigation.dart';
 
 class SignInState extends BaseState {
   final FormKey formKey = const FormKey();
@@ -24,5 +23,5 @@ class SignInState extends BaseState {
     }
   }
 
-  void _signIn(BuildContext context) => context.go(Navigation.PATH_HOME);
+  void _signIn(BuildContext context) => context.go('/projects/1/dashboard');
 }

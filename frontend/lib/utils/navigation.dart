@@ -10,6 +10,7 @@ import 'package:testflow/presentation/sessions/sessions_page.dart';
 import 'package:testflow/presentation/settings/settings_page.dart';
 import 'package:testflow/presentation/splash/splash_page.dart';
 import 'package:testflow/presentation/suites/suites_list_page.dart';
+import 'package:testflow/presentation/test_cases/test_case_details_page.dart';
 
 class Navigation {
   static final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey();
@@ -39,11 +40,23 @@ class Navigation {
                 ),
             routes: [
               GoRoute(
-                path: ':requirementId/details',
+                path: ':requirementId',
                 builder:
                     (context, state) => RequirementDetailsPage.instance(
+                      projectId: state.pathParameters['projectId']!,
                       requirementId: state.pathParameters['requirementId']!,
                     ),
+                routes: [
+                  GoRoute(
+                    path: 'cases/:testCaseId',
+                    builder:
+                        (context, state) => TestCaseDetailsPage.instance(
+                          projectId: state.pathParameters['projectId']!,
+                          requirementId: state.pathParameters['requirementId']!,
+                          testCaseId: state.pathParameters['testCaseId']!,
+                        ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -90,7 +103,17 @@ class Navigation {
     required String requirementId,
   }) => go(
     context: context,
-    path: '/projects/$projectId/requirements/$requirementId/details',
+    path: '/projects/$projectId/requirements/$requirementId',
+  );
+
+  static void testCaseDetails({
+    required BuildContext context,
+    required String projectId,
+    required String requirementId,
+    required String testCaseId,
+  }) => go(
+    context: context,
+    path: '/projects/$projectId/requirements/$requirementId/cases/$testCaseId',
   );
 
   static void suites({

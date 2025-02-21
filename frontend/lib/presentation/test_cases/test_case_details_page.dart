@@ -1,7 +1,5 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
-import 'package:testflow/domain/model/requirement.dart';
-import 'package:testflow/domain/model/test_case.dart';
 import 'package:testflow/domain/state/test_cases/test_case_details_state.dart';
 import 'package:testflow/domain/types/test_case_execution.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
@@ -16,10 +14,15 @@ class TestCaseDetailsPage extends StatelessWidget {
   const TestCaseDetailsPage._(this.state);
 
   factory TestCaseDetailsPage.instance({
-    required Requirement requirement,
-    required TestCase testCase,
+    required String projectId,
+    required String requirementId,
+    required String testCaseId,
   }) => TestCaseDetailsPage._(
-    TestCaseDetailsState(requirement: requirement, testCase: testCase),
+    TestCaseDetailsState(
+      projectId: projectId,
+      requirementId: requirementId,
+      testCaseId: testCaseId,
+    ),
   );
 
   @override
@@ -32,7 +35,7 @@ class TestCaseDetailsPage extends StatelessWidget {
               NavigationPath(
                 paths: [
                   'Requirements',
-                  state.requirement.id,
+                  state.requirement.code,
                   state.testCase.name,
                 ],
               ),

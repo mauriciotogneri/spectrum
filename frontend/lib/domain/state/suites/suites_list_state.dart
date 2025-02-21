@@ -68,8 +68,8 @@ class SuitesListState extends BaseState {
 
   void _createRequirement({
     required String name,
+    required String code,
     required String description,
-    required String id,
     required RequirementType type,
     required RequirementStatus status,
     required RequirementImportance importance,
@@ -78,8 +78,8 @@ class SuitesListState extends BaseState {
   }) {
     Data.onCreateRequirement(
       name: name,
+      code: code,
       description: description,
-      id: id,
       type: type,
       status: status,
       importance: importance,

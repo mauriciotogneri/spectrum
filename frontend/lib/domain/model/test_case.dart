@@ -10,6 +10,7 @@ import 'package:testflow/utils/formatter.dart';
 import 'package:testflow/utils/palette.dart';
 
 class TestCase implements TableElement {
+  final String id;
   final Requirement requirement;
   final String name;
   final TestCaseExecution execution;
@@ -20,6 +21,7 @@ class TestCase implements TableElement {
   final List<String> tags;
 
   const TestCase({
+    required this.id,
     required this.requirement,
     required this.name,
     required this.execution,

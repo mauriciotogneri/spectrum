@@ -23,7 +23,7 @@ class Data {
   static void onCreateRequirement({
     required String name,
     required String description,
-    required String id,
+    required String code,
     required RequirementType type,
     required RequirementStatus status,
     required RequirementImportance importance,
@@ -31,7 +31,8 @@ class Data {
     required List<String> platforms,
   }) {
     final Requirement requirement = Requirement(
-      id: id,
+      id: DateTime.now().toIso8601String(),
+      code: code,
       type: type,
       status: status,
       importance: importance,
@@ -53,6 +54,7 @@ class Data {
     required String expected,
   }) {
     final TestCase testCase = TestCase(
+      id: DateTime.now().toIso8601String(),
       requirement: requirement,
       name: name,
       execution: execution,
@@ -91,6 +93,16 @@ class Data {
     throw Exception('Requirement not found');
   }
 
+  static TestCase testCaseById(String id) {
+    for (final TestCase testCase in _testCases) {
+      if (testCase.id == id) {
+        return testCase;
+      }
+    }
+
+    throw Exception('TestCase not found');
+  }
+
   static const List<String> _components = [
     'Authentication',
     'Payments',
@@ -106,10 +118,11 @@ class Data {
   static final List<Requirement> _requirements = [
     for (int i = 0; i < 20; i++)
       Requirement(
-        id: 'REQ.${i + 1}',
+        id: '${i + 1}',
         type: _random(RequirementType.values),
         status: _random(RequirementStatus.values),
         importance: _random(RequirementImportance.values),
+        code: 'REQ.${i + 1}',
         name: 'Requirement ${i + 1}',
         description: _random(_texts),
         component: _random(_components),
@@ -128,6 +141,7 @@ class Data {
     for (final Requirement requirement in _requirements)
       for (int i = 0; i < Random().nextInt(50) + 1; i++)
         TestCase(
+          id: '${requirement.id}-${i + 1}',
           requirement: requirement,
           name: 'Test case ${i + 1}',
           execution: _random(TestCaseExecution.values),

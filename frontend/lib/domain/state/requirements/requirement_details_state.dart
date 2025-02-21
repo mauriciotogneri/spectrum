@@ -13,8 +13,10 @@ import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/dialogs/base_dialog.dart';
 import 'package:testflow/presentation/dialogs/create_test_case_dialog.dart';
+import 'package:testflow/utils/navigation.dart';
 
 class RequirementDetailsState extends BaseState {
+  final String projectId;
   final String requirementId;
   late final Requirement requirement;
   final List<TestCase> _allTestCases = [];
@@ -49,13 +51,16 @@ class RequirementDetailsState extends BaseState {
           )
           .toList();
 
-  RequirementDetailsState({required this.requirementId});
+  RequirementDetailsState({
+    required this.projectId,
+    required this.requirementId,
+  });
 
   @override
   void onLoad() {
     requirement = Data.requirementById(requirementId);
 
-    idController.text = requirement.id;
+    idController.text = requirement.code;
     typeController.select(requirement.type);
     nameController.text = requirement.name;
     descriptionController.text = requirement.description;
@@ -77,9 +82,15 @@ class RequirementDetailsState extends BaseState {
     notify();
   }
 
-  void onTestCaseSelected(TestCase testCase) {} /* Navigation.stack(
-    TestCaseDetailsPage.instance(requirement: requirement, testCase: testCase),
-  );*/
+  void onTestCaseSelected({
+    required BuildContext context,
+    required String testCaseId,
+  }) => Navigation.testCaseDetails(
+    context: context,
+    projectId: projectId,
+    requirementId: requirementId,
+    testCaseId: testCaseId,
+  );
 
   void onCreateTestCase(BuildContext context) => BaseDialog.show(
     context: context,

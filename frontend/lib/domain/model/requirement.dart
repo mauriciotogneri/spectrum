@@ -14,6 +14,7 @@ class Requirement implements TableElement {
   final RequirementType type;
   final RequirementStatus status;
   final RequirementImportance importance;
+  final String code;
   final String name;
   final String description;
   final String component;
@@ -25,6 +26,7 @@ class Requirement implements TableElement {
     required this.type,
     required this.status,
     required this.importance,
+    required this.code,
     required this.name,
     required this.description,
     required this.component,
@@ -52,7 +54,7 @@ class Requirement implements TableElement {
     } else {
       final bool matchesQuery =
           queryFilter.isEmpty ||
-          id.matches(queryFilter) ||
+          code.matches(queryFilter) ||
           name.matches(queryFilter) ||
           description.matches(queryFilter) ||
           component.matches(queryFilter) ||
@@ -81,7 +83,7 @@ class Requirement implements TableElement {
   String toString() => name;
 
   static List<TableColumn> get columns => const [
-    TableColumn(id: RequirementColumn.id, name: 'ID', width: 150),
+    TableColumn(id: RequirementColumn.id, name: 'Code', width: 150),
     TableColumn(id: RequirementColumn.name, name: 'Name'),
     TableColumn(
       id: RequirementColumn.component,
@@ -125,7 +127,7 @@ class Requirement implements TableElement {
   Widget cell(TableColumn column) {
     switch (column.id) {
       case RequirementColumn.id:
-        return BodyMedium(text: id);
+        return BodyMedium(text: code);
       case RequirementColumn.name:
         return BodyMedium(text: name);
       case RequirementColumn.component:

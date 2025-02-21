@@ -86,9 +86,9 @@ class FormFields extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     CustomTextInput(
-                      controller: state.idController,
-                      name: 'ID',
-                      errorMessage: 'ID is required',
+                      controller: state.codeController,
+                      name: 'Code',
+                      errorMessage: 'Code is required',
                     ),
                   ],
                 ),
@@ -201,7 +201,7 @@ class FormFields extends StatelessWidget {
 class CreateRequirementDialogState extends BaseState {
   final FormKey formKey = const FormKey();
   final OnCreateRequirement onCreateRequirement;
-  final CustomTextInputController idController = CustomTextInputController();
+  final CustomTextInputController codeController = CustomTextInputController();
   final CustomDropdownSingleController<RequirementType> typeController =
       CustomDropdownSingleController();
   final CustomTextInputController nameController = CustomTextInputController();
@@ -225,7 +225,7 @@ class CreateRequirementDialogState extends BaseState {
       onCreateRequirement(
         name: nameController.text,
         description: descriptionController.text,
-        id: idController.text,
+        code: codeController.text,
         type: typeController.selected!,
         status: statusController.selected!,
         importance: importanceController.selected!,
@@ -239,8 +239,8 @@ class CreateRequirementDialogState extends BaseState {
 typedef OnCreateRequirement =
     void Function({
       required String name,
+      required String code,
       required String description,
-      required String id,
       required RequirementType type,
       required RequirementStatus status,
       required RequirementImportance importance,

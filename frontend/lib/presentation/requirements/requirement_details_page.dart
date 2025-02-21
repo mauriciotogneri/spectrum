@@ -20,10 +20,12 @@ class RequirementDetailsPage extends StatelessWidget {
 
   const RequirementDetailsPage._(this.state);
 
-  factory RequirementDetailsPage.instance({required String requirementId}) =>
-      RequirementDetailsPage._(
-        RequirementDetailsState(requirementId: requirementId),
-      );
+  factory RequirementDetailsPage.instance({
+    required String projectId,
+    required String requirementId,
+  }) => RequirementDetailsPage._(
+    RequirementDetailsState(projectId: projectId, requirementId: requirementId),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -193,7 +195,11 @@ class Table extends StatelessWidget {
       child: CustomTable<TestCase>(
         columns: TestCase.columns,
         rows: state.testCases,
-        onSelected: state.onTestCaseSelected,
+        onSelected:
+            (testCase) => state.onTestCaseSelected(
+              context: context,
+              testCaseId: testCase.id,
+            ),
         onResetFilters: state.hasFilters ? state.onResetFilters : null,
         onCreateItem: () => state.onCreateTestCase(context),
         filters: [

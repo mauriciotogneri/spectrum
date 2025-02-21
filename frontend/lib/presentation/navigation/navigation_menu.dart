@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:testflow/debug/data.dart';
 import 'package:testflow/domain/model/project.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
@@ -40,8 +39,7 @@ class _LeftMenuState extends State<LeftMenu> {
   void initState() {
     super.initState();
 
-    final String location =
-        GoRouter.of(context).routerDelegate.currentConfiguration.uri.toString();
+    final String location = Navigation.location(context);
 
     if (location.endsWith('/dashboard')) {
       selectedMenu = MenuItem.dashboard;

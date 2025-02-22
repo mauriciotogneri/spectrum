@@ -2,14 +2,13 @@ import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:testflow/domain/state/test_cases/test_case_detail_state.dart';
 import 'package:testflow/domain/types/test_case_execution.dart';
-import 'package:testflow/presentation/common/card/custom_card.dart';
+import 'package:testflow/presentation/common/card/metadata_card.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
 import 'package:testflow/presentation/common/input/custom_multiline_input.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/common/layout/pane.dart';
 import 'package:testflow/presentation/common/menu/context_menu.dart';
 import 'package:testflow/presentation/common/navigation/navigation_path.dart';
-import 'package:testflow/presentation/common/text/custom_text.dart';
 import 'package:testflow/utils/formatter.dart';
 import 'package:testflow/utils/navigation.dart';
 import 'package:testflow/utils/palette.dart';
@@ -181,66 +180,22 @@ class Metadata extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomCard(
-      width: 350,
-      margin: const EdgeInsets.only(top: 60),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          MetadataItem(
-            label: 'Created on',
-            value: Formatter.fullDateTime(DateTime.now()),
-          ),
-          const VBox(16),
-          const MetadataItem(label: 'Created by', value: 'John Doe'),
-          const VBox(16),
-          MetadataItem(
-            label: 'Updated on',
-            value: Formatter.fullDateTime(DateTime.now()),
-          ),
-          const VBox(16),
-          const MetadataItem(label: 'Updated by', value: 'Jane Doe'),
-          const VBox(16),
-          MetadataItem(
-            label: 'Last run',
-            value:
-                '${Formatter.fullDateTime(DateTime.now())}\n${Formatter.daysAgo(DateTime.now())} days ago',
-          ),
-        ],
+    return MetadataCard([
+      MetadataItem(
+        label: 'Created on',
+        value: Formatter.fullDateTime(DateTime.now()),
       ),
-    );
-  }
-}
-
-class MetadataItem extends StatelessWidget {
-  final String label;
-  final String value;
-
-  const MetadataItem({required this.label, required this.value});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        SizedBox(
-          width: 150,
-          child: CustomText(
-            text: label,
-            size: 14,
-            color: Palette.textTitle,
-            weight: FontWeight.bold,
-          ),
-        ),
-        CustomText(
-          text: value,
-          size: 14,
-          color: Palette.textBody,
-          weight: FontWeight.normal,
-        ),
-      ],
-    );
+      const MetadataItem(label: 'Created by', value: 'John Doe'),
+      MetadataItem(
+        label: 'Updated on',
+        value: Formatter.fullDateTime(DateTime.now()),
+      ),
+      const MetadataItem(label: 'Updated by', value: 'Jane Doe'),
+      MetadataItem(
+        label: 'Last run',
+        value:
+            '${Formatter.fullDateTime(DateTime.now())}\n${Formatter.daysAgo(DateTime.now())} days ago',
+      ),
+    ]);
   }
 }

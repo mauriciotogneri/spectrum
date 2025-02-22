@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:testflow/debug/data.dart';
 import 'package:testflow/domain/model/project.dart';
@@ -7,6 +6,7 @@ import 'package:testflow/presentation/common/input/custom_input.dart';
 import 'package:testflow/presentation/common/text/custom_text.dart';
 import 'package:testflow/utils/navigation.dart';
 import 'package:testflow/utils/palette.dart';
+import 'package:testflow/utils/platform.dart';
 
 class NavigationMenu extends StatelessWidget {
   final Widget child;
@@ -103,7 +103,7 @@ class _LeftMenuState extends State<LeftMenu> {
               menu: MenuItem.settings,
               onSelected: _onMenuSelected,
             ),
-            if (kDebugMode)
+            if (Platform.isDebug)
               NavigationMenuRow(
                 text: 'Components',
                 icon: Icons.format_paint_outlined,

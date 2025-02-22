@@ -68,9 +68,15 @@ class Header extends StatelessWidget {
       ),
       actions: [
         ContextMenu(
-          offset: const Offset(-45, 0),
+          offset: const Offset(-85, 0),
           icon: Icons.more_horiz,
           children: [
+            ContextMenuItem(
+              icon: Icons.play_arrow,
+              text: 'Start session',
+              color: Palette.textTitle,
+              onPressed: state.onStartSession,
+            ),
             ContextMenuItem(
               icon: Icons.delete_outline,
               text: 'Delete',

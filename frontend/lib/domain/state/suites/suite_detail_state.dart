@@ -44,5 +44,7 @@ class SuiteDetailState extends BaseState {
     notify();
   }
 
+  void onStartSession() {}
+
   void onDeleteSuite() {}
 }

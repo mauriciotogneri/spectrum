@@ -5,6 +5,7 @@ import 'package:testflow/domain/model/attachment.dart';
 import 'package:testflow/domain/types/attachment_type.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_multiple.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
+import 'dart:html' as html;
 import 'package:testflow/presentation/common/table/custom_table.dart';
 
 class AttachmentsTable extends StatelessWidget {
@@ -24,7 +25,7 @@ class AttachmentsTable extends StatelessWidget {
             child: CustomTable<Attachment>(
               columns: Attachment.columns,
               rows: state.attachments,
-              onSelected: state.onTestCaseSelected,
+              onSelected: state.onAttachmentSelected,
               onResetFilters: state.hasFilters ? state.onResetFilters : null,
               onCreateItem: state.onUploadAttachment,
               createButtonText: 'Upload',
@@ -87,5 +88,6 @@ class AttachmentsState extends BaseState {
 
   void onUploadAttachment() {}
 
-  void onTestCaseSelected(Attachment attachment) {}
+  void onAttachmentSelected(Attachment attachment) =>
+      html.window.open(attachment.url, attachment.name);
 }

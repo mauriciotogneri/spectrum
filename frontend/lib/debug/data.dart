@@ -255,7 +255,7 @@ class Data {
         Attachment(
           path: '',
           name: 'Attachment ${i + 1}',
-          url: 'https://example.com',
+          url: 'https://place.dog/300/200',
           type: _random(AttachmentType.values),
           size: _randomFileSize(),
           uploadedOn: DateTime.now().subtract(

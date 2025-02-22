@@ -300,18 +300,36 @@ class FooterRow extends StatelessWidget {
     return Container(
       color: Palette.backgroundTableHeader,
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         children: [
           FooterTotal(total),
           const Spacer(),
-          FooterButton(
+          SecondaryIconButton(
+            size: 34,
+            iconSize: 22,
+            icon: Icons.skip_previous_rounded,
+            onPressed: () {},
+          ),
+          const HBox(8),
+          SecondaryIconButton(
+            size: 34,
+            iconSize: 22,
             icon: Icons.keyboard_arrow_left_rounded,
             onPressed: () {},
           ),
           const HBox(8),
-          FooterButton(
+          SecondaryIconButton(
+            size: 34,
+            iconSize: 22,
             icon: Icons.keyboard_arrow_right_rounded,
+            onPressed: () {},
+          ),
+          const HBox(8),
+          SecondaryIconButton(
+            size: 34,
+            iconSize: 22,
+            icon: Icons.skip_next_rounded,
             onPressed: () {},
           ),
           const HBox(8),

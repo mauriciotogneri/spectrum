@@ -6,6 +6,7 @@ class SecondaryIconButton extends StatelessWidget {
   final IconData icon;
   final VoidCallback? onPressed;
   final Color? color;
+  final double? iconSize;
   final double size;
   final bool enabled;
 
@@ -13,6 +14,7 @@ class SecondaryIconButton extends StatelessWidget {
     required this.icon,
     this.onPressed,
     this.color,
+    this.iconSize,
     this.size = 38,
     this.enabled = true,
   });
@@ -42,7 +44,13 @@ class SecondaryIconButton extends StatelessWidget {
             RoundedRectangleBorder(borderRadius: CustomInput.borderRadius),
           ),
         ),
-        child: Center(child: Icon(icon, color: color, size: size / 2.5)),
+        child: Center(
+          child: Icon(
+            icon,
+            color: color ?? Palette.textTitle,
+            size: iconSize ?? size / 2.5,
+          ),
+        ),
       ),
     );
   }

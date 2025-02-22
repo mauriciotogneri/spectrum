@@ -1,8 +1,10 @@
 import 'dart:math';
+import 'package:testflow/domain/model/attachment.dart';
 import 'package:testflow/domain/model/project.dart';
 import 'package:testflow/domain/model/requirement.dart';
 import 'package:testflow/domain/model/suite.dart';
 import 'package:testflow/domain/model/test_case.dart';
+import 'package:testflow/domain/types/attachment_type.dart';
 import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
@@ -208,6 +210,28 @@ class Data {
       _testCases
           .where((testCase) => testCase.requirement == requirement)
           .toList();
+
+  static List<Attachment> attachments() {
+    final List<Attachment> attachments = [];
+
+    for (int i = 0; i < 10; i++) {
+      attachments.add(
+        Attachment(
+          path: '',
+          name: 'Attachment ${i + 1}',
+          url: 'https://example.com',
+          type: _random(AttachmentType.values),
+          size: Random().nextInt(1000000),
+          uploadedOn: DateTime.now().subtract(
+            Duration(days: Random().nextInt(30)),
+          ),
+          uploadedBy: 'John Doe',
+        ),
+      );
+    }
+
+    return attachments;
+  }
 
   static T _random<T>(List<T> list) => list[Random().nextInt(list.length)];
 

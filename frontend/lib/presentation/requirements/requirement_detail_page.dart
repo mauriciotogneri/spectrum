@@ -9,6 +9,7 @@ import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
 import 'package:testflow/domain/types/test_case_execution.dart';
+import 'package:testflow/presentation/attachments/attachments_table.dart';
 import 'package:testflow/presentation/common/card/metadata_card.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_multiple.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
@@ -342,17 +343,8 @@ class TabBarExample extends StatelessWidget {
           TabItem(title: 'Test Cases', width: 150, icon: Icons.list),
           TabItem(title: 'Attachments', width: 150, icon: Icons.attachment),
         ],
-        children: [Table(state), const Attachments()],
+        children: [Table(state), AttachmentsTable.instance()],
       ),
     );
-  }
-}
-
-class Attachments extends StatelessWidget {
-  const Attachments();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(child: Text('Attachments'));
   }
 }

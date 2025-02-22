@@ -17,6 +17,8 @@ class CustomTable<T extends TableElement> extends StatelessWidget {
   final double? width;
   final VoidCallback? onResetFilters;
   final VoidCallback? onCreateItem;
+  final String? createButtonText;
+  final IconData? createButtonIcon;
 
   const CustomTable({
     required this.columns,
@@ -26,6 +28,8 @@ class CustomTable<T extends TableElement> extends StatelessWidget {
     this.width,
     this.onResetFilters,
     this.onCreateItem,
+    this.createButtonText,
+    this.createButtonIcon,
   });
 
   @override
@@ -48,6 +52,8 @@ class CustomTable<T extends TableElement> extends StatelessWidget {
                 filters: filters,
                 onResetFilters: onResetFilters,
                 onCreateItem: onCreateItem,
+                createButtonText: createButtonText,
+                createButtonIcon: createButtonIcon,
               ),
               HeaderRow(columns),
               const Divider(height: 1, color: Palette.borderInputEnabled),
@@ -66,11 +72,15 @@ class FilterRow extends StatelessWidget {
   final List<Widget> filters;
   final VoidCallback? onResetFilters;
   final VoidCallback? onCreateItem;
+  final String? createButtonText;
+  final IconData? createButtonIcon;
 
   const FilterRow({
     required this.filters,
     required this.onResetFilters,
     required this.onCreateItem,
+    required this.createButtonText,
+    required this.createButtonIcon,
   });
 
   @override
@@ -95,7 +105,11 @@ class FilterRow extends StatelessWidget {
           const HBox(8),
           TableExportButton(() {}),
           const HBox(8),
-          TableCreateAction(text: 'Create', onPressed: onCreateItem),
+          TableCreateAction(
+            text: createButtonText ?? 'Create',
+            icon: createButtonIcon ?? Icons.add,
+            onPressed: onCreateItem,
+          ),
         ],
       ),
     );
@@ -147,13 +161,18 @@ class TableExportButton extends StatelessWidget {
 
 class TableCreateAction extends StatelessWidget {
   final String text;
+  final IconData icon;
   final VoidCallback? onPressed;
 
-  const TableCreateAction({required this.text, required this.onPressed});
+  const TableCreateAction({
+    required this.text,
+    required this.icon,
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return PrimaryTextButton(icon: Icons.add, text: text, onPressed: onPressed);
+    return PrimaryTextButton(icon: icon, text: text, onPressed: onPressed);
   }
 }
 

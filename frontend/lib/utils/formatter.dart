@@ -25,4 +25,14 @@ class Formatter {
 
     return now.difference(dateTime).inDays;
   }
+
+  static String fileSize(int size) {
+    if (size < 1024) {
+      return '$size B';
+    } else if (size < 1024 * 1024) {
+      return '${size ~/ 1024} KB';
+    } else {
+      return '${size ~/ (1024 * 1024)} MB';
+    }
+  }
 }

@@ -221,7 +221,7 @@ class Data {
           name: 'Attachment ${i + 1}',
           url: 'https://example.com',
           type: _random(AttachmentType.values),
-          size: Random().nextInt(1000000),
+          size: _randomFileSize(),
           uploadedOn: DateTime.now().subtract(
             Duration(days: Random().nextInt(30)),
           ),
@@ -231,6 +231,18 @@ class Data {
     }
 
     return attachments;
+  }
+
+  static int _randomFileSize() {
+    final int group = Random().nextInt(3);
+
+    if (group == 0) {
+      return Random().nextInt(1024);
+    } else if (group == 1) {
+      return Random().nextInt(1024 * 10);
+    } else {
+      return Random().nextInt(1024 * 1024 * 10);
+    }
   }
 
   static T _random<T>(List<T> list) => list[Random().nextInt(list.length)];

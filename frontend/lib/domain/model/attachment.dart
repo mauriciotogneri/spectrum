@@ -76,7 +76,7 @@ class Attachment implements TableElement {
       case AttachmentColumn.type:
         return type.chip;
       case AttachmentColumn.size:
-        return BodyMedium(text: size.toString());
+        return BodyMedium(text: Formatter.fileSize(size));
       case AttachmentColumn.uploadedOn:
         return BodyMedium(text: Formatter.fullDateTime(uploadedOn));
       case AttachmentColumn.uploadedBy:

@@ -65,4 +65,15 @@ extension BuildContextExtension on BuildContext {
       testCaseId: testCaseId,
     ),
   );
+
+  // ================================ SUITE ================================= \\
+
+  void suiteDetail({required String projectId, required String suiteId}) =>
+      Navigation.go(
+        context: this,
+        path: Navigation.suiteDetailPath(
+          projectId: projectId,
+          suiteId: suiteId,
+        ),
+      );
 }

@@ -18,7 +18,8 @@ class SuiteListPage extends StatelessWidget {
 
   const SuiteListPage._(this.state);
 
-  factory SuiteListPage.instance() => SuiteListPage._(SuiteListState());
+  factory SuiteListPage.instance({required String projectId}) =>
+      SuiteListPage._(SuiteListState(projectId: projectId));
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +50,9 @@ class Table extends StatelessWidget {
       child: CustomTable<Suite>(
         columns: Suite.columns,
         rows: state.suites,
-        onSelected: state.onSuiteSelected,
+        onSelected:
+            (suite) =>
+                state.onSuiteSelected(context: context, suiteId: suite.id),
         onResetFilters: state.hasFilters ? state.onResetFilters : null,
         onCreateItem: () => state.onCreateSuite(context),
         filters: [

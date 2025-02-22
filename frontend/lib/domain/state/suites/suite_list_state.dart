@@ -5,12 +5,14 @@ import 'package:testflow/domain/model/suite.dart';
 import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
+import 'package:testflow/extensions/build_context_extension.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_multiple.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/dialogs/base_dialog.dart';
 import 'package:testflow/presentation/dialogs/create_suite_dialog.dart';
 
 class SuiteListState extends BaseState {
+  final String projectId;
   final CustomTextInputController queryFilterController =
       CustomTextInputController();
   final CustomDropdownMultipleController<RequirementType> typeFilterController =
@@ -24,6 +26,8 @@ class SuiteListState extends BaseState {
   final CustomDropdownMultipleController<String> platformFilterController =
       CustomDropdownMultipleController();
   final List<Suite> _allSuites = Data.suites();
+
+  SuiteListState({required this.projectId});
 
   List<Suite> get suites =>
       _allSuites
@@ -57,7 +61,10 @@ class SuiteListState extends BaseState {
     notify();
   }
 
-  void onSuiteSelected(Suite suite) {}
+  void onSuiteSelected({
+    required BuildContext context,
+    required String suiteId,
+  }) => context.suiteDetail(projectId: projectId, suiteId: suiteId);
 
   void onCreateSuite(BuildContext context) => BaseDialog.show(
     context: context,

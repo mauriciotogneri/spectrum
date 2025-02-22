@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:testflow/extensions/go_router_state_extension.dart';
 import 'package:testflow/presentation/auth/sign_in_page.dart';
 import 'package:testflow/presentation/components/components_page.dart';
 import 'package:testflow/presentation/dashboard/dashboard_page.dart';
@@ -9,6 +10,7 @@ import 'package:testflow/presentation/requirements/requirement_list_page.dart';
 import 'package:testflow/presentation/sessions/session_list_page.dart';
 import 'package:testflow/presentation/settings/settings_page.dart';
 import 'package:testflow/presentation/splash/splash_page.dart';
+import 'package:testflow/presentation/suites/suite_detail_page.dart';
 import 'package:testflow/presentation/suites/suite_list_page.dart';
 import 'package:testflow/presentation/test_cases/test_case_detail_page.dart';
 
@@ -36,24 +38,24 @@ class Navigation {
             path: '/projects/:projectId/requirements',
             builder:
                 (context, state) => RequirementListPage.instance(
-                  projectId: state.pathParameters['projectId']!,
+                  projectId: state.param('projectId'),
                 ),
             routes: [
               GoRoute(
                 path: ':requirementId',
                 builder:
                     (context, state) => RequirementDetailPage.instance(
-                      projectId: state.pathParameters['projectId']!,
-                      requirementId: state.pathParameters['requirementId']!,
+                      projectId: state.param('projectId'),
+                      requirementId: state.param('requirementId'),
                     ),
                 routes: [
                   GoRoute(
                     path: 'cases/:testCaseId',
                     builder:
                         (context, state) => TestCaseDetailPage.instance(
-                          projectId: state.pathParameters['projectId']!,
-                          requirementId: state.pathParameters['requirementId']!,
-                          testCaseId: state.pathParameters['testCaseId']!,
+                          projectId: state.param('projectId'),
+                          requirementId: state.param('requirementId'),
+                          testCaseId: state.param('testCaseId'),
                         ),
                   ),
                 ],
@@ -62,7 +64,19 @@ class Navigation {
           ),
           GoRoute(
             path: '/projects/:projectId/suites',
-            builder: (context, state) => SuiteListPage.instance(),
+            builder:
+                (context, state) =>
+                    SuiteListPage.instance(projectId: state.param('projectId')),
+            routes: [
+              GoRoute(
+                path: ':suiteId',
+                builder:
+                    (context, state) => SuiteDetailPage.instance(
+                      projectId: state.param('projectId'),
+                      suiteId: state.param('suiteId'),
+                    ),
+              ),
+            ],
           ),
           GoRoute(
             path: '/projects/:projectId/sessions',
@@ -128,4 +142,11 @@ class Navigation {
     required String requirementId,
     required String testCaseId,
   }) => '/projects/$projectId/requirements/$requirementId/cases/$testCaseId';
+
+  // ================================ SUITE ================================= \\
+
+  static String suiteDetailPath({
+    required String projectId,
+    required String suiteId,
+  }) => '/projects/$projectId/suites/$suiteId';
 }

@@ -78,7 +78,10 @@ class Attachment implements TableElement {
       case AttachmentColumn.size:
         return BodyMedium(text: Formatter.fileSize(size));
       case AttachmentColumn.uploadedOn:
-        return BodyMedium(text: Formatter.fullDateTime(uploadedOn));
+        return Tooltip(
+          message: Formatter.fullDateTime(uploadedOn),
+          child: BodyMedium(text: Formatter.dateMonthYear(uploadedOn)),
+        );
       case AttachmentColumn.uploadedBy:
         return BodyMedium(text: uploadedBy);
       default:

@@ -218,14 +218,20 @@ class Metadata extends StatelessWidget {
     return MetadataCard([
       MetadataItem(
         label: 'Created on',
-        value: Formatter.fullDateTime(
+        value: Formatter.dateMonthYear(
+          DateTime.now().subtract(Duration(days: Random().nextInt(30))),
+        ),
+        tooltip: Formatter.fullDateTime(
           DateTime.now().subtract(Duration(days: Random().nextInt(30))),
         ),
       ),
       const MetadataItem(label: 'Created by', value: 'John Doe'),
       MetadataItem(
         label: 'Updated on',
-        value: Formatter.fullDateTime(
+        value: Formatter.dateMonthYear(
+          DateTime.now().subtract(Duration(days: Random().nextInt(30))),
+        ),
+        tooltip: Formatter.fullDateTime(
           DateTime.now().subtract(Duration(days: Random().nextInt(30))),
         ),
       ),

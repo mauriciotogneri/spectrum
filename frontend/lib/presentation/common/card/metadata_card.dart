@@ -20,7 +20,11 @@ class MetadataCard extends StatelessWidget {
           for (int i = 0; i < items.length; i++)
             Padding(
               padding: EdgeInsets.only(bottom: i == items.length - 1 ? 0 : 16),
-              child: MetadataRow(label: items[i].label, value: items[i].value),
+              child: MetadataRow(
+                label: items[i].label,
+                value: items[i].value,
+                tooltip: items[i].tooltip,
+              ),
             ),
         ],
       ),
@@ -31,11 +35,23 @@ class MetadataCard extends StatelessWidget {
 class MetadataRow extends StatelessWidget {
   final String label;
   final String value;
+  final String? tooltip;
 
-  const MetadataRow({required this.label, required this.value});
+  const MetadataRow({
+    required this.label,
+    required this.value,
+    required this.tooltip,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final Widget valueWidget = CustomText(
+      text: value,
+      size: 14,
+      color: Palette.textBody,
+      weight: FontWeight.normal,
+    );
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.max,
@@ -49,12 +65,10 @@ class MetadataRow extends StatelessWidget {
             weight: FontWeight.bold,
           ),
         ),
-        CustomText(
-          text: value,
-          size: 14,
-          color: Palette.textBody,
-          weight: FontWeight.normal,
-        ),
+        if (tooltip != null)
+          Tooltip(message: tooltip, child: valueWidget)
+        else
+          valueWidget,
       ],
     );
   }
@@ -63,6 +77,7 @@ class MetadataRow extends StatelessWidget {
 class MetadataItem {
   final String label;
   final String value;
+  final String? tooltip;
 
-  const MetadataItem({required this.label, required this.value});
+  const MetadataItem({required this.label, required this.value, this.tooltip});
 }

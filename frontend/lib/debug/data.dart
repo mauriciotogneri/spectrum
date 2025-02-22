@@ -126,11 +126,7 @@ class Data {
         name: 'Requirement ${i + 1}',
         description: _random(_texts),
         component: _random(_components),
-        platforms:
-            {
-              for (int i = 0; i < Random().nextInt(_platforms.length) + 1; i++)
-                _random(_platforms),
-            }.toList(),
+        platforms: _randomList(_platforms),
         tags: [
           for (int i = 0; i < Random().nextInt(3) + 1; i++) 'Tag ${i + 1}',
         ],
@@ -162,11 +158,11 @@ class Data {
       Suite(
         id: '${i + 1}',
         name: 'Suite ${i + 1}',
-        types: [],
-        statuses: [],
-        importances: [],
-        components: [],
-        platforms: [],
+        types: _randomList(RequirementType.values),
+        statuses: _randomList(RequirementStatus.values),
+        importances: _randomList(RequirementImportance.values),
+        components: _randomList(_components),
+        platforms: _randomList(_platforms),
         tags: [
           for (int i = 0; i < Random().nextInt(3) + 1; i++) 'Tag ${i + 1}',
         ],
@@ -182,8 +178,16 @@ class Data {
           .where((testCase) => testCase.requirement == requirement)
           .toList();
 
-  static T _random<T>(List<T> list) {
-    return list[Random().nextInt(list.length)];
+  static T _random<T>(List<T> list) => list[Random().nextInt(list.length)];
+
+  static List<T> _randomList<T>(List<T> list) {
+    final Set<T> result = {};
+
+    for (int i = 0; i < Random().nextInt(list.length) + 1; i++) {
+      result.add(_random(list));
+    }
+
+    return result.toList();
   }
 
   static final List<Project> _projects = [

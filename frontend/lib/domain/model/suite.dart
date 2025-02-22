@@ -78,32 +78,32 @@ class Suite implements TableElement {
   static List<TableColumn> get columns => const [
     TableColumn(id: SuiteColumn.name, name: 'Name'),
     TableColumn(
-      id: SuiteColumn.types,
-      name: 'Types',
-      width: 170,
-      alignment: Alignment.center,
-    ),
-    TableColumn(
-      id: SuiteColumn.statuses,
-      name: 'Statuses',
-      width: 130,
-      alignment: Alignment.center,
-    ),
-    TableColumn(
-      id: SuiteColumn.importances,
-      name: 'Importances',
-      width: 130,
-      alignment: Alignment.center,
-    ),
-    TableColumn(
       id: SuiteColumn.components,
-      name: 'Components',
+      name: 'Component',
       width: 200,
       alignment: Alignment.center,
     ),
     TableColumn(
       id: SuiteColumn.platforms,
-      name: 'Platforms',
+      name: 'Platform',
+      width: 200,
+      alignment: Alignment.center,
+    ),
+    TableColumn(
+      id: SuiteColumn.types,
+      name: 'Type',
+      width: 200,
+      alignment: Alignment.center,
+    ),
+    TableColumn(
+      id: SuiteColumn.statuses,
+      name: 'Status',
+      width: 200,
+      alignment: Alignment.center,
+    ),
+    TableColumn(
+      id: SuiteColumn.importances,
+      name: 'Importance',
       width: 200,
       alignment: Alignment.center,
     ),

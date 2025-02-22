@@ -18,6 +18,7 @@ import 'package:testflow/presentation/common/layout/pane.dart';
 import 'package:testflow/presentation/common/menu/context_menu.dart';
 import 'package:testflow/presentation/common/navigation/navigation_path.dart';
 import 'package:testflow/presentation/common/table/custom_table.dart';
+import 'package:testflow/presentation/tabs/custom_tabs.dart';
 import 'package:testflow/utils/formatter.dart';
 import 'package:testflow/utils/navigation.dart';
 import 'package:testflow/utils/palette.dart';
@@ -97,18 +98,25 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
       children: [
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [FormFields(state), Table(state)],
-          ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [FormFields(state)],
+              ),
+            ),
+            const Metadata(),
+            const HBox(32),
+          ],
         ),
-        const Metadata(),
-        const HBox(32),
+        TabBarExample(state),
       ],
     );
   }
@@ -122,7 +130,7 @@ class FormFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 32, right: 32, bottom: 32, left: 32),
+      padding: const EdgeInsets.only(top: 32, right: 32, bottom: 16, left: 32),
       child: Form(
         key: state.formKey.key,
         child: Column(
@@ -262,7 +270,7 @@ class Table extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 32, bottom: 32, left: 32),
+      padding: const EdgeInsets.only(top: 16),
       child: CustomTable<TestCase>(
         columns: TestCase.columns,
         rows: state.testCases,
@@ -317,5 +325,44 @@ class Metadata extends StatelessWidget {
       ),
       const MetadataItem(label: 'Updated by', value: 'Jane Doe'),
     ]);
+  }
+}
+
+class TabBarExample extends StatelessWidget {
+  final RequirementDetailState state;
+
+  const TabBarExample(this.state);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 32, bottom: 32, left: 32),
+      child: CustomTabs(
+        tabs: const [
+          TabItem(title: 'Test Cases', width: 150, icon: Icons.list),
+          TabItem(title: 'History', width: 150, icon: Icons.history),
+          TabItem(title: 'Attachments', width: 150, icon: Icons.attachment),
+        ],
+        children: [Table(state), const History(), const Attachments()],
+      ),
+    );
+  }
+}
+
+class History extends StatelessWidget {
+  const History();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(child: Text('History'));
+  }
+}
+
+class Attachments extends StatelessWidget {
+  const Attachments();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(child: Text('Attachments'));
   }
 }

@@ -12,8 +12,10 @@ import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
 import 'package:testflow/presentation/common/input/custom_multiline_input.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/common/layout/pane.dart';
+import 'package:testflow/presentation/common/menu/context_menu.dart';
 import 'package:testflow/presentation/common/navigation/navigation_path.dart';
 import 'package:testflow/presentation/common/table/custom_table.dart';
+import 'package:testflow/utils/palette.dart';
 
 class RequirementDetailsPage extends StatelessWidget {
   final RequirementDetailsState state;
@@ -34,7 +36,24 @@ class RequirementDetailsPage extends StatelessWidget {
       builder:
           (context, state) => Pane.scrollable(
             children: [
-              NavigationPath(paths: ['Requirements', state.requirement.code]),
+              PaneHeader(
+                path: NavigationPath(
+                  paths: ['Requirements', state.requirement.code],
+                ),
+                actions: [
+                  ContextMenu(
+                    icon: Icons.more_horiz,
+                    children: [
+                      ContextMenuItem(
+                        icon: Icons.delete_outline,
+                        text: 'Delete',
+                        color: Palette.semanticError,
+                        onPressed: state.onDeleteRequirement,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
               FormFields(state),
               Table(state),
             ],

@@ -10,23 +10,20 @@ class NavigationPath extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 16, left: 32, right: 32),
-      child: Material(
-        color: Palette.backgroundNavigationPath,
-        borderRadius: BorderRadius.circular(8),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            for (int i = 0; i < paths.length; i++)
-              PathSection(
-                text: paths[i],
-                isLast: i == paths.length - 1,
-                unstack: paths.length - i - 1,
-              ),
-          ],
-        ),
+    return Material(
+      color: Palette.backgroundNavigationPath,
+      borderRadius: BorderRadius.circular(8),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          for (int i = 0; i < paths.length; i++)
+            PathSection(
+              text: paths[i],
+              isLast: i == paths.length - 1,
+              unstack: paths.length - i - 1,
+            ),
+        ],
       ),
     );
   }

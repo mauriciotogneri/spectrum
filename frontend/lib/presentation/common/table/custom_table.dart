@@ -7,6 +7,9 @@ import 'package:testflow/presentation/common/input/custom_input.dart';
 import 'package:testflow/presentation/common/text/custom_text.dart';
 import 'package:testflow/utils/palette.dart';
 
+/*
+  Use LinearProgressIndicator when loading elements
+*/
 class CustomTable<T extends TableElement> extends StatelessWidget {
   final List<TableColumn> columns;
   final List<T> rows;

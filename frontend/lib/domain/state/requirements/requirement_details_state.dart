@@ -114,4 +114,6 @@ class RequirementDetailsState extends BaseState {
     );
     notify();
   }
+
+  void onDeleteRequirement() {}
 }

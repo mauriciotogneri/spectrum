@@ -43,6 +43,10 @@ class Data {
       component: component,
       platforms: platforms,
       tags: [],
+      createdOn: DateTime.now().subtract(Duration(days: Random().nextInt(30))),
+      createdBy: 'John Doe',
+      updatedOn: DateTime.now().subtract(Duration(days: Random().nextInt(30))),
+      updatedBy: 'Jane Doe',
     );
     _requirements.add(requirement);
   }
@@ -65,6 +69,10 @@ class Data {
       expected: expected,
       lastRun: DateTime.now().subtract(Duration(days: Random().nextInt(30))),
       tags: [],
+      createdOn: DateTime.now().subtract(Duration(days: Random().nextInt(30))),
+      createdBy: 'John Doe',
+      updatedOn: DateTime.now().subtract(Duration(days: Random().nextInt(30))),
+      updatedBy: 'Jane Doe',
     );
     _testCases.add(testCase);
   }
@@ -86,6 +94,10 @@ class Data {
       components: components,
       platforms: platforms,
       tags: [],
+      createdOn: DateTime.now().subtract(Duration(days: Random().nextInt(30))),
+      createdBy: 'John Doe',
+      updatedOn: DateTime.now().subtract(Duration(days: Random().nextInt(30))),
+      updatedBy: 'Jane Doe',
     );
     _suites.add(suite);
   }
@@ -163,6 +175,14 @@ class Data {
         tags: [
           for (int i = 0; i < Random().nextInt(3) + 1; i++) 'Tag ${i + 1}',
         ],
+        createdOn: DateTime.now().subtract(
+          Duration(days: Random().nextInt(30)),
+        ),
+        createdBy: 'John Doe',
+        updatedOn: DateTime.now().subtract(
+          Duration(days: Random().nextInt(30)),
+        ),
+        updatedBy: 'Jane Doe',
       ),
   ];
 
@@ -183,6 +203,14 @@ class Data {
           tags: [
             for (int i = 0; i < Random().nextInt(3) + 1; i++) 'Tag ${i + 1}',
           ],
+          createdOn: DateTime.now().subtract(
+            Duration(days: Random().nextInt(30)),
+          ),
+          createdBy: 'John Doe',
+          updatedOn: DateTime.now().subtract(
+            Duration(days: Random().nextInt(30)),
+          ),
+          updatedBy: 'Jane Doe',
         ),
   ];
 
@@ -199,6 +227,14 @@ class Data {
         tags: [
           for (int i = 0; i < Random().nextInt(3) + 1; i++) 'Tag ${i + 1}',
         ],
+        createdOn: DateTime.now().subtract(
+          Duration(days: Random().nextInt(30)),
+        ),
+        createdBy: 'John Doe',
+        updatedOn: DateTime.now().subtract(
+          Duration(days: Random().nextInt(30)),
+        ),
+        updatedBy: 'Jane Doe',
       ),
   ];
 

@@ -17,6 +17,10 @@ class Suite implements TableElement {
   final List<String> components;
   final List<String> platforms;
   final List<String> tags;
+  final DateTime createdOn;
+  final String createdBy;
+  final DateTime updatedOn;
+  final String updatedBy;
 
   const Suite({
     required this.id,
@@ -27,6 +31,10 @@ class Suite implements TableElement {
     required this.components,
     required this.platforms,
     required this.tags,
+    required this.createdOn,
+    required this.createdBy,
+    required this.updatedOn,
+    required this.updatedBy,
   });
 
   bool matches({

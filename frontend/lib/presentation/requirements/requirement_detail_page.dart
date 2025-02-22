@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:testflow/debug/data.dart';
@@ -113,7 +111,7 @@ class Body extends StatelessWidget {
                 children: [FormFields(state)],
               ),
             ),
-            const Metadata(),
+            Metadata(state),
             const HBox(32),
           ],
         ),
@@ -306,31 +304,25 @@ class Table extends StatelessWidget {
 }
 
 class Metadata extends StatelessWidget {
-  const Metadata();
+  final RequirementDetailState state;
+
+  const Metadata(this.state);
 
   @override
   Widget build(BuildContext context) {
     return MetadataCard([
       MetadataItem(
         label: 'Created on',
-        value: Formatter.dateMonthYear(
-          DateTime.now().subtract(Duration(days: Random().nextInt(30))),
-        ),
-        tooltip: Formatter.fullDateTime(
-          DateTime.now().subtract(Duration(days: Random().nextInt(30))),
-        ),
+        value: Formatter.dateMonthYear(state.requirement.createdOn),
+        tooltip: Formatter.fullDateTime(state.requirement.createdOn),
       ),
-      const MetadataItem(label: 'Created by', value: 'John Doe'),
+      MetadataItem(label: 'Created by', value: state.requirement.createdBy),
       MetadataItem(
         label: 'Updated on',
-        value: Formatter.dateMonthYear(
-          DateTime.now().subtract(Duration(days: Random().nextInt(30))),
-        ),
-        tooltip: Formatter.fullDateTime(
-          DateTime.now().subtract(Duration(days: Random().nextInt(30))),
-        ),
+        value: Formatter.dateMonthYear(state.requirement.updatedOn),
+        tooltip: Formatter.fullDateTime(state.requirement.updatedOn),
       ),
-      const MetadataItem(label: 'Updated by', value: 'Jane Doe'),
+      MetadataItem(label: 'Updated by', value: state.requirement.updatedBy),
     ]);
   }
 }

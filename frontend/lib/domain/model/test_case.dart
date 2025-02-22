@@ -17,6 +17,10 @@ class TestCase implements TableElement {
   final String expected;
   final DateTime lastRun;
   final List<String> tags;
+  final DateTime createdOn;
+  final String createdBy;
+  final DateTime updatedOn;
+  final String updatedBy;
 
   const TestCase({
     required this.id,
@@ -28,6 +32,10 @@ class TestCase implements TableElement {
     required this.expected,
     required this.lastRun,
     required this.tags,
+    required this.createdOn,
+    required this.createdBy,
+    required this.updatedOn,
+    required this.updatedBy,
   });
 
   bool matches({

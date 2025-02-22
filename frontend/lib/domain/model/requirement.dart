@@ -20,6 +20,10 @@ class Requirement implements TableElement {
   final String component;
   final List<String> platforms;
   final List<String> tags;
+  final DateTime createdOn;
+  final String createdBy;
+  final DateTime updatedOn;
+  final String updatedBy;
 
   const Requirement({
     required this.id,
@@ -32,6 +36,10 @@ class Requirement implements TableElement {
     required this.component,
     required this.platforms,
     required this.tags,
+    required this.createdOn,
+    required this.createdBy,
+    required this.updatedOn,
+    required this.updatedBy,
   });
 
   int get numberOfTestCases => Data.testCases(this).length;

@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:testflow/domain/state/test_cases/test_case_detail_state.dart';
@@ -112,7 +110,7 @@ class Body extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(child: FormFields(state)),
-        const Metadata(),
+        Metadata(state),
         const HBox(32),
       ],
     );
@@ -185,38 +183,30 @@ class FormFields extends StatelessWidget {
 }
 
 class Metadata extends StatelessWidget {
-  const Metadata();
+  final TestCaseDetailState state;
+
+  const Metadata(this.state);
 
   @override
   Widget build(BuildContext context) {
     return MetadataCard([
       MetadataItem(
         label: 'Created on',
-        value: Formatter.dateMonthYear(
-          DateTime.now().subtract(Duration(days: Random().nextInt(30))),
-        ),
-        tooltip: Formatter.fullDateTime(
-          DateTime.now().subtract(Duration(days: Random().nextInt(30))),
-        ),
+        value: Formatter.dateMonthYear(state.testCase.createdOn),
+        tooltip: Formatter.fullDateTime(state.testCase.createdOn),
       ),
-      const MetadataItem(label: 'Created by', value: 'John Doe'),
+      MetadataItem(label: 'Created by', value: state.testCase.createdBy),
       MetadataItem(
         label: 'Updated on',
-        value: Formatter.dateMonthYear(
-          DateTime.now().subtract(Duration(days: Random().nextInt(30))),
-        ),
-        tooltip: Formatter.fullDateTime(
-          DateTime.now().subtract(Duration(days: Random().nextInt(30))),
-        ),
+        value: Formatter.dateMonthYear(state.testCase.updatedOn),
+        tooltip: Formatter.fullDateTime(state.testCase.updatedOn),
       ),
-      const MetadataItem(label: 'Updated by', value: 'Jane Doe'),
+      MetadataItem(label: 'Updated by', value: state.testCase.updatedBy),
       MetadataItem(
         label: 'Last run',
         value:
-            '${Formatter.dateMonthYear(DateTime.now().subtract(Duration(days: Random().nextInt(30))))}\n${Formatter.daysAgo(DateTime.now().subtract(Duration(days: Random().nextInt(30))))} days ago',
-        tooltip: Formatter.fullDateTime(
-          DateTime.now().subtract(Duration(days: Random().nextInt(30))),
-        ),
+            '${Formatter.dateMonthYear(state.testCase.lastRun)}\n${Formatter.daysAgo(state.testCase.lastRun)} days ago',
+        tooltip: Formatter.fullDateTime(state.testCase.lastRun),
       ),
     ]);
   }

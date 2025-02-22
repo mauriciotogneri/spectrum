@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:testflow/presentation/common/button/primary_text_button.dart';
 import 'package:testflow/presentation/common/button/secondary_icon_button.dart';
 import 'package:testflow/presentation/common/button/secondary_text_button.dart';
-import 'package:testflow/presentation/common/input/custom_input.dart';
 import 'package:testflow/presentation/common/text/custom_text.dart';
 import 'package:testflow/utils/palette.dart';
 
@@ -302,38 +301,7 @@ class FooterRow extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
-        children: [
-          FooterTotal(total),
-          const Spacer(),
-          SecondaryIconButton(
-            size: 34,
-            iconSize: 22,
-            icon: Icons.skip_previous_rounded,
-            onPressed: () {},
-          ),
-          const HBox(8),
-          SecondaryIconButton(
-            size: 34,
-            iconSize: 22,
-            icon: Icons.keyboard_arrow_left_rounded,
-            onPressed: () {},
-          ),
-          const HBox(8),
-          SecondaryIconButton(
-            size: 34,
-            iconSize: 22,
-            icon: Icons.keyboard_arrow_right_rounded,
-            onPressed: () {},
-          ),
-          const HBox(8),
-          SecondaryIconButton(
-            size: 34,
-            iconSize: 22,
-            icon: Icons.skip_next_rounded,
-            onPressed: () {},
-          ),
-          const HBox(8),
-        ],
+        children: [FooterTotal(total), const Spacer(), const FooterControls()],
       ),
     );
   }
@@ -363,35 +331,53 @@ class FooterTotal extends StatelessWidget {
   }
 }
 
-class FooterButton extends StatelessWidget {
-  final IconData icon;
-  final VoidCallback onPressed;
-
-  const FooterButton({required this.icon, required this.onPressed});
+class FooterControls extends StatelessWidget {
+  const FooterControls();
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: SizedBox(
-        width: 34,
-        height: 34,
-        child: OutlinedButton.icon(
-          onPressed: onPressed,
-          style: ButtonStyle(
-            padding: WidgetStateProperty.all(const EdgeInsets.only(left: 6)),
-            foregroundColor: WidgetStateProperty.all(Palette.textTitle),
-            side: WidgetStateProperty.all(
-              const BorderSide(color: Palette.borderButtonSecondary),
-            ),
-            shape: WidgetStateProperty.all(
-              RoundedRectangleBorder(borderRadius: CustomInput.borderRadius),
-            ),
-          ),
-          icon: Icon(icon, color: Palette.textTitle, size: 20),
-          label: const Empty(),
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        SecondaryIconButton(
+          size: 34,
+          iconSize: 22,
+          icon: Icons.skip_previous_rounded,
+          onPressed: () {},
         ),
-      ),
+        const HBox(8),
+        SecondaryIconButton(
+          size: 34,
+          iconSize: 22,
+          icon: Icons.keyboard_arrow_left_rounded,
+          onPressed: () {},
+        ),
+        const HBox(16),
+        const Center(
+          child: CustomText(
+            text: 'Page: 1/10',
+            color: Palette.textTitle,
+            size: 14,
+            weight: FontWeight.w500,
+          ),
+        ),
+        const HBox(16),
+        SecondaryIconButton(
+          size: 34,
+          iconSize: 22,
+          icon: Icons.keyboard_arrow_right_rounded,
+          onPressed: () {},
+        ),
+        const HBox(8),
+        SecondaryIconButton(
+          size: 34,
+          iconSize: 22,
+          icon: Icons.skip_next_rounded,
+          onPressed: () {},
+        ),
+        const HBox(8),
+      ],
     );
   }
 }

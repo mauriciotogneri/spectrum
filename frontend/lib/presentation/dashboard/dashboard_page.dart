@@ -19,7 +19,9 @@ class DashboardPage extends StatelessWidget {
       builder:
           (context, state) => Pane.scrollable(
             children: [
-              const NavigationPath(paths: [PathItem(text: 'Dashboard')]),
+              const PaneHeader(
+                path: NavigationPath(paths: [PathItem(text: 'Dashboard')]),
+              ),
               Content(),
             ],
           ),
@@ -31,7 +33,7 @@ class Content extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.all(16),
+      padding: EdgeInsets.all(32),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,

@@ -1,9 +1,9 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:testflow/debug/data.dart';
+import 'package:testflow/extensions/build_context_extension.dart';
 import 'package:testflow/presentation/common/form/form_key.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
-import 'package:testflow/utils/navigation.dart';
 
 class SignInState extends BaseState {
   final FormKey formKey = FormKey();
@@ -25,5 +25,5 @@ class SignInState extends BaseState {
   }
 
   void _signIn(BuildContext context) =>
-      Navigation.dashboard(context: context, projectId: Data.currentProject.id);
+      context.dashboard(projectId: Data.currentProject.id);
 }

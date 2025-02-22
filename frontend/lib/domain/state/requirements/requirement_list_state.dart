@@ -5,11 +5,11 @@ import 'package:testflow/domain/model/requirement.dart';
 import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
+import 'package:testflow/extensions/build_context_extension.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_multiple.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/dialogs/base_dialog.dart';
 import 'package:testflow/presentation/dialogs/create_requirement_dialog.dart';
-import 'package:testflow/utils/navigation.dart';
 
 class RequirementListState extends BaseState {
   final String projectId;
@@ -64,8 +64,7 @@ class RequirementListState extends BaseState {
   void onRequirementSelected({
     required BuildContext context,
     required String requirementId,
-  }) => Navigation.requirementDetail(
-    context: context,
+  }) => context.requirementDetail(
     projectId: projectId,
     requirementId: requirementId,
   );

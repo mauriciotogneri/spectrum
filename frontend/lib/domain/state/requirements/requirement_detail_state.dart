@@ -7,13 +7,13 @@ import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
 import 'package:testflow/domain/types/test_case_execution.dart';
+import 'package:testflow/extensions/build_context_extension.dart';
 import 'package:testflow/presentation/common/form/form_key.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_multiple.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/dialogs/base_dialog.dart';
 import 'package:testflow/presentation/dialogs/create_test_case_dialog.dart';
-import 'package:testflow/utils/navigation.dart';
 
 class RequirementDetailState extends BaseState {
   final String projectId;
@@ -89,8 +89,7 @@ class RequirementDetailState extends BaseState {
   void onTestCaseSelected({
     required BuildContext context,
     required String testCaseId,
-  }) => Navigation.testCaseDetail(
-    context: context,
+  }) => context.testCaseDetail(
     projectId: projectId,
     requirementId: requirementId,
     testCaseId: testCaseId,

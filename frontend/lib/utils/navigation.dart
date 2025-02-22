@@ -84,72 +84,48 @@ class Navigation {
   static String location(BuildContext context) =>
       GoRouter.of(context).routerDelegate.currentConfiguration.uri.toString();
 
-  static void signIn(BuildContext context) =>
-      go(context: context, path: '/sign-in');
+  static void go({required BuildContext context, required String path}) =>
+      context.go(path);
 
-  static void dashboard({
-    required BuildContext context,
-    required String projectId,
-  }) => go(context: context, path: '/projects/$projectId/dashboard');
+  static void push({required BuildContext context, required String path}) =>
+      context.push(path);
 
-  static void requirementList({
-    required BuildContext context,
-    required String projectId,
-  }) => go(context: context, path: requirementListPath(projectId));
+  // =============================== SIGN IN ================================ \\
+
+  static String signInPath() => '/sign-in';
+
+  // ================================= MENU ================================= \\
+
+  static String dashboardPath({required String projectId}) =>
+      '/projects/$projectId/dashboard';
 
   static String requirementListPath(String projectId) =>
       '/projects/$projectId/requirements';
 
-  static void requirementDetail({
-    required BuildContext context,
-    required String projectId,
-    required String requirementId,
-  }) => go(
-    context: context,
-    path: requirementDetailPath(
-      projectId: projectId,
-      requirementId: requirementId,
-    ),
-  );
+  static String suiteListPath({required String projectId}) =>
+      '/projects/$projectId/suites';
+
+  static String sessionListPath({required String projectId}) =>
+      '/projects/$projectId/sessions';
+
+  static String settingsPath({required String projectId}) =>
+      '/projects/$projectId/settings';
+
+  static String componentsPath({required String projectId}) =>
+      '/projects/$projectId/components';
+
+  // ============================= REQUIREMENT ============================== \\
 
   static String requirementDetailPath({
     required String projectId,
     required String requirementId,
   }) => '/projects/$projectId/requirements/$requirementId';
 
-  static void testCaseDetail({
-    required BuildContext context,
+  // ============================== TEST CASE =============================== \\
+
+  static String testCaseDetailPath({
     required String projectId,
     required String requirementId,
     required String testCaseId,
-  }) => go(
-    context: context,
-    path: '/projects/$projectId/requirements/$requirementId/cases/$testCaseId',
-  );
-
-  static void suiteList({
-    required BuildContext context,
-    required String projectId,
-  }) => go(context: context, path: '/projects/$projectId/suites');
-
-  static void sessionList({
-    required BuildContext context,
-    required String projectId,
-  }) => go(context: context, path: '/projects/$projectId/sessions');
-
-  static void settings({
-    required BuildContext context,
-    required String projectId,
-  }) => go(context: context, path: '/projects/$projectId/settings');
-
-  static void components({
-    required BuildContext context,
-    required String projectId,
-  }) => go(context: context, path: '/projects/$projectId/components');
-
-  static void go({required BuildContext context, required String path}) =>
-      context.go(path);
-
-  static void push({required BuildContext context, required String path}) =>
-      context.push(path);
+  }) => '/projects/$projectId/requirements/$requirementId/cases/$testCaseId';
 }

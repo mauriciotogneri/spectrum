@@ -79,7 +79,7 @@ class FormFields extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(32),
       child: Form(
-        key: state.formKey,
+        key: state.formKey.key,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,

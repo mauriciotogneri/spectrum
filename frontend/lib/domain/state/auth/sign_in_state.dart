@@ -6,7 +6,7 @@ import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/utils/navigation.dart';
 
 class SignInState extends BaseState {
-  final FormKey formKey = const FormKey();
+  final FormKey formKey = FormKey();
   final CustomTextInputController emailController = CustomTextInputController();
   final CustomTextInputController passwordController =
       CustomTextInputController();

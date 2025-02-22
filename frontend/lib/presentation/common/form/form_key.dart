@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
-class FormKey extends GlobalKey<FormState> {
-  const FormKey() : super.constructor();
+class FormKey {
+  final GlobalKey<FormState> _formKey = GlobalKey();
 
-  bool validate() => currentState?.validate() ?? false;
+  GlobalKey<FormState> get key => _formKey;
 
-  void reset() => currentState?.reset();
+  bool validate() => _formKey.currentState?.validate() ?? false;
+
+  void reset() => _formKey.currentState?.reset();
 }

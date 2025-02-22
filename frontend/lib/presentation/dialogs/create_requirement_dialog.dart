@@ -57,7 +57,7 @@ class FormFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: state.formKey,
+      key: state.formKey.key,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
@@ -199,7 +199,7 @@ class FormFields extends StatelessWidget {
 }
 
 class CreateRequirementDialogState extends BaseState {
-  final FormKey formKey = const FormKey();
+  final FormKey formKey = FormKey();
   final OnCreateRequirement onCreateRequirement;
   final CustomTextInputController codeController = CustomTextInputController();
   final CustomDropdownSingleController<RequirementType> typeController =

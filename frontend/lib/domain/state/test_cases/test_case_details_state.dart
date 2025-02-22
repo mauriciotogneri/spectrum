@@ -14,7 +14,7 @@ class TestCaseDetailsState extends BaseState {
   Requirement? _requirement;
   TestCase? _testCase;
 
-  final FormKey formKey = const FormKey();
+  final FormKey formKey = FormKey();
   final CustomTextInputController nameController = CustomTextInputController();
   final CustomDropdownSingleController<TestCaseExecution> executionController =
       CustomDropdownSingleController();
@@ -23,8 +23,6 @@ class TestCaseDetailsState extends BaseState {
   final CustomTextInputController stepsController = CustomTextInputController();
   final CustomTextInputController expectedController =
       CustomTextInputController();
-
-  bool get formValid => formKey.currentState!.validate();
 
   TestCaseDetailsState({
     required this.projectId,

@@ -20,7 +20,7 @@ class RequirementDetailsState extends BaseState {
   final String requirementId;
   Requirement? _requirement;
   final List<TestCase> _allTestCases = [];
-  final FormKey formKey = const FormKey();
+  final FormKey formKey = FormKey();
   final CustomTextInputController idController = CustomTextInputController();
   final CustomDropdownSingleController<RequirementType> typeController =
       CustomDropdownSingleController();

@@ -35,7 +35,7 @@ class CreateProjectDialog extends StatelessWidget {
               PrimaryTextButton(
                 text: 'Create',
                 onPressed: () {
-                  if (state.formValid) {
+                  if (state.formKey.validate()) {
                     Navigator.of(context).pop();
                     state.onCreate();
                   }
@@ -56,7 +56,7 @@ class FormFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: state.formKey,
+      key: state.formKey.key,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
@@ -80,15 +80,13 @@ class FormFields extends StatelessWidget {
 }
 
 class CreateProjectDialogState extends BaseState {
-  final FormKey formKey = const FormKey();
+  final FormKey formKey = FormKey();
   final OnCreateProject onCreateProject;
   final CustomTextInputController nameController = CustomTextInputController();
   final CustomTextInputController descriptionController =
       CustomTextInputController();
 
   CreateProjectDialogState({required this.onCreateProject});
-
-  bool get formValid => formKey.currentState!.validate();
 
   void onCreate() => onCreateProject(
     name: nameController.text,

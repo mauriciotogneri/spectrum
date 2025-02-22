@@ -17,7 +17,7 @@ class ComponentsState extends BaseState {
       CustomTextInputController();
 
   // Row 2 / Column 1
-  final FormKey signInFormKey = const FormKey();
+  final FormKey signInFormKey = FormKey();
   final CustomTextInputController emailController = CustomTextInputController();
   final CustomTextInputController passwordController =
       CustomTextInputController();

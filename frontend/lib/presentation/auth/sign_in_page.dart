@@ -57,7 +57,7 @@ class FormInputs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: state.formKey,
+      key: state.formKey.key,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,

@@ -197,7 +197,7 @@ class Row2Column1 extends StatelessWidget {
     return CustomCard(
       width: 332,
       child: Form(
-        key: state.signInFormKey,
+        key: state.signInFormKey.key,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,

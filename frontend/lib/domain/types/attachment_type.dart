@@ -7,7 +7,7 @@ enum AttachmentType {
   image,
   video,
   audio,
-  pdf,
+  document,
   other;
 
   String get localized {
@@ -20,8 +20,8 @@ enum AttachmentType {
         return 'Video';
       case AttachmentType.audio:
         return 'Audio';
-      case AttachmentType.pdf:
-        return 'PDF';
+      case AttachmentType.document:
+        return 'Document';
       case AttachmentType.other:
         return 'Other';
     }

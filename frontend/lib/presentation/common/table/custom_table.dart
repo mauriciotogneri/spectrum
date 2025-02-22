@@ -138,9 +138,12 @@ class TableSelectColumns extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SecondaryIconButton(
-      icon: Icons.checklist_rounded,
-      onPressed: onPressed,
+    return Tooltip(
+      message: 'Select columns',
+      child: SecondaryIconButton(
+        icon: Icons.checklist_rounded,
+        onPressed: onPressed,
+      ),
     );
   }
 }
@@ -152,9 +155,12 @@ class TableExportButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SecondaryIconButton(
-      icon: Icons.file_download_outlined,
-      onPressed: onPressed,
+    return Tooltip(
+      message: 'Export',
+      child: SecondaryIconButton(
+        icon: Icons.file_download_outlined,
+        onPressed: onPressed,
+      ),
     );
   }
 }

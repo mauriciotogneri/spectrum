@@ -16,7 +16,9 @@ class ContextMenu extends StatelessWidget {
       menuChildren: children,
       builder:
           (context, controller, child) => IconButton(
-            icon: Icon(icon, size: 16),
+            visualDensity: VisualDensity.compact,
+            padding: const EdgeInsets.all(0),
+            icon: Icon(icon, size: 22),
             onPressed: () {
               if (controller.isOpen) {
                 controller.close();

@@ -15,7 +15,7 @@ extension BuildContextExtension on BuildContext {
 
   void requirementList({required String projectId}) => Navigation.go(
     context: this,
-    path: Navigation.requirementListPath(projectId),
+    path: Navigation.requirementListPath(projectId: projectId),
   );
 
   void suiteList({required String projectId}) => Navigation.go(

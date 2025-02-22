@@ -113,7 +113,7 @@ class Navigation {
   static String dashboardPath({required String projectId}) =>
       '/projects/$projectId/dashboard';
 
-  static String requirementListPath(String projectId) =>
+  static String requirementListPath({required String projectId}) =>
       '/projects/$projectId/requirements';
 
   static String suiteListPath({required String projectId}) =>

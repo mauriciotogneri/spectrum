@@ -124,6 +124,16 @@ class Data {
     throw Exception('TestCase not found');
   }
 
+  static Suite suiteById(String id) {
+    for (final Suite suite in _suites) {
+      if (suite.id == id) {
+        return suite;
+      }
+    }
+
+    throw Exception('Suite not found');
+  }
+
   static const List<String> _components = [
     'Authentication',
     'Payments',

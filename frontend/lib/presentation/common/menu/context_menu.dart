@@ -6,12 +6,14 @@ import 'package:testflow/utils/palette.dart';
 class ContextMenu extends StatelessWidget {
   final IconData icon;
   final List<MenuItemButton> children;
+  final Offset? offset;
 
-  const ContextMenu({required this.icon, required this.children});
+  const ContextMenu({required this.icon, required this.children, this.offset});
 
   @override
   Widget build(BuildContext context) {
     return MenuAnchor(
+      alignmentOffset: offset,
       style: MenuStyle(
         elevation: WidgetStateProperty.all(0),
         backgroundColor: WidgetStateProperty.all(Palette.backgroundEmpty),

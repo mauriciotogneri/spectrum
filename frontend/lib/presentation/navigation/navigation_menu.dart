@@ -79,7 +79,7 @@ class _LeftMenuState extends State<LeftMenu> {
             ),
             NavigationMenuRow(
               text: 'Requirements',
-              icon: Icons.checklist,
+              icon: Icons.description_outlined,
               isSelected: selectedMenu == MenuItem.requirements,
               menu: MenuItem.requirements,
               onSelected:
@@ -87,7 +87,7 @@ class _LeftMenuState extends State<LeftMenu> {
             ),
             NavigationMenuRow(
               text: 'Suites',
-              icon: Icons.quiz_outlined,
+              icon: Icons.event_repeat_outlined,
               isSelected: selectedMenu == MenuItem.suites,
               menu: MenuItem.suites,
               onSelected:
@@ -95,7 +95,7 @@ class _LeftMenuState extends State<LeftMenu> {
             ),
             NavigationMenuRow(
               text: 'Sessions',
-              icon: Icons.find_in_page_outlined,
+              icon: Icons.checklist,
               isSelected: selectedMenu == MenuItem.sessions,
               menu: MenuItem.sessions,
               onSelected:

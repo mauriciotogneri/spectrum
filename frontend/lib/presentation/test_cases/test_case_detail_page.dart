@@ -80,6 +80,12 @@ class Header extends StatelessWidget {
           icon: Icons.more_horiz,
           children: [
             ContextMenuItem(
+              icon: Icons.bolt_rounded,
+              text: 'Quick test',
+              color: Palette.textTitle,
+              onPressed: state.onDeleteTestCase,
+            ),
+            ContextMenuItem(
               icon: Icons.delete_outline,
               text: 'Delete',
               color: Palette.semanticError,

@@ -5,6 +5,7 @@ import 'package:testflow/extensions/string_extension.dart';
 import 'package:testflow/presentation/common/table/custom_table.dart';
 import 'package:testflow/presentation/common/text/body_medium.dart';
 import 'package:testflow/utils/formatter.dart';
+import 'package:testflow/utils/palette.dart';
 
 class Attachment implements TableElement {
   final String path;
@@ -41,6 +42,7 @@ class Attachment implements TableElement {
   }
 
   static List<TableColumn> get columns => const [
+    TableColumn(id: AttachmentColumn.icon, name: '', width: 30),
     TableColumn(id: AttachmentColumn.name, name: 'Name'),
     TableColumn(
       id: AttachmentColumn.type,
@@ -71,6 +73,8 @@ class Attachment implements TableElement {
   @override
   Widget cell(TableColumn column) {
     switch (column.id) {
+      case AttachmentColumn.icon:
+        return Icon(type.icon, size: 16, color: Palette.iconEnabled);
       case AttachmentColumn.name:
         return BodyMedium(text: name);
       case AttachmentColumn.type:
@@ -90,4 +94,4 @@ class Attachment implements TableElement {
   }
 }
 
-enum AttachmentColumn { name, type, size, uploadedOn, uploadedBy }
+enum AttachmentColumn { icon, name, type, size, uploadedOn, uploadedBy }

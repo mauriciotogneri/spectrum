@@ -22,7 +22,7 @@ class SecondaryTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 38,
+      height: CustomInput.HEIGHT - 2,
       width: width,
       child: OutlinedButton.icon(
         onPressed: enabled ? onPressed : null,

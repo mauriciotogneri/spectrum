@@ -24,7 +24,7 @@ class PrimaryTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 38,
+      height: CustomInput.HEIGHT - 2,
       width: width,
       child: FilledButton.icon(
         onPressed: enabled ? onPressed : null,

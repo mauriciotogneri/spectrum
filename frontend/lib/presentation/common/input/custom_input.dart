@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:testflow/utils/palette.dart';
 
 class CustomInput {
+  static const double HEIGHT = 35;
+
   static InputBorder get enabledBorder => OutlineInputBorder(
     borderRadius: borderRadius,
     borderSide: const BorderSide(color: Palette.borderInputEnabled, width: 1),

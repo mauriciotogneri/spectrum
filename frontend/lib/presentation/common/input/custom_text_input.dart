@@ -65,7 +65,10 @@ class CustomTextInput extends StatelessWidget {
             builder:
                 (hasError) => SizedBox(
                   width: width,
-                  height: ((minLines == null) || (minLines! == 1)) ? 40 : null,
+                  height:
+                      ((minLines == null) || (minLines! == 1))
+                          ? CustomInput.HEIGHT
+                          : null,
                   child: TextField(
                     autofocus: autofocus,
                     minLines: minLines,

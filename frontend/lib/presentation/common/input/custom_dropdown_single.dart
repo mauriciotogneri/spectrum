@@ -43,7 +43,7 @@ class CustomDropdownSingle<T> extends StatelessWidget {
             builder:
                 (hasError) => SizedBox(
                   width: width,
-                  height: 40,
+                  height: CustomInput.HEIGHT,
                   child: Material(
                     color: Palette.backgroundEmpty,
                     borderRadius: CustomInput.borderRadius,
@@ -107,11 +107,11 @@ class CustomDropdownSingle<T> extends StatelessWidget {
                               leadingIcon: InputIcon.create(icon),
                               trailingIcon: const InputIcon(
                                 icon: Icons.keyboard_arrow_down_rounded,
-                                size: 18,
+                                size: 14,
                               ),
                               selectedTrailingIcon: const InputIcon(
                                 icon: Icons.keyboard_arrow_up_rounded,
-                                size: 18,
+                                size: 14,
                               ),
                               inputDecorationTheme: InputDecorationTheme(
                                 contentPadding: EdgeInsets.only(

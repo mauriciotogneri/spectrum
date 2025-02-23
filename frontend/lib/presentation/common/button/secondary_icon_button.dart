@@ -15,7 +15,7 @@ class SecondaryIconButton extends StatelessWidget {
     this.onPressed,
     this.color,
     this.iconSize,
-    this.size = 38,
+    this.size = CustomInput.HEIGHT - 2,
     this.enabled = true,
   });
 

@@ -74,7 +74,7 @@ class Attachment implements TableElement {
   Widget cell(TableColumn column) {
     switch (column.id) {
       case AttachmentColumn.icon:
-        return Icon(type.icon, size: 16, color: Palette.iconEnabled);
+        return Icon(type.icon, size: 16, color: Palette.textBody);
       case AttachmentColumn.name:
         return BodyMedium(text: name);
       case AttachmentColumn.type:

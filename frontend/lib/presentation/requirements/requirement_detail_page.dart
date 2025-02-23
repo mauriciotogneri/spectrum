@@ -339,7 +339,11 @@ class TabSection extends StatelessWidget {
       child: CustomTabs(
         tabs: const [
           TabItem(title: 'Test Cases', width: 150, icon: Icons.list),
-          TabItem(title: 'Attachments', width: 150, icon: Icons.attachment),
+          TabItem(
+            title: 'Attachments',
+            width: 150,
+            icon: Icons.attachment_outlined,
+          ),
         ],
         children: [Table(state), AttachmentsTable.instance()],
       ),

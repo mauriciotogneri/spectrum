@@ -40,7 +40,7 @@ enum AttachmentType implements Chipable {
       case AttachmentType.document:
         return Icons.description_outlined;
       case AttachmentType.other:
-        return Icons.question_mark_rounded;
+        return Icons.attachment_outlined;
     }
   }
 

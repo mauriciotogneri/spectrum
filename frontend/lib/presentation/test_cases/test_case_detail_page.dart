@@ -227,12 +227,13 @@ class Metadata extends StatelessWidget {
         tooltip: Formatter.fullDateTime(state.testCase.updatedOn),
       ),
       MetadataItem(label: 'Updated by', value: state.testCase.updatedBy),
-      MetadataItem(
-        label: 'Last run',
-        value:
-            '${Formatter.dateMonthYear(state.testCase.lastRun)}\n${Formatter.daysAgo(state.testCase.lastRun)}',
-        tooltip: Formatter.fullDateTime(state.testCase.lastRun),
-      ),
+      if (state.testCase.hasLastRun)
+        MetadataItem(
+          label: 'Last run',
+          value:
+              '${Formatter.dateMonthYear(state.testCase.lastRun!)}\n${Formatter.daysAgo(state.testCase.lastRun!)}',
+          tooltip: Formatter.fullDateTime(state.testCase.lastRun!),
+        ),
     ]);
   }
 }

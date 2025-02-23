@@ -70,7 +70,7 @@ class Data {
       preconditions: preconditions,
       steps: steps,
       expected: expected,
-      lastRun: randomDate(),
+      lastRun: Random().nextInt(10) > 2 ? randomDate() : null,
       lastResults: _randomList(TestRunResult.values),
       tags: [],
       createdOn: randomDate(),
@@ -211,7 +211,7 @@ class Data {
           preconditions: _random(_texts),
           steps: _random(_texts),
           expected: _random(_texts),
-          lastRun: randomDate(),
+          lastRun: Random().nextInt(10) > 2 ? randomDate() : null,
           lastResults: _randomRepeatedList(TestRunResult.values, 5),
           tags: [
             for (int i = 0; i < Random().nextInt(3) + 1; i++) 'Tag ${i + 1}',
@@ -318,7 +318,7 @@ class Data {
   static List<T> _randomRepeatedList<T>(List<T> list, int limit) {
     final List<T> result = [];
 
-    for (int i = 0; i < Random().nextInt(limit) + 1; i++) {
+    for (int i = 0; i < Random().nextInt(limit); i++) {
       result.add(_random(list));
     }
 

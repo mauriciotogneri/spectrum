@@ -16,7 +16,7 @@ class TestCase implements TableElement {
   final String preconditions;
   final String steps;
   final String expected;
-  final DateTime lastRun;
+  final DateTime? lastRun;
   final List<TestRunResult> lastResults;
   final List<String> tags;
   final DateTime createdOn;
@@ -40,6 +40,8 @@ class TestCase implements TableElement {
     required this.updatedOn,
     required this.updatedBy,
   });
+
+  bool get hasLastRun => lastRun != null;
 
   bool matches({
     required String queryFilter,
@@ -75,6 +77,7 @@ class TestCase implements TableElement {
       id: TestCaseColumn.lastResults,
       name: 'Last results',
       width: 300,
+      alignment: Alignment.center,
     ),
   ];
 
@@ -86,10 +89,12 @@ class TestCase implements TableElement {
       case TestCaseColumn.executionType:
         return execution.chip;
       case TestCaseColumn.lastRun:
-        return Tooltip(
-          message: Formatter.fullDateTime(lastRun),
-          child: BodyMedium(text: Formatter.daysAgo(lastRun)),
-        );
+        return hasLastRun
+            ? Tooltip(
+              message: Formatter.fullDateTime(lastRun!),
+              child: BodyMedium(text: Formatter.daysAgo(lastRun!)),
+            )
+            : const BodyMedium(text: '-');
       case TestCaseColumn.lastResults:
         return LastResults(lastResults);
       default:

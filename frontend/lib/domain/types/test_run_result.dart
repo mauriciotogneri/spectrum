@@ -25,6 +25,22 @@ enum TestRunResult implements Chipable {
     }
   }
 
+  // TODO(momo): adjust color
+  Color get color {
+    switch (this) {
+      case TestRunResult.pending:
+        return Palette.chipWhiteForeground;
+      case TestRunResult.passed:
+        return Palette.chipGreenForeground;
+      case TestRunResult.skipped:
+        return Palette.chipBlueForeground;
+      case TestRunResult.blocked:
+        return Palette.chipYellowForeground;
+      case TestRunResult.failed:
+        return Palette.chipRedForeground;
+    }
+  }
+
   Color get foregroundColor {
     switch (this) {
       case TestRunResult.pending:

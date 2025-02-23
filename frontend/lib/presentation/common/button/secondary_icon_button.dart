@@ -47,7 +47,7 @@ class SecondaryIconButton extends StatelessWidget {
           child: Icon(
             icon,
             color: color ?? Palette.textTitle,
-            size: iconSize ?? size / 2.5,
+            size: iconSize ?? size / 2,
           ),
         ),
       ),

@@ -143,10 +143,7 @@ class TableSelectColumns extends StatelessWidget {
   Widget build(BuildContext context) {
     return Tooltip(
       message: 'Select columns',
-      child: SecondaryIconButton(
-        icon: Icons.checklist_rounded,
-        onPressed: onPressed,
-      ),
+      child: SecondaryIconButton(icon: Icons.tune, onPressed: onPressed),
     );
   }
 }

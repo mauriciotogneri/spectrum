@@ -79,10 +79,15 @@ class TestRun implements TableElement {
     TableColumn(
       id: TestCaseColumn.reproducibility,
       name: 'Reproducibility',
-      width: 250,
+      width: 200,
       alignment: Alignment.center,
     ),
-    TableColumn(id: TestCaseColumn.timestamp, name: 'Timestamp', width: 200),
+    TableColumn(
+      id: TestCaseColumn.timestamp,
+      name: 'Timestamp',
+      width: 200,
+      alignment: Alignment.center,
+    ),
   ];
 
   @override

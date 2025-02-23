@@ -304,6 +304,12 @@ class TableCell extends StatelessWidget {
       width: width,
       height: 45,
       padding: const EdgeInsets.symmetric(horizontal: 16),
+      // Uncomment to show column separators
+      /*decoration: const BoxDecoration(
+        border: Border(
+          right: BorderSide(color: Palette.borderInputEnabled, width: 1),
+        ),
+      ),*/
       child: Align(
         alignment: alignment ?? Alignment.centerLeft,
         child: content,

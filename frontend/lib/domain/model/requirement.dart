@@ -108,7 +108,7 @@ class Requirement implements TableElement {
     TableColumn(
       id: RequirementColumn.type,
       name: 'Type',
-      width: 170,
+      width: 200,
       alignment: Alignment.center,
     ),
     TableColumn(
@@ -126,7 +126,7 @@ class Requirement implements TableElement {
     TableColumn(
       id: RequirementColumn.numberOfTestCases,
       name: 'Test Cases',
-      width: 120,
+      width: 130,
       alignment: Alignment.center,
     ),
   ];

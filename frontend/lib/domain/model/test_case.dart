@@ -69,7 +69,7 @@ class TestCase implements TableElement {
     TableColumn(
       id: TestCaseColumn.executionType,
       name: 'Execution',
-      width: 300,
+      width: 200,
       alignment: Alignment.center,
     ),
     TableColumn(
@@ -81,7 +81,7 @@ class TestCase implements TableElement {
     TableColumn(
       id: TestCaseColumn.lastResults,
       name: 'Last results',
-      width: 300,
+      width: 350,
       alignment: Alignment.center,
     ),
   ];

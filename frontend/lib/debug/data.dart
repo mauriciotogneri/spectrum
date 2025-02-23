@@ -11,7 +11,7 @@ import 'package:testflow/domain/types/requirement_status.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
 import 'package:testflow/domain/types/test_case_execution.dart';
 import 'package:testflow/domain/types/test_run_reproducibility.dart';
-import 'package:testflow/domain/types/test_run_status.dart';
+import 'package:testflow/domain/types/test_run_result.dart';
 
 class Data {
   static Project currentProject = _projects.first;
@@ -71,7 +71,7 @@ class Data {
       steps: steps,
       expected: expected,
       lastRun: randomDate(),
-      lastResults: _randomList(TestRunStatus.values),
+      lastResults: _randomList(TestRunResult.values),
       tags: [],
       createdOn: randomDate(),
       createdBy: 'John Doe',
@@ -212,7 +212,7 @@ class Data {
           steps: _random(_texts),
           expected: _random(_texts),
           lastRun: randomDate(),
-          lastResults: _randomRepeatedList(TestRunStatus.values, 5),
+          lastResults: _randomRepeatedList(TestRunResult.values, 5),
           tags: [
             for (int i = 0; i < Random().nextInt(3) + 1; i++) 'Tag ${i + 1}',
           ],
@@ -235,7 +235,7 @@ class Data {
           steps: testCase.steps,
           expected: testCase.expected,
           actual: _random(_texts),
-          status: _random(TestRunStatus.values),
+          result: _random(TestRunResult.values),
           reproducibility: _random(TestRunReproducibility.values),
           timestamp: randomDate(),
           createdOn: randomDate(),

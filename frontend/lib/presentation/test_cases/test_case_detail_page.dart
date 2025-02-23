@@ -4,7 +4,7 @@ import 'package:testflow/domain/model/test_run.dart';
 import 'package:testflow/domain/state/test_cases/test_case_detail_state.dart';
 import 'package:testflow/domain/types/test_case_execution.dart';
 import 'package:testflow/domain/types/test_run_reproducibility.dart';
-import 'package:testflow/domain/types/test_run_status.dart';
+import 'package:testflow/domain/types/test_run_result.dart';
 import 'package:testflow/presentation/attachments/attachments_table.dart';
 import 'package:testflow/presentation/common/card/metadata_card.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_multiple.dart';
@@ -287,12 +287,12 @@ class Table extends StatelessWidget {
             onChanged: (_) => state.notify(),
           ),
           const HBox(8),
-          CustomDropdownMultiple<TestRunStatus>(
+          CustomDropdownMultiple<TestRunResult>(
             width: 200,
-            values: TestRunStatus.items,
-            controller: state.statusFilterController,
+            values: TestRunResult.items,
+            controller: state.resultFilterController,
             onSelected: (_) => state.notify(),
-            hint: 'Status',
+            hint: 'Result',
           ),
           const HBox(8),
           CustomDropdownMultiple<TestRunReproducibility>(

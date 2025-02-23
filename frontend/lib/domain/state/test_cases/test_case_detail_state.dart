@@ -6,7 +6,7 @@ import 'package:testflow/domain/model/test_case.dart';
 import 'package:testflow/domain/model/test_run.dart';
 import 'package:testflow/domain/types/test_case_execution.dart';
 import 'package:testflow/domain/types/test_run_reproducibility.dart';
-import 'package:testflow/domain/types/test_run_status.dart';
+import 'package:testflow/domain/types/test_run_result.dart';
 import 'package:testflow/presentation/common/form/form_key.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_multiple.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
@@ -33,7 +33,7 @@ class TestCaseDetailState extends BaseState {
 
   final CustomTextInputController queryFilterController =
       CustomTextInputController();
-  final CustomDropdownMultipleController<TestRunStatus> statusFilterController =
+  final CustomDropdownMultipleController<TestRunResult> resultFilterController =
       CustomDropdownMultipleController();
   final CustomDropdownMultipleController<TestRunReproducibility>
   reproducibilityFilterController = CustomDropdownMultipleController();
@@ -49,7 +49,7 @@ class TestCaseDetailState extends BaseState {
           .where(
             (testRun) => testRun.matches(
               queryFilter: queryFilterController.text,
-              statusFilter: statusFilterController.selected,
+              resultFilter: resultFilterController.selected,
               reproducibilityFilter: reproducibilityFilterController.selected,
             ),
           )
@@ -63,7 +63,7 @@ class TestCaseDetailState extends BaseState {
 
   bool get hasFilters =>
       queryFilterController.isNotEmpty ||
-      statusFilterController.isNotEmpty ||
+      resultFilterController.isNotEmpty ||
       reproducibilityFilterController.isNotEmpty;
 
   @override
@@ -82,7 +82,7 @@ class TestCaseDetailState extends BaseState {
 
   void onResetFilters() {
     queryFilterController.clear();
-    statusFilterController.clear();
+    resultFilterController.clear();
     reproducibilityFilterController.clear();
     notify();
   }

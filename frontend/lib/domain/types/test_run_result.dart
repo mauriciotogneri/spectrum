@@ -3,7 +3,7 @@ import 'package:testflow/presentation/common/chip/custom_chip.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
 import 'package:testflow/utils/palette.dart';
 
-enum TestRunStatus implements Chipable {
+enum TestRunResult implements Chipable {
   pending,
   passed,
   skipped,
@@ -12,60 +12,60 @@ enum TestRunStatus implements Chipable {
 
   String get localized {
     switch (this) {
-      case TestRunStatus.pending:
+      case TestRunResult.pending:
         return 'Pending';
-      case TestRunStatus.passed:
+      case TestRunResult.passed:
         return 'Passed';
-      case TestRunStatus.skipped:
+      case TestRunResult.skipped:
         return 'Skipped';
-      case TestRunStatus.blocked:
+      case TestRunResult.blocked:
         return 'Blocked';
-      case TestRunStatus.failed:
+      case TestRunResult.failed:
         return 'Failed';
     }
   }
 
   Color get foregroundColor {
     switch (this) {
-      case TestRunStatus.pending:
+      case TestRunResult.pending:
         return Palette.chipWhiteForeground;
-      case TestRunStatus.passed:
+      case TestRunResult.passed:
         return Palette.chipGreenForeground;
-      case TestRunStatus.skipped:
+      case TestRunResult.skipped:
         return Palette.chipBlueForeground;
-      case TestRunStatus.blocked:
+      case TestRunResult.blocked:
         return Palette.chipYellowForeground;
-      case TestRunStatus.failed:
+      case TestRunResult.failed:
         return Palette.chipRedForeground;
     }
   }
 
   Color get backgroundColor {
     switch (this) {
-      case TestRunStatus.pending:
+      case TestRunResult.pending:
         return Palette.chipWhiteBackground;
-      case TestRunStatus.passed:
+      case TestRunResult.passed:
         return Palette.chipGreenBackground;
-      case TestRunStatus.skipped:
+      case TestRunResult.skipped:
         return Palette.chipBlueBackground;
-      case TestRunStatus.blocked:
+      case TestRunResult.blocked:
         return Palette.chipYellowBackground;
-      case TestRunStatus.failed:
+      case TestRunResult.failed:
         return Palette.chipRedBackground;
     }
   }
 
   Color get borderColor {
     switch (this) {
-      case TestRunStatus.pending:
+      case TestRunResult.pending:
         return Palette.chipWhiteBorder;
-      case TestRunStatus.passed:
+      case TestRunResult.passed:
         return Palette.chipGreenBorder;
-      case TestRunStatus.skipped:
+      case TestRunResult.skipped:
         return Palette.chipBlueBorder;
-      case TestRunStatus.blocked:
+      case TestRunResult.blocked:
         return Palette.chipYellowBorder;
-      case TestRunStatus.failed:
+      case TestRunResult.failed:
         return Palette.chipRedBorder;
     }
   }
@@ -78,8 +78,8 @@ enum TestRunStatus implements Chipable {
     borderColor: borderColor,
   );
 
-  static List<DropdownItem<TestRunStatus>> get items =>
-      TestRunStatus.values
+  static List<DropdownItem<TestRunResult>> get items =>
+      TestRunResult.values
           .map((type) => DropdownItem(value: type, text: type.localized))
           .toList();
 

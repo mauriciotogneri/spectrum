@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:testflow/domain/types/test_run_status.dart';
+import 'package:testflow/domain/types/test_run_result.dart';
 import 'package:testflow/utils/palette.dart';
 
 class LastResults extends StatelessWidget {
-  final List<TestRunStatus> results;
+  final List<TestRunResult> results;
 
   const LastResults(this.results);
 

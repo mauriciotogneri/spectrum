@@ -1,7 +1,7 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
 import 'package:testflow/domain/types/test_run_reproducibility.dart';
-import 'package:testflow/domain/types/test_run_status.dart';
+import 'package:testflow/domain/types/test_run_result.dart';
 import 'package:testflow/extensions/string_extension.dart';
 import 'package:testflow/presentation/common/table/custom_table.dart';
 import 'package:testflow/presentation/common/text/body_medium.dart';
@@ -16,7 +16,7 @@ class TestRun implements TableElement {
   final String steps;
   final String expected;
   final String actual;
-  final TestRunStatus status;
+  final TestRunResult result;
   final TestRunReproducibility reproducibility;
   final DateTime timestamp;
   final DateTime createdOn;
@@ -33,7 +33,7 @@ class TestRun implements TableElement {
     required this.steps,
     required this.expected,
     required this.actual,
-    required this.status,
+    required this.result,
     required this.reproducibility,
     required this.timestamp,
     required this.createdOn,
@@ -44,11 +44,11 @@ class TestRun implements TableElement {
 
   bool matches({
     required String queryFilter,
-    required List<TestRunStatus> statusFilter,
+    required List<TestRunResult> resultFilter,
     required List<TestRunReproducibility> reproducibilityFilter,
   }) {
     if (queryFilter.isEmpty &&
-        statusFilter.isEmpty &&
+        resultFilter.isEmpty &&
         reproducibilityFilter.isEmpty) {
       return true;
     } else {
@@ -59,7 +59,7 @@ class TestRun implements TableElement {
           steps.matches(queryFilter) ||
           expected.matches(queryFilter);
       final bool matchesExecution =
-          statusFilter.isEmpty || statusFilter.contains(status);
+          resultFilter.isEmpty || resultFilter.contains(result);
       final bool matchesReproducibility =
           reproducibilityFilter.isEmpty ||
           reproducibilityFilter.contains(reproducibility);
@@ -71,15 +71,15 @@ class TestRun implements TableElement {
   static List<TableColumn> get columns => const [
     TableColumn(id: TestCaseColumn.name, name: 'Name'),
     TableColumn(
-      id: TestCaseColumn.status,
-      name: 'Status',
+      id: TestCaseColumn.result,
+      name: 'Result',
       width: 200,
       alignment: Alignment.center,
     ),
     TableColumn(
       id: TestCaseColumn.reproducibility,
       name: 'Reproducibility',
-      width: 200,
+      width: 250,
       alignment: Alignment.center,
     ),
     TableColumn(id: TestCaseColumn.timestamp, name: 'Timestamp', width: 200),
@@ -90,8 +90,8 @@ class TestRun implements TableElement {
     switch (column.id) {
       case TestCaseColumn.name:
         return BodyMedium(text: name);
-      case TestCaseColumn.status:
-        return status.chip;
+      case TestCaseColumn.result:
+        return result.chip;
       case TestCaseColumn.reproducibility:
         return reproducibility.chip;
       case TestCaseColumn.timestamp:
@@ -105,4 +105,4 @@ class TestRun implements TableElement {
   }
 }
 
-enum TestCaseColumn { name, status, reproducibility, timestamp }
+enum TestCaseColumn { name, result, reproducibility, timestamp }

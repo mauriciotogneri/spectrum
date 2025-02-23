@@ -72,7 +72,7 @@ class SuiteListState extends BaseState {
     required List<String> components,
     required List<String> platforms,
   }) {
-    Data.onCreateSuite(
+    Data.createSuite(
       name: name,
       types: types,
       importances: importances,

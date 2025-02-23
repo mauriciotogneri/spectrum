@@ -129,7 +129,7 @@ class _LeftMenuState extends State<LeftMenu> {
   }
 
   void _onProjectSelected(BuildContext context, Project project) {
-    Data.onChangeProject(project);
+    Data.changeProject(project);
     setState(() => selectedMenu = MenuItem.dashboard);
     context.dashboard(projectId: project.id);
   }

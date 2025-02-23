@@ -107,7 +107,7 @@ class RequirementDetailState extends BaseState {
     required String steps,
     required String expected,
   }) {
-    Data.onCreateTestCase(
+    Data.createTestCase(
       requirement: requirement,
       name: name,
       execution: execution,

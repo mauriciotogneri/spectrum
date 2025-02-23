@@ -52,7 +52,12 @@ class SuiteDetailState extends BaseState {
       message: 'Do you want to delete the test suite?',
       acceptButtonText: 'Delete',
       acceptButtonColor: Palette.borderButtonError,
-      onAccept: () {},
+      onAccept: () => _deleteSuite(context: context, suite: suite),
     ),
   );
+
+  void _deleteSuite({required BuildContext context, required Suite suite}) {
+    Data.deleteSuite(suite);
+    Navigator.of(context).pop();
+  }
 }

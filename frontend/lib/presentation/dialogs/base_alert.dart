@@ -18,11 +18,14 @@ class BaseAlert extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      insetPadding: const EdgeInsets.all(16),
+      insetPadding: const EdgeInsets.all(0),
+      contentPadding: const EdgeInsets.all(0),
+      actionsPadding: const EdgeInsets.all(24),
+      titlePadding: const EdgeInsets.all(24),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       backgroundColor: Palette.backgroundPane,
       title: Padding(
-        padding: const EdgeInsets.only(bottom: 32),
+        padding: const EdgeInsets.only(bottom: 8),
         child: BodyLarge(text: message),
       ),
       actions: actions,

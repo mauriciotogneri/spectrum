@@ -86,7 +86,7 @@ class RequirementListState extends BaseState {
     required String component,
     required List<String> platforms,
   }) {
-    Data.onCreateRequirement(
+    Data.createRequirement(
       name: name,
       code: code,
       description: description,

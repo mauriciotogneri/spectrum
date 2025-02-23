@@ -16,16 +16,16 @@ import 'package:testflow/domain/types/test_run_status.dart';
 class Data {
   static Project currentProject = _projects.first;
 
-  static void onChangeProject(Project project) {
+  static void changeProject(Project project) {
     currentProject = project;
   }
 
-  static void onCreateProject(Project project) {
+  static void createProject(Project project) {
     _projects.add(project);
-    onChangeProject(project);
+    changeProject(project);
   }
 
-  static void onCreateRequirement({
+  static void createRequirement({
     required String name,
     required String description,
     required String code,
@@ -54,7 +54,7 @@ class Data {
     _requirements.add(requirement);
   }
 
-  static void onCreateTestCase({
+  static void createTestCase({
     required Requirement requirement,
     required String name,
     required TestCaseExecution execution,
@@ -80,7 +80,7 @@ class Data {
     _testCases.add(testCase);
   }
 
-  static void onCreateSuite({
+  static void createSuite({
     required String name,
     required List<RequirementType> types,
     required List<RequirementImportance> importances,
@@ -101,6 +101,10 @@ class Data {
       updatedBy: 'Jane Doe',
     );
     _suites.add(suite);
+  }
+
+  static void deleteSuite(Suite suite) {
+    _suites.remove(suite);
   }
 
   static List<Project> projects() {

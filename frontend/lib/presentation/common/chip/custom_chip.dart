@@ -22,10 +22,10 @@ class CustomChip extends StatelessWidget {
   Widget build(BuildContext context) {
     final double chipSize = size ?? 12;
     final Color chipForegroundColor =
-        foregroundColor ?? Palette.chipGreyForeground;
+        foregroundColor ?? Palette.chipWhiteForeground;
     final Color chipBackgroundColor =
-        backgroundColor ?? Palette.chipGreyBackground;
-    final Color chipBorderColor = borderColor ?? Palette.chipGreyBorder;
+        backgroundColor ?? Palette.chipWhiteBackground;
+    final Color chipBorderColor = borderColor ?? Palette.chipWhiteBorder;
 
     return Container(
       decoration: BoxDecoration(
@@ -75,9 +75,9 @@ class ChipGroup<T> extends StatelessWidget {
         textAlign: TextAlign.center,
         child: CustomChip(
           text: '${items.length} $plural',
-          backgroundColor: Palette.chipWhiteBackground,
-          foregroundColor: Palette.chipWhiteForeground,
-          borderColor: Palette.chipWhiteBorder,
+          backgroundColor: Palette.chipGreyBackground,
+          foregroundColor: Palette.chipGreyForeground,
+          borderColor: Palette.chipGreyBorder,
         ),
       );
     }

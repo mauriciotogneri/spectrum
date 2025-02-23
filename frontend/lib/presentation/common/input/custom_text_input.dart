@@ -91,7 +91,7 @@ class CustomTextInput extends StatelessWidget {
                     ),
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.only(
-                        top: 14,
+                        top: 8,
                         left: 12,
                         right: canClear ? 0 : 12,
                         bottom: 14,

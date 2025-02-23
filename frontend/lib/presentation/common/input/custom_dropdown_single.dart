@@ -5,6 +5,7 @@ import 'package:testflow/presentation/common/icon/input_icon.dart';
 import 'package:testflow/presentation/common/input/custom_input.dart';
 import 'package:testflow/utils/palette.dart';
 
+// TODO(momo): migrate to https://pub.dev/packages/dropdown_button2
 class CustomDropdownSingle<T> extends StatelessWidget {
   final CustomDropdownSingleController<T> controller;
   final List<DropdownItem<T>> values;

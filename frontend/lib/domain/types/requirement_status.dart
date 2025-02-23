@@ -22,7 +22,7 @@ enum RequirementStatus implements Chipable {
   Color get foregroundColor {
     switch (this) {
       case RequirementStatus.draft:
-        return Palette.chipGreyForeground;
+        return Palette.chipBlueForeground;
       case RequirementStatus.active:
         return Palette.chipGreenForeground;
       case RequirementStatus.inactive:
@@ -33,7 +33,7 @@ enum RequirementStatus implements Chipable {
   Color get backgroundColor {
     switch (this) {
       case RequirementStatus.draft:
-        return Palette.chipGreyBackground;
+        return Palette.chipBlueBackground;
       case RequirementStatus.active:
         return Palette.chipGreenBackground;
       case RequirementStatus.inactive:
@@ -44,7 +44,7 @@ enum RequirementStatus implements Chipable {
   Color get borderColor {
     switch (this) {
       case RequirementStatus.draft:
-        return Palette.chipGreyBorder;
+        return Palette.chipBlueBorder;
       case RequirementStatus.active:
         return Palette.chipGreenBorder;
       case RequirementStatus.inactive:

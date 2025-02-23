@@ -73,7 +73,12 @@ class ChipGroup<T> extends StatelessWidget {
       return Tooltip(
         message: items.join('\n'),
         textAlign: TextAlign.center,
-        child: CustomChip(text: '${items.length} $plural'),
+        child: CustomChip(
+          text: '${items.length} $plural',
+          backgroundColor: Palette.chipWhiteBackground,
+          foregroundColor: Palette.chipWhiteForeground,
+          borderColor: Palette.chipWhiteBorder,
+        ),
       );
     }
   }

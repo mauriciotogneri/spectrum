@@ -104,12 +104,15 @@ class FilterRow extends StatelessWidget {
           TableSelectColumns(() {}),
           const HBox(8),
           TableExportButton(() {}),
-          const HBox(8),
-          TableCreateAction(
-            text: createButtonText ?? 'Create',
-            icon: createButtonIcon ?? Icons.add,
-            onPressed: onCreateItem,
-          ),
+          if (onCreateItem != null)
+            Padding(
+              padding: const EdgeInsets.only(left: 8),
+              child: TableCreateAction(
+                text: createButtonText ?? 'Create',
+                icon: createButtonIcon ?? Icons.add,
+                onPressed: onCreateItem,
+              ),
+            ),
         ],
       ),
     );

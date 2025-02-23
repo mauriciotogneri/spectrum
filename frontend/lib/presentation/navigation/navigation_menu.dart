@@ -231,7 +231,16 @@ class NavigationMenuRow extends StatelessWidget {
         iconColor: Palette.iconEnabled,
         minLeadingWidth: 0,
         dense: true,
-        shape: RoundedRectangleBorder(borderRadius: CustomInput.borderRadius),
+        shape: RoundedRectangleBorder(
+          borderRadius: CustomInput.borderRadius,
+          side:
+              isSelected
+                  ? const BorderSide(
+                    color: Palette.borderInputEnabled,
+                    width: 0.5,
+                  )
+                  : BorderSide.none,
+        ),
         visualDensity: VisualDensity.compact,
         contentPadding: const EdgeInsets.only(
           top: 0,

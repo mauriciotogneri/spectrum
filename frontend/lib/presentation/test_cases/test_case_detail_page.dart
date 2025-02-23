@@ -248,7 +248,7 @@ class TabSection extends StatelessWidget {
       padding: const EdgeInsets.only(right: 32, bottom: 32, left: 32),
       child: CustomTabs(
         tabs: const [
-          TabItem(title: 'History', width: 150, icon: Icons.list),
+          TabItem(title: 'History', width: 150, icon: Icons.history_outlined),
           TabItem(
             title: 'Attachments',
             width: 150,

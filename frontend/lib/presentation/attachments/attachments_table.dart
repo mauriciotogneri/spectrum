@@ -6,6 +6,7 @@ import 'package:testflow/domain/model/attachment.dart';
 import 'package:testflow/domain/types/attachment_type.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_multiple.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
+import 'package:testflow/presentation/common/sheet/attachment_sheet.dart';
 import 'package:testflow/presentation/common/table/custom_table.dart';
 import 'package:testflow/utils/custom_snackbar.dart';
 import 'package:web/web.dart';
@@ -27,7 +28,11 @@ class AttachmentsTable extends StatelessWidget {
             child: CustomTable<Attachment>(
               columns: Attachment.columns,
               rows: state.attachments,
-              onSelected: state.onAttachmentSelected,
+              onSelected:
+                  (attachment) => state.onAttachmentSelected(
+                    context: context,
+                    attachment: attachment,
+                  ),
               onResetFilters: state.hasFilters ? state.onResetFilters : null,
               onCreateItem: () => state.onUploadAttachment(context),
               createButtonText: 'Upload',
@@ -96,6 +101,19 @@ class AttachmentsState extends BaseState {
     }
   }
 
-  void onAttachmentSelected(Attachment attachment) =>
-      window.open(attachment.url);
+  void onAttachmentSelected({
+    required BuildContext context,
+    required Attachment attachment,
+  }) => AttachmentSheet.show(
+    context: context,
+    onOpen: () => _openAttachment(attachment),
+    onDownload: () => _downloadAttachment(attachment),
+    onDelete: () => _deleteAttachment(attachment),
+  );
+
+  void _openAttachment(Attachment attachment) => window.open(attachment.url);
+
+  void _downloadAttachment(Attachment attachment) {}
+
+  void _deleteAttachment(Attachment attachment) {}
 }

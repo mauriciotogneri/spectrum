@@ -17,6 +17,7 @@ class TestCase implements TableElement {
   final String steps;
   final String expected;
   final DateTime lastRun;
+  final List<TestRunStatus> lastResults;
   final List<String> tags;
   final DateTime createdOn;
   final String createdBy;
@@ -32,6 +33,7 @@ class TestCase implements TableElement {
     required this.steps,
     required this.expected,
     required this.lastRun,
+    required this.lastResults,
     required this.tags,
     required this.createdOn,
     required this.createdBy,
@@ -89,13 +91,7 @@ class TestCase implements TableElement {
           child: BodyMedium(text: Formatter.daysAgo(lastRun)),
         );
       case TestCaseColumn.lastResults:
-        return const LastResults([
-          TestRunStatus.failed,
-          TestRunStatus.passed,
-          TestRunStatus.skipped,
-          TestRunStatus.blocked,
-          TestRunStatus.pending,
-        ]);
+        return LastResults(lastResults);
       default:
         return const Empty();
     }

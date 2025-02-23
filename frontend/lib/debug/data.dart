@@ -71,6 +71,7 @@ class Data {
       steps: steps,
       expected: expected,
       lastRun: randomDate(),
+      lastResults: _randomList(TestRunStatus.values),
       tags: [],
       createdOn: randomDate(),
       createdBy: 'John Doe',
@@ -211,6 +212,7 @@ class Data {
           steps: _random(_texts),
           expected: _random(_texts),
           lastRun: randomDate(),
+          lastResults: _randomList(TestRunStatus.values),
           tags: [
             for (int i = 0; i < Random().nextInt(3) + 1; i++) 'Tag ${i + 1}',
           ],

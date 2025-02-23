@@ -21,10 +21,13 @@ class LastResults extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: [
             for (final result in results)
-              Container(
-                color: result.foregroundColor,
-                width: width / results.length,
-                height: height,
+              Tooltip(
+                message: result.localized,
+                child: Container(
+                  color: result.foregroundColor,
+                  width: width / results.length,
+                  height: height,
+                ),
               ),
           ],
         ),

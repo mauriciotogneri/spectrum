@@ -216,16 +216,6 @@ class Data {
     'Opera',
   ];
 
-  static const List<String> _versions = [
-    '1.0.0',
-    '1.1.0',
-    '1.2.0',
-    '2.0.0',
-    '2.1.0',
-    '2.2.0',
-    '3.0.0',
-  ];
-
   static final List<Requirement> _requirements = [
     for (int i = 0; i < 20; i++)
       Requirement(
@@ -326,7 +316,8 @@ class Data {
           environment: _random(_environments),
           platform: _random(_platforms),
           device: _random(_devices),
-          version: _random(_versions),
+          version:
+              '${Random().nextInt(10)}.${Random().nextInt(10)}.${Random().nextInt(10)}',
           createdOn: randomDate(),
           createdBy: 'John Doe',
           updatedOn: randomDate(),
@@ -414,7 +405,6 @@ class Data {
       platforms: _platforms,
       environments: _environments,
       devices: _devices,
-      versions: _versions,
     ),
     Project(
       id: '2',
@@ -424,7 +414,6 @@ class Data {
       platforms: _platforms,
       environments: _environments,
       devices: _devices,
-      versions: _versions,
     ),
     Project(
       id: '3',
@@ -434,7 +423,6 @@ class Data {
       platforms: _platforms,
       environments: _environments,
       devices: _devices,
-      versions: _versions,
     ),
   ];
 

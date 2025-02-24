@@ -19,8 +19,6 @@ class TestSessionListState extends BaseState {
       CustomDropdownMultipleController();
   final CustomDropdownMultipleController<String> deviceFilterController =
       CustomDropdownMultipleController();
-  final CustomDropdownMultipleController<String> versionFilterController =
-      CustomDropdownMultipleController();
 
   TestSessionListState({required this.projectId});
 
@@ -33,7 +31,6 @@ class TestSessionListState extends BaseState {
               environmentFilter: environmentFilterController.selected,
               platformFilter: platformFilterController.selected,
               deviceFilter: deviceFilterController.selected,
-              versionFilter: versionFilterController.selected,
             ),
           )
           .toList();
@@ -43,8 +40,7 @@ class TestSessionListState extends BaseState {
       statusFilterController.isNotEmpty ||
       environmentFilterController.isNotEmpty ||
       platformFilterController.isNotEmpty ||
-      deviceFilterController.isNotEmpty ||
-      versionFilterController.isNotEmpty;
+      deviceFilterController.isNotEmpty;
 
   void onResetFilters() {
     queryFilterController.clear();
@@ -52,7 +48,6 @@ class TestSessionListState extends BaseState {
     environmentFilterController.clear();
     platformFilterController.clear();
     deviceFilterController.clear();
-    versionFilterController.clear();
     notify();
   }
 

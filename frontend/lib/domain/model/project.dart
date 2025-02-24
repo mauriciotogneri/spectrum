@@ -13,7 +13,6 @@ class Project implements Dropdownable {
   final List<String> platforms;
   final List<String> environments;
   final List<String> devices;
-  final List<String> versions;
 
   const Project({
     required this.id,
@@ -23,7 +22,6 @@ class Project implements Dropdownable {
     required this.platforms,
     required this.environments,
     required this.devices,
-    required this.versions,
   });
 
   @override

@@ -47,14 +47,12 @@ class TestSession implements TableElement {
     required List<String> environmentFilter,
     required List<String> platformFilter,
     required List<String> deviceFilter,
-    required List<String> versionFilter,
   }) {
     if (queryFilter.isEmpty &&
         statusFilter.isEmpty &&
         environmentFilter.isEmpty &&
         platformFilter.isEmpty &&
-        deviceFilter.isEmpty &&
-        versionFilter.isEmpty) {
+        deviceFilter.isEmpty) {
       return true;
     } else {
       final bool matchesQuery =
@@ -62,8 +60,7 @@ class TestSession implements TableElement {
           name.matches(queryFilter) ||
           environmentFilter.any((e) => e.matches(queryFilter)) ||
           platformFilter.any((e) => e.matches(queryFilter)) ||
-          deviceFilter.any((e) => e.matches(queryFilter)) ||
-          versionFilter.any((e) => e.matches(queryFilter));
+          deviceFilter.any((e) => e.matches(queryFilter));
       final bool matchesStatus =
           statusFilter.isEmpty || statusFilter.contains(status);
       final bool matchesEnvironment =
@@ -72,15 +69,12 @@ class TestSession implements TableElement {
           platformFilter.isEmpty || platformFilter.contains(platform);
       final bool matchesDevice =
           deviceFilter.isEmpty || deviceFilter.contains(device);
-      final bool matchesVersion =
-          versionFilter.isEmpty || versionFilter.contains(version);
 
       return matchesQuery &&
           matchesStatus &&
           matchesEnvironment &&
           matchesPlatform &&
-          matchesDevice &&
-          matchesVersion;
+          matchesDevice;
     }
   }
 

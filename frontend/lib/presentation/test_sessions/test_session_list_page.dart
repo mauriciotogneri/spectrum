@@ -95,14 +95,6 @@ class Table extends StatelessWidget {
             onSelected: (_) => state.notify(),
             hint: 'Device',
           ),
-          const HBox(8),
-          CustomDropdownMultiple<String>(
-            width: 180,
-            values: DropdownItem.fromList(Data.currentProject.versions),
-            controller: state.versionFilterController,
-            onSelected: (_) => state.notify(),
-            hint: 'Version',
-          ),
         ],
       ),
     );

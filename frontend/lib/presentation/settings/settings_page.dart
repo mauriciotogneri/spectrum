@@ -1,5 +1,6 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
+import 'package:testflow/debug/data.dart';
 import 'package:testflow/domain/state/settings/settings_state.dart';
 import 'package:testflow/presentation/common/card/custom_card.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
@@ -72,7 +73,7 @@ class Body extends StatelessWidget {
         children: [
           CustomList(
             name: 'Environment',
-            initialValues: const ['Development', 'Staging', 'Production'],
+            initialValues: Data.currentProject.environments,
             onAdd: (value) {},
             onRemove: (value) {},
           ),
@@ -104,7 +105,9 @@ class _CustomListState extends State<CustomList> {
   final CustomTextInputController controller = CustomTextInputController();
   final List<String> values;
 
-  _CustomListState({required this.values});
+  _CustomListState({required this.values}) {
+    values.sort();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -119,6 +122,7 @@ class _CustomListState extends State<CustomList> {
             controller: controller,
             onSubmitted: _onAdd,
           ),
+          const VBox(16),
           for (final String value in values)
             CustomListEntry(value: value, onRemove: _onRemove),
         ],
@@ -158,8 +162,19 @@ class CustomListEntry extends StatelessWidget {
     return ListTile(
       title: CustomText(text: value, size: 14, weight: FontWeight.normal),
       trailing: IconButton(
-        icon: const Icon(Icons.delete, size: 20, color: Palette.semanticError),
+        icon: const Icon(Icons.delete, size: 18, color: Palette.semanticError),
         onPressed: () => onRemove(value),
+      ),
+      shape: const RoundedRectangleBorder(
+        side: BorderSide(color: Palette.borderInputEnabled, width: 0.5),
+      ),
+      dense: true,
+      visualDensity: VisualDensity.compact,
+      contentPadding: const EdgeInsets.only(
+        top: 0,
+        bottom: 0,
+        left: 12,
+        right: 0,
       ),
     );
   }

@@ -81,7 +81,10 @@ class Navigation {
           ),
           GoRoute(
             path: '/projects/:projectId/sessions',
-            builder: (context, state) => TestSessionListPage.instance(),
+            builder:
+                (context, state) => TestSessionListPage.instance(
+                  projectId: state.param('projectId'),
+                ),
           ),
           GoRoute(
             path: '/projects/:projectId/settings',

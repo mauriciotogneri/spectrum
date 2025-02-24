@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +11,9 @@ class Project implements Dropdownable {
   final String description;
   final List<String> components;
   final List<String> platforms;
+  final List<String> environments;
+  final List<String> devices;
+  final List<String> versions;
 
   const Project({
     required this.id,
@@ -19,6 +21,9 @@ class Project implements Dropdownable {
     required this.description,
     required this.components,
     required this.platforms,
+    required this.environments,
+    required this.devices,
+    required this.versions,
   });
 
   @override

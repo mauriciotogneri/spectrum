@@ -96,6 +96,7 @@ class AttachmentsState extends BaseState {
     );
 
     if ((result != null) && (context.mounted)) {
+      // Check if overriding a file -> show confirmation dialog
       CustomSnackbar.show(
         context: context,
         message:

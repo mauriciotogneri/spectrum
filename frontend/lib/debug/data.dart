@@ -4,6 +4,7 @@ import 'package:testflow/domain/model/project.dart';
 import 'package:testflow/domain/model/requirement.dart';
 import 'package:testflow/domain/model/test_case.dart';
 import 'package:testflow/domain/model/test_run.dart';
+import 'package:testflow/domain/model/test_session.dart';
 import 'package:testflow/domain/model/test_suite.dart';
 import 'package:testflow/domain/types/attachment_type.dart';
 import 'package:testflow/domain/types/requirement_importance.dart';
@@ -12,6 +13,7 @@ import 'package:testflow/domain/types/requirement_type.dart';
 import 'package:testflow/domain/types/test_case_execution.dart';
 import 'package:testflow/domain/types/test_run_reproducibility.dart';
 import 'package:testflow/domain/types/test_run_result.dart';
+import 'package:testflow/domain/types/test_session_status.dart';
 
 class Data {
   static Project currentProject = _projects.first;
@@ -166,6 +168,13 @@ class Data {
     throw Exception('Test suite not found');
   }
 
+  static const List<String> _environments = [
+    'Development',
+    'Integration',
+    'Staging',
+    'Production',
+  ];
+
   static const List<String> _components = [
     'Authentication',
     'Payments',
@@ -177,6 +186,27 @@ class Data {
   ];
 
   static const List<String> _platforms = ['Web', 'Android', 'iOS'];
+
+  static const List<String> _devices = [
+    'Google Pixel',
+    'Samsung Galaxy',
+    'iPhone 12',
+    'Chrome',
+    'Firefox',
+    'Safari',
+    'Edge',
+    'Opera',
+  ];
+
+  static const List<String> _versions = [
+    '1.0.0',
+    '1.1.0',
+    '1.2.0',
+    '2.0.0',
+    '2.1.0',
+    '2.2.0',
+    '3.0.0',
+  ];
 
   static final List<Requirement> _requirements = [
     for (int i = 0; i < 20; i++)
@@ -264,6 +294,26 @@ class Data {
       ),
   ];
 
+  static final List<TestSession> _testSessions = [
+    for (int i = 0; i < 20; i++)
+      TestSession(
+        id: '${i + 1}',
+        name: 'Test session ${i + 1}',
+        startedOn: randomDate(),
+        endedOn: null,
+        timeSpent: 123,
+        status: _random(TestSessionStatus.values),
+        environment: _random(_environments),
+        platform: _random(_platforms),
+        device: _random(_devices),
+        version: _random(_versions),
+        createdOn: randomDate(),
+        createdBy: 'John Doe',
+        updatedOn: randomDate(),
+        updatedBy: 'Jane Doe',
+      ),
+  ];
+
   static final List<Attachment> _attachments = [
     for (int i = 0; i < 10; i++)
       Attachment(
@@ -288,6 +338,8 @@ class Data {
 
   static List<TestRun> testRuns(TestCase testCase) =>
       _testRuns.where((testRun) => testRun.testCaseId == testCase.id).toList();
+
+  static List<TestSession> testSessions() => _testSessions;
 
   static List<Attachment> attachments() => _attachments;
 
@@ -335,6 +387,9 @@ class Data {
       description: 'Description 1',
       components: _components,
       platforms: _platforms,
+      environments: _environments,
+      devices: _devices,
+      versions: _versions,
     ),
     const Project(
       id: '2',
@@ -342,6 +397,9 @@ class Data {
       description: 'Description 2',
       components: _components,
       platforms: _platforms,
+      environments: _environments,
+      devices: _devices,
+      versions: _versions,
     ),
     const Project(
       id: '3',
@@ -349,6 +407,9 @@ class Data {
       description: 'Description 3',
       components: _components,
       platforms: _platforms,
+      environments: _environments,
+      devices: _devices,
+      versions: _versions,
     ),
   ];
 

@@ -6,6 +6,7 @@ import 'package:testflow/domain/model/test_suite.dart';
 import 'package:testflow/domain/types/requirement_importance.dart';
 import 'package:testflow/domain/types/requirement_type.dart';
 import 'package:testflow/domain/types/test_session_status.dart';
+import 'package:testflow/extensions/build_context_extension.dart';
 import 'package:testflow/presentation/common/form/form_key.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_multiple.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
@@ -114,8 +115,8 @@ class TestSuiteDetailState extends BaseState {
   void onTestSessionSelected({
     required BuildContext context,
     required String testSessionId,
-  }) {} /*=> context.testSessionDetail(
+  }) => context.testSessionDetail(
     projectId: projectId,
     testSessionId: testSessionId,
-  );*/
+  );
 }

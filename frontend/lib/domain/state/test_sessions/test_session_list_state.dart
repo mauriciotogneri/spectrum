@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:testflow/debug/data.dart';
 import 'package:testflow/domain/model/test_session.dart';
 import 'package:testflow/domain/types/test_session_status.dart';
+import 'package:testflow/extensions/build_context_extension.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_multiple.dart';
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 
@@ -58,8 +59,8 @@ class TestSessionListState extends BaseState {
   void onTestSessionSelected({
     required BuildContext context,
     required String testSessionId,
-  }) {} /*=> context.testSessionDetail(
+  }) => context.testSessionDetail(
     projectId: projectId,
     testSessionId: testSessionId,
-  );*/
+  );
 }

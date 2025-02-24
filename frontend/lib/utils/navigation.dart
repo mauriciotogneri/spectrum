@@ -10,6 +10,7 @@ import 'package:testflow/presentation/requirements/requirement_list_page.dart';
 import 'package:testflow/presentation/settings/settings_page.dart';
 import 'package:testflow/presentation/splash/splash_page.dart';
 import 'package:testflow/presentation/test_cases/test_case_detail_page.dart';
+import 'package:testflow/presentation/test_sessions/test_session_detail_page.dart';
 import 'package:testflow/presentation/test_sessions/test_session_list_page.dart';
 import 'package:testflow/presentation/test_suites/test_suite_detail_page.dart';
 import 'package:testflow/presentation/test_suites/test_suite_list_page.dart';
@@ -85,6 +86,16 @@ class Navigation {
                 (context, state) => TestSessionListPage.instance(
                   projectId: state.param('projectId'),
                 ),
+            routes: [
+              GoRoute(
+                path: ':testSessionId',
+                builder:
+                    (context, state) => TestSessionDetailPage.instance(
+                      projectId: state.param('projectId'),
+                      testSessionId: state.param('testSessionId'),
+                    ),
+              ),
+            ],
           ),
           GoRoute(
             path: '/projects/:projectId/settings',
@@ -147,10 +158,17 @@ class Navigation {
     required String testCaseId,
   }) => '/projects/$projectId/requirements/$requirementId/cases/$testCaseId';
 
-  // ================================ SUITE ================================= \\
+  // ============================ TEST SUITE ================================ \\
 
   static String testSuiteDetailPath({
     required String projectId,
     required String testSuiteId,
   }) => '/projects/$projectId/suites/$testSuiteId';
+
+  // ============================ TEST SESSION ============================== \\
+
+  static String testSessionDetailPath({
+    required String projectId,
+    required String testSessionId,
+  }) => '/projects/$projectId/sessions/$testSessionId';
 }

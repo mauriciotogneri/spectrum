@@ -118,6 +118,10 @@ class Data {
     _testSuites.remove(testSuite);
   }
 
+  static void deleteTestSession(TestSession testSession) {
+    _testSessions.remove(testSession);
+  }
+
   static void deleteAttachment(Attachment attachment) {
     _attachments.remove(attachment);
   }
@@ -162,6 +166,16 @@ class Data {
     for (final TestSuite testSuite in _testSuites) {
       if (testSuite.id == id) {
         return testSuite;
+      }
+    }
+
+    throw Exception('Test suite not found');
+  }
+
+  static TestSession testSessionById(String id) {
+    for (final TestSession testSession in _testSessions) {
+      if (testSession.id == id) {
+        return testSession;
       }
     }
 

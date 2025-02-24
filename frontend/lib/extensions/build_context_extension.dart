@@ -78,4 +78,17 @@ extension BuildContextExtension on BuildContext {
       testSuiteId: testSuiteId,
     ),
   );
+
+  // =========================== TEST SESSIONS ============================== \\
+
+  void testSessionDetail({
+    required String projectId,
+    required String testSessionId,
+  }) => Navigation.go(
+    context: this,
+    path: Navigation.testSessionDetailPath(
+      projectId: projectId,
+      testSessionId: testSessionId,
+    ),
+  );
 }

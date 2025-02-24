@@ -56,7 +56,12 @@ class Table extends StatelessWidget {
             ),
         onResetFilters: state.hasFilters ? state.onResetFilters : null,
         onCreateItem: () => state.onCreateTestSuite(context),
-        onMenuSelected: state.onTableMenuSelected,
+        onMenuSelected:
+            (item, menu) => state.onTableMenuSelected(
+              context: context,
+              testSuite: item,
+              menu: menu,
+            ),
         filters: [
           CustomTextInput(
             width: 300,

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:testflow/domain/types/attachment_type.dart';
 import 'package:testflow/extensions/string_extension.dart';
+import 'package:testflow/presentation/common/menu/context_menu.dart';
 import 'package:testflow/presentation/common/table/custom_table.dart';
 import 'package:testflow/presentation/common/text/body_medium.dart';
 import 'package:testflow/utils/formatter.dart';
 import 'package:testflow/utils/palette.dart';
 
-class Attachment implements TableElement<Attachment, AttachmentColumn, void> {
+class Attachment
+    implements TableElement<Attachment, AttachmentColumn, AttachmentMenu> {
   final String path;
   final String name;
   final String url;
@@ -67,12 +69,18 @@ class Attachment implements TableElement<Attachment, AttachmentColumn, void> {
       width: 200,
       alignment: Alignment.center,
     ),
+    TableColumn(
+      id: AttachmentColumn.menu,
+      name: '',
+      width: 100,
+      alignment: Alignment.center,
+    ),
   ];
 
   @override
   Widget cell({
     required TableColumn<AttachmentColumn> column,
-    required Function(Attachment, void)? onMenuSelected,
+    required Function(Attachment, AttachmentMenu)? onMenuSelected,
   }) {
     switch (column.id) {
       case AttachmentColumn.icon:
@@ -90,8 +98,30 @@ class Attachment implements TableElement<Attachment, AttachmentColumn, void> {
         );
       case AttachmentColumn.uploadedBy:
         return BodyMedium(text: uploadedBy);
+      case AttachmentColumn.menu:
+        return ContextMenu(
+          offset: const Offset(-85, 0),
+          icon: Icons.more_horiz,
+          children: [
+            ContextMenuItem(
+              icon: Icons.file_download_outlined,
+              text: 'Download',
+              color: Palette.textTitle,
+              onPressed:
+                  () => onMenuSelected?.call(this, AttachmentMenu.download),
+            ),
+            ContextMenuItem(
+              icon: Icons.delete_outline,
+              text: 'Delete',
+              color: Palette.semanticError,
+              onPressed: () => onMenuSelected?.call(this, AttachmentMenu.delete),
+            ),
+          ],
+        );
     }
   }
 }
 
-enum AttachmentColumn { icon, name, type, size, uploadedOn, uploadedBy }
+enum AttachmentColumn { icon, name, type, size, uploadedOn, uploadedBy, menu }
+
+enum AttachmentMenu { download, delete }

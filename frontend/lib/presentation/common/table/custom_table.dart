@@ -263,8 +263,7 @@ class ItemRows<E extends TableElement<E, C, M>, C, M> extends StatelessWidget {
   }
 }
 
-class ItemRow<E extends TableElement<E, C, M>, C, M>
-    extends StatelessWidget {
+class ItemRow<E extends TableElement<E, C, M>, C, M> extends StatelessWidget {
   final List<TableColumn<C>> columns;
   final E row;
   final int index;

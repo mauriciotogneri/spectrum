@@ -81,5 +81,9 @@ class TestSuiteListState extends BaseState {
     notify();
   }
 
-  void onTableMenuSelected(TestSuite testSuite, TestSuiteMenu menu) {}
+  void onTableMenuSelected({
+    required BuildContext context,
+    required TestSuite testSuite,
+    required TestSuiteMenu menu,
+  }) {}
 }

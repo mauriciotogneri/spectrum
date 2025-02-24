@@ -309,12 +309,12 @@ class Data {
   ];
 
   static final List<TestSession> _testSessions = [
-    for (final TestSuite testSuite in _testSuites)
-      for (int i = 0; i < Random().nextInt(3) + 1; i++)
+    for (int i = 0; i < _testSuites.length; i++)
+      for (int j = 0; j < Random().nextInt(3) + 1; j++)
         TestSession(
-          id: '${i + 1}',
-          testSuiteId: testSuite.id,
-          name: 'Test session ${i + 1}',
+          id: '${((i + 1) * 10) + (j + 1)}',
+          testSuiteId: _testSuites[i].id,
+          name: 'Test session ${((i + 1) * 10) + (j + 1)}',
           startedOn: randomDate(),
           endedOn: null,
           timeSpent: 123,

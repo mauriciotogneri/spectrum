@@ -115,8 +115,12 @@ class Navigation {
   static String location(BuildContext context) =>
       GoRouter.of(context).routerDelegate.currentConfiguration.uri.toString();
 
-  static void go({required BuildContext context, required String path}) =>
-      context.go(path);
+  static VoidCallback? test;
+
+  static void go({required BuildContext context, required String path}) {
+    context.go(path);
+    Navigation.test?.call();
+  }
 
   static void push({required BuildContext context, required String path}) =>
       context.push(path);

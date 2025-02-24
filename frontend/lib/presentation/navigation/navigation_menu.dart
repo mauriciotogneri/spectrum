@@ -44,21 +44,31 @@ class _LeftMenuState extends State<LeftMenu> {
   void initState() {
     super.initState();
 
+    // TODO(momo): use an event
+    Navigation.test = _updateSelectedMenu;
+
+    _updateSelectedMenu();
+  }
+
+  void _updateSelectedMenu() {
     final String location = Navigation.location(context);
 
-    if (location.endsWith('/dashboard')) {
+    // TODO(momo): implement proper matching
+    if (location.contains('/dashboard')) {
       selectedMenu = MenuItem.dashboard;
-    } else if (location.endsWith('/requirements')) {
+    } else if (location.contains('/requirements')) {
       selectedMenu = MenuItem.requirements;
-    } else if (location.endsWith('/suites')) {
+    } else if (location.contains('/suites')) {
       selectedMenu = MenuItem.testSuites;
-    } else if (location.endsWith('/sessions')) {
+    } else if (location.contains('/sessions')) {
       selectedMenu = MenuItem.testSessions;
-    } else if (location.endsWith('/settings')) {
+    } else if (location.contains('/settings')) {
       selectedMenu = MenuItem.settings;
-    } else if (location.endsWith('/components')) {
+    } else if (location.contains('/components')) {
       selectedMenu = MenuItem.components;
     }
+
+    setState(() {});
   }
 
   @override

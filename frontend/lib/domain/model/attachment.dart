@@ -114,7 +114,8 @@ class Attachment
               icon: Icons.delete_outline,
               text: 'Delete',
               color: Palette.semanticError,
-              onPressed: () => onMenuSelected?.call(this, AttachmentMenu.delete),
+              onPressed:
+                  () => onMenuSelected?.call(this, AttachmentMenu.delete),
             ),
           ],
         );

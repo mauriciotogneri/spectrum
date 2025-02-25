@@ -73,7 +73,7 @@ class Header extends StatelessWidget {
             path: Navigation.requirementListPath(projectId: state.projectId),
           ),
           PathItem(
-            text: state.requirement.code,
+            text: state.requirement.name,
             path: Navigation.requirementDetailPath(
               projectId: state.projectId,
               requirementId: state.requirement.id,

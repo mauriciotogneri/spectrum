@@ -291,28 +291,6 @@ class Data {
         ),
   ];
 
-  static final List<TestRun> _testRuns = [
-    for (final TestSession testSession in _testSessions)
-      for (final TestCase testCase in _testCases)
-        TestRun(
-          id: '${testCase.requirementId}-${testCase.id}',
-          sessionId: testSession.id,
-          testCaseId: testCase.id,
-          name: 'Test run',
-          preconditions: testCase.preconditions,
-          steps: testCase.steps,
-          expected: testCase.expected,
-          actual: _random(_texts),
-          result: _random(TestRunResult.values),
-          reproducibility: _random(TestRunReproducibility.values),
-          timestamp: randomDate(),
-          createdOn: randomDate(),
-          createdBy: 'John Doe',
-          updatedOn: randomDate(),
-          updatedBy: 'Jane Doe',
-        ),
-  ];
-
   static final List<TestSuite> _testSuites = [
     for (int i = 0; i < 10; i++)
       TestSuite(
@@ -355,6 +333,39 @@ class Data {
         ),
   ];
 
+  static List<TestRun> _testRuns() {
+    int index = 1;
+    final List<TestRun> result = [];
+
+    for (final TestSession testSession in _testSessions) {
+      for (final TestCase testCase in _testCases) {
+        result.add(
+          TestRun(
+            id: index.toString(),
+            sessionId: testSession.id,
+            testCaseId: testCase.id,
+            name: 'Test run $index',
+            preconditions: testCase.preconditions,
+            steps: testCase.steps,
+            expected: testCase.expected,
+            actual: _random(_texts),
+            result: _random(TestRunResult.values),
+            reproducibility: _random(TestRunReproducibility.values),
+            timestamp: randomDate(),
+            createdOn: randomDate(),
+            createdBy: 'John Doe',
+            updatedOn: randomDate(),
+            updatedBy: 'Jane Doe',
+          ),
+        );
+
+        index++;
+      }
+    }
+
+    return result;
+  }
+
   static final List<Attachment> _attachments = [
     for (int i = 0; i < 10; i++)
       Attachment(
@@ -378,12 +389,14 @@ class Data {
           .toList();
 
   static List<TestRun> testRunsByTestSession(TestSession testSession) =>
-      _testRuns
+      _testRuns()
           .where((testRun) => testRun.sessionId == testSession.id)
           .toList();
 
   static List<TestRun> testRunsByTestCase(TestCase testCase) =>
-      _testRuns.where((testRun) => testRun.testCaseId == testCase.id).toList();
+      _testRuns()
+          .where((testRun) => testRun.testCaseId == testCase.id)
+          .toList();
 
   static List<TestSession> testSessions() => _testSessions;
 

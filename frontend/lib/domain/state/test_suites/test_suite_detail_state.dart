@@ -12,7 +12,7 @@ import 'package:testflow/presentation/common/input/custom_dropdown_multiple.dart
 import 'package:testflow/presentation/common/input/custom_text_input.dart';
 import 'package:testflow/presentation/dialogs/base_dialog.dart';
 import 'package:testflow/presentation/dialogs/confirmation_dialog.dart';
-import 'package:testflow/presentation/dialogs/create_test_session.dart';
+import 'package:testflow/presentation/dialogs/create_test_session_dialog.dart';
 import 'package:testflow/utils/palette.dart';
 
 class TestSuiteDetailState extends BaseState {

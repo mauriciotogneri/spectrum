@@ -62,6 +62,7 @@ class FormFields extends StatelessWidget {
         children: [
           CustomTextInput(
             name: 'Name',
+            autofocus: true,
             controller: state.nameController,
             errorMessage: 'Name is required',
           ),

@@ -464,6 +464,39 @@ class Data {
       updatedBy: 'Jane Doe',
     ),
 
+    TestCase(
+      id: '2.1',
+      requirementId: '2',
+      name: 'Existing user',
+      execution: TestCaseExecution.manual,
+      preconditions: 'User account does exists',
+      steps: 'Open the sign in page\nFill in the form\nSubmit the form',
+      expected: 'User is signed in and dashboard screen is displayed',
+      lastRun: Random().nextInt(10) > 2 ? randomDate() : null,
+      lastResults: _randomRepeatedList(TestRunResult.values, 5),
+      tags: [for (int i = 0; i < Random().nextInt(3) + 1; i++) 'Tag ${i + 1}'],
+      createdOn: randomDate(),
+      createdBy: 'John Doe',
+      updatedOn: randomDate(),
+      updatedBy: 'Jane Doe',
+    ),
+    TestCase(
+      id: '2.2',
+      requirementId: '2',
+      name: 'Non existing user',
+      execution: TestCaseExecution.manual,
+      preconditions: 'User account does not exists',
+      steps: 'Open the sign in page\nFill in the form\nSubmit the form',
+      expected: 'Error message displayed',
+      lastRun: Random().nextInt(10) > 2 ? randomDate() : null,
+      lastResults: _randomRepeatedList(TestRunResult.values, 5),
+      tags: [for (int i = 0; i < Random().nextInt(3) + 1; i++) 'Tag ${i + 1}'],
+      createdOn: randomDate(),
+      createdBy: 'John Doe',
+      updatedOn: randomDate(),
+      updatedBy: 'Jane Doe',
+    ),
+
     /*for (final Requirement requirement in _requirements)
       for (int i = 0; i < Random().nextInt(10) + 1; i++)
         TestCase(
@@ -487,7 +520,48 @@ class Data {
   ];
 
   static final List<TestSuite> _testSuites = [
-    for (int i = 0; i < 10; i++)
+    TestSuite(
+      id: '1',
+      name: 'Smoke test',
+      types: [RequirementType.functional],
+      importances: [RequirementImportance.critical],
+      components: _components,
+      platforms: _platforms,
+      tags: [for (int i = 0; i < Random().nextInt(3) + 1; i++) 'Tag ${i + 1}'],
+      createdOn: randomDate(),
+      createdBy: 'John Doe',
+      updatedOn: randomDate(),
+      updatedBy: 'Jane Doe',
+    ),
+
+    TestSuite(
+      id: '2',
+      name: 'Authentication test',
+      types: [RequirementType.functional],
+      importances: RequirementImportance.values,
+      components: ['Authentication'],
+      platforms: _platforms,
+      tags: [for (int i = 0; i < Random().nextInt(3) + 1; i++) 'Tag ${i + 1}'],
+      createdOn: randomDate(),
+      createdBy: 'John Doe',
+      updatedOn: randomDate(),
+      updatedBy: 'Jane Doe',
+    ),
+
+    TestSuite(
+      id: '3',
+      name: 'Profile test',
+      types: [RequirementType.functional],
+      importances: RequirementImportance.values,
+      components: ['Profile'],
+      platforms: _platforms,
+      tags: [for (int i = 0; i < Random().nextInt(3) + 1; i++) 'Tag ${i + 1}'],
+      createdOn: randomDate(),
+      createdBy: 'John Doe',
+      updatedOn: randomDate(),
+      updatedBy: 'Jane Doe',
+    ),
+    /*for (int i = 0; i < 10; i++)
       TestSuite(
         id: '${i + 1}',
         name: 'Test suite ${i + 1}',
@@ -502,7 +576,7 @@ class Data {
         createdBy: 'John Doe',
         updatedOn: randomDate(),
         updatedBy: 'Jane Doe',
-      ),
+      ),*/
   ];
 
   static final List<TestSession> _testSessions = [

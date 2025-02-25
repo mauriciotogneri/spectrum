@@ -5,6 +5,7 @@ import 'package:testflow/extensions/build_context_extension.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
 import 'package:testflow/presentation/common/input/custom_input.dart';
 import 'package:testflow/presentation/common/text/custom_text.dart';
+import 'package:testflow/utils/navigation.dart';
 import 'package:testflow/utils/palette.dart';
 import 'package:testflow/utils/platform.dart';
 
@@ -66,19 +67,17 @@ class _LeftMenuState extends State<LeftMenu> {
   }
 
   void _updateSelectedMenu() {
-    if (widget.fullPath.startsWith('/projects/:projectId/dashboard')) {
+    if (widget.fullPath.startsWith(Navigation.PATH_DASHBOARD)) {
       selectedMenu = MenuItem.dashboard;
-    } else if (widget.fullPath.startsWith(
-      '/projects/:projectId/requirements',
-    )) {
+    } else if (widget.fullPath.startsWith(Navigation.PATH_REQUIREMENTS)) {
       selectedMenu = MenuItem.requirements;
-    } else if (widget.fullPath.startsWith('/projects/:projectId/suites')) {
+    } else if (widget.fullPath.startsWith(Navigation.PATH_TEST_SUITES)) {
       selectedMenu = MenuItem.testSuites;
-    } else if (widget.fullPath.startsWith('/projects/:projectId/sessions')) {
+    } else if (widget.fullPath.startsWith(Navigation.PATH_TEST_SESSIONS)) {
       selectedMenu = MenuItem.testSessions;
-    } else if (widget.fullPath.startsWith('/projects/:projectId/settings')) {
+    } else if (widget.fullPath.startsWith(Navigation.PATH_SETTINGS)) {
       selectedMenu = MenuItem.settings;
-    } else if (widget.fullPath.startsWith('/projects/:projectId/components')) {
+    } else if (widget.fullPath.startsWith(Navigation.PATH_COMPONENTS)) {
       selectedMenu = MenuItem.components;
     }
 

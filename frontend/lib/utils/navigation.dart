@@ -19,6 +19,13 @@ class Navigation {
   static final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey();
   static final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey();
 
+  static const String PATH_DASHBOARD = '/projects/:projectId/dashboard';
+  static const String PATH_REQUIREMENTS = '/projects/:projectId/requirements';
+  static const String PATH_TEST_SUITES = '/projects/:projectId/suites';
+  static const String PATH_TEST_SESSIONS = '/projects/:projectId/sessions';
+  static const String PATH_SETTINGS = '/projects/:projectId/settings';
+  static const String PATH_COMPONENTS = '/projects/:projectId/components';
+
   static GoRouter get router => GoRouter(
     navigatorKey: _rootNavigatorKey,
     routes: [
@@ -37,11 +44,11 @@ class Navigation {
             ),
         routes: [
           GoRoute(
-            path: '/projects/:projectId/dashboard',
+            path: PATH_DASHBOARD,
             builder: (context, state) => DashboardPage.instance(),
           ),
           GoRoute(
-            path: '/projects/:projectId/requirements',
+            path: PATH_REQUIREMENTS,
             builder:
                 (context, state) => RequirementListPage.instance(
                   projectId: state.param('projectId'),
@@ -69,7 +76,7 @@ class Navigation {
             ],
           ),
           GoRoute(
-            path: '/projects/:projectId/suites',
+            path: PATH_TEST_SUITES,
             builder:
                 (context, state) => TestSuiteListPage.instance(
                   projectId: state.param('projectId'),
@@ -86,7 +93,7 @@ class Navigation {
             ],
           ),
           GoRoute(
-            path: '/projects/:projectId/sessions',
+            path: PATH_TEST_SESSIONS,
             builder:
                 (context, state) => TestSessionListPage.instance(
                   projectId: state.param('projectId'),
@@ -103,13 +110,13 @@ class Navigation {
             ],
           ),
           GoRoute(
-            path: '/projects/:projectId/settings',
+            path: PATH_SETTINGS,
             builder:
                 (context, state) =>
                     SettingsPage.instance(projectId: state.param('projectId')),
           ),
           GoRoute(
-            path: '/projects/:projectId/components',
+            path: PATH_COMPONENTS,
             builder: (context, state) => ComponentsPage.instance(),
           ),
         ],

@@ -74,29 +74,49 @@ class Body extends StatelessWidget {
           CustomList(
             name: 'Environment',
             initialValues: Data.currentProject.environments,
-            onAdd: (value) => Data.currentProject.environments.add(value),
-            onRemove: (value) => Data.currentProject.environments.remove(value),
+            onAdd:
+                (value) =>
+                    state.onAdd(name: SettingsState.environment, value: value),
+            onRemove:
+                (value) => state.onRemove(
+                  name: SettingsState.environment,
+                  value: value,
+                ),
           ),
           const HBox(32),
           CustomList(
             name: 'Platforms',
             initialValues: Data.currentProject.platforms,
-            onAdd: (value) => Data.currentProject.platforms.add(value),
-            onRemove: (value) => Data.currentProject.platforms.remove(value),
+            onAdd:
+                (value) =>
+                    state.onAdd(name: SettingsState.platform, value: value),
+            onRemove:
+                (value) =>
+                    state.onRemove(name: SettingsState.platform, value: value),
           ),
           const HBox(32),
           CustomList(
             name: 'Components',
             initialValues: Data.currentProject.components,
-            onAdd: (value) => Data.currentProject.components.add(value),
-            onRemove: (value) => Data.currentProject.components.remove(value),
+            onAdd:
+                (value) =>
+                    state.onAdd(name: SettingsState.components, value: value),
+            onRemove:
+                (value) => state.onRemove(
+                  name: SettingsState.components,
+                  value: value,
+                ),
           ),
           const HBox(32),
           CustomList(
             name: 'Devices',
             initialValues: Data.currentProject.devices,
-            onAdd: (value) => Data.currentProject.devices.add(value),
-            onRemove: (value) => Data.currentProject.devices.remove(value),
+            onAdd:
+                (value) =>
+                    state.onAdd(name: SettingsState.devices, value: value),
+            onRemove:
+                (value) =>
+                    state.onRemove(name: SettingsState.devices, value: value),
           ),
         ],
       ),

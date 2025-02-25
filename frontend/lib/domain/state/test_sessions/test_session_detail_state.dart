@@ -55,6 +55,11 @@ class TestSessionDetailState extends BaseState {
 
   bool get isLoading => _testSession == null;
 
+  bool get hasFilters =>
+      queryFilterController.isNotEmpty ||
+      resultFilterController.isNotEmpty ||
+      reproducibilityFilterController.isNotEmpty;
+
   @override
   void onLoad() {
     _testSession = Data.testSessionById(testSessionId);
@@ -66,6 +71,18 @@ class TestSessionDetailState extends BaseState {
     versionController.text = testSession.version;
     notify();
   }
+
+  void onResetFilters() {
+    queryFilterController.clear();
+    resultFilterController.clear();
+    reproducibilityFilterController.clear();
+    notify();
+  }
+
+  void onTestRunSelected({
+    required BuildContext context,
+    required TestRun testRun,
+  }) {}
 
   void onDeleteTestSession(BuildContext context) => BaseDialog.show(
     context: context,

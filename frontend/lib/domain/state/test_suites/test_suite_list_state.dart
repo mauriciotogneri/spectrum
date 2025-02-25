@@ -93,6 +93,9 @@ class TestSuiteListState extends BaseState {
         BaseDialog.show(
           context: context,
           dialog: CreateTestSessionDialog.instance(
+            environments: Data.currentProject.environments,
+            platforms: testSuite.platforms,
+            devices: Data.currentProject.devices,
             onCreateTestSession:
                 ({
                   required String name,

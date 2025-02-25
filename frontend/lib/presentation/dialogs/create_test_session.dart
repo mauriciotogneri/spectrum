@@ -1,6 +1,5 @@
 import 'package:dafluta/dafluta.dart';
 import 'package:flutter/material.dart';
-import 'package:testflow/debug/data.dart';
 import 'package:testflow/presentation/common/button/primary_text_button.dart';
 import 'package:testflow/presentation/common/button/secondary_text_button.dart';
 import 'package:testflow/presentation/common/form/form_key.dart';
@@ -14,9 +13,17 @@ class CreateTestSessionDialog extends StatelessWidget {
   const CreateTestSessionDialog._(this.state);
 
   factory CreateTestSessionDialog.instance({
+    required List<String> environments,
+    required List<String> platforms,
+    required List<String> devices,
     required OnCreateTestSession onCreateTestSession,
   }) => CreateTestSessionDialog._(
-    CreateTestSessionDialogState(onCreateTestSession: onCreateTestSession),
+    CreateTestSessionDialogState(
+      environments: environments,
+      platforms: platforms,
+      devices: devices,
+      onCreateTestSession: onCreateTestSession,
+    ),
   );
 
   @override
@@ -77,9 +84,7 @@ class FormFields extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     CustomDropdownSingle<String>(
-                      values: DropdownItem.fromList(
-                        Data.currentProject.environments,
-                      ),
+                      values: DropdownItem.fromList(state.environments),
                       controller: state.environmentController,
                       name: 'Environment',
                       errorMessage: 'Environment is required',
@@ -94,9 +99,7 @@ class FormFields extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     CustomDropdownSingle<String>(
-                      values: DropdownItem.fromList(
-                        Data.currentProject.platforms,
-                      ),
+                      values: DropdownItem.fromList(state.platforms),
                       controller: state.platformController,
                       name: 'Platform',
                       errorMessage: 'Platform is required',
@@ -117,9 +120,7 @@ class FormFields extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     CustomDropdownSingle<String>(
-                      values: DropdownItem.fromList(
-                        Data.currentProject.devices,
-                      ),
+                      values: DropdownItem.fromList(state.devices),
                       controller: state.deviceController,
                       name: 'Device',
                       errorMessage: 'Device is required',
@@ -144,6 +145,10 @@ class FormFields extends StatelessWidget {
 }
 
 class CreateTestSessionDialogState extends BaseState {
+  final List<String> environments;
+  final List<String> platforms;
+  final List<String> devices;
+
   final FormKey formKey = FormKey();
   final OnCreateTestSession onCreateTestSession;
   final CustomTextInputController nameController = CustomTextInputController();
@@ -156,7 +161,12 @@ class CreateTestSessionDialogState extends BaseState {
   final CustomTextInputController versionController =
       CustomTextInputController();
 
-  CreateTestSessionDialogState({required this.onCreateTestSession});
+  CreateTestSessionDialogState({
+    required this.environments,
+    required this.platforms,
+    required this.devices,
+    required this.onCreateTestSession,
+  });
 
   void onCreate() => onCreateTestSession(
     name: nameController.text,

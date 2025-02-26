@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:testflow/presentation/common/button/primary_text_button.dart';
 import 'package:testflow/presentation/common/button/secondary_icon_button.dart';
 import 'package:testflow/presentation/common/button/secondary_text_button.dart';
+import 'package:testflow/presentation/common/card/custom_card.dart';
 import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
 import 'package:testflow/presentation/common/text/custom_text.dart';
 import 'package:testflow/utils/palette.dart';
@@ -433,16 +434,22 @@ class FooterControls extends StatelessWidget {
           icon: Icons.keyboard_arrow_left_rounded,
           onPressed: () {},
         ),
-        const HBox(16),
-        const Center(
-          child: CustomText(
-            text: 'Page: 1/10',
-            color: Palette.textTitle,
-            size: 14,
-            weight: FontWeight.w500,
+        const HBox(8),
+        const CustomCard(
+          width: 60,
+          borderSize: 1,
+          cornerRadius: 4,
+          padding: EdgeInsets.only(top: 8, bottom: 8),
+          child: Center(
+            child: CustomText(
+              text: '1 / 10',
+              color: Palette.textTitle,
+              size: 14,
+              weight: FontWeight.w500,
+            ),
           ),
         ),
-        const HBox(16),
+        const HBox(8),
         SecondaryIconButton(
           size: 34,
           iconSize: 22,

@@ -4,6 +4,8 @@ import 'package:testflow/utils/palette.dart';
 class CustomCard extends StatelessWidget {
   final Widget child;
   final double? width;
+  final double? borderSize;
+  final double? cornerRadius;
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? margin;
   final Color? backgroundColor;
@@ -12,6 +14,8 @@ class CustomCard extends StatelessWidget {
   const CustomCard({
     required this.child,
     this.width,
+    this.borderSize,
+    this.cornerRadius,
     this.padding,
     this.margin,
     this.backgroundColor,
@@ -27,8 +31,8 @@ class CustomCard extends StatelessWidget {
         elevation: 0,
         margin: margin ?? EdgeInsets.zero,
         shape: RoundedRectangleBorder(
-          side: const BorderSide(color: Palette.borderCard, width: 0.5),
-          borderRadius: BorderRadius.circular(8),
+          side: BorderSide(color: Palette.borderCard, width: borderSize ?? 0.5),
+          borderRadius: BorderRadius.circular(cornerRadius ?? 8),
         ),
         child: Padding(
           padding: padding ?? const EdgeInsets.all(16),

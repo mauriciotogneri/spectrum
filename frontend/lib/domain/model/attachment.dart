@@ -101,7 +101,7 @@ class Attachment
       case AttachmentColumn.menu:
         return ContextMenu(
           type: ContextButton.iconButton,
-          offset: const Offset(-80, 0),
+          offset: const Offset(-85, 0),
           icon: Icons.more_vert_sharp,
           children: [
             ContextMenuItem(

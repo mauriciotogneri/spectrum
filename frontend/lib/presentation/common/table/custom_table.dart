@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:testflow/presentation/common/button/primary_text_button.dart';
 import 'package:testflow/presentation/common/button/secondary_icon_button.dart';
 import 'package:testflow/presentation/common/button/secondary_text_button.dart';
+import 'package:testflow/presentation/common/input/custom_dropdown_single.dart';
 import 'package:testflow/presentation/common/text/custom_text.dart';
 import 'package:testflow/utils/palette.dart';
 
@@ -363,7 +364,13 @@ class FooterRow extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
-        children: [FooterTotal(total), const Spacer(), const FooterControls()],
+        children: [
+          FooterTotal(total),
+          const Spacer(),
+          const FooterControls(),
+          const Spacer(),
+          const PageSizeSelector(),
+        ],
       ),
     );
   }
@@ -385,7 +392,7 @@ class FooterTotal extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             const CustomText(
-              text: 'Total:',
+              text: 'Total',
               color: Palette.textTitle,
               size: 14,
               weight: FontWeight.normal,
@@ -451,6 +458,49 @@ class FooterControls extends StatelessWidget {
         ),
         const HBox(8),
       ],
+    );
+  }
+}
+
+class PageSizeSelector extends StatefulWidget {
+  const PageSizeSelector();
+
+  @override
+  State<PageSizeSelector> createState() => _PageSizeSelectorState();
+}
+
+class _PageSizeSelectorState extends State<PageSizeSelector> {
+  final CustomDropdownSingleController<String> controller =
+      CustomDropdownSingleController();
+
+  @override
+  void initState() {
+    super.initState();
+    controller.select('10');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const CustomText(
+            text: 'Page size',
+            color: Palette.textTitle,
+            size: 14,
+            weight: FontWeight.normal,
+          ),
+          const HBox(8),
+          CustomDropdownSingle<String>(
+            width: 90,
+            values: DropdownItem.fromList(['10', '20', '50', '100']),
+            controller: controller,
+          ),
+        ],
+      ),
     );
   }
 }

@@ -6,9 +6,7 @@ import 'package:testflow/presentation/common/button/secondary_text_button.dart';
 import 'package:testflow/presentation/common/text/custom_text.dart';
 import 'package:testflow/utils/palette.dart';
 
-/*
-  Use LinearProgressIndicator when loading elements
-*/
+// TODO(momo): Use LinearProgressIndicator when loading elements
 class CustomTable<E extends TableElement<E, C, M>, C, M>
     extends StatelessWidget {
   final List<TableColumn<C>> columns;
@@ -111,6 +109,8 @@ class FilterRow extends StatelessWidget {
           const HBox(8),
           TableSelectColumns(() {}),
           const HBox(8),
+          TableSortColumns(() {}),
+          const HBox(8),
           TableExportButton(() {}),
           if (onCreateItem != null)
             Padding(
@@ -135,7 +135,7 @@ class ResetFiltersButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SecondaryTextButton(
-      icon: Icons.clear,
+      icon: Icons.replay,
       onPressed: onPressed,
       text: 'Reset',
     );
@@ -150,8 +150,22 @@ class TableSelectColumns extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Tooltip(
-      message: 'Select columns',
+      message: 'Columns',
       child: SecondaryIconButton(icon: Icons.tune, onPressed: onPressed),
+    );
+  }
+}
+
+class TableSortColumns extends StatelessWidget {
+  final VoidCallback? onPressed;
+
+  const TableSortColumns(this.onPressed);
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: 'Sort',
+      child: SecondaryIconButton(icon: Icons.swap_vert, onPressed: onPressed),
     );
   }
 }
@@ -366,13 +380,24 @@ class FooterTotal extends StatelessWidget {
       height: 50,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Center(
-          child: CustomText(
-            text: 'Total: $total',
-            color: Palette.textTitle,
-            size: 14,
-            weight: FontWeight.w500,
-          ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const CustomText(
+              text: 'Total:',
+              color: Palette.textTitle,
+              size: 14,
+              weight: FontWeight.normal,
+            ),
+            const HBox(4),
+            CustomText(
+              text: '$total',
+              color: Palette.textTitle,
+              size: 14,
+              weight: FontWeight.bold,
+            ),
+          ],
         ),
       ),
     );

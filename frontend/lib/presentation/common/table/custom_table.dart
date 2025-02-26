@@ -190,7 +190,6 @@ class TableSortColumns<C> extends StatelessWidget {
       child: ContextMenu(
         type: ContextButton.secondary,
         icon: Icons.swap_vert,
-        offset: const Offset(0, 0),
         children: [
           for (final TableColumn<C> column in columns)
             if (column.name.isNotEmpty)

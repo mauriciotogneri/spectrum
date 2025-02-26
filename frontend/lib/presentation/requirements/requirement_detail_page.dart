@@ -283,7 +283,7 @@ class Table extends StatelessWidget {
         onCreateItem: () => state.onCreateTestCase(context),
         filters: [
           CustomTextInput(
-            width: 300,
+            width: 250,
             hint: 'Filter…',
             canClear: true,
             prefixIcon: Icons.search,

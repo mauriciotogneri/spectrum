@@ -276,7 +276,7 @@ class Table extends StatelessWidget {
         onResetFilters: state.hasFilters ? state.onResetFilters : null,
         filters: [
           CustomTextInput(
-            width: 300,
+            width: 250,
             hint: 'Filter…',
             canClear: true,
             prefixIcon: Icons.search,

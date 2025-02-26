@@ -59,7 +59,7 @@ class Table extends StatelessWidget {
         onCreateItem: () => state.onCreateRequirement(context),
         filters: [
           CustomTextInput(
-            width: 300,
+            width: 250,
             hint: 'Filter…',
             canClear: true,
             prefixIcon: Icons.search,

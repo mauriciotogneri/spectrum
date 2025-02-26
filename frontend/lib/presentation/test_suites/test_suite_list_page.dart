@@ -64,7 +64,7 @@ class Table extends StatelessWidget {
             ),
         filters: [
           CustomTextInput(
-            width: 300,
+            width: 250,
             hint: 'Filter…',
             canClear: true,
             prefixIcon: Icons.search,

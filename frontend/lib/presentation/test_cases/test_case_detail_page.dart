@@ -183,7 +183,7 @@ class FormFields extends StatelessWidget {
                 ),
                 const HBox(16),
                 Expanded(
-                  child: CustomTextInput(
+                  child: CustomMultilineInput(
                     minLines: 6,
                     maxLines: 6,
                     name: 'Steps',
@@ -192,7 +192,7 @@ class FormFields extends StatelessWidget {
                 ),
                 const HBox(16),
                 Expanded(
-                  child: CustomTextInput(
+                  child: CustomMultilineInput(
                     minLines: 6,
                     maxLines: 6,
                     name: 'Expected result',

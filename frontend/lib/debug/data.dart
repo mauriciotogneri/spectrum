@@ -721,6 +721,35 @@ class Data {
       updatedOn: randomDate(),
       updatedBy: 'Jane Doe',
     ),
+
+    TestSuite(
+      id: '4',
+      name: 'Notification test',
+      types: [RequirementType.functional],
+      importances: RequirementImportance.values,
+      components: ['Notifications'],
+      platforms: _platforms,
+      tags: [for (int i = 0; i < Random().nextInt(3) + 1; i++) 'Tag ${i + 1}'],
+      createdOn: randomDate(),
+      createdBy: 'John Doe',
+      updatedOn: randomDate(),
+      updatedBy: 'Jane Doe',
+    ),
+
+    TestSuite(
+      id: '5',
+      name: 'Chat test',
+      types: [RequirementType.functional],
+      importances: RequirementImportance.values,
+      components: ['Chat'],
+      platforms: _platforms,
+      tags: [for (int i = 0; i < Random().nextInt(3) + 1; i++) 'Tag ${i + 1}'],
+      createdOn: randomDate(),
+      createdBy: 'John Doe',
+      updatedOn: randomDate(),
+      updatedBy: 'Jane Doe',
+    ),
+
     /*for (int i = 0; i < 10; i++)
       TestSuite(
         id: '${i + 1}',

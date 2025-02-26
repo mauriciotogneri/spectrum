@@ -9,6 +9,7 @@ class CustomCard extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? margin;
   final Color? backgroundColor;
+  final Color? borderColor;
   final bool expand;
 
   const CustomCard({
@@ -19,6 +20,7 @@ class CustomCard extends StatelessWidget {
     this.padding,
     this.margin,
     this.backgroundColor,
+    this.borderColor,
     this.expand = false,
   });
 
@@ -31,7 +33,10 @@ class CustomCard extends StatelessWidget {
         elevation: 0,
         margin: margin ?? EdgeInsets.zero,
         shape: RoundedRectangleBorder(
-          side: BorderSide(color: Palette.borderCard, width: borderSize ?? 0.5),
+          side: BorderSide(
+            color: borderColor ?? Palette.borderCard,
+            width: borderSize ?? 0.5,
+          ),
           borderRadius: BorderRadius.circular(cornerRadius ?? 8),
         ),
         child: Padding(

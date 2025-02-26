@@ -471,7 +471,8 @@ class FooterControls extends StatelessWidget {
           width: 60,
           borderSize: 1,
           cornerRadius: 4,
-          padding: EdgeInsets.only(top: 8, bottom: 8),
+          borderColor: Palette.borderButtonSecondary,
+          padding: EdgeInsets.only(top: 7, bottom: 7),
           child: Center(
             child: CustomText(
               text: '1 / 10',

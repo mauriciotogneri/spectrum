@@ -130,7 +130,7 @@ class TestSuite
       case TestSuiteColumn.menu:
         return ContextMenu(
           offset: const Offset(-85, 0),
-          icon: Icons.more_horiz,
+          icon: Icons.more_vert_sharp,
           children: [
             ContextMenuItem(
               icon: Icons.play_arrow,

@@ -29,15 +29,14 @@ class ContextMenu extends StatelessWidget {
       menuChildren: children,
       builder:
           (context, controller, child) => Container(
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(Radius.circular(20)),
-              border: Border.all(color: Palette.borderInputEnabled, width: 1),
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(20)),
             ),
             child: IconButton(
               visualDensity: VisualDensity.compact,
               padding: const EdgeInsets.all(0),
               iconSize: 22,
-              color: Palette.iconButton,
+              color: Palette.iconContextual,
               icon: Icon(icon),
               onPressed: () {
                 if (controller.isOpen) {

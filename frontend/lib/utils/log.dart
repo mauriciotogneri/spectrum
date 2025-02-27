@@ -1,4 +1,6 @@
+import 'dart:async';
 import 'package:logger/logger.dart';
+import 'package:testflow/utils/firebase_config.dart';
 
 class Log {
   const Log._();
@@ -8,7 +10,7 @@ class Log {
   static void trace(String type, String message) {
     logger.t('$type - $message');
 
-    //unawaited(FirebaseConfig.crashlytics().log('$type - $message'));
+    unawaited(FirebaseConfig.crashlytics().log('$type - $message'));
   }
 
   static void debug(dynamic message, [dynamic error, StackTrace? stackTrace]) =>

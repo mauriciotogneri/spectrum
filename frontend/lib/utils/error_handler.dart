@@ -1,28 +1,32 @@
 import 'dart:async';
+import 'dart:isolate';
+import 'dart:ui';
+import 'package:flutter/widgets.dart';
+import 'package:testflow/utils/firebase_config.dart';
 import 'package:testflow/utils/log.dart';
 
 class ErrorHandler {
-  static void trace(Object exception) {
+  static void handle(Object exception) {
     _logError(exception.toString(), exception, null);
 
-    /*unawaited(FirebaseConfig.crashlytics().recordError(
-      exception,
-      null,
-      reason: type.name,
-      fatal: false,
-    ));*/
+    unawaited(
+      FirebaseConfig.crashlytics().recordError(
+        exception,
+        null,
+        reason: exception,
+        fatal: false,
+      ),
+    );
   }
 
   static Future onUncaughtError(Object exception, StackTrace stackTrace) {
     _logError('Uncaught Error', exception, stackTrace);
 
-    /*return FirebaseConfig.crashlytics().recordError(
+    return FirebaseConfig.crashlytics().recordError(
       exception,
       stackTrace,
       fatal: true,
-    );*/
-
-    return Future.value();
+    );
   }
 
   static void _logError(String message, dynamic error, StackTrace? stackTrace) {
@@ -35,24 +39,22 @@ class ErrorHandler {
   }
 
   static void setup() {
-    /*FlutterError.onError = (details) {
-      if (!isUiError(details)) {
-        FirebaseConfig.crashlytics().recordFlutterError(details);
-      }
-    };
+    FlutterError.onError = FirebaseConfig.crashlytics().recordFlutterError;
 
     PlatformDispatcher.instance.onError = (error, stack) {
       onUncaughtError(error, stack);
       return true;
     };
 
-    Isolate.current.addErrorListener(RawReceivePort((pair) async {
-      final List<dynamic> errorAndStacktrace = pair;
-      await FirebaseConfig.crashlytics().recordError(
-        errorAndStacktrace.first,
-        errorAndStacktrace.last,
-        fatal: true,
-      );
-    }).sendPort);*/
+    Isolate.current.addErrorListener(
+      RawReceivePort((pair) async {
+        final List<dynamic> errorAndStacktrace = pair;
+        await FirebaseConfig.crashlytics().recordError(
+          errorAndStacktrace.first,
+          errorAndStacktrace.last,
+          fatal: true,
+        );
+      }).sendPort,
+    );
   }
 }

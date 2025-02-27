@@ -13,11 +13,7 @@ class SplashPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return StateProvider<SplashState>(
       state: state,
-      builder:
-          (context, state) => RunOnce(
-            function: () => state.init(context),
-            child: const Scaffold(body: Empty()),
-          ),
+      builder: (context, state) => const Scaffold(body: Empty()),
     );
   }
 }

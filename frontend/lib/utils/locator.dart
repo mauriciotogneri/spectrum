@@ -20,7 +20,16 @@ class Locator {
       DeviceOrientation.portraitDown,
     ]);
 
-    await Firebase.initializeApp();
+    await Firebase.initializeApp(
+      options: const FirebaseOptions(
+        apiKey: 'AIzaSyCI5bs6Lj7jlkLlk9D3m30d0P9_GIytGPo',
+        authDomain: 'max-prototypes.firebaseapp.com',
+        projectId: 'max-prototypes',
+        storageBucket: 'max-prototypes.firebasestorage.app',
+        messagingSenderId: '203891364336',
+        appId: '1:203891364336:web:6b78978545e7bde6648d35',
+      ),
+    );
 
     ErrorHandler.setup();
 

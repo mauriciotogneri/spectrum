@@ -1,28 +1,23 @@
 module.exports = {
+  root: true,
   env: {
     es6: true,
     node: true,
   },
-  parserOptions: {
-    "ecmaVersion": 2018,
-  },
   extends: [
-    "eslint:recommended",
+    "eslint:recommended"
+  ],
+  parserOptions: {
+    project: ["tsconfig.json", "tsconfig.dev.json"],
+    sourceType: "module",
+  },
+  ignorePatterns: [
+    "/lib/**/*",
+    "/generated/**/*",
   ],
   rules: {
-    "no-restricted-globals": ["error", "name", "length"],
-    "prefer-arrow-callback": "error",
-    "quotes": ["error", "double", {"allowTemplateLiterals": true}],
-    "max-len": ["off"],
+    "quotes": ["error", "double"],
+    "import/no-unresolved": 0,
+    "indent": ["error", 2],
   },
-  overrides: [
-    {
-      files: ["**/*.spec.*"],
-      env: {
-        mocha: true,
-      },
-      rules: {},
-    },
-  ],
-  globals: {},
 };

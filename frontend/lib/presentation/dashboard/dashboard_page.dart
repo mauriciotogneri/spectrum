@@ -45,6 +45,26 @@ class Content extends StatelessWidget {
           BodyMedium(text: '• Most failures'),
           BodyMedium(text: '• Slowest tests'),
           BodyMedium(text: '• Most flaky tests'),
+          VBox(50),
+          BodyMedium(
+            text: '''*** Set timer ***
+
+Description:
+• Few goals
+• Main goal: Streamline manual testing
+• Approach: Requirement-based testing
+
+Session goal:
+• See if the tool is intuitive
+• Understand the different components and their relationships
+• Can comment but don't focus too much on the UI/UX
+• Get general feedback
+
+Approach:
+• I'm not gonna explain the app
+• Speak out loud what you see, think and intent to do
+• Scan the tool as you would do it (first menu, first content, etc)''',
+          ),
         ],
       ),
     );

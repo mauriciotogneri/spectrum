@@ -13,6 +13,8 @@
   * Specs are the source that generates implementation  
   * Code becomes its expression  in a particular language and framework  
   * The lingua franca of development moves to a higher level
+  * Code reviews have evolved into spec reviews
+  * Developers focus less on writing repetitive code and more on understanding edge cases, defining interactions, and validating system behavior 
 
 ## Core principles
 

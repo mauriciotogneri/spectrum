@@ -1,5 +1,9 @@
 # Spec Driven Development
 
+## What is a spec?
+
+A spec is a structured, behavior-oriented artifact written in natural language that expresses software functionality. Each variant of spec-driven development defines their approach to a spec's structure, level of detail, and how these artifacts are organized within a project.
+
 ## Motivation
 
 * Before  
@@ -23,7 +27,3 @@
 * **Research-Driven Context:** Research agents gather critical context throughout the specification process, investigating technical options, performance implications, and organizational constraints.  
 * **Bidirectional Feedback:** Production reality informs specification evolution. Metrics, incidents, and operational learnings become inputs for specification refinement.  
 * **Branching for Exploration:** Generate multiple implementation approaches from the same specification to explore different optimization targets: performance, maintainability, user experience, cost, etc.
-
-## What is a spec?
-
-A spec is a structured, behavior-oriented artifact written in natural language that expresses software functionality. Each variant of spec-driven development defines their approach to a spec's structure, level of detail, and how these artifacts are organized within a project.

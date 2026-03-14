@@ -21,11 +21,3 @@
   * Intent is preserved alongside implementation
   * Documentation becomes versionable and diffable
   * Cross-team alignment happens through shared documents, not meetings
-
-## Core principles
-
-* **Executable Specifications:** Specifications must be precise, complete, and unambiguous enough to generate working systems. This eliminates the gap between intent and implementation.
-* **Continuous Refinement:** Consistency validation happens continuously, not as a one-time check. AI analyzes documentation for ambiguity, contradictions, and gaps as an ongoing process.
-* **Research-Driven Context:** Research agents gather critical context throughout the documentation process, investigating technical options, performance implications, and organizational constraints.
-* **Bidirectional Feedback:** Production reality informs documentation evolution. Metrics, incidents, and operational learnings become inputs for documentation refinement.
-* **The Documentation Doctrine** If it's not documented, it doesn't exist. If it's documented incorrectly, it's broken.

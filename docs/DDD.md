@@ -7,12 +7,12 @@
   * Documentation was something buried deep in a wiki that nobody reads nor updates
   * Documentation was often used in retrospective
 * Now
-  * Maintaining software means evolving specifications
+  * Maintaining software means evolving documentation
   * Documentation, not the code, becomes the primary artifact
   * Documentation is the source that generates implementation
   * Code becomes its expression in a particular language and framework
   * The lingua franca of development moves to a higher level
-  * Code review have evolved into documentation review
+  * Code reviews have evolved into documentation reviews
   * Developers focus less on writing repetitive code and more on understanding edge cases, defining interactions, and validating system behavior 
 
 ## Core principles

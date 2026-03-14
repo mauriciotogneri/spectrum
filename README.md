@@ -1,6 +1,6 @@
 # Spectrum
 
-It's a tool that uses **Specs Driven Development**.
+It's a tool that uses **Documentation Driven Development**.
 
 ## Goals
 * Document requirements: Captures all the product's requirements in one place.
@@ -40,4 +40,4 @@ It's a tool that uses **Specs Driven Development**.
 * **Bounded Context** (e.g., Invoicing)
 * **Service/Module** (e.g., PDF Generator)
 * **API/Interface Contract** (e.g., POST /v1/generate-invoice)
-* **Implementation Spec** (e.g., logic for template rendering)
+* **Implementation Specs** (e.g., logic for template rendering)

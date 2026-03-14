@@ -14,6 +14,7 @@ It's a tool that uses **Specs Driven Development**.
 * **Test Coverage Tracking:** Gives teams visibility into which areas are tested and which are unverified or at risk. Teams know which features are well-tested and which need more attention.
 * **Risk-Based Testing Prioritization:** Increases confidence by focusing testing on the most business-critical and high-risk areas first.
 * **Regression Testing:** Ensures that new changes don't break existing functionality.
+* **Guardrails Over Gates:** Guides teams toward quality through continuous feedback and visibility rather than blocking progress with rigid approval checkpoints.
 
 ## Characteristics
 * Layered hierarchy

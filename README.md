@@ -1,4 +1,4 @@
-# Spectrum
+# Seshat
 
 It uses **Documentation Driven Development**, a structured but flexible process that transforms chaotic software development into a systematic, repeatable methodology that consistently delivers results aligned with your vision.
 

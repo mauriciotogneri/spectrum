@@ -3,7 +3,7 @@
 It's a tool that uses **Documentation Driven Development**.
 
 ## Goals
-* Document requirements: Captures all the product's requirements in one place.
+* Centralize project knowledge: Captures requirements, designs, specifications, and other artifacts that drive development — all in one place.
 * Ensure clarity: Developers, testers, designers and managers know what to build.
 * Reduce misunderstandings: Prevents assumptions and misalignments.
 * Improve quality: Helps ensure the software meets user needs and business goals.

@@ -1,21 +1,16 @@
 # Documentation Driven Development (DDD)
 
 DDD is a development framework where every code change (e.g. new feature, bug fix, infrastructure task) begins with a curated set of documents.
-
-These documents include requirements, implementation plans, validation scenarios, API contracts, etc. Together they form a comprehensive paper trail that governs the full lifecycle of a change, from idea to shipped code.
+Together they form a comprehensive paper trail that governs the full lifecycle of a change, from idea to shipped code.
 
 ## Motivation
 
 ### Before
 
-- Knowledge lived in people's heads
-- Code used to be king
-- Documentation was written after the fact, if at all
-- Documentation was something buried deep in a wiki that nobody reads nor updates
-- Onboarding was expensive and slow
-- Code reviews focused more on style and patterns rather than on intent and behavior
+- Knowledge lived in people's heads and left when they did
+- Code was king; documentation was an afterthought buried in a wiki nobody read
 - Requirements were ambiguous and interpreted differently by different developers
-- Context was permanently lost when team members left
+- Code reviews focused on style and patterns rather than intent and behavior
 - Technical debt accumulated silently — nobody documented the trade-offs that created it
 - Design decisions were debated in Slack threads and lost forever
 

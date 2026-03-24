@@ -22,17 +22,13 @@ These documents include requirements, implementation plans, validation scenarios
 ### Now
 
 - Documentation, not the code, becomes the primary artifact
-- Documentation is the source that generates implementation
-- Code becomes its expression in a particular language and framework
 - The lingua franca of development moves to a higher level
-- Code reviews evolve into documentation reviews
 - Developers focus less on writing repetitive code and more on understanding edge cases, defining interactions, and validating system behavior
-- Intent is preserved alongside implementation
 - Documentation becomes versionable and diffable
-- New team members onboard by reading the document trail, not shadowing someone for weeks
-- Changing direction means editing documents, not rewriting code
 
 ## Principles
+
+**Documentation is the primary artifact.** Documentation is the source that generates implementation. Code is an expression of that documentation in a particular language and framework — not the other way around. This moves the shared language of development to a higher level, making the work accessible to anyone who can read the documents, not just those fluent in the codebase.
 
 **Structured context produces better output.** AI coding agents produce inconsistent results when given ad-hoc instructions — the same prompt phrased differently can yield fundamentally different implementations. The quality of AI-generated code is directly proportional to the quality of the documents it ingests. When the AI agent receives detailed requirements, a phased implementation plan, and validation scenarios — all reviewed against project standards — it generates code that reflects the team's intent rather than its own assumptions.
 
@@ -40,7 +36,7 @@ These documents include requirements, implementation plans, validation scenarios
 
 **Precise over vague.** Every requirement must be unambiguous, complete, consistent, and verifiable. The "two-developer test" is the bar: a requirement or plan step should be specific enough that two developers following it independently would produce the same result. This extends to AI agents — given the same document set, any competent agent should produce substantially similar output.
 
-**AI as collaborator, human as curator.** The AI agent generates and reviews documents, but the human team makes all approval decisions. The AI handles volume and consistency; the human handles intent and judgment.
+**AI as collaborator, human as curator.** The AI agent generates and reviews documents, but the human team makes all approval decisions. The AI handles volume and consistency; the human handles intent and judgment. This shifts the developer's focus from writing repetitive code to understanding edge cases, defining interactions, and validating system behavior.
 
 **Iterate cheaply.** The document pipeline is ordered so that the most expensive mistakes are caught at the cheapest phase. Problems caught in documents take minutes to fix; problems caught in code take hours to debug and refactor. If a design can't survive document review, it won't survive production — kill bad ideas before they become bad code. When a problem is found, the team revises the document and re-reviews — never jumping to code to "just fix it there."
 

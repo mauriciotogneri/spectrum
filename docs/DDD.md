@@ -29,8 +29,6 @@ DDD is a structured but flexible development framework where every code change b
 
 **Progressive detail.** Documents move from high-level (requirements) to low-level (implementation plans). Each layer adds precision without contradicting the layer above.
 
-**Scope is a boundary, not a suggestion.** If it's not in the documents, it's not in scope. New ideas go through the document pipeline, not directly into code.
-
 ### Quality & Process
 
 **Standards-enforced quality.** Document quality is checked mechanically, not left to human judgment alone. AI systematically checks every document — eliminating the "we should have caught that" problem. Because quality is enforced at the document level before code exists, the methodology helps ensure the software meets user needs and business goals, not just technical standards.

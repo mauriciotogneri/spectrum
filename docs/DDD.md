@@ -38,6 +38,8 @@ The core thesis is simple: **the quality of AI-generated code is directly propor
 
 **Shared understanding before code.** Documents force the team to articulate what they want, why they want it, and how they will validate it — before any code is written. Ambiguities surface during document review, not during code review.
 
+**Automated enforcement.** Standards are not enforced by convention alone. AI-powered review skills read the standards and systematically check every document against them. The review skill produces a structured report with numbered findings, severities, and recommendations — eliminating the "we should have caught that" problem.
+
 **Cheap iteration.** Catching problems in documents takes minutes to fix. Catching them in code takes hours to debug and refactor. DDD shifts iteration to the cheapest possible phase.
 
 **Auditability.** Every decision, requirement, trade-off, and scope boundary is captured in documents. When someone asks "why was it built this way?" months later, the answer is in the document trail, not in someone's memory.

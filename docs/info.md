@@ -1,9 +1,5 @@
 # Documentation Driven Development (DDD)
 
-## Standards
-
-DDD enforces document quality through a two-tier review system. Common checks apply to every document regardless of type, ensuring baseline quality across the entire set. File-specific checks add validation rules tailored to each document type.
-
 ### Mechanical Enforcement
 
 Standards are not enforced by convention alone. AI-powered review skills read the standards and systematically check every document against them. The review skill produces a structured report with numbered findings, severities, and recommendations — eliminating the "we should have caught that" problem.

@@ -1,9 +1,3 @@
-# Documentation Driven Development (DDD)
-
-### Mechanical Enforcement
-
-Standards are not enforced by convention alone. AI-powered review skills read the standards and systematically check every document against them. The review skill produces a structured report with numbered findings, severities, and recommendations — eliminating the "we should have caught that" problem.
-
 ## Principles
 
 Seven principles guide the framework:

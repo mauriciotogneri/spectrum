@@ -1,6 +1,6 @@
 # Documentation Driven Development (DDD)
 
-It's a development framework where every code change (e.g. new feature, bug fix, infrastructure task, etc) begins with a curated set of documents.
+DDD is a development framework where every code change (e.g. new feature, bug fix, infrastructure task, etc) begins with a curated set of documents.
 
 These documents include requirements, implementation plans, validation scenarios, API contracts, etc. Together they form a comprehensive paper trail that governs the full lifecycle of a change, from idea to shipped code.
 
@@ -14,12 +14,12 @@ The core thesis is simple: **the quality of AI-generated code is directly propor
 
 - Before
   - Knowledge lived in people's heads
-  - Code used to be the king
+  - Code used to be king
   - Documentation was written after the fact, if at all
   - Documentation was something buried deep in a wiki that nobody reads nor updates
-  - Documentation was often used in retrospective
+  - Documentation was often written retrospectively
   - Onboarding was expensive and slow
-  - Code reviews focused more on style and patterns, not on intent and behavior
+  - Code reviews focused more on style and patterns rather than on intent and behavior
 - Now
   - Maintaining software means evolving documentation
   - Documentation, not the code, becomes the primary artifact
@@ -38,9 +38,9 @@ The core thesis is simple: **the quality of AI-generated code is directly propor
 
 **Shared understanding before code.** Documents force the team to articulate what they want, why they want it, and how they will validate it — before any code is written. Ambiguities surface during document review, not during code review.
 
-**Automated enforcement.** Standards are not enforced by convention alone. AI-powered review skills read the standards and systematically check every document against them. The review skill produces a structured report with numbered findings, severities, and recommendations — eliminating the "we should have caught that" problem.
+**Automated enforcement.** Standards are not enforced by convention alone. AI-powered review skills systematically check every document. The review skill produces a structured report with numbered findings, severities, and recommendations — eliminating the "we should have caught that" problem.
 
-**Cheap iteration.** Catching problems in documents takes minutes to fix. Catching them in code takes hours to debug and refactor. DDD shifts iteration to the cheapest possible phase.
+**Cheap iteration.** Problems caught in documents take minutes to fix. Problems caught in code take hours to debug and refactor. DDD shifts iteration to the cheapest possible phase.
 
 **Auditability.** Every decision, requirement, trade-off, and scope boundary is captured in documents. When someone asks "why was it built this way?" months later, the answer is in the document trail, not in someone's memory.
 
@@ -54,10 +54,10 @@ The core thesis is simple: **the quality of AI-generated code is directly propor
 
 **AI as collaborator, human as curator.** The AI agent generates and reviews documents, but the human team makes all approval decisions. The AI handles volume and consistency; the human handles intent and judgment.
 
-**Iterate cheaply.** Catch problems in documents (minutes to revise) rather than in code (hours to refactor). The document pipeline is designed so that the most expensive mistakes are caught at the cheapest phase.
+**Iterate cheaply.** The document pipeline is ordered so that the most expensive mistakes are caught at the cheapest phase. When a problem is found, the team revises the document and re-reviews — never jumping to code to "just fix it there."
 
 **End-to-end traceability.** Every requirement traces forward to plan steps, validation scenarios, and acceptance criteria. Every implementation detail traces back to a requirement. The review system checks these traces mechanically.
 
-**Standards-enforced quality.** Document quality is checked mechanically, not left to human judgment alone. Common checks plus file-specific checks ensure that every document meets a consistent quality bar.
+**Standards-enforced quality.** Document quality is checked mechanically, not left to human judgment alone. Every document type has a standards definition that specifies both common checks (shared across all documents) and file-specific checks (unique to that document type), ensuring a consistent quality bar.
 
 **Separation of concerns.** Rules about documents (standards) are separate from rules about the application (technical reference). The framework itself can evolve independently from the application it governs.

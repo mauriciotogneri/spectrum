@@ -1,17 +1,17 @@
 # Documentation Driven Development (DDD)
 
-DDD is a development framework where every code change (e.g. new feature, bug fix, infrastructure task) begins with a curated set of documents that form a comprehensive paper trail — governing the full lifecycle of a change, from idea to shipped code.
+DDD is a development framework where every code change begins with documentation — not code. A curated set of documents governs the full lifecycle of a change, from idea to shipped code.
 
 ## Problem
 
-**Tribal knowledge.** Knowledge lived in people's heads and left when they did.
-**Documentation as afterthought.** Documentation was written retrospectively (if at all), buried in a wiki nobody read nor updated.
+**Trapped knowledge.** Knowledge lived in people's heads and left when they did.
+**Neglected documentation.** Documentation was written retrospectively (if at all), buried in a wiki nobody read nor updated.
 **Ambiguous requirements.** Requirements were interpreted differently by different developers.
 **Superficial code reviews.** Reviews focused on style and patterns rather than intent and behavior.
 **Silent technical debt.** Debt accumulated silently — nobody documented the trade-offs or constraints that justified it.
 **Lost decisions.** Design decisions were debated in Slack threads and forgotten.
 **Onboarding by archaeology.** New developers had to reverse-engineer intent from code.
-**No validation contract.** Test cases were written after implementation, shaped by what the code did rather than what it should do — so tests passed even when behavior was wrong.
+**Missing validation contract.** Test cases were written after implementation, shaped by what the code did rather than what it should do — so tests passed even when behavior was wrong.
 
 ## Principles
 
@@ -41,10 +41,6 @@ DDD is a development framework where every code change (e.g. new feature, bug fi
 
 ### Collaboration
 
-**AI as collaborator, human as curator.** The AI agent generates and reviews documents, but the human team makes all approval decisions. The AI handles volume and consistency; the human handles intent and judgment. This shifts the developer's focus from writing repetitive code to understanding edge cases, defining interactions, and validating system behavior.
+**Humans curate, collaborators execute.** Collaborators — whether AI agents or other developers — generate and review documents, but the team makes all approval decisions. Collaborators handle volume and consistency; the team handles intent and judgment. This shifts the developer's focus from writing repetitive code to understanding edge cases, defining interactions, and validating system behavior.
 
-**Structured context produces better output.** AI coding agents produce inconsistent results when given ad-hoc instructions — the same prompt phrased differently can yield fundamentally different implementations. The quality of AI-generated code is directly proportional to the quality of the documents it ingests. When the AI agent receives detailed requirements, a phased implementation plan, and validation scenarios — all reviewed against project standards — it generates code that reflects the team's intent rather than its own assumptions.
-
-### Organization
-
-**Separation of concerns.** Rules about documents (standards) are separate from rules about the application (technical reference). The framework itself can evolve independently from the application it governs.
+**Structured context produces better output.** Collaborators produce inconsistent results when given ad-hoc instructions — the same task described differently can yield fundamentally different implementations. The quality of output is directly proportional to the quality of the documents that inform it. When a collaborator receives detailed requirements, a phased implementation plan, and validation scenarios — all reviewed against project standards — it produces work that reflects the team's intent rather than its own assumptions.

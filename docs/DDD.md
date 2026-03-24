@@ -1,6 +1,6 @@
 # Documentation Driven Development (DDD)
 
-DDD is a development framework where every code change (e.g. new feature, bug fix, infrastructure task, etc) begins with a curated set of documents.
+DDD is a development framework where every code change (e.g. new feature, bug fix, infrastructure task) begins with a curated set of documents.
 
 These documents include requirements, implementation plans, validation scenarios, API contracts, etc. Together they form a comprehensive paper trail that governs the full lifecycle of a change, from idea to shipped code.
 
@@ -23,6 +23,7 @@ The core thesis is simple: **the quality of AI-generated code is directly propor
 - Requirements were ambiguous and interpreted differently by different developers
 - Context was permanently lost when team members left
 - Technical debt accumulated silently — nobody documented the trade-offs that created it
+- Design decisions were debated in Slack threads and lost forever
 
 ### Now
 
@@ -30,7 +31,7 @@ The core thesis is simple: **the quality of AI-generated code is directly propor
 - Documentation is the source that generates implementation
 - Code becomes its expression in a particular language and framework
 - The lingua franca of development moves to a higher level
-- Code reviews evolves into documentation reviews
+- Code reviews evolve into documentation reviews
 - Developers focus less on writing repetitive code and more on understanding edge cases, defining interactions, and validating system behavior
 - Intent is preserved alongside implementation
 - Documentation becomes versionable and diffable
@@ -47,9 +48,7 @@ The core thesis is simple: **the quality of AI-generated code is directly propor
 
 **Cheap iteration.** Problems caught in documents take minutes to fix. Problems caught in code take hours to debug and refactor. DDD shifts iteration to the cheapest possible phase.
 
-**Auditability.** Every decision, requirement, trade-off, and scope boundary is captured in documents. When someone asks "why was it built this way?" months later, the answer is in the document trail, not in someone's memory.
-
-**Living memory.** The document set for each change serves as a permanent record. When the team revisits a feature, the full reasoning — not just the code — is preserved.
+**Auditability and living memory.** Every decision, requirement, trade-off, and scope boundary is captured in documents. When someone asks "why was it built this way?" months later, the answer is in the document trail, not in someone's memory. When the team revisits a feature, the full reasoning — not just the code — is preserved.
 
 **Reduced bus factor.** Knowledge is externalized into documents, not trapped in individuals. A team member leaving doesn't create a knowledge vacuum.
 
@@ -82,3 +81,5 @@ The core thesis is simple: **the quality of AI-generated code is directly propor
 **Progressive detail.** Documents move from high-level (requirements) to low-level (implementation plans). Each layer adds precision without contradicting the layer above.
 
 **Fail fast on paper.** If a design can't survive document review, it won't survive production. Kill bad ideas before they become bad code.
+
+**Scope is a boundary, not a suggestion.** If it's not in the documents, it's not in scope. New ideas go through the document pipeline, not directly into code.

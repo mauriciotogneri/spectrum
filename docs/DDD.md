@@ -4,6 +4,10 @@ It's a development framework where every code change (e.g. new feature, bug fix,
 
 These documents include requirements, implementation plans, validation scenarios, API contracts, etc. Together they form a comprehensive paper trail that governs the full lifecycle of a change, from idea to shipped code.
 
+## Core Thesis
+
+AI coding agents produce inconsistent results when given ad-hoc instructions. The same prompt phrased differently can yield fundamentally different implementations. DDD solves this by replacing ad-hoc prompting with a structured document pipeline.
+
 The core thesis is simple: **the quality of AI-generated code is directly proportional to the quality of the documents it ingests**. By investing in well-structured, reviewed, and standards-compliant documents, the team controls the output rather than hoping for good results from vague prompts.
 
 ## Motivation

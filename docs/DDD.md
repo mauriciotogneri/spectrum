@@ -15,7 +15,6 @@ DDD is a development framework where every code change (e.g. new feature, bug fi
 
 ### Now
 
-- Documentation, not the code, becomes the primary artifact
 - The lingua franca of development moves to a higher level
 - Developers focus less on writing repetitive code and more on understanding edge cases, defining interactions, and validating system behavior
 - Documentation becomes versionable and diffable
@@ -24,7 +23,7 @@ DDD is a development framework where every code change (e.g. new feature, bug fi
 
 ### Foundation
 
-**Documentation is the primary artifact.** Documentation is the source that generates implementation. Code is an expression of that documentation in a particular language and framework — not the other way around. This moves the shared language of development to a higher level, making the work accessible to anyone who can read the documents, not just those fluent in the codebase.
+**Documentation, not the code, becomes the primary artifact.** Documentation is the source that generates implementation. Code is an expression of that documentation in a particular language and framework — not the other way around. This moves the shared language of development to a higher level, making the work accessible to anyone who can read the documents, not just those fluent in the codebase.
 
 **Documents before code.** No code is written until the document set is reviewed and approved. Documents force the team to articulate what they want, why they want it, and how they will validate it — surfacing ambiguities during document review, not code review. Because the primary artifact is the document, not the code, migrating to a new stack means re-generating code from existing docs rather than a full rewrite.
 

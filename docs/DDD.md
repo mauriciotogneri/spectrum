@@ -45,3 +45,19 @@ The core thesis is simple: **the quality of AI-generated code is directly propor
 **Auditability.** Every decision, requirement, trade-off, and scope boundary is captured in documents. When someone asks "why was it built this way?" months later, the answer is in the document trail, not in someone's memory.
 
 **Living memory.** The document set for each change serves as a permanent record. When the team revisits a feature, the full reasoning — not just the code — is preserved.
+
+## Principles
+
+**Documents before code.** No code is written until the document set is reviewed and approved. The investment in documents pays for itself by preventing rework.
+
+**Precise over vague.** Every requirement must be unambiguous, complete, consistent, and verifiable. The "two-developer test" is the bar: a requirement or plan step should be specific enough that two developers following it independently would produce the same result.
+
+**AI as collaborator, human as curator.** The AI agent generates and reviews documents, but the human team makes all approval decisions. The AI handles volume and consistency; the human handles intent and judgment.
+
+**Iterate cheaply.** Catch problems in documents (minutes to revise) rather than in code (hours to refactor). The document pipeline is designed so that the most expensive mistakes are caught at the cheapest phase.
+
+**End-to-end traceability.** Every requirement traces forward to plan steps, validation scenarios, and acceptance criteria. Every implementation detail traces back to a requirement. The review system checks these traces mechanically.
+
+**Standards-enforced quality.** Document quality is checked mechanically, not left to human judgment alone. Common checks plus file-specific checks ensure that every document meets a consistent quality bar.
+
+**Separation of concerns.** Rules about documents (standards) are separate from rules about the application (technical reference). The framework itself can evolve independently from the application it governs.

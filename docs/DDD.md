@@ -30,8 +30,6 @@ DDD is a structured but flexible development framework where every code change b
 
 **Precise over vague.** Every requirement must be unambiguous, complete, consistent, and verifiable. The "two-developer test" is the bar: a requirement or plan step should be specific enough that two developers following it independently would produce the same result. This extends to AI agents — given the same document set, any competent agent should produce substantially similar output.
 
-**Progressive detail.** Documents move from high-level (requirements) to low-level (implementation plans). Each layer adds precision without contradicting the layer above.
-
 ### Quality & Process
 
 **Standards-enforced quality.** Document quality is checked mechanically, not left to human judgment alone. AI systematically checks every document — eliminating the "we should have caught that" problem. Because quality is enforced at the document level before code exists, the methodology helps ensure the software meets user needs and business goals, not just technical standards.

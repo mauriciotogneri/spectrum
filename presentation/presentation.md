@@ -45,7 +45,7 @@ paginate: true
 
 ### The consequences
 
-* New developers have to `reverse-engineer` intent from code
+* New developers have to `reverse-engineer` intent from code <!-- onboarding by archeology -->
 
 * Debt accumulates `silently` and nobody documents the trade-offs or constraints that justify it
 
@@ -63,15 +63,19 @@ paginate: true
 
 * Documentation is the source that generates implementation
 
-* Code is an expression of that documentation in a particular language and framework
+* Code is an expression of that documentation in a particular language and framework <!-- not the other way around -->
 
-* This moves the lingua franca of development to a higher level
+* This moves the lingua franca of development to a higher level <!-- making the work accessible to anyone, not just those fluent in the codebase -->
 
 ---
 
 ### Documents before code
 
-No code is written until the document set is reviewed and approved. Documents force the team to articulate what they want, why they want it, and how they will validate it — surfacing ambiguities during document review, not code review. This ensures that developers, testers, designers, and managers share the same understanding of what to build, preventing assumptions and misalignments before they reach code.
+* No code is written until the document set is reviewed and approved
+
+* Documents force the team to articulate what they want, why they want it, and how they will validate it <!-- surfacing ambiguities during document review, not code review -->
+
+* This ensures that the team <!-- developers, testers, designers, and managers--> shares the same understanding of what to build <!--preventing assumptions and misalignments before they reach code.-->
 
 ---
 

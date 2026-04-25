@@ -55,7 +55,7 @@ paginate: true
 
 # Principles
 
-### Foundation
+### 1. Foundation
 
 ---
 
@@ -81,13 +81,15 @@ paginate: true
 
 ### Single source of truth
 
-For any given concern, exactly one document is authoritative. Knowledge is externalized into documents, not trapped in individuals — a team member leaving doesn't create a knowledge vacuum, and new developers get up to speed by reading the document set rather than reverse-engineering code.
+* For any given concern, exactly one document is authoritative
+
+* Knowledge is externalized into documents, not trapped in individuals <!-- a team member leaving doesn't create a knowledge vacuum -->
 
 ---
 
 # Principles
 
-### Quality & Process
+### 2. Quality & Process
 
 ---
 
@@ -109,7 +111,7 @@ The document pipeline is ordered so that the most expensive mistakes are caught 
 
 # Principles
 
-### Collaboration
+### 3. Collaboration
 
 ---
 

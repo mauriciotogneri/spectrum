@@ -44,7 +44,7 @@ class: invert
 
 * Knowledge `lives` in people's heads and `leaves` when they do
 
-* Documentation is written `after` the fact
+* Documentation is written `after` the fact <!-- if at all -->
 
 * Often buried where nobody reads nor updates it, or scattered across wikis, issue trackers, and chat messages
 
@@ -59,6 +59,7 @@ class: invert
 * Debt accumulates `silently` and nobody documents the trade-offs or constraints that justify it
 
 * Test cases are written `after` implementation, shaped by what the code does rather than what it should do
+<!-- tests pass even when behavior is wrong -->
 
 ---
 

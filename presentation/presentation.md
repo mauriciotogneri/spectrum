@@ -10,6 +10,18 @@ class: invert
 
 ---
 
+* Structured but flexible development framework
+
+* Every code change begins with documentation — not code
+
+* A curated set of documents governs the full lifecycle
+
+* Transforms chaotic software development into a systematic, repeatable methodology
+
+* Consistently delivers results aligned with your vision
+
+---
+
 # Slide 1
 
 This is the first slide.

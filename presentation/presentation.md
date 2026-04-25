@@ -97,7 +97,7 @@ class: invert
 <!-- 3)
 * Making the work accessible to anyone, not just those fluent in the codebase
 * Document creation and review skills becomes a core competency
-* DDD is like performing a code review before the code is written
+* It's like performing a code review before the code is written
 -->
 
 ---
@@ -111,8 +111,8 @@ class: invert
 
 * This ensures that the team shares the same understanding of what to build 
 <!-- 3)
-* Team: developers, testers, designers, and managers
-* Preventing assumptions and misalignments before they reach code
+* Team: developers, testers, designers, managers, etc
+* This prevents assumptions and misalignments before they reach code
 * A perfect implementation of the wrong specification is worthless -->
 
 ---

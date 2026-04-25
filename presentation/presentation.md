@@ -2,12 +2,21 @@
 marp: true
 theme: uncover
 class: invert
-paginate: true
 ---
 
 # DDD
 
 ### Documentation Driven Development
+
+---
+
+### Before we start
+
+* Thanks for coming
+
+* I don't want to sell this to anyone
+
+* The goal is get your thoughts and have a discussion around it
 
 ---
 

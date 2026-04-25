@@ -129,6 +129,30 @@ AI produces inconsistent results when given ad-hoc instructions — the same tas
 
 ---
 
+# Drawbacks
+
+---
+
+Works well for mid-large features but the process doesn’t justify small fixes (one line bug, quick UI tweak, etc). A one-line bug fix gets the same ceremony as a new feature. This will slow teams down and incentivize workarounds (batching unrelated changes, skipping the process for "quick fixes," etc.). Solution: small changes could get a fast track or a lightweight process.
+
+---
+
+No prototyping mechanism. The framework has no place for exploratory work. The framework assumes you already understand the problem well enough to specify it, which is often the hard part. Solution: Allow for spikes, which are a time-boxed investigation where the deliverable is knowledge, not code. The idea: you drive a narrow "spike" through the full stack or problem space, just enough to answer a specific question, not enough to build a feature. It prevents a common failure mode: teams spending days writing detailed requirements and plans for an approach that a 4-hour prototype would have revealed as unworkable. When to spike: If the team can't agree on the approach. When to specify: If the team knows what to build and is debating how to structure it.
+
+---
+
+Plan determinism doesn't survive contact with reality. Sometimes you realize about a missing thing or a bug after the implementation was done (and you are testing it manually). Solution: Allow for small adhoc prompting to update the code, but always remembering to keep the documentation in sync
+
+---
+
+As the project grows, the document set will grow with it. Navigation and cross-referencing become harder. Searching for "Where did we decide X?" across dozens of feature folders is cumbersome. The AI agent's ability to ingest all documents will diminish as the project’s documentation grows. A search-friendly format or cross-referencing tool would help.
+
+---
+
+AI dependency is a single point of fragility. The framework leans heavily on AI for generation, review, and implementation. If AI is unavailable, a developer can read the requirements and plan and implement manually — that's the whole point of making documents precise enough for the two-developer test. The framework's value is in the documents, not in the AI that generates them. Solution: use different models to counter for their availability and biases.
+
+---
+
 ### Other frameworks
 
 * OpenSpec

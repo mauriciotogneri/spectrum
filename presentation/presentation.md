@@ -144,6 +144,7 @@ class: invert
 * A requirement should be specific enough so that two developers working independently would each agree the other's implementation is correct
 * The goal isn't identical code — it's that the specification constrains the solution space so any valid implementation satisfies the requirements
 * This extends to AI agents — given the same document set, any competent agent should produce a valid implementation that satisfies all requirements
+* LLMs are machines that satisfy constraints/conditions, so the more you provide, the more you narrow and restrain the space of what the LLM can generate, bringing it closer to what you actually want
 --> 
 
 ---
@@ -151,10 +152,6 @@ class: invert
 ### No prompt
 
 ![](img/chart1.png)
-
-<!--
-LLMs are machines to satisfy constraints/conditions, so the more you provide, the more you narrow and restrain the space of what the LLM can generate, bringing it closer to what you actually want
--->
 
 ---
 
@@ -185,7 +182,10 @@ LLMs are machines to satisfy constraints/conditions, so the more you provide, th
 ### Standards-enforced quality
 
 * Document quality is checked mechanically
-<!-- 1) AI systematically checks every document - Because quality is enforced at the document level before code exists, the methodology helps ensure the software meets user needs and business goals, not just technical standards -->
+<!-- 1)
+* AI systematically checks every document
+* Because quality is enforced at the document level before code exists, the methodology helps ensure the software meets user needs and business goals, not just technical standards
+-->
 
 ---
 

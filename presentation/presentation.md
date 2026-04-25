@@ -137,9 +137,15 @@ paginate: true
 
 <!-- AI systematically checks every document - Because quality is enforced at the document level before code exists, the methodology helps ensure the software meets user needs and business goals, not just technical standards. -->
 
+---
+
 ### Iterate cheaply
 
-The document pipeline is ordered so that the most expensive mistakes are caught at the cheapest phase. Problems caught in documents take minutes to fix; problems caught in code take hours to debug and refactor. If a design can't survive document review, it won't survive production — kill bad ideas before they become bad code.
+* The document pipeline is ordered so that the most expensive mistakes are caught at the cheapest phase
+
+* Problems caught in documents take minutes to fix; problems caught in code take hours to debug and refactor.
+
+* If a design can't survive document review, it won't survive production <!-- kill bad ideas before they become bad code -->
 
 ---
 

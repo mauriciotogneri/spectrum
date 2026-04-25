@@ -16,7 +16,7 @@ class: invert
 
 * I don't want to sell this to anyone
 
-* The goal is get your thoughts and have a discussion around it
+* The goal is to get your thoughts and have a discussion around it
 
 ---
 
@@ -147,13 +147,13 @@ class: invert
 
 ---
 
-### Make me finance app
+### Make me a finance app
 
 ![](img/chart3.png)
 
 ---
 
-### More elaborated prompt
+### More elaborate prompt
 
 ![](img/chart4.png)
 
@@ -189,7 +189,7 @@ class: invert
 
 ---
 
-### Humans curate, AI execute
+### Humans curate, AI executes
 
 * AI generates and reviews documents, but the team makes all approval decisions
 
@@ -241,7 +241,7 @@ class: invert
 
 * Plan determinism doesn't survive contact with reality
 
-* Sometimes you realize about a missing thing or a bug after the implementation was done
+<!-- Sometimes you discover something is missing or a bug after the implementation is done -->
 
 * `Solution`: Allow for small adhoc prompting to update the code and the corresponding documentation
 

@@ -90,11 +90,15 @@ class: invert
 
 * Documentation is the source that generates implementation
 
-* Code is an expression of that documentation in a particular language and framework <!-- not the other way around -->
+* Code is an expression of that documentation in a particular language and framework
+<!-- 2. Not the other way around -->
 
-* This moves the lingua franca of development to a higher level <!-- Making the work accessible to anyone, not just those fluent in the codebase -->
-<!-- Document creation and review skills becomes a core competency -->
-<!-- DDD is like performing a code review before the code is written -->
+* This moves the lingua franca of development to a higher level
+<!-- 3.
+* Making the work accessible to anyone, not just those fluent in the codebase
+* Document creation and review skills becomes a core competency
+* DDD is like performing a code review before the code is written
+-->
 
 ---
 
@@ -102,10 +106,11 @@ class: invert
 
 * No code is written until the document set is reviewed and approved
 
-* Documents force the team to articulate what they want, why they want it, and how they will validate it <!-- surfacing ambiguities during document review, not code review -->
+* Documents force the team to articulate what they want, why they want it, and how they will validate it
+<!-- 2. Surfacing ambiguities during document review, not code review -->
 
-* This ensures that the team <!-- developers, testers, designers, and managers--> shares the same understanding of what to build <!--Preventing assumptions and misalignments before they reach code -->
-<!-- A perfect implementation of the wrong specification is worthless -->
+* This ensures that the team shares the same understanding of what to build 
+<!-- 3. Team: developers, testers, designers, and managers. Preventing assumptions and misalignments before they reach code. A perfect implementation of the wrong specification is worthless -->
 
 ---
 
@@ -113,8 +118,8 @@ class: invert
 
 * For any given concern, exactly one document is authoritative
 
-* Knowledge is externalized into documents, not trapped in individuals <!-- a team member leaving doesn't create a knowledge vacuum -->
-<!-- The documentation has a compound effect that lasts over the lifetime of the project -->
+* Knowledge is externalized into documents, not trapped in individuals
+<!-- 2. A team member leaving doesn't create a knowledge vacuum. The documentation has a compound effect that lasts over the lifetime of the project -->
 
 ---
 
@@ -129,9 +134,9 @@ class: invert
 * Every requirement must be unambiguous, complete, consistent, and verifiable
 
 * The "two-developer test" is the bar
-<!-- A requirement should be specific enough so that two developers working independently would each agree the other's implementation is correct -->
-<!-- The goal isn't identical code — it's that the specification constrains the solution space so any valid implementation satisfies the requirements -->
-<!-- This extends to AI agents — given the same document set, any competent agent should produce a valid implementation that satisfies all requirements --> 
+<!--
+2
+A requirement should be specific enough so that two developers working independently would each agree the other's implementation is correct. The goal isn't identical code — it's that the specification constrains the solution space so any valid implementation satisfies the requirements. This extends to AI agents — given the same document set, any competent agent should produce a valid implementation that satisfies all requirements --> 
 
 ---
 
@@ -139,7 +144,9 @@ class: invert
 
 ![](img/chart1.png)
 
-<!-- LLMs are machines to satisfy constraints/conditions, so the more you provide, the more you narrow and restrain the space of what the LLM can generate, bringing it closer to what you actually want -->
+<!--
+LLMs are machines to satisfy constraints/conditions, so the more you provide, the more you narrow and restrain the space of what the LLM can generate, bringing it closer to what you actually want
+-->
 
 ---
 

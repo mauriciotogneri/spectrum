@@ -218,9 +218,10 @@ LLMs are machines to satisfy constraints/conditions, so the more you provide, th
 
 ### Structured context produces better output
 
-* AI produces inconsistent results when given ad-hoc instructions <!-- the same task described differently can yield fundamentally different implementations -->
+* AI produces inconsistent results when given ad-hoc instructions <!-- 1) The same task described differently can yield fundamentally different implementations -->
 
-* The quality of output is directly proportional to the quality of the documents that inform it <!-- When an AI receives detailed requirements, a phased implementation plan, and validation scenarios it produces work that reflects the team's intent rather than its own assumptions -->
+* The quality of output is directly proportional to the quality of the documents that inform it
+<!-- 2) When an AI receives detailed requirements, a phased implementation plan, and validation scenarios it produces work that reflects the team's intent rather than its own assumptions -->
 
 ---
 
@@ -230,10 +231,11 @@ LLMs are machines to satisfy constraints/conditions, so the more you provide, th
 
 ### Process Overhead
 
-* Works well for mid-large features but the process doesn't justify small fixes <!-- One line bug, quick UI tweak, etc gets the same ceremony as a new feature -->
+* Works well for mid-large features but the process doesn't justify small fixes
+<!-- 1) One line bug, quick UI tweak, etc gets the same ceremony as a new feature -->
 
 * This will slow teams down and incentivize workarounds
-<!-- Batching unrelated changes, skipping the process for "quick fixes," etc -->
+<!-- 2) Batching unrelated changes, skipping the process for quick fixes etc -->
 
 * `Solution`: small changes could get a fast track or a lightweight process
 
@@ -246,19 +248,19 @@ LLMs are machines to satisfy constraints/conditions, so the more you provide, th
 * The framework assumes you already understand the problem well enough to specify it, which is often the hard part
 
 * `Solution`: Allow for spikes, which are a time-boxed investigation where the deliverable is knowledge, not code
-
-<!-- The idea: you drive a narrow "spike" through the full stack or problem space, just enough to answer a specific question, not enough to build a feature -->
-<!-- It prevents a common failure mode: teams spending days writing detailed requirements and plans for an approach that a 4-hour prototype would have revealed as unworkable -->
-<!-- When to spike: If the team can't agree on the approach -->
-<!-- When to specify: If the team knows what to build and is debating how to structure it -->
+<!-- 3)
+* The idea: you drive a narrow "spike" through the full stack or problem space, just enough to answer a specific question, not enough to build a feature
+* It prevents a common failure mode: teams spending days writing detailed requirements and plans for an approach that a 4-hour prototype would have revealed as unworkable
+* When to spike: If the team can't agree on the approach
+* When to specify: If the team knows what to build and is debating how to structure it
+-->
 
 ---
 
 ### Plans Meet Reality
 
 * Plan determinism doesn't survive contact with reality
-
-<!-- Sometimes you discover something is missing or a bug after the implementation is done -->
+<!-- 1) Sometimes you discover something is missing or a bug after the implementation is done -->
 
 * `Solution`: Allow for small adhoc prompting to update the code and the corresponding documentation
 
@@ -269,7 +271,7 @@ LLMs are machines to satisfy constraints/conditions, so the more you provide, th
 * As the project grows, the document set will grow with it
 
 * Navigation and cross-referencing become harder
-<!-- Searching for "Where did we decide X?" across dozens of feature folders is cumbersome -->
+<!-- 2) Searching for "Where did we decide X?" across dozens of feature folders is cumbersome -->
 
 * The agent's ability to ingest all documents will diminish as the project's documentation grows
 
@@ -280,11 +282,13 @@ LLMs are machines to satisfy constraints/conditions, so the more you provide, th
 ### AI Dependency
 
 * AI dependency is a single point of fragility
-<!-- The framework leans heavily on AI for generation, review, and implementation -->
+<!-- 1) The framework leans heavily on AI for generation, review, and implementation -->
 
 * If AI is unavailable, a developer can read the requirements and plan and implement manually
-<!-- That's the whole point of making documents precise enough for the two-developer test -->
-<!-- The framework's value is in the documents, not in the AI that generates them -->
+<!-- 2)
+* That's the whole point of making documents precise enough for the two-developer test
+* The framework's value is in the documents, not in the AI that generates them
+-->
 
 * `Solution`: Use different agents to counter for their availability and biases
 

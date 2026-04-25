@@ -8,5 +8,8 @@
   "editor.detectIndentation": false,
   "editor.formatOnSave": true,
   "editor.fontFamily": "'Source Code Pro'",
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "[markdown]": {
+    "editor.defaultFormatter": null,
+    "editor.formatOnSave": false
+  }
 }

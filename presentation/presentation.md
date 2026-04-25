@@ -208,13 +208,23 @@ paginate: true
 
 ### No Room for Exploration
 
-No prototyping mechanism. The framework has no place for exploratory work. The framework assumes you already understand the problem well enough to specify it, which is often the hard part. Solution: Allow for spikes, which are a time-boxed investigation where the deliverable is knowledge, not code. The idea: you drive a narrow "spike" through the full stack or problem space, just enough to answer a specific question, not enough to build a feature. It prevents a common failure mode: teams spending days writing detailed requirements and plans for an approach that a 4-hour prototype would have revealed as unworkable. When to spike: If the team can't agree on the approach. When to specify: If the team knows what to build and is debating how to structure it.
+* The framework has no place for exploratory work or prototyping
+
+* The framework assumes you already understand the problem well enough to specify it, which is often the hard part.
+
+* `Solution`: Allow for spikes, which are a time-boxed investigation where the deliverable is knowledge, not code
+
+<!-- The idea: you drive a narrow "spike" through the full stack or problem space, just enough to answer a specific question, not enough to build a feature. It prevents a common failure mode: teams spending days writing detailed requirements and plans for an approach that a 4-hour prototype would have revealed as unworkable. When to spike: If the team can't agree on the approach. When to specify: If the team knows what to build and is debating how to structure it -->
 
 ---
 
 ### Plans Meet Reality
 
-Plan determinism doesn't survive contact with reality. Sometimes you realize about a missing thing or a bug after the implementation was done (and you are testing it manually). Solution: Allow for small adhoc prompting to update the code, but always remembering to keep the documentation in sync
+* Plan determinism doesn't survive contact with reality
+
+* Sometimes you realize about a missing thing or a bug after the implementation was done
+
+* `Solution`: Allow for small adhoc prompting to update the code and the corresponding documentation
 
 ---
 

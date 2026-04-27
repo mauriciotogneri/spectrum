@@ -302,3 +302,7 @@ class: invert
 * OpenSpec
 * Kiro
 * Spec Kit
+
+---
+
+# Thanks
